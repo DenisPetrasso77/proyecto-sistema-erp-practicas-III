@@ -1,4 +1,5 @@
 ﻿using CapaDatos;
+using Entities;
 using System;
 using System.Data;
 
@@ -9,9 +10,13 @@ namespace CapaLogica
         CD_Metodos metodos = new CD_Metodos();
 
         #region METODOS
-        public string DatosIngreso(string Usuario)
+        public Usuarioactual DatosIngreso(string Usuario)
         {
             return metodos.DatosIngreso(Usuario);
+        }
+        public int Bitacora(string descripcion, DateTime fecha)
+        { 
+            return metodos.Bitacora(descripcion, fecha);
         }
         public int InsertarCate(string nombre)
         {
@@ -26,6 +31,10 @@ namespace CapaLogica
         public DataTable MostrarTodo(string Tabla)
         {
             return metodos.MostrarTodo(Tabla);
+        }
+        public int Registro(string usuario, string contraseña, string nombre, string apellido, int dni)
+        {
+            return metodos.Registro(usuario, contraseña, nombre, apellido, dni);
         }
         #endregion
     }

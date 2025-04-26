@@ -1,5 +1,7 @@
 ﻿using CapaLogica;
+using Entities;
 using System;
+using System.Data;
 using System.Windows.Forms;
 
 namespace CapaVista
@@ -11,6 +13,7 @@ namespace CapaVista
         Frm_Registro registro = new Frm_Registro();
         Frm_AdminHome home = new Frm_AdminHome();
         CV_Seguridad seguridad = new CV_Seguridad();
+        Usuarioactual usuarioactual;
 
         public Frm_Login()
         {
@@ -18,7 +21,6 @@ namespace CapaVista
         }
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-                
             if (utiles.CamposVacios(txtUsuario, txtContraseña))
             {
                 MessageBox.Show("Por favor complete los datos de ingreso");
@@ -29,21 +31,38 @@ namespace CapaVista
                 MessageBox.Show("Los datos no pueden ser numericos");
                 return;
             }
+            usuarioactual = metodos.DatosIngreso(txtUsuario.Text);
+            if (usuarioactual == null)
+            {
+                MessageBox.Show("Datos Incorrectos");
+                return;
+            }
 
-            if (seguridad.VertificarHasheo(metodos.DatosIngreso(txtUsuario.Text),(txtContraseña.Text)))
+            try
             {
-                this.Hide();
-                home.Show();
+                if (seguridad.VertificarHasheo(usuarioactual.contraseña, txtContraseña.Text))
+                {
+                    metodos.Bitacora($"El usuario ({usuarioactual.usuario}) ha ingreso al sistema correctamente", DateTime.Now);
+                    this.Hide();
+                    home.Show();
+                }
+                else if (usuarioactual.usuario != null)
+                {
+                    metodos.Bitacora($"Ingreso incorrecto del usuario ({usuarioactual.usuario}) con la contraseña ({txtContraseña.Text})", DateTime.Now);
+                    MessageBox.Show("Datos Incorrectos");
+                    return;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Datos de Ingreso Incorrectos");
+                MessageBox.Show("Datos Incorrectos");
             }
+
         }
 
         private void btnRegistro_Click(object sender, EventArgs e)
         {
-            //registro.ShowDialog();
+            registro.ShowDialog();
         }
     }
 }

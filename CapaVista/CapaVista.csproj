@@ -142,6 +142,10 @@
       <Project>{f498cb9a-688e-4a0f-8062-949aa587f339}</Project>
       <Name>CapaLogica</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Entities\Entities.csproj">
+      <Project>{203ad901-434c-4506-9a7b-e6188fe1e9d2}</Project>
+      <Name>Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using Entities;
 
 namespace CapaDatos
 {
@@ -21,7 +22,28 @@ namespace CapaDatos
             }
             return dt;
         }
+        public int Bitacora(string descripcion, DateTime fecha)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_Bitacora", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("Descripcion", descripcion);
+                    cmd.Parameters.AddWithValue("Fecha", DateTime.Now);
+                    return cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
 
+        }
         public int InsertarVentas(decimal total)
         {
             try
@@ -40,6 +62,32 @@ namespace CapaDatos
                     cmd.ExecuteNonQuery();
 
                     return (int)Idventa.Value;
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+        public int Registro(string usuario, string contraseña, string nombre,string apellido,int dni)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_Registro", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("Usuario", usuario);
+                    cmd.Parameters.AddWithValue("Contraseña", contraseña);
+                    cmd.Parameters.AddWithValue("Nombre", nombre);
+                    cmd.Parameters.AddWithValue("Apellido", apellido);
+                    cmd.Parameters.AddWithValue("Dni", dni);
+                    cmd.Parameters.AddWithValue("FechaAlta", DateTime.Now);
+                    cmd.Parameters.AddWithValue("Autorizante", 1);
+                    return cmd.ExecuteNonQuery();
                 }
             }
             catch (Exception)
@@ -145,25 +193,34 @@ namespace CapaDatos
 
         //}
 
-        public string DatosIngreso(string Usuario)
+        public Usuarioactual DatosIngreso(string Usuario)
         {
             DataTable dt = new DataTable();
             using (SqlCommand cmd = new SqlCommand("sp_Datosingreso", conexion.Abrir()))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("Usuario", Usuario);
+                cmd.Parameters.AddWithValue("usuario", Usuario);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
             }
             try
             {
-                return dt.Rows[0]["Contraseña"].ToString();
+                if (dt.Rows.Count > 0)
+                {
+                    return new Usuarioactual()
+                    {
+                        id = Convert.ToInt32(dt.Rows[0]["Id"].ToString()),
+                        usuario = dt.Rows[0]["Usuario"].ToString(),
+                        contraseña = dt.Rows[0]["Contraseña"].ToString(),
+                    };     
+                }
             }
             catch
             {
                 return null;
             }
-            #endregion
+            return null;
         }
+        #endregion
     }
 }

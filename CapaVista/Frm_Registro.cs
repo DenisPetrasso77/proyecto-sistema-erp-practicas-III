@@ -15,7 +15,10 @@ namespace CapaVista
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            //metodos.InsertarCliente();
+            if (metodos.Registro(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text, Convert.ToInt32(textBox5.Text)) > 0)
+            {
+                MessageBox.Show("Guardado Correcto");
+            }
         }
     }
 }
