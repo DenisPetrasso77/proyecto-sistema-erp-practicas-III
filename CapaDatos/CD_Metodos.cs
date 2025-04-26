@@ -30,7 +30,7 @@ namespace CapaDatos
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("Descripcion", descripcion);
-                    cmd.Parameters.AddWithValue("Fecha", DateTime.Now);
+                    cmd.Parameters.AddWithValue("Fecha", fecha);
                     return cmd.ExecuteNonQuery();
                 }
             }
@@ -149,6 +149,26 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
         }
+        public int StatusBloq(string usuario)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_EstadoBloqueo", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("Usuario", usuario);
+                    return cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
 
         //public bool InsertarDetalles()
         //{
@@ -199,7 +219,7 @@ namespace CapaDatos
             using (SqlCommand cmd = new SqlCommand("sp_Datosingreso", conexion.Abrir()))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("usuario", Usuario);
+                cmd.Parameters.AddWithValue("@usuario", Usuario);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
             }
@@ -212,6 +232,7 @@ namespace CapaDatos
                         id = Convert.ToInt32(dt.Rows[0]["Id"].ToString()),
                         usuario = dt.Rows[0]["Usuario"].ToString(),
                         contraseña = dt.Rows[0]["Contraseña"].ToString(),
+                        bloqueado = Convert.ToInt32(dt.Rows[0]["Bloqueado"].ToString()),
                     };     
                 }
             }

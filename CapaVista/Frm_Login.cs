@@ -37,6 +37,12 @@ namespace CapaVista
                 MessageBox.Show("Datos Incorrectos");
                 return;
             }
+            if (usuarioactual.bloqueado == 1)
+            {
+                MessageBox.Show("Usuario Bloqueado");
+                metodos.Bitacora($"El usuario: {txtUsuario.Text} ha intentado ingresar estando bloqueado",DateTime.Now);
+                return;
+            }
 
             try
             {
@@ -49,6 +55,7 @@ namespace CapaVista
                 else if (usuarioactual.usuario != null)
                 {
                     metodos.Bitacora($"Ingreso incorrecto del usuario ({usuarioactual.usuario}) con la contraseña ({txtContraseña.Text})", DateTime.Now);
+                    metodos.StatusBloq(txtUsuario.Text);
                     MessageBox.Show("Datos Incorrectos");
                     return;
                 }

@@ -36,6 +36,11 @@ namespace CapaLogica
         {
             return metodos.Registro(usuario, contraseña, nombre, apellido, dni);
         }
+
+        public int StatusBloq(string Usuario)
+        { 
+            return metodos.StatusBloq(Usuario);
+        }
         #endregion
     }
 }
