@@ -21,13 +21,14 @@ namespace CapaVista
         {
             Cargarcate.ShowDialog();
             Cargarcbx();
+            
         }
         
         public FrmCargarProductos()
         {
             InitializeComponent();
             Cargarcbx();
-
+            comboBox1.SelectedIndex = 0;
         }
         private void Cargarcbx()
         {
@@ -41,6 +42,11 @@ namespace CapaVista
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (utiles.CamposVacios(textBox1,textBox2,textBox4,textBox5))
+            {
+                MessageBox.Show("Por favor complete todos los campos");
+                return;
+            }
             string codigo = textBox1.Text.Trim();
             string desc = textBox2.Text.Trim();
             int idcate = Convert.ToInt32(comboBox1.Text.Split('-')[0].Trim());
@@ -58,15 +64,46 @@ namespace CapaVista
                 utiles.LimpiarControles(this);
                 textBox1.Focus();
             }
-            catch(Exception er)
+            catch(Exception ex)
             {
-                MessageBox.Show($"Error al guardar - {er.Message}");
+                MessageBox.Show($"Error al guardar - {ex.Message}");
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(textBox1.Text))
+                {
+                    DataTable ids = metodos.MostrarTodo("Productos");
+                    foreach (DataRow fila in ids.Rows)
+                    {
+                        if (fila["Id"].ToString() == textBox1.Text)
+                        {
+                            MessageBox.Show($"Ya existe un producto con el codigo {textBox1.Text}");
+                            textBox1.Clear();
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error al conectar con la base de datos");
+            }
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

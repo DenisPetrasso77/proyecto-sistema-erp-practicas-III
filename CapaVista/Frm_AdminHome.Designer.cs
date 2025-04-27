@@ -30,15 +30,6 @@
         {
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,6 +47,15 @@
             this.Bulto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -102,6 +102,131 @@
             this.dataGridView1.Size = new System.Drawing.Size(930, 188);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
+            // 
+            // Codigo
+            // 
+            this.Codigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.MaxInputLength = 10;
+            this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
+            this.Codigo.Width = 65;
+            // 
+            // Nombre
+            // 
+            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Nombre.HeaderText = "Producto";
+            this.Nombre.MaxInputLength = 100;
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            this.Nombre.Width = 75;
+            // 
+            // Stock
+            // 
+            this.Stock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Stock.HeaderText = "Stock";
+            this.Stock.Name = "Stock";
+            this.Stock.Width = 60;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.Width = 74;
+            // 
+            // x10Unidades
+            // 
+            this.x10Unidades.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.x10Unidades.HeaderText = "x10Unidades";
+            this.x10Unidades.Name = "x10Unidades";
+            this.x10Unidades.Width = 94;
+            // 
+            // PrecioUnidad
+            // 
+            this.PrecioUnidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.PrecioUnidad.HeaderText = "PrecioUnidad";
+            this.PrecioUnidad.Name = "PrecioUnidad";
+            this.PrecioUnidad.ReadOnly = true;
+            this.PrecioUnidad.Visible = false;
+            // 
+            // Preciox10
+            // 
+            this.Preciox10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Preciox10.HeaderText = "Preciox10";
+            this.Preciox10.Name = "Preciox10";
+            this.Preciox10.Visible = false;
+            // 
+            // Preciox25
+            // 
+            this.Preciox25.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Preciox25.HeaderText = "Preciox25";
+            this.Preciox25.Name = "Preciox25";
+            this.Preciox25.Visible = false;
+            // 
+            // Preciox50
+            // 
+            this.Preciox50.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Preciox50.HeaderText = "Preciox50";
+            this.Preciox50.Name = "Preciox50";
+            this.Preciox50.Visible = false;
+            // 
+            // Preciox100
+            // 
+            this.Preciox100.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Preciox100.HeaderText = "Preciox100";
+            this.Preciox100.Name = "Preciox100";
+            this.Preciox100.Visible = false;
+            // 
+            // PrecioBulto
+            // 
+            this.PrecioBulto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.PrecioBulto.HeaderText = "PrecioBulto";
+            this.PrecioBulto.Name = "PrecioBulto";
+            this.PrecioBulto.Visible = false;
+            // 
+            // x25Unidades
+            // 
+            this.x25Unidades.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.x25Unidades.HeaderText = "x25Unidades";
+            this.x25Unidades.Name = "x25Unidades";
+            this.x25Unidades.Width = 94;
+            // 
+            // x50Unidades
+            // 
+            this.x50Unidades.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.x50Unidades.HeaderText = "x50Unidades";
+            this.x50Unidades.Name = "x50Unidades";
+            this.x50Unidades.Width = 94;
+            // 
+            // x100Unidades
+            // 
+            this.x100Unidades.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.x100Unidades.HeaderText = "x100Unidades";
+            this.x100Unidades.Name = "x100Unidades";
+            // 
+            // Bulto
+            // 
+            this.Bulto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Bulto.HeaderText = "Bulto";
+            this.Bulto.Name = "Bulto";
+            this.Bulto.Width = 56;
+            // 
+            // Descuento
+            // 
+            this.Descuento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Descuento.HeaderText = "Descuento (%)";
+            this.Descuento.MaxInputLength = 100;
+            this.Descuento.Name = "Descuento";
+            this.Descuento.Width = 101;
+            // 
+            // Subtotal
+            // 
+            this.Subtotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Subtotal.HeaderText = "Subtotal";
+            this.Subtotal.Name = "Subtotal";
+            this.Subtotal.ReadOnly = true;
+            this.Subtotal.Width = 71;
             // 
             // listBox1
             // 
@@ -196,7 +321,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(140, 45);
             this.button2.TabIndex = 1;
-            this.button2.Text = "Cargar";
+            this.button2.Text = "Cargar Nuevo";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -219,137 +344,6 @@
             this.button3.Text = "COBRAR";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // Codigo
-            // 
-            this.Codigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Codigo.HeaderText = "Codigo";
-            this.Codigo.MaxInputLength = 10;
-            this.Codigo.Name = "Codigo";
-            this.Codigo.ReadOnly = true;
-            this.Codigo.Width = 65;
-            // 
-            // Nombre
-            // 
-            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Nombre.HeaderText = "Producto";
-            this.Nombre.MaxInputLength = 100;
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            this.Nombre.Width = 75;
-            // 
-            // Stock
-            // 
-            this.Stock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Stock.HeaderText = "Stock";
-            this.Stock.Name = "Stock";
-            this.Stock.Width = 60;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.Width = 74;
-            // 
-            // x10Unidades
-            // 
-            this.x10Unidades.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.x10Unidades.HeaderText = "x10Unidades";
-            this.x10Unidades.Name = "x10Unidades";
-            this.x10Unidades.Width = 94;
-            // 
-            // PrecioUnidad
-            // 
-            this.PrecioUnidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.PrecioUnidad.HeaderText = "PrecioUnidad";
-            this.PrecioUnidad.Name = "PrecioUnidad";
-            this.PrecioUnidad.ReadOnly = true;
-            this.PrecioUnidad.Visible = false;
-            this.PrecioUnidad.Width = 96;
-            // 
-            // Preciox10
-            // 
-            this.Preciox10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Preciox10.HeaderText = "Preciox10";
-            this.Preciox10.Name = "Preciox10";
-            this.Preciox10.Visible = false;
-            this.Preciox10.Width = 79;
-            // 
-            // Preciox25
-            // 
-            this.Preciox25.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Preciox25.HeaderText = "Preciox25";
-            this.Preciox25.Name = "Preciox25";
-            this.Preciox25.Visible = false;
-            this.Preciox25.Width = 79;
-            // 
-            // Preciox50
-            // 
-            this.Preciox50.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Preciox50.HeaderText = "Preciox50";
-            this.Preciox50.Name = "Preciox50";
-            this.Preciox50.Visible = false;
-            this.Preciox50.Width = 79;
-            // 
-            // Preciox100
-            // 
-            this.Preciox100.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Preciox100.HeaderText = "Preciox100";
-            this.Preciox100.Name = "Preciox100";
-            this.Preciox100.Visible = false;
-            this.Preciox100.Width = 85;
-            // 
-            // PrecioBulto
-            // 
-            this.PrecioBulto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.PrecioBulto.HeaderText = "PrecioBulto";
-            this.PrecioBulto.Name = "PrecioBulto";
-            this.PrecioBulto.Visible = false;
-            this.PrecioBulto.Width = 86;
-            // 
-            // x25Unidades
-            // 
-            this.x25Unidades.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.x25Unidades.HeaderText = "x25Unidades";
-            this.x25Unidades.Name = "x25Unidades";
-            this.x25Unidades.Width = 94;
-            // 
-            // x50Unidades
-            // 
-            this.x50Unidades.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.x50Unidades.HeaderText = "x50Unidades";
-            this.x50Unidades.Name = "x50Unidades";
-            this.x50Unidades.Width = 94;
-            // 
-            // x100Unidades
-            // 
-            this.x100Unidades.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.x100Unidades.HeaderText = "x100Unidades";
-            this.x100Unidades.Name = "x100Unidades";
-            // 
-            // Bulto
-            // 
-            this.Bulto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Bulto.HeaderText = "Bulto";
-            this.Bulto.Name = "Bulto";
-            this.Bulto.Width = 56;
-            // 
-            // Descuento
-            // 
-            this.Descuento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Descuento.HeaderText = "Descuento (%)";
-            this.Descuento.MaxInputLength = 100;
-            this.Descuento.Name = "Descuento";
-            this.Descuento.Width = 101;
-            // 
-            // Subtotal
-            // 
-            this.Subtotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Subtotal.HeaderText = "Subtotal";
-            this.Subtotal.Name = "Subtotal";
-            this.Subtotal.ReadOnly = true;
-            this.Subtotal.Width = 71;
             // 
             // Frm_AdminHome
             // 

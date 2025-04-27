@@ -1,7 +1,6 @@
 ﻿using CapaLogica;
 using Entities;
 using System;
-using System.Data;
 using System.Windows.Forms;
 
 namespace CapaVista
