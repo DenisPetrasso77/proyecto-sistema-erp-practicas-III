@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Net.Configuration;
 using Entities;
 
 namespace CapaDatos
@@ -8,6 +9,7 @@ namespace CapaDatos
     public class CD_Metodos
     {
         CD_Conexion conexion = new CD_Conexion();
+        
 
         #region METODOS
         public DataTable MostrarTodo(string NombreBD)
@@ -42,7 +44,6 @@ namespace CapaDatos
             {
                 conexion.Cerrar();
             }
-
         }
         public int InsertarVentas(decimal total)
         {
@@ -73,7 +74,7 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
         }
-        public int Registro(string usuario, string contraseña, string nombre,string apellido,int dni)
+        public int Registro(string usuario,string clave, string nombre, string apellido, string dni,int autorizante)
         {
             try
             {
@@ -81,12 +82,12 @@ namespace CapaDatos
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("Usuario", usuario);
-                    cmd.Parameters.AddWithValue("Contraseña", contraseña);
+                    cmd.Parameters.AddWithValue("Contraseña", clave);
                     cmd.Parameters.AddWithValue("Nombre", nombre);
                     cmd.Parameters.AddWithValue("Apellido", apellido);
                     cmd.Parameters.AddWithValue("Dni", dni);
                     cmd.Parameters.AddWithValue("FechaAlta", DateTime.Now);
-                    cmd.Parameters.AddWithValue("Autorizante", 1);
+                    cmd.Parameters.AddWithValue("Autorizante", autorizante);
                     return cmd.ExecuteNonQuery();
                 }
             }
@@ -168,6 +169,27 @@ namespace CapaDatos
             {
                 conexion.Cerrar();
             }
+        }
+        public int BorrarUsuario(string usuario)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_BorrarUsuario", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("Usuario", usuario);
+                    return cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+
         }
 
         //public bool InsertarDetalles()

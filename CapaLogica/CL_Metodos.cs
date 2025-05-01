@@ -32,14 +32,22 @@ namespace CapaLogica
         {
             return metodos.MostrarTodo(Tabla);
         }
-        public int Registro(string usuario, string contraseña, string nombre, string apellido, int dni)
+        public int Registro(string usuario, string clave, string nombre, string apellido, string dni, int autorizante)
         {
-            return metodos.Registro(usuario, contraseña, nombre, apellido, dni);
+            return metodos.Registro(usuario,clave,nombre, apellido,dni,autorizante);
         }
 
         public int StatusBloq(string Usuario)
         { 
             return metodos.StatusBloq(Usuario);
+        }
+        public int InsertarVentas(decimal total)
+        {
+            return metodos.InsertarVentas(total);
+        }
+        public int BorrarUsuario(string usuario)
+        {
+            return metodos.BorrarUsuario(usuario);
         }
         #endregion
     }

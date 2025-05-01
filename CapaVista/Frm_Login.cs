@@ -9,10 +9,9 @@ namespace CapaVista
     {
         CL_Metodos metodos = new CL_Metodos();
         CV_Utiles utiles = new CV_Utiles();
-        Frm_Registro registro = new Frm_Registro();
-        Frm_AdminHome home = new Frm_AdminHome();
         CV_Seguridad seguridad = new CV_Seguridad();
         Usuarioactual usuarioactual;
+        Frm_Registro registro = new Frm_Registro();
 
         public Frm_Login()
         {
@@ -31,6 +30,7 @@ namespace CapaVista
                 return;
             }
             usuarioactual = metodos.DatosIngreso(txtUsuario.Text);
+
             if (usuarioactual == null)
             {
                 MessageBox.Show("Datos Incorrectos");
@@ -39,7 +39,7 @@ namespace CapaVista
             if (usuarioactual.bloqueado == 1)
             {
                 MessageBox.Show("Usuario Bloqueado");
-                metodos.Bitacora($"El usuario: {txtUsuario.Text} ha intentado ingresar estando bloqueado",DateTime.Now);
+                metodos.Bitacora($"El usuario: {txtUsuario.Text} ha intentado ingresar estando bloqueado", DateTime.Now);
                 return;
             }
 
@@ -49,6 +49,7 @@ namespace CapaVista
                 {
                     metodos.Bitacora($"El usuario ({usuarioactual.usuario}) ha ingreso al sistema correctamente", DateTime.Now);
                     this.Hide();
+                    Frm_AdminHome home = new Frm_AdminHome(usuarioactual);
                     home.Show();
                 }
                 else if (usuarioactual.usuario != null)
@@ -63,12 +64,6 @@ namespace CapaVista
             {
                 MessageBox.Show("Datos Incorrectos");
             }
-
-        }
-
-        private void btnRegistro_Click(object sender, EventArgs e)
-        {
-            registro.ShowDialog();
         }
     }
 }

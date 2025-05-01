@@ -66,6 +66,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CV_Utiles.cs" />
+    <Compile Include="FrmAdmusuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAdmusuarios.Designer.cs">
+      <DependentUpon>FrmAdmusuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCargarCategorias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +105,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CV_Seguridad.cs" />
+    <EmbeddedResource Include="FrmAdmusuarios.resx">
+      <DependentUpon>FrmAdmusuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCargarCategorias.resx">
       <DependentUpon>FrmCargarCategorias.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,6 +131,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -146,6 +156,15 @@
       <Project>{203ad901-434c-4506-9a7b-e6188fe1e9d2}</Project>
       <Name>Entities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\istockphoto-1064130874-612x612.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Signomenos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Signomas.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

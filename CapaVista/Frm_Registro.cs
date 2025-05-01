@@ -8,6 +8,7 @@ namespace CapaVista
     {
         CL_Metodos metodos = new CL_Metodos();
         CV_Seguridad seguridad = new CV_Seguridad();
+        public int Idactual { get; set; }
         public Frm_Registro()
         {
             InitializeComponent();
@@ -15,10 +16,15 @@ namespace CapaVista
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            if (metodos.Registro(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text, Convert.ToInt32(textBox5.Text)) > 0)
+            if (metodos.Registro(textBox1.Text,seguridad.Hasheo(textBox2.Text),textBox3.Text,textBox4.Text,textBox5.Text,Idactual) > 0)
             {
                 MessageBox.Show("Guardado Correcto");
             }
+            else
+            {
+                MessageBox.Show("Error");
+            }
+
         }
     }
 }

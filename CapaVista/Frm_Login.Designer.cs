@@ -33,7 +33,6 @@
             this.txtContraseña = new System.Windows.Forms.TextBox();
             this.btnIngresar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnRegistro = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -69,10 +68,10 @@
             // btnIngresar
             // 
             this.btnIngresar.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIngresar.Location = new System.Drawing.Point(16, 273);
+            this.btnIngresar.Location = new System.Drawing.Point(85, 275);
             this.btnIngresar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(101, 30);
+            this.btnIngresar.Size = new System.Drawing.Size(115, 40);
             this.btnIngresar.TabIndex = 4;
             this.btnIngresar.Text = "Ingresar";
             this.btnIngresar.UseVisualStyleBackColor = true;
@@ -88,18 +87,6 @@
             this.label2.Size = new System.Drawing.Size(125, 24);
             this.label2.TabIndex = 6;
             this.label2.Text = "Contraseña:";
-            // 
-            // btnRegistro
-            // 
-            this.btnRegistro.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistro.Location = new System.Drawing.Point(199, 273);
-            this.btnRegistro.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnRegistro.Name = "btnRegistro";
-            this.btnRegistro.Size = new System.Drawing.Size(101, 30);
-            this.btnRegistro.TabIndex = 5;
-            this.btnRegistro.Text = "Registrarse";
-            this.btnRegistro.UseVisualStyleBackColor = true;
-            this.btnRegistro.Click += new System.EventHandler(this.btnRegistro_Click);
             // 
             // label3
             // 
@@ -119,7 +106,6 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(312, 353);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.btnRegistro);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnIngresar);
             this.Controls.Add(this.txtContraseña);
@@ -143,7 +129,6 @@
         private System.Windows.Forms.TextBox txtContraseña;
         private System.Windows.Forms.Button btnIngresar;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnRegistro;
         private System.Windows.Forms.Label label3;
     }
 }

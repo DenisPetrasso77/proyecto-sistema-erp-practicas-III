@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Net;
 using System.Windows.Forms;
 using CapaLogica;
+using Entities;
 
 namespace CapaVista
 {
@@ -14,15 +15,20 @@ namespace CapaVista
         private DataTable productosCache = new DataTable();
         FrmCargarCategorias cate = new FrmCargarCategorias();
         FrmCargarProductos productos = new FrmCargarProductos();
+        Usuarioactual Usuarioactual;
+        FrmAdmusuarios Admusuarios;
 
-        public Frm_AdminHome()
+        public Frm_AdminHome(Usuarioactual usuarioactual)
         {
             InitializeComponent();
+            Usuarioactual = usuarioactual;
+            
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             Cargarbuscador();
+            
         }
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
@@ -192,18 +198,23 @@ namespace CapaVista
         }
 
         private void button3_Click(object sender, EventArgs e)
-        { 
-            //int Idventa = metodos.InsertarVentas();
+        {
+            //foreach (DataGridViewRow fila in dataGridView1.Rows)
+            //{ 
+            //    var x1 = Convert.ToInt32(fila.Cells["Cantidad"].Value);
+            //    var x10 = Convert.ToInt32(fila.Cells["x10Unidades"].Value) * 10;
+            //    var x25 = Convert.ToInt32(fila.Cells["x25Unidades"].Value) * 25;
+            //    var x50 = Convert.ToInt32(fila.Cells["x50Unidades"].Value) * 50;
+            //    var x100 = Convert.ToInt32(fila.Cells["x10Unidades"].Value) * 100;
+            //    int Totalunidades = x1 + x10 + x25 + x50 + x100;
+            //}
+
+            //int Idventa = metodos.InsertarVentas(Convert.ToDecimal(label2));
             //foreach (DataGridViewRow fila in dataGridView1.Rows)
             //{
             //    string Idproducto = fila.Cells["Codigo"].Value.ToString();
             //    int Cantidad = Convert.ToInt32(fila.Cells["Cantidad"].Value);
             //    decimal precio = Convert.ToDecimal(fila.Cells["Precio"].Value);
-
-            //    metodos.Id = Idventa;
-            //    metodos.Cantidad = Cantidad;
-            //    metodos.Idproducto = Idproducto;
-            //    metodos.Precioxunidad = precio;
             //    metodos.InsertarDetalles();
             //}
         }
@@ -228,6 +239,22 @@ namespace CapaVista
             }
 
             listBox1.Visible = listBox1.Items.Count > 0;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (!panel3.Visible)
+                panel3.Visible = true;
+            else
+                panel3.Visible = false;
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Remove(p);
+            Admusuarios = new FrmAdmusuarios();
+            Admusuarios.Idactual = Usuarioactual.id;
+            Admusuarios.ShowDialog();
         }
     }
 }
