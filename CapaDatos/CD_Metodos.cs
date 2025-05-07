@@ -150,6 +150,31 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
         }
+        public int ActualizarUsuario(string usuario, string nombre, string apellido, string dni, int rol, int bloqueado)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_ActualizarUsuario", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("Usuario", usuario);
+                    cmd.Parameters.AddWithValue("Nombre", nombre);
+                    cmd.Parameters.AddWithValue("Apellido", apellido);
+                    cmd.Parameters.AddWithValue("Dni", dni);
+                    cmd.Parameters.AddWithValue("Rol", rol);
+                    cmd.Parameters.AddWithValue("Bloqueado", bloqueado);
+                    return cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
         public int StatusBloq(string usuario)
         {
             try

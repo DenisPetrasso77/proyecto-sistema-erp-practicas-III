@@ -14,6 +14,11 @@ namespace CapaLogica
         {
             return metodos.DatosIngreso(Usuario);
         }
+
+        public int ActualizarUsuario(string usuario, string nombre, string apellido, string dni, int rol, int bloqueado)
+        {
+            return metodos.ActualizarUsuario(usuario, nombre, apellido, dni, rol, bloqueado);
+        }
         public int Bitacora(string descripcion, DateTime fecha)
         { 
             return metodos.Bitacora(descripcion, fecha);
