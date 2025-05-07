@@ -49,6 +49,10 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -61,6 +65,8 @@
             this.Bloqueado});
             this.dataGridView1.Location = new System.Drawing.Point(12, 162);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(746, 188);
             this.dataGridView1.TabIndex = 0;
             // 
@@ -68,36 +74,43 @@
             // 
             this.Usuario.HeaderText = "Usuario";
             this.Usuario.Name = "Usuario";
+            this.Usuario.ReadOnly = true;
             // 
             // Nombre
             // 
             this.Nombre.HeaderText = "Nombre";
             this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
             // 
             // Apellido
             // 
             this.Apellido.HeaderText = "Apellido";
             this.Apellido.Name = "Apellido";
+            this.Apellido.ReadOnly = true;
             // 
             // Dni
             // 
             this.Dni.HeaderText = "Dni";
             this.Dni.Name = "Dni";
+            this.Dni.ReadOnly = true;
             // 
             // Rol
             // 
             this.Rol.HeaderText = "Rol";
             this.Rol.Name = "Rol";
+            this.Rol.ReadOnly = true;
             // 
             // Autorizante
             // 
             this.Autorizante.HeaderText = "Autorizante";
             this.Autorizante.Name = "Autorizante";
+            this.Autorizante.ReadOnly = true;
             // 
             // Bloqueado
             // 
             this.Bloqueado.HeaderText = "Bloqueado";
             this.Bloqueado.Name = "Bloqueado";
+            this.Bloqueado.ReadOnly = true;
             // 
             // textBox1
             // 
