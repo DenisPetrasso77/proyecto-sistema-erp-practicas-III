@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -147,6 +148,23 @@ namespace CapaVista
                 MessageBox.Show($"Error inesperado: {ex.Message}");
             }
             Cargarbuscador();
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow == null)
+            {
+                return;
+            }
+            string usuario = dataGridView1.CurrentRow.Cells["Usuario"].Value?.ToString();
+            string nombre = dataGridView1.CurrentRow.Cells["Nombre"].Value?.ToString();
+            string apellido = dataGridView1.CurrentRow.Cells["Apellido"].Value?.ToString();
+            string dni = dataGridView1.CurrentRow.Cells["Dni"].Value?.ToString();
+            string rol = dataGridView1.CurrentRow.Cells["Rol"].Value?.ToString();
+            string autorizante = dataGridView1.CurrentRow.Cells["Autorizante"].Value?.ToString();
+            string bloqueado = dataGridView1.CurrentRow.Cells["Bloqueado"].Value?.ToString();
+            FrmModUsuarios modUsuarios = new FrmModUsuarios(usuario, nombre, apellido, dni, rol, autorizante, bloqueado);
+            modUsuarios.Show();
         }
     }
 }
