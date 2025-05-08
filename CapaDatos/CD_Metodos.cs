@@ -100,24 +100,24 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
         }
-        public int InsertarProductos(string codigo,string descripcion,int cate,int stock,int cantminima,decimal preciobulto, decimal preciounidad, decimal preciox10, decimal preciox25, decimal preciox50, decimal preciox100)
+        public int InsertarProductos(int codigo,string descripcion,int cate,int stock,int cantminima,decimal preciobulto, decimal preciounidad, decimal preciox10, decimal preciox25, decimal preciox50, decimal preciox100)
         {
             try
             {
                 using (SqlCommand cmd = new SqlCommand("sp_InsertarProductos", conexion.Abrir()))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("Codigo", codigo);
-                    cmd.Parameters.AddWithValue("Descripcion", descripcion);
-                    cmd.Parameters.AddWithValue("Categoria", cate);
-                    cmd.Parameters.AddWithValue("Stock", stock);
-                    cmd.Parameters.AddWithValue("Cantimin", cantminima);
-                    cmd.Parameters.AddWithValue("Preciobulto", preciobulto);
-                    cmd.Parameters.AddWithValue("Preciounidad", preciounidad);
-                    cmd.Parameters.AddWithValue("Preciox10", preciox10);
-                    cmd.Parameters.AddWithValue("Preciox25", preciox25);
-                    cmd.Parameters.AddWithValue("Preciox50", preciox50);
-                    cmd.Parameters.AddWithValue("Preciox100", preciox100);
+                    cmd.Parameters.AddWithValue("@Codigo", codigo);
+                    cmd.Parameters.AddWithValue("@Descripcion", descripcion);
+                    cmd.Parameters.AddWithValue("@Stock", stock);
+                    cmd.Parameters.AddWithValue("@Categoria", cate);
+                    cmd.Parameters.AddWithValue("@Preciobulto", preciobulto);
+                    cmd.Parameters.AddWithValue("@Preciounidad", preciounidad);
+                    cmd.Parameters.AddWithValue("@Preciox10", preciox10);
+                    cmd.Parameters.AddWithValue("@Preciox25", preciox25);
+                    cmd.Parameters.AddWithValue("@Preciox50", preciox50);
+                    cmd.Parameters.AddWithValue("@Preciox100", preciox100);
+                    cmd.Parameters.AddWithValue("@Cantmin", cantminima);
                     return cmd.ExecuteNonQuery();
                 }
             }

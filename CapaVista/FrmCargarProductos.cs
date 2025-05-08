@@ -1,12 +1,6 @@
 ﻿using CapaLogica;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CapaVista
@@ -42,12 +36,12 @@ namespace CapaVista
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (utiles.CamposVacios(textBox1,textBox2,textBox4,textBox5))
+            if (utiles.CamposVacios(textBox1,textBox2,textBox9,textBox10))
             {
                 MessageBox.Show("Por favor complete todos los campos");
                 return;
             }
-            string codigo = textBox1.Text.Trim();
+            int codigo = Convert.ToInt32(textBox1.Text.Trim());
             string desc = textBox2.Text.Trim();
             int idcate = Convert.ToInt32(comboBox1.Text.Split('-')[0].Trim());
             int stock = Convert.ToInt32(textBox9.Text.Trim());
@@ -58,11 +52,18 @@ namespace CapaVista
             decimal preciox25 = textBox5.Text.Trim() == "" ? 0 : Convert.ToDecimal(textBox5.Text.Trim());
             decimal preciox50 = textBox6.Text.Trim() == "" ? 0 : Convert.ToDecimal(textBox6.Text.Trim());
             decimal preciox100 = textBox8.Text.Trim() == "" ? 0 : Convert.ToDecimal(textBox8.Text.Trim());
+            MessageBox.Show($"{codigo},{desc},{idcate},{stock},{cantmin},{preciobulto},{preciounidad},{preciox10},{preciox25},{preciox50},{preciox100}");
             try
             {
-                metodos.InsertarProductos(codigo,desc,idcate,stock,cantmin,preciobulto,preciounidad,preciox10,preciox25,preciox50,preciox100);
-                utiles.LimpiarControles(this);
-                textBox1.Focus();
+                if (metodos.InsertarProductos(codigo, desc, idcate, stock, cantmin, preciobulto, preciounidad, preciox10, preciox25, preciox50, preciox100) > 0)
+                {
+                    utiles.LimpiarControles(this);
+                    textBox1.Focus();
+                }
+                else
+                {
+                    MessageBox.Show("Error");
+                }
             }
             catch(Exception ex)
             {
