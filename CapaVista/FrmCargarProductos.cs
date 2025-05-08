@@ -52,13 +52,14 @@ namespace CapaVista
             decimal preciox25 = textBox5.Text.Trim() == "" ? 0 : Convert.ToDecimal(textBox5.Text.Trim());
             decimal preciox50 = textBox6.Text.Trim() == "" ? 0 : Convert.ToDecimal(textBox6.Text.Trim());
             decimal preciox100 = textBox8.Text.Trim() == "" ? 0 : Convert.ToDecimal(textBox8.Text.Trim());
-            MessageBox.Show($"{codigo},{desc},{idcate},{stock},{cantmin},{preciobulto},{preciounidad},{preciox10},{preciox25},{preciox50},{preciox100}");
+            
             try
             {
                 if (metodos.InsertarProductos(codigo, desc, idcate, stock, cantmin, preciobulto, preciounidad, preciox10, preciox25, preciox50, preciox100) > 0)
                 {
                     utiles.LimpiarControles(this);
                     textBox1.Focus();
+                    comboBox1.SelectedIndex = 0;
                 }
                 else
                 {
