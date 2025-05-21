@@ -10,10 +10,10 @@ namespace CapaLogica
         CD_Metodos metodos = new CD_Metodos();
 
         #region METODOS
-        public Usuarioactual DatosIngreso(string Usuario)
-        {
-            return metodos.DatosIngreso(Usuario);
-        }
+        //public Usuarioactual DatosIngreso(string Usuario)
+        //{
+        //    return metodos.DatosIngreso(Usuario);
+        //}
 
         public int ActualizarUsuario(string usuario, string nombre, string apellido, string dni, int rol, int bloqueado)
         {
@@ -28,18 +28,18 @@ namespace CapaLogica
             return metodos.InsertarCate(nombre);
         }
 
-        public int InsertarProductos(int codigo, string descripcion, int cate, int stock, int cantminima, decimal preciobulto, decimal preciounidad, decimal preciox10, decimal preciox25, decimal preciox50, decimal preciox100)
+        public string InsertarProducto(string codigo, string descripcion, string cate, int stockmin, int stockmax, string unidadcarga, int cantunicarga, int cantporunicarga, int vendeporunidades, int vendeporkilo, int vendeporpack, int vendeporbulto, decimal precioporunidad, decimal precioporkilo, decimal precioporpack, decimal precioporbulto, int usuarioalta)
         {
-            return metodos.InsertarProductos(codigo,descripcion,cate, stock, cantminima, preciobulto, preciounidad, preciox10, preciox25, preciox50, preciox100);
+            return metodos.InsertarProducto(codigo, descripcion,cate, stockmin, stockmax, unidadcarga, cantunicarga, cantporunicarga, vendeporunidades, vendeporkilo, vendeporpack, vendeporbulto, precioporunidad, precioporkilo, precioporpack, precioporbulto, usuarioalta);
         }
 
         public DataTable MostrarTodo(string Tabla)
         {
             return metodos.MostrarTodo(Tabla);
         }
-        public int Registro(string usuario, string clave, string nombre, string apellido, string dni, int autorizante)
+        public string Registro(string usuario, string clave, string nombre, string apellido)
         {
-            return metodos.Registro(usuario,clave,nombre, apellido,dni,autorizante);
+            return metodos.Registro(usuario,clave,nombre, apellido);
         }
 
         public int StatusBloq(string Usuario)

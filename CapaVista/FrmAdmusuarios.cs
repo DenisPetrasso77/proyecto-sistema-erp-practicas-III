@@ -19,7 +19,6 @@ namespace CapaVista
         Frm_Registro registro = new Frm_Registro();
         CL_Metodos metodos = new CL_Metodos();
         DataTable productosCache;
-        public int Idactual { get; set; }
         public FrmAdmusuarios()
         {
             InitializeComponent();
@@ -36,7 +35,7 @@ namespace CapaVista
                 return;
             }
 
-            productosCache = metodos.MostrarTodo("Usuarios");
+            //productosCache = metodos.MostrarTodo("Usuarios");
             listBox1.Items.Clear();
 
             foreach (DataRow fila in productosCache.Rows)
@@ -111,7 +110,6 @@ namespace CapaVista
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            registro.Idactual = Idactual;
             registro.ShowDialog();
             Cargarbuscador();
         }

@@ -1,11 +1,9 @@
-﻿using System;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Net;
-using System.Windows.Forms;
-using CapaLogica;
+﻿using CapaLogica;
 using Entities;
+using System;
+using System.Data;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace CapaVista
 {
@@ -18,10 +16,9 @@ namespace CapaVista
         Usuarioactual Usuarioactual;
         FrmAdmusuarios Admusuarios;
 
-        public Frm_AdminHome(Usuarioactual usuarioactual)
+        public Frm_AdminHome()
         {
             InitializeComponent();
-            Usuarioactual = usuarioactual;
             
         }
 
@@ -229,7 +226,7 @@ namespace CapaVista
                 return;
             }
 
-            productosCache = metodos.MostrarTodo("Productos");
+            //productosCache = metodos.MostrarTodo("Productos");
             listBox1.Items.Clear();
 
             foreach (DataRow fila in productosCache.Rows)
@@ -253,7 +250,6 @@ namespace CapaVista
         {
             panel1.Controls.Remove(p);
             Admusuarios = new FrmAdmusuarios();
-            Admusuarios.Idactual = Usuarioactual.id;
             Admusuarios.ShowDialog();
         }
     }

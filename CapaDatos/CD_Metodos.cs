@@ -1,15 +1,14 @@
-﻿using System;
+﻿using Entities;
+using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Net.Configuration;
-using Entities;
 
 namespace CapaDatos
 {
     public class CD_Metodos
     {
         CD_Conexion conexion = new CD_Conexion();
-        
+
 
         #region METODOS
         public DataTable MostrarTodo(string NombreBD)
@@ -74,56 +73,63 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
         }
-        public int Registro(string usuario,string clave, string nombre, string apellido, string dni,int autorizante)
+        public string Registro(string usuario,string clave, string nombre, string apellido)
         {
             try
             {
-                using (SqlCommand cmd = new SqlCommand("sp_Registro", conexion.Abrir()))
+                using (SqlCommand cmd = new SqlCommand("InsertarUsuario", conexion.Abrir()))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("Usuario", usuario);
-                    cmd.Parameters.AddWithValue("Contraseña", clave);
-                    cmd.Parameters.AddWithValue("Nombre", nombre);
-                    cmd.Parameters.AddWithValue("Apellido", apellido);
-                    cmd.Parameters.AddWithValue("Dni", dni);
-                    cmd.Parameters.AddWithValue("FechaAlta", DateTime.Now);
-                    cmd.Parameters.AddWithValue("Autorizante", autorizante);
-                    return cmd.ExecuteNonQuery();
+                    cmd.Parameters.AddWithValue("@Usuario", usuario);
+                    cmd.Parameters.AddWithValue("@Contraseña", clave);
+                    cmd.Parameters.AddWithValue("@Nombre", nombre);
+                    cmd.Parameters.AddWithValue("@Apellido", apellido);
+                    cmd.ExecuteNonQuery();
+                    return "ok";
                 }
             }
-            catch (Exception)
+            catch (SqlException ex)
             {
-                return 0;
+                return "Error" + ex.Message;
             }
             finally
             {
                 conexion.Cerrar();
             }
         }
-        public int InsertarProductos(int codigo,string descripcion,int cate,int stock,int cantminima,decimal preciobulto, decimal preciounidad, decimal preciox10, decimal preciox25, decimal preciox50, decimal preciox100)
+        public string InsertarProducto(string codigo,string descripcion,string cate,int stockmin,int stockmax,string unidadcarga,int cantunicarga,int cantporunicarga,int vendeporunidades, int vendeporkilo, int vendeporpack, int vendeporbulto,decimal precioporunidad, decimal precioporkilo, decimal precioporpack,decimal precioporbulto,int usuarioalta)
         {
             try
             {
-                using (SqlCommand cmd = new SqlCommand("sp_InsertarProductos", conexion.Abrir()))
+                using (SqlCommand cmd = new SqlCommand("sp_InsertarProducto", conexion.Abrir()))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Codigo", codigo);
+                    cmd.Parameters.AddWithValue("@Idproducto", codigo);
                     cmd.Parameters.AddWithValue("@Descripcion", descripcion);
-                    cmd.Parameters.AddWithValue("@Stock", stock);
                     cmd.Parameters.AddWithValue("@Categoria", cate);
-                    cmd.Parameters.AddWithValue("@Preciobulto", preciobulto);
-                    cmd.Parameters.AddWithValue("@Preciounidad", preciounidad);
-                    cmd.Parameters.AddWithValue("@Preciox10", preciox10);
-                    cmd.Parameters.AddWithValue("@Preciox25", preciox25);
-                    cmd.Parameters.AddWithValue("@Preciox50", preciox50);
-                    cmd.Parameters.AddWithValue("@Preciox100", preciox100);
-                    cmd.Parameters.AddWithValue("@Cantmin", cantminima);
-                    return cmd.ExecuteNonQuery();
+                    cmd.Parameters.AddWithValue("@StockMin", stockmin);
+                    cmd.Parameters.AddWithValue("@StockMax", stockmax);
+                    cmd.Parameters.AddWithValue("@UnidadCarga", unidadcarga);
+                    cmd.Parameters.AddWithValue("@CantUnidadCarga", cantunicarga);
+                    cmd.Parameters.AddWithValue("@CantPorUnidadCarga", cantporunicarga);
+                    cmd.Parameters.AddWithValue("@StockActual", (cantporunicarga*cantporunicarga));
+                    cmd.Parameters.AddWithValue("@VendePorUnidades", vendeporunidades);
+                    cmd.Parameters.AddWithValue("@VendePorKilo", vendeporkilo);
+                    cmd.Parameters.AddWithValue("@VendePorPack", vendeporpack);
+                    cmd.Parameters.AddWithValue("@VendePorBulto", vendeporbulto);
+                    cmd.Parameters.AddWithValue("@PrecioUnidad", precioporunidad);
+                    cmd.Parameters.AddWithValue("@PrecioKilo", precioporkilo);
+                    cmd.Parameters.AddWithValue("@PrecioPack", precioporpack);
+                    cmd.Parameters.AddWithValue("@PrecioBulto", precioporbulto);
+                    cmd.Parameters.AddWithValue("@FechaAlta", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@IdUsuarioAlta", usuarioalta);
+                    cmd.ExecuteNonQuery();
+                    return "ok";
                 }
             }
-            catch (Exception)
+            catch (SqlException ex)
             {
-                return 0;
+                return "Error:" + ex.Message;
             }
             finally
             {
@@ -216,79 +222,35 @@ namespace CapaDatos
             }
 
         }
-
-        //public bool InsertarDetalles()
+        //public Usuarioactual DatosIngreso(string Usuario)
         //{
-        //    string sSql = "INSERT INTO Detalleventas (Idventas, Idproducto,Cantidad,Preciounidad) VALUES " +
-        //                  "('" + Id + "', '" + Idproducto + "','" + Cantidad + "','" + Precioxunidad + "')";
-        //    Ejecutar(sSql);
-        //    return true;
+        //    DataTable dt = new DataTable();
+        //    using (SqlCommand cmd = new SqlCommand("sp_Datosingreso", conexion.Abrir()))
+        //    {
+        //        cmd.CommandType = CommandType.StoredProcedure;
+        //        cmd.Parameters.AddWithValue("@usuario", Usuario);
+        //        SqlDataAdapter da = new SqlDataAdapter(cmd);
+        //        da.Fill(dt);
+        //    }
+        //    try
+        //    {
+        //        if (dt.Rows.Count > 0)
+        //        {
+        //            return new Usuarioactual()
+        //            {
+        //                id = Convert.ToInt32(dt.Rows[0]["Id"].ToString()),
+        //                usuario = dt.Rows[0]["Usuario"].ToString(),
+        //                contraseña = dt.Rows[0]["Contraseña"].ToString(),
+                        
+        //            };     
+        //        }
+        //    }
+        //    catch
+        //    {
+        //        return null;
+        //    }
+        //    return null;
         //}
-
-        //public int ContarUsuarios()
-        //{
-        //    string sSql = "SELECT COUNT(*) FROM Usuarios WHERE Usuario='" + Usuario + "'";
-        //    return EjecutarNroFilas(sSql);
-        //}
-        //public int ContarCorreo()
-        //{
-        //    string sSql = "SELECT COUNT(*) FROM Usuarios WHERE Correo='" + Usuario + "'";
-        //    return EjecutarNroFilas(sSql);
-        //}
-
-        //}
-        //public int InsertarCliente()
-        //{
-        //    string sSql = "INSERT INTO Usuarios (Usuario, Contraseña) VALUES " +
-        //                  "('" + Usuario + "', '" + Contraseña + "')";
-        //    return Ejecutar(sSql);
-        //}
-        //public int EliminarCliente()
-        //{
-        //    string sSql = "DELETE FROM Usuarios WHERE  Usuario='" + Usuario + "'";
-        //    return Ejecutar(sSql);
-        //}
-        //public int ActualizarClave()
-        //{
-        //    string sSql = "UPDATE Usuarios SET Contraseña='" + Contraseña + "' WHERE Usuario='" + Usuario + "'";
-        //    return Ejecutar(sSql);
-        //}
-        //public int ActualizarCliente()
-        //{
-        //    string sSql = "UPDATE Usuarios SET Nombre='" + Nombre + "',Apellido='" + Apellido + "',Usuario='" + Usuario + "',Tipo='" + Tipo + "',Correo='" + Correo + "' WHERE Id=" + Id;
-        //    return Ejecutar(sSql);
-
-        //}
-
-        public Usuarioactual DatosIngreso(string Usuario)
-        {
-            DataTable dt = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("sp_Datosingreso", conexion.Abrir()))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@usuario", Usuario);
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
-            }
-            try
-            {
-                if (dt.Rows.Count > 0)
-                {
-                    return new Usuarioactual()
-                    {
-                        id = Convert.ToInt32(dt.Rows[0]["Id"].ToString()),
-                        usuario = dt.Rows[0]["Usuario"].ToString(),
-                        contraseña = dt.Rows[0]["Contraseña"].ToString(),
-                        bloqueado = Convert.ToInt32(dt.Rows[0]["Bloqueado"].ToString()),
-                    };     
-                }
-            }
-            catch
-            {
-                return null;
-            }
-            return null;
-        }
         #endregion
     }
 }
