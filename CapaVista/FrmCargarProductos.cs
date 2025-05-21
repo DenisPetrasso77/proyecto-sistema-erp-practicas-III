@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace CapaVista
 {
@@ -22,7 +23,6 @@ namespace CapaVista
         {
             InitializeComponent();
             Cargarcbx();
-            comboBox2.SelectedIndex = 0;
         }
         private void Cargarcbx()
         {
@@ -36,7 +36,7 @@ namespace CapaVista
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (utiles.CamposVacios(textBox1,textBox2,textBox9,textBox10))
+            if (utiles.TextboxVacios(textBox1,textBox2,textBox9,textBox10))
             {
                 MessageBox.Show("Por favor complete todos los campos");
                 return;
@@ -150,6 +150,58 @@ namespace CapaVista
             {
                 textBox8.Clear();
                 textBox8.Visible = false;
+            }
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox2.SelectedIndex == -1)
+            { 
+                label5.Visible = false;
+                textBox3.Visible = false;
+            }
+            if (comboBox2.SelectedItem.ToString()== "Bultos")
+            {
+                label5.Visible = true;
+                label5.Text = "¿Cuantos Bultos?";
+                textBox3.Visible = true;
+                textBox3.Location = new Point(398, 18);
+                label6.Visible = true;
+                textBox4.Visible = true;
+                label9.Visible = true;
+            }
+            else
+            {
+                label5.Visible = true;
+                label5.Text = "¿Cuantos Paquetes Cerrados?";
+                textBox3.Visible = true;
+                textBox3.Location = new Point(489, 18);
+                label6.Visible = true;
+                textBox4.Visible = true;
+                label9.Visible = true;
+            }
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            label9.Text= comboBox3.Text;
+        }
+
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
+            if (!utiles.TextboxVacios(textBox1, textBox2, textBox3,textBox4, textBox9, textBox10) && !utiles.ComboboxVacios(comboBox1,comboBox2,comboBox3))
+            {
+                int a = Convert.ToInt32(textBox3.Text);
+                int b = Convert.ToInt32(textBox4.Text);
+                label7.Visible = true;
+                label14.Visible = true;
+                label14.Text = $"Stock Maximo: {textBox9.Text} {comboBox3.Text}";
+                label15.Visible = true;
+                label15.Text = $"Stock Minimo: {textBox10.Text} {comboBox3.Text}";
+                label10.Visible = true;
+                label10.Text = $"1 {comboBox2.Text} = {textBox4.Text} {comboBox3.Text}";
+                label13.Visible = true;
+                label13.Text = $"Total a Ingresar: {a*b} {comboBox3.Text}";
             }
         }
     }

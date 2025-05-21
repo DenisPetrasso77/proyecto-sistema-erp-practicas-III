@@ -7,9 +7,20 @@ namespace CapaVista
     public class CV_Utiles
     {
         private bool validado = false;
-        public bool CamposVacios(params TextBox[] campos)
+        public bool TextboxVacios(params TextBox[] campos)
         {
             foreach (TextBox campo in campos)
+            {
+                if (string.IsNullOrWhiteSpace(campo.Text))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public bool ComboboxVacios(params ComboBox[] campos)
+        {
+            foreach (ComboBox campo in campos)
             {
                 if (string.IsNullOrWhiteSpace(campo.Text))
                 {
