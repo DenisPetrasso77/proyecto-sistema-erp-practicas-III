@@ -62,9 +62,9 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -180,6 +180,7 @@
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(100, 21);
             this.textBox9.TabIndex = 4;
+            this.textBox9.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
             this.textBox9.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VerificarCaracter);
             // 
             // label11
@@ -200,6 +201,7 @@
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(100, 21);
             this.textBox10.TabIndex = 5;
+            this.textBox10.TextChanged += new System.EventHandler(this.textBox10_TextChanged);
             this.textBox10.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VerificarCaracter);
             // 
             // label12
@@ -231,6 +233,7 @@
             this.label6.Size = new System.Drawing.Size(142, 20);
             this.label6.TabIndex = 33;
             this.label6.Text = "¿Cada Uno Tiene?";
+            this.label6.Visible = false;
             // 
             // textBox4
             // 
@@ -240,6 +243,8 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 21);
             this.textBox4.TabIndex = 32;
+            this.textBox4.Visible = false;
+            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // textBox6
             // 
@@ -311,6 +316,7 @@
             this.comboBox2.Size = new System.Drawing.Size(103, 21);
             this.comboBox2.TabIndex = 43;
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.comboBox2.SelectionChangeCommitted += new System.EventHandler(this.comboBox2_SelectionChangeCommitted);
             // 
             // textBox3
             // 
@@ -322,6 +328,7 @@
             this.textBox3.Size = new System.Drawing.Size(80, 21);
             this.textBox3.TabIndex = 30;
             this.textBox3.Visible = false;
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // label5
             // 
@@ -379,6 +386,7 @@
             this.comboBox3.Size = new System.Drawing.Size(105, 23);
             this.comboBox3.TabIndex = 48;
             this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            this.comboBox3.SelectionChangeCommitted += new System.EventHandler(this.comboBox3_SelectionChangeCommitted);
             // 
             // label8
             // 
@@ -451,6 +459,16 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Ingreso del Producto";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(260, 61);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(0, 16);
+            this.label9.TabIndex = 54;
+            this.label9.Visible = false;
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.checkBox4);
@@ -468,7 +486,7 @@
             this.groupBox4.TabIndex = 52;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Forma de Venta";
-            this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
+            this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter_1);
             // 
             // label7
             // 
@@ -480,15 +498,6 @@
             this.label7.TabIndex = 53;
             this.label7.Text = "RESUMEN:";
             this.label7.Visible = false;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(260, 61);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(0, 16);
-            this.label9.TabIndex = 54;
             // 
             // label10
             // 

@@ -28,9 +28,9 @@ namespace CapaLogica
             return metodos.InsertarCate(nombre);
         }
 
-        public string InsertarProducto(string codigo, string descripcion, string cate, int stockmin, int stockmax, string unidadcarga, int cantunicarga, int cantporunicarga, int vendeporunidades, int vendeporkilo, int vendeporpack, int vendeporbulto, decimal precioporunidad, decimal precioporkilo, decimal precioporpack, decimal precioporbulto, int usuarioalta)
+        public string InsertarProducto(string codigo, string descripcion, string cate, int stockmin, int stockmax, string unidadcarga, int cantunicarga, int cantporunicarga, int vendeporunidades, int vendeporkilo, int vendeporpack, int vendeporbulto, decimal precioporunidad, decimal precioporkilo, decimal precioporpack, decimal precioporbulto, int usuarioalta, string usuarioreferencia)
         {
-            return metodos.InsertarProducto(codigo, descripcion,cate, stockmin, stockmax, unidadcarga, cantunicarga, cantporunicarga, vendeporunidades, vendeporkilo, vendeporpack, vendeporbulto, precioporunidad, precioporkilo, precioporpack, precioporbulto, usuarioalta);
+            return metodos.InsertarProducto(codigo, descripcion,cate, stockmin, stockmax, unidadcarga, cantunicarga, cantporunicarga, vendeporunidades, vendeporkilo, vendeporpack, vendeporbulto, precioporunidad, precioporkilo, precioporpack, precioporbulto, usuarioalta,usuarioreferencia);
         }
 
         public DataTable MostrarTodo(string Tabla)

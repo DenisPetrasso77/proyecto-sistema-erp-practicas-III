@@ -97,7 +97,7 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
         }
-        public string InsertarProducto(string codigo,string descripcion,string cate,int stockmin,int stockmax,string unidadcarga,int cantunicarga,int cantporunicarga,int vendeporunidades, int vendeporkilo, int vendeporpack, int vendeporbulto,decimal precioporunidad, decimal precioporkilo, decimal precioporpack,decimal precioporbulto,int usuarioalta)
+        public string InsertarProducto(string codigo,string descripcion,string cate,int stockmin,int stockmax,string unidadcarga,int cantunicarga,int cantporunicarga,int vendeporunidades, int vendeporkilo, int vendeporpack, int vendeporbulto,decimal precioporunidad, decimal precioporkilo, decimal precioporpack,decimal precioporbulto,int usuarioalta, string usuarioreferencia)
         {
             try
             {
@@ -112,7 +112,7 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("@UnidadCarga", unidadcarga);
                     cmd.Parameters.AddWithValue("@CantUnidadCarga", cantunicarga);
                     cmd.Parameters.AddWithValue("@CantPorUnidadCarga", cantporunicarga);
-                    cmd.Parameters.AddWithValue("@StockActual", (cantporunicarga*cantporunicarga));
+                    cmd.Parameters.AddWithValue("@StockActual", (cantunicarga * cantporunicarga));
                     cmd.Parameters.AddWithValue("@VendePorUnidades", vendeporunidades);
                     cmd.Parameters.AddWithValue("@VendePorKilo", vendeporkilo);
                     cmd.Parameters.AddWithValue("@VendePorPack", vendeporpack);
@@ -123,6 +123,7 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("@PrecioBulto", precioporbulto);
                     cmd.Parameters.AddWithValue("@FechaAlta", DateTime.Now);
                     cmd.Parameters.AddWithValue("@IdUsuarioAlta", usuarioalta);
+                    cmd.Parameters.AddWithValue("@UnidadReferencia", usuarioreferencia);
                     cmd.ExecuteNonQuery();
                     return "ok";
                 }

@@ -57,7 +57,8 @@ namespace CapaVista
             decimal precioporkilo = textBox5.Visible ? Convert.ToDecimal(textBox5.Text.Trim()) : 0;
             decimal precioporpack = textBox7.Visible ? Convert.ToDecimal(textBox7.Text.Trim()) : 0;
             decimal precioporbulto = textBox8.Visible ? Convert.ToDecimal(textBox8.Text.Trim()) : 0;
-            string resultado = metodos.InsertarProducto(codigo, descrip, cate, stockmin, stockmax, formadecarga, cantidadcarga, unidadesxcarga, vendeporunidades, vendeporkilo, vendeporpack, vendeporbulto, precioporunidad, precioporkilo, precioporpack, precioporbulto,1);
+            string unidadreferencia = comboBox1.Text.Trim();
+            string resultado = metodos.InsertarProducto(codigo, descrip, cate, stockmin, stockmax, formadecarga, cantidadcarga, unidadesxcarga, vendeporunidades, vendeporkilo, vendeporpack, vendeporbulto, precioporunidad, precioporkilo, precioporpack, precioporbulto,1,unidadreferencia);
             MessageBox.Show(resultado);
         }
 
@@ -160,7 +161,7 @@ namespace CapaVista
                 label5.Visible = false;
                 textBox3.Visible = false;
             }
-            if (comboBox2.SelectedItem.ToString()== "Bultos")
+            if (comboBox2.SelectedItem.ToString()== "Bulto")
             {
                 label5.Visible = true;
                 label5.Text = "¿Cuantos Bultos?";
@@ -187,9 +188,9 @@ namespace CapaVista
             label9.Text= comboBox3.Text;
         }
 
-        private void groupBox4_Enter(object sender, EventArgs e)
+        private void actualizarresumen()
         {
-            if (!utiles.TextboxVacios(textBox1, textBox2, textBox3,textBox4, textBox9, textBox10) && !utiles.ComboboxVacios(comboBox1,comboBox2,comboBox3))
+            if (!utiles.TextboxVacios(textBox1, textBox2, textBox3, textBox4, textBox9, textBox10) && !utiles.ComboboxVacios(comboBox1, comboBox2, comboBox3))
             {
                 int a = Convert.ToInt32(textBox3.Text);
                 int b = Convert.ToInt32(textBox4.Text);
@@ -201,8 +202,43 @@ namespace CapaVista
                 label10.Visible = true;
                 label10.Text = $"1 {comboBox2.Text} = {textBox4.Text} {comboBox3.Text}";
                 label13.Visible = true;
-                label13.Text = $"Total a Ingresar: {a*b} {comboBox3.Text}";
+                label13.Text = $"Total a Ingresar: {a * b} {comboBox3.Text}";
             }
+        }
+
+        private void textBox9_TextChanged(object sender, EventArgs e)
+        {
+            actualizarresumen();
+        }
+
+        private void textBox10_TextChanged(object sender, EventArgs e)
+        {
+            actualizarresumen();
+        }
+
+        private void comboBox3_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            actualizarresumen();
+        }
+
+        private void comboBox2_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            actualizarresumen();
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            actualizarresumen();
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+            actualizarresumen();
+        }
+
+        private void groupBox4_Enter_1(object sender, EventArgs e)
+        {
+            actualizarresumen();
         }
     }
 }
