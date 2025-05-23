@@ -13,6 +13,7 @@ namespace CapaVista
         private DataTable productosCache = new DataTable();
         FrmCargarCategorias cate = new FrmCargarCategorias();
         FrmCargarProductos productos = new FrmCargarProductos();
+        FrmPR pr = new FrmPR();
         Usuarioactual Usuarioactual;
         FrmAdmusuarios Admusuarios;
 
@@ -251,6 +252,11 @@ namespace CapaVista
             panel1.Controls.Remove(p);
             Admusuarios = new FrmAdmusuarios();
             Admusuarios.ShowDialog();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            pr.ShowDialog();
         }
     }
 }

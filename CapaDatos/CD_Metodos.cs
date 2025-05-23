@@ -1,5 +1,6 @@
 ﻿using Entities;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -97,7 +98,7 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
         }
-        public string InsertarProducto(string codigo,string descripcion,string cate,int stockmin,int stockmax,string unidadcarga,int cantunicarga,int cantporunicarga,int vendeporunidades, int vendeporkilo, int vendeporpack, int vendeporbulto,decimal precioporunidad, decimal precioporkilo, decimal precioporpack,decimal precioporbulto,int usuarioalta, string usuarioreferencia)
+        public string InsertarProducto(string codigo,string descripcion,string cate,int stockmin,int stockmax,string unidadcarga,int cantunicarga,int cantporunicarga,int vendeporunidades, int vendeporkilo, int vendeporpack,decimal precioporunidad, decimal precioporkilo, decimal precioporpack,int usuarioalta, string usuarioreferencia, List<(int cantidadMinima, int porcentaje)> descuentos)
         {
             try
             {
@@ -116,14 +117,22 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("@VendePorUnidades", vendeporunidades);
                     cmd.Parameters.AddWithValue("@VendePorKilo", vendeporkilo);
                     cmd.Parameters.AddWithValue("@VendePorPack", vendeporpack);
-                    cmd.Parameters.AddWithValue("@VendePorBulto", vendeporbulto);
                     cmd.Parameters.AddWithValue("@PrecioUnidad", precioporunidad);
                     cmd.Parameters.AddWithValue("@PrecioKilo", precioporkilo);
                     cmd.Parameters.AddWithValue("@PrecioPack", precioporpack);
-                    cmd.Parameters.AddWithValue("@PrecioBulto", precioporbulto);
                     cmd.Parameters.AddWithValue("@FechaAlta", DateTime.Now);
                     cmd.Parameters.AddWithValue("@IdUsuarioAlta", usuarioalta);
                     cmd.Parameters.AddWithValue("@UnidadReferencia", usuarioreferencia);
+                    DataTable dtDescuentos = new DataTable();
+                    dtDescuentos.Columns.Add("CantidadMinima", typeof(int));
+                    dtDescuentos.Columns.Add("PorcentajeDescuento", typeof(int));
+                    foreach (var desc in descuentos)
+                    {
+                        dtDescuentos.Rows.Add(desc.cantidadMinima, desc.porcentaje);
+                    }
+                    SqlParameter tvpParam = cmd.Parameters.AddWithValue("@Descuentos", dtDescuentos);
+                    tvpParam.SqlDbType = SqlDbType.Structured;
+                    tvpParam.TypeName = "dbo.TipoDescuentoProducto";
                     cmd.ExecuteNonQuery();
                     return "ok";
                 }

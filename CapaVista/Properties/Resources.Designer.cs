@@ -73,9 +73,9 @@ namespace CapaVista.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Signomas {
+        internal static System.Drawing.Bitmap SignoMas {
             get {
-                object obj = ResourceManager.GetObject("Signomas", resourceCulture);
+                object obj = ResourceManager.GetObject("SignoMas", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

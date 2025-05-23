@@ -1,6 +1,7 @@
 ﻿using CapaDatos;
 using Entities;
 using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace CapaLogica
@@ -28,9 +29,9 @@ namespace CapaLogica
             return metodos.InsertarCate(nombre);
         }
 
-        public string InsertarProducto(string codigo, string descripcion, string cate, int stockmin, int stockmax, string unidadcarga, int cantunicarga, int cantporunicarga, int vendeporunidades, int vendeporkilo, int vendeporpack, int vendeporbulto, decimal precioporunidad, decimal precioporkilo, decimal precioporpack, decimal precioporbulto, int usuarioalta, string usuarioreferencia)
+        public string InsertarProducto(string codigo, string descripcion, string cate, int stockmin, int stockmax, string unidadcarga, int cantunicarga, int cantporunicarga, int vendeporunidades, int vendeporkilo, int vendeporpack, decimal precioporunidad, decimal precioporkilo, decimal precioporpack, int usuarioalta, string usuarioreferencia, List<(int cantidadMinima, int porcentaje)> descuentos)
         {
-            return metodos.InsertarProducto(codigo, descripcion,cate, stockmin, stockmax, unidadcarga, cantunicarga, cantporunicarga, vendeporunidades, vendeporkilo, vendeporpack, vendeporbulto, precioporunidad, precioporkilo, precioporpack, precioporbulto, usuarioalta,usuarioreferencia);
+            return metodos.InsertarProducto(codigo, descripcion,cate, stockmin, stockmax, unidadcarga, cantunicarga, cantporunicarga, vendeporunidades, vendeporkilo, vendeporpack, precioporunidad, precioporkilo, precioporpack, usuarioalta,usuarioreferencia,descuentos);
         }
 
         public DataTable MostrarTodo(string Tabla)

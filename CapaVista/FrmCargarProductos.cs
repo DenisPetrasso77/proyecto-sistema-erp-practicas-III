@@ -36,7 +36,7 @@ namespace CapaVista
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (utiles.TextboxVacios(textBox1,textBox2,textBox9,textBox10))
+            if (utiles.TextboxVacios(textBox1, textBox2, textBox9, textBox10))
             {
                 MessageBox.Show("Por favor complete todos los campos");
                 return;
@@ -46,20 +46,19 @@ namespace CapaVista
             string cate = comboBox1.Text.Trim();
             int stockmax = Convert.ToInt32(textBox9.Text.Trim());
             int stockmin = Convert.ToInt32(textBox10.Text.Trim());
-            string formadecarga = comboBox1.Text.Trim();
+            string formadecarga = comboBox2.Text.Trim();
             int cantidadcarga = Convert.ToInt32(textBox3.Text.Trim());
             int unidadesxcarga = Convert.ToInt32(textBox4.Text.Trim());
             int vendeporunidades = checkBox4.Checked ? 1 : 0;
             int vendeporkilo = checkBox3.Checked ? 1 : 0;
             int vendeporpack = checkBox5.Checked ? 1 : 0;
-            int vendeporbulto = checkBox6.Checked ? 1 : 0;
             decimal precioporunidad = textBox6.Visible ? Convert.ToDecimal(textBox6.Text.Trim()) : 0;
             decimal precioporkilo = textBox5.Visible ? Convert.ToDecimal(textBox5.Text.Trim()) : 0;
             decimal precioporpack = textBox7.Visible ? Convert.ToDecimal(textBox7.Text.Trim()) : 0;
-            decimal precioporbulto = textBox8.Visible ? Convert.ToDecimal(textBox8.Text.Trim()) : 0;
             string unidadreferencia = comboBox1.Text.Trim();
-            string resultado = metodos.InsertarProducto(codigo, descrip, cate, stockmin, stockmax, formadecarga, cantidadcarga, unidadesxcarga, vendeporunidades, vendeporkilo, vendeporpack, vendeporbulto, precioporunidad, precioporkilo, precioporpack, precioporbulto,1,unidadreferencia);
+            string resultado = metodos.InsertarProducto(codigo, descrip, cate, stockmin, stockmax, formadecarga, cantidadcarga, unidadesxcarga, vendeporunidades, vendeporkilo, vendeporpack, precioporunidad, precioporkilo, precioporpack, 1, unidadreferencia);
             MessageBox.Show(resultado);
+            utiles.LimpiarControles(this);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -137,20 +136,6 @@ namespace CapaVista
             {
                 textBox7.Clear();
                 textBox7.Visible = false;
-            }
-        }
-
-        private void checkBox6_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox6.Checked)
-            {
-                textBox8.Clear();
-                textBox8.Visible = true;
-            }
-            else
-            {
-                textBox8.Clear();
-                textBox8.Visible = false;
             }
         }
 
@@ -239,6 +224,14 @@ namespace CapaVista
         private void groupBox4_Enter_1(object sender, EventArgs e)
         {
             actualizarresumen();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            { 
+            
+            }
         }
     }
 }
