@@ -124,7 +124,7 @@
   <data name="Signomenos" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Signomenos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SignoMas" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SignoMas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="_1828927" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1828927.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
