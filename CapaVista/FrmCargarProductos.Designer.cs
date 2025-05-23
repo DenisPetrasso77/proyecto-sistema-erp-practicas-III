@@ -55,6 +55,7 @@
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -68,19 +69,19 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.textBox16 = new System.Windows.Forms.TextBox();
             this.textBox17 = new System.Windows.Forms.TextBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.textBox14 = new System.Windows.Forms.TextBox();
             this.textBox15 = new System.Windows.Forms.TextBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.textBox12 = new System.Windows.Forms.TextBox();
             this.textBox13 = new System.Windows.Forms.TextBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label17 = new System.Windows.Forms.Label();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -88,7 +89,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -105,7 +105,7 @@
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(77, 29);
-            this.textBox1.MaxLength = 10;
+            this.textBox1.MaxLength = 15;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 21);
             this.textBox1.TabIndex = 1;
@@ -118,7 +118,7 @@
             this.textBox2.MaxLength = 100;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(467, 21);
-            this.textBox2.TabIndex = 2;
+            this.textBox2.TabIndex = 3;
             // 
             // label2
             // 
@@ -151,7 +151,7 @@
             this.comboBox1.Location = new System.Drawing.Point(419, 28);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 3;
+            this.comboBox1.TabIndex = 2;
             // 
             // button1
             // 
@@ -245,7 +245,7 @@
             this.textBox4.MaxLength = 10;
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 21);
-            this.textBox4.TabIndex = 32;
+            this.textBox4.TabIndex = 9;
             this.textBox4.Visible = false;
             this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
@@ -305,7 +305,7 @@
             this.comboBox2.Location = new System.Drawing.Point(147, 18);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(103, 21);
-            this.comboBox2.TabIndex = 43;
+            this.comboBox2.TabIndex = 7;
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             this.comboBox2.SelectionChangeCommitted += new System.EventHandler(this.comboBox2_SelectionChangeCommitted);
             // 
@@ -317,7 +317,7 @@
             this.textBox3.MaxLength = 10;
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(80, 21);
-            this.textBox3.TabIndex = 30;
+            this.textBox3.TabIndex = 8;
             this.textBox3.Visible = false;
             this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
@@ -364,7 +364,7 @@
             this.comboBox3.Location = new System.Drawing.Point(239, 56);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(105, 23);
-            this.comboBox3.TabIndex = 48;
+            this.comboBox3.TabIndex = 6;
             this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             this.comboBox3.SelectionChangeCommitted += new System.EventHandler(this.comboBox3_SelectionChangeCommitted);
             // 
@@ -394,6 +394,17 @@
             this.groupBox1.TabIndex = 50;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos del Producto";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::CapaVista.Properties.Resources.SignoMasFinal;
+            this.pictureBox1.Location = new System.Drawing.Point(546, 28);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(23, 22);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 19;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // groupBox2
             // 
@@ -559,6 +570,19 @@
             this.textBox17.TabIndex = 29;
             this.textBox17.Visible = false;
             // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::CapaVista.Properties.Resources.SignoMasFinal;
+            this.pictureBox4.InitialImage = null;
+            this.pictureBox4.Location = new System.Drawing.Point(144, 97);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(23, 22);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 27;
+            this.pictureBox4.TabStop = false;
+            this.pictureBox4.Visible = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
+            // 
             // textBox14
             // 
             this.textBox14.Location = new System.Drawing.Point(80, 97);
@@ -575,6 +599,19 @@
             this.textBox15.TabIndex = 26;
             this.textBox15.Visible = false;
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::CapaVista.Properties.Resources.SignoMasFinal;
+            this.pictureBox3.InitialImage = null;
+            this.pictureBox3.Location = new System.Drawing.Point(144, 69);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(23, 22);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 24;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Visible = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            // 
             // textBox12
             // 
             this.textBox12.Location = new System.Drawing.Point(80, 69);
@@ -590,6 +627,18 @@
             this.textBox13.Size = new System.Drawing.Size(68, 22);
             this.textBox13.TabIndex = 23;
             this.textBox13.Visible = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::CapaVista.Properties.Resources.SignoMasFinal;
+            this.pictureBox2.Location = new System.Drawing.Point(144, 41);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(23, 22);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 19;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Visible = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // label17
             // 
@@ -629,55 +678,6 @@
             this.textBox8.TabIndex = 0;
             this.textBox8.Visible = false;
             // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::CapaVista.Properties.Resources.SignoMasFinal;
-            this.pictureBox4.InitialImage = null;
-            this.pictureBox4.Location = new System.Drawing.Point(144, 97);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(23, 22);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 27;
-            this.pictureBox4.TabStop = false;
-            this.pictureBox4.Visible = false;
-            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::CapaVista.Properties.Resources.SignoMasFinal;
-            this.pictureBox3.InitialImage = null;
-            this.pictureBox3.Location = new System.Drawing.Point(144, 69);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(23, 22);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 24;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Visible = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::CapaVista.Properties.Resources.SignoMasFinal;
-            this.pictureBox2.Location = new System.Drawing.Point(144, 41);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(23, 22);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 19;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Visible = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::CapaVista.Properties.Resources.SignoMasFinal;
-            this.pictureBox1.Location = new System.Drawing.Point(546, 28);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(23, 22);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 19;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
             // FrmCargarProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -700,6 +700,7 @@
             this.Text = "s";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -711,7 +712,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -56,14 +56,22 @@ namespace CapaVista
             decimal precioporunidad = textBox6.Visible ? Convert.ToDecimal(textBox6.Text.Trim()) : 0;
             decimal precioporkilo = textBox5.Visible ? Convert.ToDecimal(textBox5.Text.Trim()) : 0;
             decimal precioporpack = textBox7.Visible ? Convert.ToDecimal(textBox7.Text.Trim()) : 0;
-            string unidadreferencia = comboBox1.Text.Trim();
+            string unidadreferencia = comboBox3.Text.Trim();
+            int can1 = string.IsNullOrWhiteSpace(textBox8.Text) ? 0 : Convert.ToInt32(textBox8.Text.Trim());
+            int por1 = string.IsNullOrWhiteSpace(textBox11.Text) ? 0 : Convert.ToInt32(textBox11.Text.Trim());
+            int can2 = string.IsNullOrWhiteSpace(textBox13.Text) ? 0 : Convert.ToInt32(textBox13.Text.Trim());
+            int por2 = string.IsNullOrWhiteSpace(textBox12.Text) ? 0 : Convert.ToInt32(textBox12.Text.Trim());
+            int can3 = string.IsNullOrWhiteSpace(textBox15.Text) ? 0 : Convert.ToInt32(textBox15.Text.Trim());
+            int por3 = string.IsNullOrWhiteSpace(textBox14.Text) ? 0 : Convert.ToInt32(textBox14.Text.Trim());
+            int can4 = string.IsNullOrWhiteSpace(textBox17.Text) ? 0 : Convert.ToInt32(textBox17.Text.Trim());
+            int por4 = string.IsNullOrWhiteSpace(textBox16.Text) ? 0 : Convert.ToInt32(textBox16.Text.Trim());
             var descuentos = new List<(int cantidadMinima, int porcentaje)>
-            {
-                (Convert.ToInt32(textBox8.Text),Convert.ToInt32(textBox11.Text)),
-                (Convert.ToInt32(textBox13.Text),Convert.ToInt32(textBox12.Text)),
-                (Convert.ToInt32(textBox15.Text),Convert.ToInt32(textBox14.Text)),
-                (Convert.ToInt32(textBox17.Text),Convert.ToInt32(textBox16.Text))
-            };
+{
+    (can1, por1),
+    (can2, por2),
+    (can3, por3),
+    (can4, por4)
+};
             string resultado = metodos.InsertarProducto(codigo, descrip, cate, stockmin, stockmax, formadecarga, cantidadcarga, unidadesxcarga, vendeporunidades, vendeporkilo, vendeporpack, precioporunidad, precioporkilo, precioporpack, 1, unidadreferencia,descuentos);
             MessageBox.Show(resultado);
             utiles.LimpiarControles(this);
@@ -109,11 +117,16 @@ namespace CapaVista
         {
             if (checkBox4.Checked)
             {
+                checkBox3.Enabled = false;
+                checkBox5.Enabled = false;
                 textBox6.Clear();
+                textBox6.Text = "Precio";
                 textBox6.Visible = true;
             }
             else
-            { 
+            {
+                checkBox3.Enabled = true;
+                checkBox5.Enabled = true;
                 textBox6.Clear();
                 textBox6.Visible = false;
             }
@@ -123,11 +136,16 @@ namespace CapaVista
         {
             if (checkBox3.Checked)
             {
+                checkBox4.Enabled = false;
+                checkBox5.Enabled = false;
                 textBox5.Clear();
+                textBox5.Text = "Precio";
                 textBox5.Visible = true;
             }
             else
             {
+                checkBox4.Enabled = true;
+                checkBox5.Enabled = true;
                 textBox5.Clear();
                 textBox5.Visible = false;
             }
@@ -137,11 +155,16 @@ namespace CapaVista
         {
             if (checkBox5.Checked)
             {
+                checkBox3.Enabled = false;
+                checkBox4.Enabled = false;
                 textBox7.Clear();
+                textBox7.Text = "Precio";
                 textBox7.Visible = true;
             }
             else
             {
+                checkBox3.Enabled = true;
+                checkBox4.Enabled = true;
                 textBox7.Clear();
                 textBox7.Visible = false;
             }
@@ -238,6 +261,8 @@ namespace CapaVista
         {
             if (checkBox1.Checked)
             {
+                label16.Visible = true ;
+                label17.Visible = true;
                 textBox8.Visible = true;
                 textBox11.Visible = true;
                 pictureBox2.Visible = true;
@@ -245,6 +270,8 @@ namespace CapaVista
             }
             else
             {
+                label16.Visible = false;
+                label17.Visible = false;
                 textBox12.Text = Convert.ToString(0);
                 textBox13.Text = Convert.ToString(0);
                 textBox14.Text = Convert.ToString(0);
