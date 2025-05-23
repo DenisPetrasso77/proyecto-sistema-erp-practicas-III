@@ -188,7 +188,10 @@
     <None Include="Resources\1828926-removebg-preview.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\1828927.png" />
+    <None Include="Resources\Signo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SignoMasFinal.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -631,7 +631,7 @@
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = global::CapaVista.Properties.Resources._1828927;
+            this.pictureBox4.Image = global::CapaVista.Properties.Resources.SignoMasFinal;
             this.pictureBox4.InitialImage = null;
             this.pictureBox4.Location = new System.Drawing.Point(144, 97);
             this.pictureBox4.Name = "pictureBox4";
@@ -640,10 +640,11 @@
             this.pictureBox4.TabIndex = 27;
             this.pictureBox4.TabStop = false;
             this.pictureBox4.Visible = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::CapaVista.Properties.Resources._1828927;
+            this.pictureBox3.Image = global::CapaVista.Properties.Resources.SignoMasFinal;
             this.pictureBox3.InitialImage = null;
             this.pictureBox3.Location = new System.Drawing.Point(144, 69);
             this.pictureBox3.Name = "pictureBox3";
@@ -652,10 +653,11 @@
             this.pictureBox3.TabIndex = 24;
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Visible = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::CapaVista.Properties.Resources._1828927;
+            this.pictureBox2.Image = global::CapaVista.Properties.Resources.SignoMasFinal;
             this.pictureBox2.Location = new System.Drawing.Point(144, 41);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(23, 22);
@@ -663,10 +665,11 @@
             this.pictureBox2.TabIndex = 19;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Visible = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::CapaVista.Properties.Resources._1828927;
+            this.pictureBox1.Image = global::CapaVista.Properties.Resources.SignoMasFinal;
             this.pictureBox1.Location = new System.Drawing.Point(546, 28);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(23, 22);

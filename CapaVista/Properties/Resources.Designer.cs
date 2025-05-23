@@ -63,9 +63,9 @@ namespace CapaVista.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _1828927 {
+        internal static System.Drawing.Bitmap istockphoto_1064130874_612x612 {
             get {
-                object obj = ResourceManager.GetObject("_1828927", resourceCulture);
+                object obj = ResourceManager.GetObject("istockphoto_1064130874_612x612", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace CapaVista.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap istockphoto_1064130874_612x612 {
+        internal static System.Drawing.Bitmap SignoMasFinal {
             get {
-                object obj = ResourceManager.GetObject("istockphoto_1064130874_612x612", resourceCulture);
+                object obj = ResourceManager.GetObject("SignoMasFinal", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

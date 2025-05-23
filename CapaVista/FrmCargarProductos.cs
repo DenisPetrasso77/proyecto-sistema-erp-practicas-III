@@ -1,8 +1,9 @@
 ﻿using CapaLogica;
 using System;
+using System.Collections.Generic;
 using System.Data;
-using System.Windows.Forms;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace CapaVista
 {
@@ -56,7 +57,14 @@ namespace CapaVista
             decimal precioporkilo = textBox5.Visible ? Convert.ToDecimal(textBox5.Text.Trim()) : 0;
             decimal precioporpack = textBox7.Visible ? Convert.ToDecimal(textBox7.Text.Trim()) : 0;
             string unidadreferencia = comboBox1.Text.Trim();
-            string resultado = metodos.InsertarProducto(codigo, descrip, cate, stockmin, stockmax, formadecarga, cantidadcarga, unidadesxcarga, vendeporunidades, vendeporkilo, vendeporpack, precioporunidad, precioporkilo, precioporpack, 1, unidadreferencia);
+            var descuentos = new List<(int cantidadMinima, int porcentaje)>
+            {
+                (Convert.ToInt32(textBox8.Text),Convert.ToInt32(textBox11.Text)),
+                (Convert.ToInt32(textBox13.Text),Convert.ToInt32(textBox12.Text)),
+                (Convert.ToInt32(textBox15.Text),Convert.ToInt32(textBox14.Text)),
+                (Convert.ToInt32(textBox17.Text),Convert.ToInt32(textBox16.Text))
+            };
+            string resultado = metodos.InsertarProducto(codigo, descrip, cate, stockmin, stockmax, formadecarga, cantidadcarga, unidadesxcarga, vendeporunidades, vendeporkilo, vendeporpack, precioporunidad, precioporkilo, precioporpack, 1, unidadreferencia,descuentos);
             MessageBox.Show(resultado);
             utiles.LimpiarControles(this);
         }
@@ -231,8 +239,9 @@ namespace CapaVista
             if (checkBox1.Checked)
             {
                 textBox8.Visible = true;
-                textBox5.Visible = true;
+                textBox11.Visible = true;
                 pictureBox2.Visible = true;
+                groupBox5.Visible = true;
             }
             else
             {
@@ -256,6 +265,29 @@ namespace CapaVista
                 textBox16.Visible = false;
                 textBox17.Visible = false;
             }
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            textBox13.Visible = true;
+            textBox12.Visible = true;
+            pictureBox3.Visible = true;
+            pictureBox2.Visible = false;
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            textBox14.Visible = true;
+            textBox15.Visible = true;
+            pictureBox3.Visible = false;
+            pictureBox4.Visible = true;
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            textBox16.Visible = true;
+            textBox17.Visible = true;
+            pictureBox4.Visible = false;
         }
     }
 }

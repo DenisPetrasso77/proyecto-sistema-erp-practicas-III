@@ -121,10 +121,10 @@
   <data name="istockphoto_1064130874_612x612" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\istockphoto-1064130874-612x612.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="SignoMasFinal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SignoMasFinal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Signomenos" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Signomenos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_1828927" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\1828927.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
