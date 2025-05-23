@@ -229,8 +229,25 @@ namespace CapaVista
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox1.Checked)
-            { 
-            
+            {
+                textBox8.Visible = true;
+                textBox5.Visible = true;
+                pictureBox2.Visible = true;
+            }
+            else
+            {
+                textBox8.Visible = false;
+                textBox1.Visible = false;
+                pictureBox2.Visible = false;
+                pictureBox3.Visible = false;
+                pictureBox4.Visible = false;
+                textBox12.Visible = false;
+                textBox12.Text = Convert.ToString(0);
+                textBox13.Visible = false;
+                textBox14.Visible = false;
+                textBox15.Visible = false;
+                textBox16.Visible = false;
+                textBox17.Visible = false;
             }
         }
     }
