@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace CapaVista
@@ -71,7 +72,9 @@ namespace CapaVista
     (can2, por2),
     (can3, por3),
     (can4, por4)
-};
+}.Where(d => d.cantidadMinima > 0 && d.porcentaje > 0)
+.OrderByDescending(d => d.cantidadMinima)
+.ToList();
             string resultado = metodos.InsertarProducto(codigo, descrip, cate, stockmin, stockmax, formadecarga, cantidadcarga, unidadesxcarga, vendeporunidades, vendeporkilo, vendeporpack, precioporunidad, precioporkilo, precioporpack, 1, unidadreferencia,descuentos);
             MessageBox.Show(resultado);
             utiles.LimpiarControles(this);
@@ -267,9 +270,18 @@ namespace CapaVista
                 textBox11.Visible = true;
                 pictureBox2.Visible = true;
                 groupBox5.Visible = true;
+                textBox12.Text = "";
+                textBox13.Text = "";
+                textBox14.Text = "";
+                textBox15.Text = "";
+                textBox16.Text = "";
+                textBox17.Text = "";
+                textBox8.Text = "";
+                textBox1.Text = "";
             }
             else
             {
+                groupBox5.Visible = false;
                 label16.Visible = false;
                 label17.Visible = false;
                 textBox12.Text = Convert.ToString(0);
@@ -285,12 +297,16 @@ namespace CapaVista
                 pictureBox2.Visible = false;
                 pictureBox3.Visible = false;
                 pictureBox4.Visible = false;
+                pictureBox5.Visible = false;
+                pictureBox6.Visible = false;
+                pictureBox7.Visible = false;
                 textBox12.Visible = false;
                 textBox13.Visible = false;
                 textBox14.Visible = false;
                 textBox15.Visible = false;
                 textBox16.Visible = false;
                 textBox17.Visible = false;
+                textBox11.Visible = false;
             }
         }
 
@@ -300,6 +316,7 @@ namespace CapaVista
             textBox12.Visible = true;
             pictureBox3.Visible = true;
             pictureBox2.Visible = false;
+            pictureBox7.Visible = true;
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
@@ -308,6 +325,8 @@ namespace CapaVista
             textBox15.Visible = true;
             pictureBox3.Visible = false;
             pictureBox4.Visible = true;
+            pictureBox6.Visible = true;
+            pictureBox7.Visible = false;
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
@@ -315,6 +334,36 @@ namespace CapaVista
             textBox16.Visible = true;
             textBox17.Visible = true;
             pictureBox4.Visible = false;
+            pictureBox6.Visible = false;
+            pictureBox5.Visible = true;
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            textBox16.Visible= false;
+            textBox17.Visible = false;
+            pictureBox5.Visible = false;
+            pictureBox6.Visible = true;
+            pictureBox4.Visible= true;
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            pictureBox4.Visible = false;
+            pictureBox6.Visible = false;
+            textBox14.Visible= false;
+            textBox15.Visible = false;
+            pictureBox3.Visible = true;
+            pictureBox7.Visible = true;
+        }
+
+        private void pictureBox7_Click(object sender, EventArgs e)
+        {
+            pictureBox3.Visible= false;
+            pictureBox7.Visible = false;
+            pictureBox2.Visible = true;
+            textBox12.Visible= false;
+            textBox13.Visible = false;
         }
     }
 }
