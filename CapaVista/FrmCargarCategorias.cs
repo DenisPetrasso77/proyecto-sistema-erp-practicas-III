@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows.Forms;
 
 namespace CapaVista
@@ -19,24 +20,28 @@ namespace CapaVista
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                metodos.InsertarCate(textBox1.Text);
-                MessageBox.Show(textBox1.Text);
-                MessageBox.Show("Categoria Cargada");
-                textBox1.Text = "";
-                textBox1.Focus();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error {ex.Message}");
-            }
-        }
-        private void button2_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBox2.Text))
+            {
+                MessageBox.Show("Por favor ingrese el nombre de la nueva categoria");
+                return;
+            }
+            try
+            {
+                MessageBox.Show(metodos.InsertarCate(textBox2.Text));
+                textBox2.Text = "";
+                textBox2.Focus();
+            }
+            catch
+            {
+                MessageBox.Show("Error al contactar con la Base de Datos");
+            }
         }
     }
 }

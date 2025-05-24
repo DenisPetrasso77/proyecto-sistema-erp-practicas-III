@@ -24,7 +24,7 @@ namespace CapaLogica
         { 
             return metodos.Bitacora(descripcion, fecha);
         }
-        public int InsertarCate(string nombre)
+        public string InsertarCate(string nombre)
         {
             return metodos.InsertarCate(nombre);
         }

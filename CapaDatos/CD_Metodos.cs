@@ -146,20 +146,22 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
         }
-        public int InsertarCate(string nombre)
+
+        public string InsertarCate(string nombre)
         {
             try
             {
                 using (SqlCommand cmd = new SqlCommand("sp_InsertarCate", conexion.Abrir()))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("Cate", nombre);
-                    return cmd.ExecuteNonQuery();
+                    cmd.Parameters.AddWithValue("@Categoria", nombre);
+                    cmd.ExecuteNonQuery();
+                    return "Categoria Cargada";
                 }
             }
-            catch (Exception)
+            catch (SqlException sqlex)
             {
-                return 0;
+                return sqlex.Message;
             }
             finally
             {
