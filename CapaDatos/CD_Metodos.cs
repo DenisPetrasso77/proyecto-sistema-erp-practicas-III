@@ -168,6 +168,28 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
         }
+        public string ActualizarCate(int id,string nombre)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_ActualizarCate", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", id);
+                    cmd.Parameters.AddWithValue("@Categoria", nombre);
+                    cmd.ExecuteNonQuery();
+                    return "Categoria Actualizada";
+                }
+            }
+            catch (SqlException sqlex)
+            {
+                return sqlex.Message;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
         public int ActualizarUsuario(string usuario, string nombre, string apellido, string dni, int rol, int bloqueado)
         {
             try
@@ -233,6 +255,17 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
 
+        }
+        public DataTable Categorias()
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarCate", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
         }
         //public Usuarioactual DatosIngreso(string Usuario)
         //{

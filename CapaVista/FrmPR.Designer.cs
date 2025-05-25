@@ -81,7 +81,7 @@
             this.StockActual.HeaderText = "Stock Actual";
             this.StockActual.Name = "StockActual";
             this.StockActual.ReadOnly = true;
-            this.StockActual.Width = 93;
+            this.StockActual.Width = 86;
             // 
             // UnidadCompra
             // 
@@ -130,6 +130,7 @@
             this.ClientSize = new System.Drawing.Size(1031, 359);
             this.Controls.Add(this.dataGridView1);
             this.Name = "FrmPR";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmPRcs";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

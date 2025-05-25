@@ -1,13 +1,6 @@
 ﻿using CapaLogica;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
 using System.Windows.Forms;
 
 namespace CapaVista
@@ -15,6 +8,7 @@ namespace CapaVista
     public partial class FrmCargarCategorias : Form
     {
         CL_Metodos metodos = new CL_Metodos();
+        DataTable cachecategorias = new DataTable();
         public FrmCargarCategorias()
         {
             InitializeComponent();
@@ -42,6 +36,91 @@ namespace CapaVista
             {
                 MessageBox.Show("Error al contactar con la Base de Datos");
             }
+            Cargarcategorias();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ID"].Value);
+                MessageBox.Show(metodos.ActualizarCate(id,textBox2.Text));
+                textBox2.Text = "";
+                textBox2.Focus();
+            }
+            catch
+            {
+                MessageBox.Show("Error al contactar con la Base de Datos");
+            }
+            Cargarcategorias();
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(textBox2.Text))
+            {
+                button2.Enabled = true;
+                button3.Enabled = true;
+            }
+            else
+            { 
+                button2.Enabled = false;
+                button3.Enabled = false;
+            }
+        }
+        private void Cargarcategorias()
+        {
+            cachecategorias = metodos.Categorias();
+            string texto = textBox1.Text.Trim().ToLower();
+            dataGridView1.Rows.Clear();
+            if (string.IsNullOrWhiteSpace(texto) || textBox1.Text== "BUSCADOR...")
+            {
+                foreach (DataRow fila in cachecategorias.Rows)
+                {
+                    dataGridView1.Rows.Add(fila["IdCategoria"], fila["Categoria"]);
+                }
+                return;
+            }
+            foreach (DataRow fila in cachecategorias.Rows)
+            {
+                string nombreCategoria = fila["Categoria"].ToString().ToLower();
+
+                if (nombreCategoria.Contains(texto))
+                {
+                    dataGridView1.Rows.Add(fila["IdCategoria"], fila["Categoria"]);
+                }
+            }
+        }
+
+        private void FrmCargarCategorias_Load(object sender, EventArgs e)
+        {
+            Cargarcategorias();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            Cargarcategorias();
+        }
+
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
+            if (textBox1.Text.Trim() == "BUSCADOR...")
+            {
+                textBox1.Text = "";
+            }
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBox1.Text))
+            {
+                textBox1.Text = "BUSCADOR...";
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Cargarcategorias();
         }
     }
 }

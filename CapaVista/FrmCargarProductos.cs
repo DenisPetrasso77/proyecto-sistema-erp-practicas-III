@@ -28,12 +28,12 @@ namespace CapaVista
         }
         private void Cargarcbx()
         {
-            //DataTable Cacheproductos = metodos.MostrarTodo("Categorias");
-            //foreach (DataRow filas in Cacheproductos.Rows)
-            //{
-            //    string fila = $"{filas["Id"]} - {filas["Categoria"]}";
-            //    comboBox1.Items.Add(fila);
-            //}
+            DataTable CacheCategorias = metodos.Categorias();
+            foreach (DataRow filas in CacheCategorias.Rows)
+            {
+                string fila = $"{filas["IdCategoria"]} - {filas["Categoria"]}";
+                comboBox1.Items.Add(fila);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -45,7 +45,7 @@ namespace CapaVista
             }
             string codigo = textBox1.Text.Trim();
             string descrip = textBox2.Text.Trim();
-            string cate = comboBox1.Text.Trim();
+            string cate = comboBox1.Text.Split('-')[1].Trim();
             int stockmax = Convert.ToInt32(textBox9.Text.Trim());
             int stockmin = Convert.ToInt32(textBox10.Text.Trim());
             string formadecarga = comboBox2.Text.Trim();
