@@ -15,7 +15,10 @@ namespace CapaLogica
         //{
         //    return metodos.DatosIngreso(Usuario);
         //}
-
+        public DataTable ProductosStockMin()
+        {
+            return metodos.ProductosStockMin();
+        }
         public int ActualizarUsuario(string usuario, string nombre, string apellido, string dni, int rol, int bloqueado)
         {
             return metodos.ActualizarUsuario(usuario, nombre, apellido, dni, rol, bloqueado);

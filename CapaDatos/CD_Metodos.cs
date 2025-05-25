@@ -267,6 +267,17 @@ namespace CapaDatos
             }
             return dt;
         }
+        public DataTable ProductosStockMin()
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_StockMinimo", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
         //public Usuarioactual DatosIngreso(string Usuario)
         //{
         //    DataTable dt = new DataTable();
@@ -286,7 +297,7 @@ namespace CapaDatos
         //                id = Convert.ToInt32(dt.Rows[0]["Id"].ToString()),
         //                usuario = dt.Rows[0]["Usuario"].ToString(),
         //                contraseña = dt.Rows[0]["Contraseña"].ToString(),
-                        
+
         //            };     
         //        }
         //    }

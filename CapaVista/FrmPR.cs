@@ -1,27 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using CapaLogica;
+using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CapaVista
 {
     public partial class FrmPR : Form
     {
+        DataTable stockproducmin = new DataTable();
+        CL_Metodos metodos = new CL_Metodos();
         public FrmPR()
         {
             InitializeComponent();
             Cargardgv();
+            
         }
         private void Cargardgv()
         {
-            dataGridView1.Rows.Add("CAPIZZA001", "CAJA DE PIZZA SUPER COOL","250 Unidades","Bulto","1 Bulto = 100 unidades","7 Bultos");
-            dataGridView1.Rows.Add("BOCAMI001", "BOLSAS CAMISETAS DURAS COMO CORAZON DE PRESTAMISTA", "100 Packs", "Paquete Cerrado", "1 Paquete Cerrado = 10 packs", "10 Paquetes Cerrados");
-            dataGridView1.Rows.Add("ROAL01", "ROLLO DE ALUMINIO", "20 Kilos", "Bulto", "1 Bulto = 10 kilos", "30 Bultos");
+            string codigo;
+            string descripcion;
+            string stockactual;
+            string formadecompra;
+            string unidadventa;
+            string sugerencia;
+            int stockmax;
+            string cantidadporcarga;
+            string referencia;
+            int calculoref;
+            stockproducmin = metodos.ProductosStockMin();
+            foreach (DataRow fila in stockproducmin.Rows)
+            {
+                codigo = fila["Idproducto"].ToString();
+                descripcion = fila["Descripcion"].ToString();
+                unidadventa = fila["UnidadReferencia"].ToString();
+                stockactual = $"{fila["StockActual"]} {unidadventa}";
+                formadecompra = fila["UnidadCarga"].ToString();
+                stockmax = Convert.ToInt32(fila["StockMaximo"]);
+                cantidadporcarga = fila["CantidadPorUnidadCarga"].ToString();
+                referencia = $"1 {formadecompra} = {cantidadporcarga} {unidadventa}";
+                calculoref = (Convert.ToInt32(stockmax) - Convert.ToInt32(fila["StockActual"])) / Convert.ToInt32(cantidadporcarga);
+                sugerencia = $"{calculoref} {formadecompra}";
+                dataGridView1.Rows.Add(codigo,descripcion,stockactual,formadecompra,referencia,sugerencia);
+            }
         }
     }
 }
