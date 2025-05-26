@@ -278,6 +278,31 @@ namespace CapaDatos
             }
             return dt;
         }
+        public string InsertarPR(int idusuario, DataTable detallepr)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_GuardarPR", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Idusuario", idusuario);
+                    SqlParameter tvpParam = cmd.Parameters.AddWithValue("@Detalle", detallepr);
+                    tvpParam.SqlDbType = SqlDbType.Structured;
+                    tvpParam.TypeName = "t_DetallePR";
+                    cmd.Parameters.AddWithValue("@Fecha", DateTime.Now);
+                    cmd.ExecuteNonQuery();
+                    return "Pedido Generado Correctamente";
+                }
+            }
+            catch (SqlException ex)
+            {
+                return "Error:" + ex.Message;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
         //public Usuarioactual DatosIngreso(string Usuario)
         //{
         //    DataTable dt = new DataTable();

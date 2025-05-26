@@ -10,10 +10,10 @@ namespace CapaVista
 {
     public partial class FrmCargarProductos : Form
     {
-
         CL_Metodos metodos = new CL_Metodos();
         FrmCargarCategorias Cargarcate = new FrmCargarCategorias();
         CV_Utiles utiles = new CV_Utiles();
+        
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             Cargarcate.ShowDialog();
@@ -24,8 +24,8 @@ namespace CapaVista
         public FrmCargarProductos()
         {
             InitializeComponent();
-            Cargarcbx();
         }
+
         private void Cargarcbx()
         {
             DataTable CacheCategorias = metodos.Categorias();

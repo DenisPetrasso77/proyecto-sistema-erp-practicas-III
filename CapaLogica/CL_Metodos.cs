@@ -65,6 +65,10 @@ namespace CapaLogica
         {
             return metodos.BorrarUsuario(usuario);
         }
+        public string InsertarPR(int idusuario, DataTable detallepr)
+        {
+            return metodos.InsertarPR(idusuario,detallepr);
+        }
         #endregion
     }
 }

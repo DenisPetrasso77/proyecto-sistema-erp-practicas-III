@@ -339,7 +339,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(140, 45);
             this.button2.TabIndex = 1;
-            this.button2.Text = "Cargar Nuevo";
+            this.button2.Text = "GESTION";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -399,7 +399,7 @@
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(140, 45);
             this.button6.TabIndex = 2;
-            this.button6.Text = "PR";
+            this.button6.Text = "REABASTECER";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
