@@ -50,7 +50,7 @@ namespace CapaVista
 
         private void Cargardgvdetalle()
         {
-            dataGridView3.Rows.Clear();
+            dataGridView2.Rows.Clear();
             int idpr;
             string fecha;
             string usuario;
@@ -134,7 +134,6 @@ namespace CapaVista
             dataGridView3.ReadOnly = false;
             dataGridView2.ReadOnly = true;
             dataGridView3.Columns["Descripcion2"].ReadOnly = true;
-            button1.Enabled = false;
             button4.Visible = true;
             button5.Visible = true;
             button6.Visible = true;
@@ -190,7 +189,6 @@ namespace CapaVista
             dataGridView3.ReadOnly = !dataGridView3.ReadOnly;
             dataGridView2.ReadOnly = !dataGridView2.ReadOnly;
             dataGridView3.Columns["Descripcion2"].ReadOnly = !dataGridView3.Columns["Descripcion2"].ReadOnly;
-            button1.Enabled = !button1.Enabled;
             button4.Visible = !button4.Visible;
             button5.Visible = !button5.Visible;
             button6.Visible = !button6.Visible;
@@ -200,6 +198,11 @@ namespace CapaVista
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Cargardgvdetalle();
         }
     }
 }

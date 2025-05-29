@@ -73,6 +73,16 @@ namespace CapaVista.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap SIGNO_REFRESCAR {
+            get {
+                object obj = ResourceManager.GetObject("SIGNO_REFRESCAR", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap SignoMasFinal {
             get {
                 object obj = ResourceManager.GetObject("SignoMasFinal", resourceCulture);
