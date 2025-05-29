@@ -19,6 +19,22 @@ namespace CapaLogica
         {
             return metodos.ProductosStockMin();
         }
+        public DataTable DetallePR(int idpr)
+        { 
+            return metodos.DetallePR(idpr);
+        }
+        public DataTable PRpedidos()
+        { 
+            return metodos.PRpedidos();
+        }
+        public int BorrardetallePR(int iddetallepr)
+        {
+            return metodos.BorrardetallePR(iddetallepr);
+        }
+        public int ActualizarDetallPR(int iddetallepr, int IdPR, int CantidadNueva, int Usuariomodificacion, DateTime Fechamodificacion)
+        {
+            return metodos.ActualizarDetallPR(iddetallepr, IdPR, CantidadNueva, Usuariomodificacion, Fechamodificacion);
+        }
         public int ActualizarUsuario(string usuario, string nombre, string apellido, string dni, int rol, int bloqueado)
         {
             return metodos.ActualizarUsuario(usuario, nombre, apellido, dni, rol, bloqueado);

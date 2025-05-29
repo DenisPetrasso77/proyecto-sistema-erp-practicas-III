@@ -45,6 +45,26 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
         }
+        public int BorrardetallePR(int iddetallepr)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_BorrarProductoPR", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IddetallePR", iddetallepr);
+                    return cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
         public int InsertarVentas(decimal total)
         {
             try
@@ -134,7 +154,7 @@ namespace CapaDatos
                     tvpParam.SqlDbType = SqlDbType.Structured;
                     tvpParam.TypeName = "dbo.TipoDescuentoProducto";
                     cmd.ExecuteNonQuery();
-                    return "ok";
+                    return "Producto Guardado";
                 }
             }
             catch (SqlException ex)
@@ -215,6 +235,32 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
         }
+
+
+        public int ActualizarDetallPR(int iddetallepr, int IdPR, int  CantidadNueva, int Usuariomodificacion, DateTime Fechamodificacion )
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_ActualizardetallePR", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IddetallePR", iddetallepr);
+                    cmd.Parameters.AddWithValue("@IdPR", IdPR);
+                    cmd.Parameters.AddWithValue("@CantidadNueva", CantidadNueva);
+                    cmd.Parameters.AddWithValue("@Usuariomodificacion", Usuariomodificacion);
+                    cmd.Parameters.AddWithValue("@Fechamodificacion", Fechamodificacion);
+                    return cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
         public int StatusBloq(string usuario)
         {
             try
@@ -267,12 +313,36 @@ namespace CapaDatos
             }
             return dt;
         }
+        public DataTable PRpedidos()
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_PRpedidos", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
         public DataTable ProductosStockMin()
         {
             DataTable dt = new DataTable();
             using (SqlCommand cmd = new SqlCommand("sp_StockMinimo", conexion.Abrir()))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
+        public DataTable DetallePR(int idpr)
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_DetallePR", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Idpr", idpr);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
             }

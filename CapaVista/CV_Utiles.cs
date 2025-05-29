@@ -50,20 +50,29 @@ namespace CapaVista
             }
             return false;
         }
-        public void LimpiarControles(Form FRM)
+        public void LimpiarControles(Control control)
         {
-            foreach (Control c in FRM.Controls)
+            foreach (Control c in control.Controls)
             {
                 if (c is TextBox)
                 {
-                    ((TextBox)c).Text = null;
+                    ((TextBox)c).Clear();
                 }
-                if (c is ComboBox)
+                else if (c is ComboBox)
                 {
-                    ((ComboBox)c).Text = null;
+                    ((ComboBox)c).SelectedIndex = -1;
+                }
+                else if (c is CheckBox)
+                {
+                    ((CheckBox)c).Checked = false;
+                }
+                if (c.HasChildren)
+                {
+                    LimpiarControles(c);
                 }
             }
         }
+
 
         public int Num_aleatorio()
         {

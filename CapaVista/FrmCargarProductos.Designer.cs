@@ -170,6 +170,7 @@
             this.pictureBox7.TabIndex = 34;
             this.pictureBox7.TabStop = false;
             this.pictureBox7.Visible = false;
+            this.pictureBox7.Click += new System.EventHandler(this.pictureBox7_Click);
             // 
             // pictureBox6
             // 
@@ -182,6 +183,7 @@
             this.pictureBox6.TabIndex = 33;
             this.pictureBox6.TabStop = false;
             this.pictureBox6.Visible = false;
+            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
             // 
             // pictureBox5
             // 
@@ -194,6 +196,7 @@
             this.pictureBox5.TabIndex = 32;
             this.pictureBox5.TabStop = false;
             this.pictureBox5.Visible = false;
+            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
             // 
             // textBox16
             // 
@@ -202,6 +205,7 @@
             this.textBox16.Size = new System.Drawing.Size(58, 22);
             this.textBox16.TabIndex = 31;
             this.textBox16.Visible = false;
+            this.textBox16.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VerificarCaracter);
             // 
             // textBox17
             // 
@@ -210,6 +214,7 @@
             this.textBox17.Size = new System.Drawing.Size(68, 22);
             this.textBox17.TabIndex = 29;
             this.textBox17.Visible = false;
+            this.textBox17.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VerificarCaracter);
             // 
             // pictureBox4
             // 
@@ -222,6 +227,7 @@
             this.pictureBox4.TabIndex = 27;
             this.pictureBox4.TabStop = false;
             this.pictureBox4.Visible = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // textBox14
             // 
@@ -230,6 +236,7 @@
             this.textBox14.Size = new System.Drawing.Size(58, 22);
             this.textBox14.TabIndex = 28;
             this.textBox14.Visible = false;
+            this.textBox14.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VerificarCaracter);
             // 
             // textBox15
             // 
@@ -238,6 +245,7 @@
             this.textBox15.Size = new System.Drawing.Size(68, 22);
             this.textBox15.TabIndex = 26;
             this.textBox15.Visible = false;
+            this.textBox15.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VerificarCaracter);
             // 
             // pictureBox3
             // 
@@ -250,6 +258,7 @@
             this.pictureBox3.TabIndex = 24;
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Visible = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // textBox12
             // 
@@ -258,6 +267,7 @@
             this.textBox12.Size = new System.Drawing.Size(58, 22);
             this.textBox12.TabIndex = 25;
             this.textBox12.Visible = false;
+            this.textBox12.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VerificarCaracter);
             // 
             // textBox13
             // 
@@ -266,6 +276,7 @@
             this.textBox13.Size = new System.Drawing.Size(68, 22);
             this.textBox13.TabIndex = 23;
             this.textBox13.Visible = false;
+            this.textBox13.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VerificarCaracter);
             // 
             // pictureBox2
             // 
@@ -277,6 +288,7 @@
             this.pictureBox2.TabIndex = 19;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Visible = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // label17
             // 
@@ -296,6 +308,7 @@
             this.textBox11.Size = new System.Drawing.Size(58, 22);
             this.textBox11.TabIndex = 21;
             this.textBox11.Visible = false;
+            this.textBox11.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VerificarCaracter);
             // 
             // label16
             // 
@@ -315,6 +328,7 @@
             this.textBox8.Size = new System.Drawing.Size(68, 22);
             this.textBox8.TabIndex = 0;
             this.textBox8.Visible = false;
+            this.textBox8.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VerificarCaracter);
             // 
             // label15
             // 
@@ -384,6 +398,7 @@
             this.groupBox4.TabIndex = 63;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Forma de Venta";
+            this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter_1);
             // 
             // checkBox1
             // 
@@ -394,6 +409,7 @@
             this.checkBox1.TabIndex = 47;
             this.checkBox1.Text = "¿Tiene Descuentos?";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // checkBox4
             // 
@@ -405,6 +421,7 @@
             this.checkBox4.TabIndex = 35;
             this.checkBox4.Text = "Unidades";
             this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
             // checkBox3
             // 
@@ -416,6 +433,7 @@
             this.checkBox3.TabIndex = 36;
             this.checkBox3.Text = "Kilo";
             this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
             // checkBox5
             // 
@@ -427,6 +445,7 @@
             this.checkBox5.TabIndex = 41;
             this.checkBox5.Text = "Pack";
             this.checkBox5.UseVisualStyleBackColor = true;
+            this.checkBox5.CheckedChanged += new System.EventHandler(this.checkBox5_CheckedChanged);
             // 
             // textBox6
             // 
@@ -460,11 +479,11 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.comboBox2);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.textBox3);
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.comboBox2);
+            this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.textBox4);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -506,6 +525,8 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(103, 21);
             this.comboBox2.TabIndex = 7;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.comboBox2.SelectionChangeCommitted += new System.EventHandler(this.comboBox2_SelectionChangeCommitted);
             // 
             // label5
             // 
@@ -529,6 +550,8 @@
             this.textBox3.Size = new System.Drawing.Size(80, 21);
             this.textBox3.TabIndex = 8;
             this.textBox3.Visible = false;
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VerificarCaracter);
             // 
             // label6
             // 
@@ -550,6 +573,8 @@
             this.textBox4.Size = new System.Drawing.Size(100, 21);
             this.textBox4.TabIndex = 9;
             this.textBox4.Visible = false;
+            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VerificarCaracter);
             // 
             // groupBox2
             // 
@@ -585,6 +610,8 @@
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(100, 21);
             this.textBox9.TabIndex = 4;
+            this.textBox9.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
+            this.textBox9.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VerificarCaracter);
             // 
             // label8
             // 
@@ -618,6 +645,8 @@
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(105, 23);
             this.comboBox3.TabIndex = 6;
+            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            this.comboBox3.SelectionChangeCommitted += new System.EventHandler(this.comboBox3_SelectionChangeCommitted);
             // 
             // textBox10
             // 
@@ -627,6 +656,8 @@
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(100, 21);
             this.textBox10.TabIndex = 5;
+            this.textBox10.TextChanged += new System.EventHandler(this.textBox10_TextChanged);
+            this.textBox10.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VerificarCaracter);
             // 
             // groupBox1
             // 
@@ -711,6 +742,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 19;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // button2
             // 
@@ -721,6 +753,7 @@
             this.button2.TabIndex = 59;
             this.button2.Text = "Salir";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -731,6 +764,7 @@
             this.button1.TabIndex = 58;
             this.button1.Text = "Guardar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FrmCargarProductos
             // 

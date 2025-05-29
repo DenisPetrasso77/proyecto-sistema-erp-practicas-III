@@ -24,6 +24,7 @@ namespace CapaVista
         public FrmCargarProductos()
         {
             InitializeComponent();
+            Cargarcbx();
         }
 
         private void Cargarcbx()
@@ -78,36 +79,13 @@ namespace CapaVista
             string resultado = metodos.InsertarProducto(codigo, descrip, cate, stockmin, stockmax, formadecarga, cantidadcarga, unidadesxcarga, vendeporunidades, vendeporkilo, vendeporpack, precioporunidad, precioporkilo, precioporpack, 1, unidadreferencia,descuentos);
             MessageBox.Show(resultado);
             utiles.LimpiarControles(this);
+            textBox1.Focus();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        private void textBox1_Leave(object sender, EventArgs e)
-        {
-            //try
-            //{
-            //    if (!string.IsNullOrWhiteSpace(textBox1.Text))
-            //    {
-            //        DataTable ids = metodos.MostrarTodo("Productos");
-            //        foreach (DataRow fila in ids.Rows)
-            //        {
-            //            if (fila["Id"].ToString() == textBox1.Text)
-            //            {
-            //                MessageBox.Show($"Ya existe un producto con el codigo {textBox1.Text}");
-            //                textBox1.Clear();
-            //            }
-            //        }
-            //    }
-            //}
-            //catch (Exception)
-            //{
-            //    MessageBox.Show("Error al conectar con la base de datos");
-            //}
-        }
-
         private void VerificarCaracter(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != '.')
@@ -175,10 +153,11 @@ namespace CapaVista
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox2.SelectedIndex == -1)
+            if (comboBox2.SelectedIndex == -1 || comboBox2.SelectedItem == null)
             { 
                 label5.Visible = false;
                 textBox3.Visible = false;
+                return;
             }
             if (comboBox2.SelectedItem.ToString()== "Bulto")
             {
@@ -189,6 +168,7 @@ namespace CapaVista
                 label6.Visible = true;
                 textBox4.Visible = true;
                 label9.Visible = true;
+                return;
             }
             else
             {
@@ -199,6 +179,7 @@ namespace CapaVista
                 label6.Visible = true;
                 textBox4.Visible = true;
                 label9.Visible = true;
+                return;
             }
         }
 
