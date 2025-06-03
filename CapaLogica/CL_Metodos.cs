@@ -27,6 +27,14 @@ namespace CapaLogica
         { 
             return metodos.PRpedidos();
         }
+        public DataTable Medidas()
+        {
+            return metodos.Medidas();
+        }
+        public DataTable UnidadVenta()
+        {
+            return metodos.UnidadVenta();
+        }
         public int BorrardetallePR(int iddetallepr)
         {
             return metodos.BorrardetallePR(iddetallepr);
@@ -47,6 +55,11 @@ namespace CapaLogica
         {
             return metodos.InsertarCate(nombre);
         }
+
+        public string InsertarMarca(string nombre)
+        {
+            return metodos.InsertarMarca(nombre);
+        }
         public string ActualizarCate(int id,string nombre)
         {
             return metodos.ActualizarCate(id,nombre);
@@ -55,9 +68,13 @@ namespace CapaLogica
         {
             return metodos.Categorias();
         }
-        public string InsertarProducto(string codigo, string descripcion, string cate, int stockmin, int stockmax, string unidadcarga, int cantunicarga, int cantporunicarga, int vendeporunidades, int vendeporkilo, int vendeporpack, decimal precioporunidad, decimal precioporkilo, decimal precioporpack, int usuarioalta, string usuarioreferencia, List<(int cantidadMinima, int porcentaje)> descuentos)
+        public DataTable Marcas()
         {
-            return metodos.InsertarProducto(codigo, descripcion,cate, stockmin, stockmax, unidadcarga, cantunicarga, cantporunicarga, vendeporunidades, vendeporkilo, vendeporpack, precioporunidad, precioporkilo, precioporpack, usuarioalta,usuarioreferencia,descuentos);
+            return metodos.Marcas();
+        }
+        public string InsertarProducto(string idproducto, string descripcion, int categoria, int marca, int medidas, int unidadventa, int stockactual, int stockmin, int stockmax, string estado, DateTime fecha, int idusuarioalta, decimal preciocompra, decimal precioventa/*List<(int cantidadMinima, int porcentaje)> descuentos*/)
+        {
+            return metodos.InsertarProducto(idproducto, descripcion,categoria, marca, medidas, unidadventa, stockactual, stockmin, stockmax, estado, fecha, idusuarioalta, preciocompra, precioventa);
         }
 
         public DataTable MostrarTodo(string Tabla)

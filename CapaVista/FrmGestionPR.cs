@@ -15,8 +15,8 @@ namespace CapaVista
         public FrmGestionPR()
         {
             InitializeComponent();
-            Cargardgv();
-            Cargardgvdetalle();
+            //Cargardgv();
+            //Cargardgvdetalle();
         }
         private void Cargardgv()
         {
@@ -194,12 +194,6 @@ namespace CapaVista
             button6.Visible = !button6.Visible;
             Cargardgvdetalle();
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             Cargardgvdetalle();

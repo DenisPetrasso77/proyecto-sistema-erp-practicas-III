@@ -73,21 +73,22 @@ namespace CapaVista
             cachecategorias = metodos.Categorias();
             string texto = textBox1.Text.Trim().ToLower();
             dataGridView1.Rows.Clear();
-            if (string.IsNullOrWhiteSpace(texto) || textBox1.Text== "BUSCADOR...")
-            {
-                foreach (DataRow fila in cachecategorias.Rows)
-                {
-                    dataGridView1.Rows.Add(fila["IdCategoria"], fila["Categoria"]);
-                }
-                return;
-            }
+
             foreach (DataRow fila in cachecategorias.Rows)
             {
                 string nombreCategoria = fila["Categoria"].ToString().ToLower();
+                string estado = fila["Estado"].ToString();
 
-                if (nombreCategoria.Contains(texto))
+                if (estado == "Inactivo" && !checkBox1.Checked)
+                    continue;
+
+                if (string.IsNullOrWhiteSpace(texto) || textBox1.Text == "BUSCADOR...")
                 {
-                    dataGridView1.Rows.Add(fila["IdCategoria"], fila["Categoria"]);
+                    dataGridView1.Rows.Add(fila["IdCategoria"], fila["Categoria"], fila["Estado"]);
+                }
+                else if (nombreCategoria.Contains(texto))
+                {
+                    dataGridView1.Rows.Add(fila["IdCategoria"], fila["Categoria"], fila["Estado"]);
                 }
             }
         }
@@ -119,6 +120,11 @@ namespace CapaVista
         }
 
         private void button3_Click(object sender, EventArgs e)
+        {
+            Cargarcategorias();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             Cargarcategorias();
         }

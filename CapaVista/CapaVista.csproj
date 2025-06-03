@@ -78,6 +78,12 @@
     <Compile Include="FrmCargarCategorias.Designer.cs">
       <DependentUpon>FrmCargarCategorias.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCargarMarcas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCargarMarcas.Designer.cs">
+      <DependentUpon>FrmCargarMarcas.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCargarProductos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCargarCategorias.resx">
       <DependentUpon>FrmCargarCategorias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCargarMarcas.resx">
+      <DependentUpon>FrmCargarMarcas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCargarProductos.resx">
       <DependentUpon>FrmCargarProductos.cs</DependentUpon>
@@ -195,6 +204,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\SIGNO REFRESCAR.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconoform.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

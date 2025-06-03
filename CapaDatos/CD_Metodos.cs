@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Xml;
 
 namespace CapaDatos
 {
@@ -118,41 +119,37 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
         }
-        public string InsertarProducto(string codigo,string descripcion,string cate,int stockmin,int stockmax,string unidadcarga,int cantunicarga,int cantporunicarga,int vendeporunidades, int vendeporkilo, int vendeporpack,decimal precioporunidad, decimal precioporkilo, decimal precioporpack,int usuarioalta, string usuarioreferencia, List<(int cantidadMinima, int porcentaje)> descuentos)
+        public string InsertarProducto(string idproducto,string descripcion,int categoria, int marca,int medidas,int unidadventa,int stockactual,int stockmin,int stockmax,string estado,DateTime fecha,int idusuarioalta,decimal preciocompra,decimal precioventa/*List<(int cantidadMinima, int porcentaje)> descuentos*/)
         {
             try
             {
                 using (SqlCommand cmd = new SqlCommand("sp_InsertarProducto", conexion.Abrir()))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Idproducto", codigo);
+                    cmd.Parameters.AddWithValue("@Idproducto", idproducto);
                     cmd.Parameters.AddWithValue("@Descripcion", descripcion);
-                    cmd.Parameters.AddWithValue("@Categoria", cate);
+                    cmd.Parameters.AddWithValue("@Categoria", categoria);
+                    cmd.Parameters.AddWithValue("@Marca", marca);
+                    cmd.Parameters.AddWithValue("@Medidas", medidas);
+                    cmd.Parameters.AddWithValue("@UnidadReferencia", unidadventa);
                     cmd.Parameters.AddWithValue("@StockMin", stockmin);
                     cmd.Parameters.AddWithValue("@StockMax", stockmax);
-                    cmd.Parameters.AddWithValue("@UnidadCarga", unidadcarga);
-                    cmd.Parameters.AddWithValue("@CantUnidadCarga", cantunicarga);
-                    cmd.Parameters.AddWithValue("@CantPorUnidadCarga", cantporunicarga);
-                    cmd.Parameters.AddWithValue("@StockActual", (cantunicarga * cantporunicarga));
-                    cmd.Parameters.AddWithValue("@VendePorUnidades", vendeporunidades);
-                    cmd.Parameters.AddWithValue("@VendePorKilo", vendeporkilo);
-                    cmd.Parameters.AddWithValue("@VendePorPack", vendeporpack);
-                    cmd.Parameters.AddWithValue("@PrecioUnidad", precioporunidad);
-                    cmd.Parameters.AddWithValue("@PrecioKilo", precioporkilo);
-                    cmd.Parameters.AddWithValue("@PrecioPack", precioporpack);
-                    cmd.Parameters.AddWithValue("@FechaAlta", DateTime.Now);
-                    cmd.Parameters.AddWithValue("@IdUsuarioAlta", usuarioalta);
-                    cmd.Parameters.AddWithValue("@UnidadReferencia", usuarioreferencia);
-                    DataTable dtDescuentos = new DataTable();
-                    dtDescuentos.Columns.Add("CantidadMinima", typeof(int));
-                    dtDescuentos.Columns.Add("PorcentajeDescuento", typeof(int));
-                    foreach (var desc in descuentos)
-                    {
-                        dtDescuentos.Rows.Add(desc.cantidadMinima, desc.porcentaje);
-                    }
-                    SqlParameter tvpParam = cmd.Parameters.AddWithValue("@Descuentos", dtDescuentos);
-                    tvpParam.SqlDbType = SqlDbType.Structured;
-                    tvpParam.TypeName = "dbo.TipoDescuentoProducto";
+                    cmd.Parameters.AddWithValue("@StockActual", stockactual);
+                    cmd.Parameters.AddWithValue("@PrecioCompra", preciocompra);
+                    cmd.Parameters.AddWithValue("@PrecioVenta", precioventa);
+                    cmd.Parameters.AddWithValue("@Estado", estado);
+                    cmd.Parameters.AddWithValue("@FechaAlta", fecha);
+                    cmd.Parameters.AddWithValue("@IdUsuarioAlta", idusuarioalta);
+                    //DataTable dtDescuentos = new DataTable();
+                    //dtDescuentos.Columns.Add("CantidadMinima", typeof(int));
+                    //dtDescuentos.Columns.Add("PorcentajeDescuento", typeof(int));
+                    //foreach (var desc in descuentos)
+                    //{
+                    //    dtDescuentos.Rows.Add(desc.cantidadMinima, desc.porcentaje);
+                    //}
+                    //SqlParameter tvpParam = cmd.Parameters.AddWithValue("@Descuentos", dtDescuentos);
+                    //tvpParam.SqlDbType = SqlDbType.Structured;
+                    //tvpParam.TypeName = "dbo.TipoDescuentoProducto";
                     cmd.ExecuteNonQuery();
                     return "Producto Guardado";
                 }
@@ -175,6 +172,27 @@ namespace CapaDatos
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Categoria", nombre);
+                    cmd.ExecuteNonQuery();
+                    return "Categoria Cargada";
+                }
+            }
+            catch (SqlException sqlex)
+            {
+                return sqlex.Message;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+        public string InsertarMarca(string nombre)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_InsertarMarca", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Marca", nombre);
                     cmd.ExecuteNonQuery();
                     return "Categoria Cargada";
                 }
@@ -235,8 +253,6 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
         }
-
-
         public int ActualizarDetallPR(int iddetallepr, int IdPR, int  CantidadNueva, int Usuariomodificacion, DateTime Fechamodificacion )
         {
             try
@@ -306,6 +322,39 @@ namespace CapaDatos
         {
             DataTable dt = new DataTable();
             using (SqlCommand cmd = new SqlCommand("sp_SeleccionarCate", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable Marcas()
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarMarca", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable Medidas()
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarMedidas", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable UnidadVenta()
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarFormaVenta", conexion.Abrir()))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 SqlDataAdapter da = new SqlDataAdapter(cmd);

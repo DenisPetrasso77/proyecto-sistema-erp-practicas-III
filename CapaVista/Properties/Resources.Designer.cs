@@ -63,6 +63,16 @@ namespace CapaVista.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconoform {
+            get {
+                object obj = ResourceManager.GetObject("iconoform", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap istockphoto_1064130874_612x612 {
             get {
                 object obj = ResourceManager.GetObject("istockphoto_1064130874_612x612", resourceCulture);
