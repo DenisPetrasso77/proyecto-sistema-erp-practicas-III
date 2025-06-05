@@ -73,21 +73,51 @@ namespace CapaVista
             }
         }
 
-
+        public void LimpiarFormulario(Control control)
+        {
+            foreach (Control c in control.Controls)
+            {
+                if (c is TextBox txt)
+                {
+                    txt.Clear();
+                }
+                else if (c is ComboBox combo)
+                {
+                    combo.SelectedIndex = -1;
+                }
+                else if (c is CheckBox chk)
+                {
+                    chk.Checked = false;
+                }
+                else if (c is RadioButton rdo)
+                {
+                    rdo.Checked = false;
+                }
+                else if (c is DateTimePicker dtp)
+                {
+                    dtp.Value = DateTime.Now;
+                }
+                else if (c is NumericUpDown nud)
+                {
+                    nud.Value = nud.Minimum;
+                }
+                else if (c is DataGridView dgv)
+                {
+                    dgv.DataSource = null;
+                    dgv.Rows.Clear();
+                }
+                if (c.HasChildren)
+                {
+                    LimpiarFormulario(c);
+                }
+            }
+        }
         public int Num_aleatorio()
         {
             Random random = new Random();
             return random.Next(1000, 10000);
         }
 
-        public void ValorValidado(bool valor)
-        {
-            validado = valor;
-        }
-        public bool Validado()
-        {
-            return validado;
-        }
 
 
     }

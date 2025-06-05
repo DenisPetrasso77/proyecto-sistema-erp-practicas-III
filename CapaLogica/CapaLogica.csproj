@@ -49,9 +49,9 @@
       <Project>{d3eb84d3-09d9-4f22-84c8-571147b08235}</Project>
       <Name>CapaDatos</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Entities\Entities.csproj">
-      <Project>{203ad901-434c-4506-9a7b-e6188fe1e9d2}</Project>
-      <Name>Entities</Name>
+    <ProjectReference Include="..\CapaEntities\CapaEntities.csproj">
+      <Project>{9e7268c3-ca28-470e-8309-295e81e94fcf}</Project>
+      <Name>CapaEntities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

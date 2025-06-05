@@ -90,6 +90,12 @@
     <Compile Include="FrmCargarProductos.Designer.cs">
       <DependentUpon>FrmCargarProductos.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCargarTipoProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCargarTipoProducto.Designer.cs">
+      <DependentUpon>FrmCargarTipoProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmModUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +141,9 @@
     <EmbeddedResource Include="FrmCargarProductos.resx">
       <DependentUpon>FrmCargarProductos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmCargarTipoProducto.resx">
+      <DependentUpon>FrmCargarTipoProducto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmModUsuarios.resx">
       <DependentUpon>FrmModUsuarios.cs</DependentUpon>
     </EmbeddedResource>
@@ -175,13 +184,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CapaEntities\CapaEntities.csproj">
+      <Project>{9e7268c3-ca28-470e-8309-295e81e94fcf}</Project>
+      <Name>CapaEntities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CapaLogica\CapaLogica.csproj">
       <Project>{f498cb9a-688e-4a0f-8062-949aa587f339}</Project>
       <Name>CapaLogica</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Entities\Entities.csproj">
-      <Project>{203ad901-434c-4506-9a7b-e6188fe1e9d2}</Project>
-      <Name>Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

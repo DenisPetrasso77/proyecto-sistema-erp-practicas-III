@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button3 = new System.Windows.Forms.Button();
@@ -39,17 +39,23 @@
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StockActual = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnidadCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Referencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StockMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnidadVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sugerencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidadpedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.IDdetallePR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CantidadPedida2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StockMinimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -58,19 +64,14 @@
             this.USUARIOSOLICITANTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CANTIDADPRODUCTOS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button6 = new System.Windows.Forms.Button();
-            this.IDdetallePR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CantidadPedida2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -94,7 +95,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(870, 313);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Generar Pedidos";
+            this.tabPage1.Text = "Nuevo Pedido";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // button3
@@ -136,19 +137,19 @@
             this.Codigo,
             this.Descripcion,
             this.StockActual,
-            this.UnidadCompra,
-            this.Referencia,
+            this.StockMin,
+            this.UnidadVenta,
             this.Sugerencia,
             this.Cantidadpedida,
             this.Seleccionar});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.ActiveBorder;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ActiveBorder;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Location = new System.Drawing.Point(11, 73);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(853, 190);
@@ -174,19 +175,17 @@
             this.StockActual.Name = "StockActual";
             this.StockActual.Width = 86;
             // 
-            // UnidadCompra
+            // StockMin
             // 
-            this.UnidadCompra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.UnidadCompra.HeaderText = "Forma de Compra";
-            this.UnidadCompra.Name = "UnidadCompra";
-            this.UnidadCompra.Width = 106;
+            this.StockMin.HeaderText = "Stock Minimo";
+            this.StockMin.Name = "StockMin";
             // 
-            // Referencia
+            // UnidadVenta
             // 
-            this.Referencia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Referencia.HeaderText = "Referencia";
-            this.Referencia.Name = "Referencia";
-            this.Referencia.Width = 84;
+            this.UnidadVenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.UnidadVenta.HeaderText = "Unidad de Venta";
+            this.UnidadVenta.Name = "UnidadVenta";
+            this.UnidadVenta.Width = 78;
             // 
             // Sugerencia
             // 
@@ -198,16 +197,16 @@
             // Cantidadpedida
             // 
             this.Cantidadpedida.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Cantidadpedida.HeaderText = "CantidadSolicitada";
+            this.Cantidadpedida.HeaderText = "Cantidad a Pedir";
             this.Cantidadpedida.Name = "Cantidadpedida";
-            this.Cantidadpedida.Width = 120;
+            this.Cantidadpedida.Width = 79;
             // 
             // Seleccionar
             // 
             this.Seleccionar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Seleccionar.HeaderText = "Pedir";
+            this.Seleccionar.HeaderText = "Seleccionar";
             this.Seleccionar.Name = "Seleccionar";
-            this.Seleccionar.Width = 37;
+            this.Seleccionar.Width = 69;
             // 
             // tabPage2
             // 
@@ -225,8 +224,40 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(870, 313);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Pedidos Realizados";
+            this.tabPage2.Text = "Modificacion/Baja Pedido";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::CapaVista.Properties.Resources.SIGNO_REFRESCAR;
+            this.pictureBox1.Location = new System.Drawing.Point(252, 47);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(28, 20);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 23;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(578, 268);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(103, 39);
+            this.button2.TabIndex = 19;
+            this.button2.Text = "Modificar";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(764, 268);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(100, 39);
+            this.button6.TabIndex = 22;
+            this.button6.Text = "Cancelar";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Visible = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button5
             // 
@@ -250,22 +281,12 @@
             this.button4.Visible = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(578, 268);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(103, 39);
-            this.button2.TabIndex = 19;
-            this.button2.Text = "Modificar";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dataGridView3);
-            this.groupBox1.Location = new System.Drawing.Point(572, 6);
+            this.groupBox1.Location = new System.Drawing.Point(405, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(292, 257);
+            this.groupBox1.Size = new System.Drawing.Size(459, 257);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detalle del Pedido";
@@ -280,19 +301,52 @@
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDdetallePR,
             this.Descripcion2,
-            this.CantidadPedida2});
+            this.CantidadPedida2,
+            this.StockMinimo});
             this.dataGridView3.Location = new System.Drawing.Point(6, 19);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.ReadOnly = true;
-            this.dataGridView3.Size = new System.Drawing.Size(286, 238);
+            this.dataGridView3.Size = new System.Drawing.Size(447, 238);
             this.dataGridView3.TabIndex = 0;
             this.dataGridView3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VerificarCaracter);
+            // 
+            // IDdetallePR
+            // 
+            this.IDdetallePR.HeaderText = "IDdetallePR";
+            this.IDdetallePR.Name = "IDdetallePR";
+            this.IDdetallePR.ReadOnly = true;
+            this.IDdetallePR.Visible = false;
+            // 
+            // Descripcion2
+            // 
+            this.Descripcion2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Descripcion2.HeaderText = "Producto";
+            this.Descripcion2.Name = "Descripcion2";
+            this.Descripcion2.ReadOnly = true;
+            // 
+            // CantidadPedida2
+            // 
+            this.CantidadPedida2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CantidadPedida2.HeaderText = "Cantidad Pedida";
+            this.CantidadPedida2.MaxInputLength = 20;
+            this.CantidadPedida2.Name = "CantidadPedida2";
+            this.CantidadPedida2.ReadOnly = true;
+            this.CantidadPedida2.Width = 101;
+            // 
+            // StockMinimo
+            // 
+            this.StockMinimo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.StockMinimo.HeaderText = "Stock Minimo";
+            this.StockMinimo.Name = "StockMinimo";
+            this.StockMinimo.ReadOnly = true;
+            this.StockMinimo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.StockMinimo.Width = 88;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(126, 0);
+            this.label1.Location = new System.Drawing.Point(6, 3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(356, 24);
             this.label1.TabIndex = 16;
@@ -319,45 +373,53 @@
             this.USUARIOSOLICITANTE,
             this.CANTIDADPRODUCTOS,
             this.ESTADO});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView2.Location = new System.Drawing.Point(7, 73);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(546, 190);
+            this.dataGridView2.Size = new System.Drawing.Size(392, 190);
             this.dataGridView2.TabIndex = 14;
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             // 
             // IDPR
             // 
-            this.IDPR.HeaderText = "ID Pedido";
+            this.IDPR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.IDPR.HeaderText = "Pedido";
             this.IDPR.Name = "IDPR";
             this.IDPR.ReadOnly = true;
+            this.IDPR.Width = 65;
             // 
             // FECHA
             // 
+            this.FECHA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.FECHA.HeaderText = "Fecha";
             this.FECHA.Name = "FECHA";
             this.FECHA.ReadOnly = true;
+            this.FECHA.Width = 62;
             // 
             // USUARIOSOLICITANTE
             // 
-            this.USUARIOSOLICITANTE.HeaderText = "Usuario que lo cargo";
+            this.USUARIOSOLICITANTE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.USUARIOSOLICITANTE.HeaderText = "Pedido Por";
             this.USUARIOSOLICITANTE.Name = "USUARIOSOLICITANTE";
             this.USUARIOSOLICITANTE.ReadOnly = true;
+            this.USUARIOSOLICITANTE.Width = 84;
             // 
             // CANTIDADPRODUCTOS
             // 
+            this.CANTIDADPRODUCTOS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.CANTIDADPRODUCTOS.HeaderText = "Cantidad";
             this.CANTIDADPRODUCTOS.Name = "CANTIDADPRODUCTOS";
             this.CANTIDADPRODUCTOS.ReadOnly = true;
+            this.CANTIDADPRODUCTOS.Width = 74;
             // 
             // ESTADO
             // 
@@ -365,51 +427,6 @@
             this.ESTADO.HeaderText = "Estado";
             this.ESTADO.Name = "ESTADO";
             this.ESTADO.ReadOnly = true;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(764, 268);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(100, 39);
-            this.button6.TabIndex = 22;
-            this.button6.Text = "Cancelar";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Visible = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // IDdetallePR
-            // 
-            this.IDdetallePR.HeaderText = "IDdetallePR";
-            this.IDdetallePR.Name = "IDdetallePR";
-            this.IDdetallePR.ReadOnly = true;
-            this.IDdetallePR.Visible = false;
-            // 
-            // Descripcion2
-            // 
-            this.Descripcion2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Descripcion2.HeaderText = "Descripcion";
-            this.Descripcion2.Name = "Descripcion2";
-            this.Descripcion2.ReadOnly = true;
-            // 
-            // CantidadPedida2
-            // 
-            this.CantidadPedida2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.CantidadPedida2.HeaderText = "Cantidad Pedida";
-            this.CantidadPedida2.MaxInputLength = 20;
-            this.CantidadPedida2.Name = "CantidadPedida2";
-            this.CantidadPedida2.ReadOnly = true;
-            this.CantidadPedida2.Width = 101;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::CapaVista.Properties.Resources.SIGNO_REFRESCAR;
-            this.pictureBox1.Location = new System.Drawing.Point(252, 47);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(28, 20);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 23;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // FrmGestionPR
             // 
@@ -419,17 +436,18 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "FrmGestionPR";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "GestionAbastecer";
+            this.Text = "Gestion Pedidos";
+            this.Load += new System.EventHandler(this.FrmGestionPR_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -443,14 +461,6 @@
         private System.Windows.Forms.TextBox textBox18;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StockActual;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UnidadCompra;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Referencia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Sugerencia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidadpedida;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridView dataGridView2;
@@ -459,15 +469,24 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StockActual;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StockMin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnidadVenta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Sugerencia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidadpedida;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDdetallePR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CantidadPedida2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StockMinimo;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDPR;
         private System.Windows.Forms.DataGridViewTextBoxColumn FECHA;
         private System.Windows.Forms.DataGridViewTextBoxColumn USUARIOSOLICITANTE;
         private System.Windows.Forms.DataGridViewTextBoxColumn CANTIDADPRODUCTOS;
         private System.Windows.Forms.DataGridViewTextBoxColumn ESTADO;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDdetallePR;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CantidadPedida2;
-        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

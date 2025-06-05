@@ -96,6 +96,9 @@ namespace CapaVista
         private void FrmCargarCategorias_Load(object sender, EventArgs e)
         {
             Cargarcategorias();
+            dataGridView1.Columns["ID"].ReadOnly = true;
+            dataGridView1.Columns["CATEGORIA"].ReadOnly = true;
+            dataGridView1.Columns["ESTADO"].ReadOnly = false;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

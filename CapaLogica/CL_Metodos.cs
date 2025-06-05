@@ -1,5 +1,5 @@
 ﻿using CapaDatos;
-using Entities;
+using CapaEntities;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -18,6 +18,10 @@ namespace CapaLogica
         public DataTable ProductosStockMin()
         {
             return metodos.ProductosStockMin();
+        }
+        public DataTable TipoProductos()
+        {
+            return metodos.TipoProductos();
         }
         public DataTable DetallePR(int idpr)
         { 
@@ -72,15 +76,11 @@ namespace CapaLogica
         {
             return metodos.Marcas();
         }
-        public string InsertarProducto(string idproducto, string descripcion, int categoria, int marca, int medidas, int unidadventa, int stockactual, int stockmin, int stockmax, string estado, DateTime fecha, int idusuarioalta, decimal preciocompra, decimal precioventa/*List<(int cantidadMinima, int porcentaje)> descuentos*/)
+        public string InsertarProducto(ProductoNuevo productoNuevo)
         {
-            return metodos.InsertarProducto(idproducto, descripcion,categoria, marca, medidas, unidadventa, stockactual, stockmin, stockmax, estado, fecha, idusuarioalta, preciocompra, precioventa);
+            return metodos.InsertarProducto(productoNuevo);
         }
 
-        public DataTable MostrarTodo(string Tabla)
-        {
-            return metodos.MostrarTodo(Tabla);
-        }
         public string Registro(string usuario, string clave, string nombre, string apellido)
         {
             return metodos.Registro(usuario,clave,nombre, apellido);

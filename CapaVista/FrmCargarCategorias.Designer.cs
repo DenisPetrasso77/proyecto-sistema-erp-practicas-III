@@ -30,6 +30,9 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CATEGORIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ESTADO = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -37,9 +40,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CATEGORIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ESTADO = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -65,10 +65,32 @@
             this.ESTADO});
             this.dataGridView1.Location = new System.Drawing.Point(12, 75);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(323, 150);
             this.dataGridView1.TabIndex = 1;
+            // 
+            // ID
+            // 
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Width = 43;
+            // 
+            // CATEGORIA
+            // 
+            this.CATEGORIA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CATEGORIA.HeaderText = "CATEGORIA";
+            this.CATEGORIA.Name = "CATEGORIA";
+            // 
+            // ESTADO
+            // 
+            this.ESTADO.HeaderText = "ESTADO";
+            this.ESTADO.Items.AddRange(new object[] {
+            "Activo",
+            "Inactivo"});
+            this.ESTADO.Name = "ESTADO";
+            this.ESTADO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ESTADO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // label3
             // 
@@ -143,32 +165,6 @@
             this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
             this.textBox1.Leave += new System.EventHandler(this.textBox1_Leave);
             // 
-            // ID
-            // 
-            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Width = 43;
-            // 
-            // CATEGORIA
-            // 
-            this.CATEGORIA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CATEGORIA.HeaderText = "CATEGORIA";
-            this.CATEGORIA.Name = "CATEGORIA";
-            this.CATEGORIA.ReadOnly = true;
-            // 
-            // ESTADO
-            // 
-            this.ESTADO.HeaderText = "ESTADO";
-            this.ESTADO.Items.AddRange(new object[] {
-            "Activo",
-            "Inactivo"});
-            this.ESTADO.Name = "ESTADO";
-            this.ESTADO.ReadOnly = true;
-            this.ESTADO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ESTADO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
@@ -197,7 +193,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FrmCargarCategorias";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmCargarCategorias";
+            this.Text = "GESTION DE CATEGORIAS";
             this.Load += new System.EventHandler(this.FrmCargarCategorias_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

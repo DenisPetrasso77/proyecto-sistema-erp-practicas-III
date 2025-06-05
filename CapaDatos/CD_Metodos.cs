@@ -1,4 +1,4 @@
-﻿using Entities;
+﻿using CapaEntities;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,18 +13,6 @@ namespace CapaDatos
 
 
         #region METODOS
-        public DataTable MostrarTodo(string NombreBD)
-        {
-            DataTable dt = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("sp_Mostrartodo", conexion.Abrir()))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("Nombretabla", NombreBD);
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
-            }
-            return dt;
-        }
         public int Bitacora(string descripcion, DateTime fecha)
         {
             try
@@ -119,37 +107,38 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
         }
-        public string InsertarProducto(string idproducto,string descripcion,int categoria, int marca,int medidas,int unidadventa,int stockactual,int stockmin,int stockmax,string estado,DateTime fecha,int idusuarioalta,decimal preciocompra,decimal precioventa/*List<(int cantidadMinima, int porcentaje)> descuentos*/)
+        public string InsertarProducto(ProductoNuevo producto)
         {
             try
             {
                 using (SqlCommand cmd = new SqlCommand("sp_InsertarProducto", conexion.Abrir()))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Idproducto", idproducto);
-                    cmd.Parameters.AddWithValue("@Descripcion", descripcion);
-                    cmd.Parameters.AddWithValue("@Categoria", categoria);
-                    cmd.Parameters.AddWithValue("@Marca", marca);
-                    cmd.Parameters.AddWithValue("@Medidas", medidas);
-                    cmd.Parameters.AddWithValue("@UnidadReferencia", unidadventa);
-                    cmd.Parameters.AddWithValue("@StockMin", stockmin);
-                    cmd.Parameters.AddWithValue("@StockMax", stockmax);
-                    cmd.Parameters.AddWithValue("@StockActual", stockactual);
-                    cmd.Parameters.AddWithValue("@PrecioCompra", preciocompra);
-                    cmd.Parameters.AddWithValue("@PrecioVenta", precioventa);
-                    cmd.Parameters.AddWithValue("@Estado", estado);
-                    cmd.Parameters.AddWithValue("@FechaAlta", fecha);
-                    cmd.Parameters.AddWithValue("@IdUsuarioAlta", idusuarioalta);
-                    //DataTable dtDescuentos = new DataTable();
-                    //dtDescuentos.Columns.Add("CantidadMinima", typeof(int));
-                    //dtDescuentos.Columns.Add("PorcentajeDescuento", typeof(int));
-                    //foreach (var desc in descuentos)
-                    //{
-                    //    dtDescuentos.Rows.Add(desc.cantidadMinima, desc.porcentaje);
-                    //}
-                    //SqlParameter tvpParam = cmd.Parameters.AddWithValue("@Descuentos", dtDescuentos);
-                    //tvpParam.SqlDbType = SqlDbType.Structured;
-                    //tvpParam.TypeName = "dbo.TipoDescuentoProducto";
+                    cmd.Parameters.AddWithValue("@Idproducto", producto.CodigoProducto);
+                    cmd.Parameters.AddWithValue("@Descripcion", producto.Nombre);
+                    cmd.Parameters.AddWithValue("@Categoria", producto.IdCategoria);
+                    cmd.Parameters.AddWithValue("@Marca", producto.IdMarca);
+                    cmd.Parameters.AddWithValue("@Medidas", producto.IdMedida);
+                    cmd.Parameters.AddWithValue("@UnidadReferencia", producto.IdUnidadVenta);
+                    cmd.Parameters.AddWithValue("@StockMin", producto.StockMin);
+                    cmd.Parameters.AddWithValue("@StockMax", producto.StockMax);
+                    cmd.Parameters.AddWithValue("@StockActual", producto.StockActual);
+                    cmd.Parameters.AddWithValue("@PrecioCompra", producto.PrecioCompra);
+                    cmd.Parameters.AddWithValue("@PrecioVenta", producto.PrecioVenta);
+                    cmd.Parameters.AddWithValue("@Estado", producto.Estado);
+                    cmd.Parameters.AddWithValue("@FechaAlta", producto.FechaAlta);
+                    cmd.Parameters.AddWithValue("@IdUsuarioAlta", producto.IdUsuarioAlta);
+                    DataTable dtDescuentos = new DataTable();
+
+                    dtDescuentos.Columns.Add("CantidadMin", typeof(int));
+                    dtDescuentos.Columns.Add("PorcentajeDesc", typeof(int));
+                    foreach (var desc in producto.Descuentos)
+                    {
+                        dtDescuentos.Rows.Add(desc.CantidadMinima, desc.Porcentaje);
+                    }
+                    SqlParameter tvpParam = cmd.Parameters.AddWithValue("@Descuentos", dtDescuentos);
+                    tvpParam.SqlDbType = SqlDbType.Structured;
+                    tvpParam.TypeName = "dbo.TipoDescuentoProducto";
                     cmd.ExecuteNonQuery();
                     return "Producto Guardado";
                 }
@@ -163,7 +152,6 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
         }
-
         public string InsertarCate(string nombre)
         {
             try
@@ -377,6 +365,17 @@ namespace CapaDatos
         {
             DataTable dt = new DataTable();
             using (SqlCommand cmd = new SqlCommand("sp_StockMinimo", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable TipoProductos()
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarTipoProductos", conexion.Abrir()))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 SqlDataAdapter da = new SqlDataAdapter(cmd);

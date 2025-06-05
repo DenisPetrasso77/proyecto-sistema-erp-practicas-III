@@ -1,5 +1,5 @@
 ﻿using CapaLogica;
-using Entities;
+using CapaEntities;
 using System;
 using System.Data;
 using System.Drawing;
@@ -12,9 +12,9 @@ namespace CapaVista
         CL_Metodos metodos = new CL_Metodos();
         private DataTable productosCache = new DataTable();
         FrmCargarCategorias cate = new FrmCargarCategorias();
-        FrmCargarProductos productos = new FrmCargarProductos();
+        FrmCargarProductos productos;
         FrmGestionPR gestionpr = new FrmGestionPR();
-        Usuarioactual Usuarioactual;
+        //Usuarioactual Usuarioactual;
         FrmAdmusuarios Admusuarios;
 
         public Frm_AdminHome()
@@ -181,6 +181,7 @@ namespace CapaVista
         private void button2_Click(object sender, EventArgs e)
         {
             panel1.Controls.Remove(p);
+            productos = new FrmCargarProductos();
             productos.ShowDialog();
             Cargarbuscador();
         }

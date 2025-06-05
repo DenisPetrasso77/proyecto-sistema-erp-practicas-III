@@ -1,5 +1,5 @@
 ﻿using CapaLogica;
-using Entities;
+using CapaEntities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,7 +22,7 @@ namespace CapaVista
         public FrmAdmusuarios()
         {
             InitializeComponent();
-            Cargarbuscador();
+            
         }
 
         private void Cargarbuscador()
@@ -163,6 +163,11 @@ namespace CapaVista
             string bloqueado = dataGridView1.CurrentRow.Cells["Bloqueado"].Value?.ToString();
             FrmModUsuarios modUsuarios = new FrmModUsuarios(usuario, nombre, apellido, dni, rol, autorizante, bloqueado);
             modUsuarios.Show();
+        }
+
+        private void FrmAdmusuarios_Load(object sender, EventArgs e)
+        {
+            Cargarbuscador();
         }
     }
 }

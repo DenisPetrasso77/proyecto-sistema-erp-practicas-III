@@ -15,36 +15,28 @@ namespace CapaVista
         public FrmGestionPR()
         {
             InitializeComponent();
-            //Cargardgv();
-            //Cargardgvdetalle();
         }
         private void Cargardgv()
         {
             string codigo;
             string descripcion;
-            string stockactual;
+            int stockactual;
+            int stockminimo;
             string formadecompra;
-            string unidadventa;
-            string sugerencia;
-            int stockmax;
-            string cantidadporcarga;
-            string referencia;
-            int calculoref;
+            int sugerencia;
+            int calculoreferencia;
             stockproducmin = metodos.ProductosStockMin();
             dataGridView1.Rows.Clear();
             foreach (DataRow fila in stockproducmin.Rows)
             {
-                codigo = fila["Idproducto"].ToString();
-                descripcion = fila["Descripcion"].ToString();
-                unidadventa = fila["UnidadReferencia"].ToString();
-                stockactual = $"{fila["StockActual"]} {unidadventa}";
-                formadecompra = fila["UnidadCarga"].ToString();
-                stockmax = Convert.ToInt32(fila["StockMaximo"]);
-                cantidadporcarga = fila["CantidadPorUnidadCarga"].ToString();
-                referencia = $"1 {formadecompra} = {cantidadporcarga} {unidadventa}";
-                calculoref = (Convert.ToInt32(stockmax) - Convert.ToInt32(fila["StockActual"])) / Convert.ToInt32(cantidadporcarga);
-                sugerencia = $"{calculoref} {formadecompra}";
-                dataGridView1.Rows.Add(codigo, descripcion, stockactual, formadecompra, referencia, sugerencia);
+                codigo = fila["CodigoProducto"].ToString();
+                descripcion = $"{fila["Producto"].ToString()} {fila["Marca"].ToString()} {fila["Medida"].ToString()}";
+                stockactual = Convert.ToInt32(fila["StockActual"].ToString());
+                stockminimo = Convert.ToInt32(fila["StockMinimo"].ToString());
+                formadecompra = fila["Unidad"].ToString();
+                calculoreferencia = (Convert.ToInt32(fila["StockMaximo"]) - Convert.ToInt32(fila["StockActual"]));
+                sugerencia = calculoreferencia;
+                dataGridView1.Rows.Add(codigo, descripcion, stockactual,stockminimo, formadecompra, sugerencia);
             }
         }
 
@@ -76,15 +68,17 @@ namespace CapaVista
             string cantpedida;
             string unidadcarga;
             int iddetallepr;
+            int Stockmin;
             int idpr = Convert.ToInt32(dataGridView2.CurrentRow.Cells["IDPR"].Value);
             detallepr = metodos.DetallePR(idpr);
             foreach (DataRow fila in detallepr.Rows)
             {
                 iddetallepr = Convert.ToInt32(fila["IdDetallePR"].ToString());
-                descripcion = fila["Descripcion"].ToString();
+                descripcion = $"{fila["Producto"]} {fila["Marca"]} {fila["Medida"]}";
                 cantpedida = fila["CantidadPedida"].ToString();
-                unidadcarga = fila["UnidadCarga"].ToString();
-                dataGridView3.Rows.Add(iddetallepr, descripcion, cantpedida+ " "+ unidadcarga);
+                unidadcarga = fila["Unidad"].ToString();
+                Stockmin = Convert.ToInt32(fila["StockMinimo"].ToString());
+                dataGridView3.Rows.Add(iddetallepr, descripcion, cantpedida+ " "+ unidadcarga, Stockmin);
             }
         }
 
@@ -93,22 +87,18 @@ namespace CapaVista
             DataTable detalle = new DataTable();
             detalle.Columns.Add("IdProducto", typeof(string));
             detalle.Columns.Add("CantidadPedida", typeof(int));
-            detalle.Columns.Add("UnidadCarga", typeof(string));
-            detalle.Columns.Add("CantidadPorUnidad", typeof(int));
-            detalle.Columns.Add("StockActual", typeof(int));
+            detalle.Columns.Add("StockAlPedir", typeof(int));
             detalle.Columns.Add("UnidadVenta", typeof(string));
 
             foreach (DataGridViewRow fila in dataGridView1.Rows)
             {
-                if (Convert.ToBoolean(fila.Cells["Seleccionar"].Value) == true)
+                if (Convert.ToBoolean(fila.Cells["Seleccionar"].Value))
                 {
                     detalle.Rows.Add(
                         fila.Cells["Codigo"].Value.ToString(),
-                        Convert.ToInt32(fila.Cells["CantidadPedida"].Value),
-                        fila.Cells["UnidadCompra"].Value.ToString(),
-                        Convert.ToInt32(fila.Cells["Referencia"].Value.ToString().Split('=')[1].Trim().Split(' ')[0]),
-                        Convert.ToInt32(fila.Cells["StockActual"].Value.ToString().Split(' ')[0]),
-                        fila.Cells["Referencia"].Value.ToString().Split('=')[1].Split(' ')[2]
+                        Convert.ToInt32(fila.Cells["Cantidadpedida"].Value.ToString()),
+                        Convert.ToInt32(fila.Cells["StockActual"].Value.ToString()),
+                        fila.Cells["UnidadVenta"].Value.ToString()
                     );
                 }
             }
@@ -196,6 +186,12 @@ namespace CapaVista
         }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+            Cargardgvdetalle();
+        }
+
+        private void FrmGestionPR_Load(object sender, EventArgs e)
+        {
+            Cargardgv();
             Cargardgvdetalle();
         }
     }

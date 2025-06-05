@@ -1,5 +1,5 @@
 ﻿using CapaLogica;
-using Entities;
+using CapaEntities;
 using System;
 using System.Windows.Forms;
 
@@ -10,7 +10,7 @@ namespace CapaVista
         CL_Metodos metodos = new CL_Metodos();
         CV_Utiles utiles = new CV_Utiles();
         CV_Seguridad seguridad = new CV_Seguridad();
-        Usuarioactual usuarioactual;
+        //Usuarioactual usuarioactual;
         Frm_Registro registro = new Frm_Registro();
 
         public Frm_Login()

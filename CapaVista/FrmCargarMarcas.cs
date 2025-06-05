@@ -12,7 +12,7 @@ namespace CapaVista
         {
             InitializeComponent();
         }
-        private void Cargarcategorias()
+        private void Cargarmarcas()
         {
             cachemarcas = metodos.Marcas();
             string texto = textBox1.Text.Trim().ToLower();
@@ -28,11 +28,11 @@ namespace CapaVista
 
                 if (string.IsNullOrWhiteSpace(texto) || textBox1.Text == "BUSCADOR...")
                 {
-                    dataGridView1.Rows.Add(fila["IdCategoria"], fila["Categoria"], fila["Estado"]);
+                    dataGridView1.Rows.Add(fila["Idmarca"], fila["Marca"], fila["Estado"]);
                 }
                 else if (nombreCategoria.Contains(texto))
                 {
-                    dataGridView1.Rows.Add(fila["IdCategoria"], fila["Categoria"], fila["Estado"]);
+                    dataGridView1.Rows.Add(fila["Idmarca"], fila["Marca"], fila["Estado"]);
                 }
             }
         }
@@ -54,7 +54,15 @@ namespace CapaVista
             {
                 MessageBox.Show("Error al contactar con la Base de Datos");
             }
-            Cargarcategorias();
+            Cargarmarcas();
+        }
+
+        private void FrmCargarMarcas_Load(object sender, System.EventArgs e)
+        {
+            Cargarmarcas();
+            dataGridView1.Columns["ID"].ReadOnly = true;
+            dataGridView1.Columns["CATEGORIA"].ReadOnly = true;
+            dataGridView1.Columns["ESTADO"].ReadOnly = false;
         }
     }
 }
