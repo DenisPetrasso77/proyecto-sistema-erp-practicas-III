@@ -12,7 +12,8 @@ namespace CapaVista
         CL_Metodos metodos = new CL_Metodos();
         private DataTable productosCache = new DataTable();
         FrmCargarCategorias cate = new FrmCargarCategorias();
-        FrmCargarProductos productos;
+        FrmGestionProveedores proveedores = new FrmGestionProveedores();
+        FrmGestionProductos productos;
         FrmGestionPR gestionpr = new FrmGestionPR();
         //Usuarioactual Usuarioactual;
         FrmAdmusuarios Admusuarios;
@@ -181,7 +182,7 @@ namespace CapaVista
         private void button2_Click(object sender, EventArgs e)
         {
             panel1.Controls.Remove(p);
-            productos = new FrmCargarProductos();
+            productos = new FrmGestionProductos();
             productos.ShowDialog();
             Cargarbuscador();
         }
@@ -259,6 +260,21 @@ namespace CapaVista
         {
             this.Hide();
             gestionpr.ShowDialog();
+            this.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (!panel4.Visible)
+                panel4.Visible = true;
+            else
+                panel4.Visible = false;
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            proveedores.ShowDialog();
             this.Show();
         }
     }

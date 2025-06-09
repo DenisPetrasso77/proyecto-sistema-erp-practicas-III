@@ -6,7 +6,6 @@ namespace CapaVista
 {
     public class CV_Utiles
     {
-        private bool validado = false;
         public bool TextboxVacios(params TextBox[] campos)
         {
             foreach (TextBox campo in campos)

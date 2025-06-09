@@ -15,9 +15,25 @@ namespace CapaLogica
         //{
         //    return metodos.DatosIngreso(Usuario);
         //}
+        public string InsertarProveedor(Proveedor proveedor)
+        {
+            return metodos.InsertarProveedor(proveedor);
+        }
+        public DataTable Localidades(int id)
+        { 
+            return metodos.Localidades(id);
+        }
+        public int CodigoPostal(int id)
+        {
+            return metodos.CodigoPostal(id);
+        }
         public DataTable ProductosStockMin()
         {
             return metodos.ProductosStockMin();
+        }
+        public DataTable Provincias()
+        { 
+            return metodos.Provincias();
         }
         public DataTable TipoProductos()
         {
@@ -38,6 +54,10 @@ namespace CapaLogica
         public DataTable UnidadVenta()
         {
             return metodos.UnidadVenta();
+        }
+        public string ActualizarTipoProducto(int id, string nombre, string estado)
+        {
+            return metodos.ActualizarTipoProducto(id,nombre, estado);
         }
         public int BorrardetallePR(int iddetallepr)
         {
@@ -64,9 +84,9 @@ namespace CapaLogica
         {
             return metodos.InsertarMarca(nombre);
         }
-        public string ActualizarCate(int id,string nombre)
+        public string ActualizarCate(int id,string nombre,string estado)
         {
-            return metodos.ActualizarCate(id,nombre);
+            return metodos.ActualizarCate(id,nombre, estado);
         }
         public DataTable Categorias()
         {

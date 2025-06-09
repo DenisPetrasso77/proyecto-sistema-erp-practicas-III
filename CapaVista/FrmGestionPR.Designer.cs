@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
             this.textBox18 = new System.Windows.Forms.TextBox();
@@ -39,7 +41,6 @@
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StockActual = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StockMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnidadVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sugerencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidadpedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,10 +53,6 @@
             this.button4 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.IDdetallePR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CantidadPedida2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StockMinimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -64,8 +61,13 @@
             this.USUARIOSOLICITANTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CANTIDADPRODUCTOS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDdetallePR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StockMaximo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CantidadPedida2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -86,6 +88,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.pictureBox2);
             this.tabPage1.Controls.Add(this.button3);
             this.tabPage1.Controls.Add(this.label18);
             this.tabPage1.Controls.Add(this.textBox18);
@@ -97,6 +100,17 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Nuevo Pedido";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::CapaVista.Properties.Resources.SIGNO_REFRESCAR;
+            this.pictureBox2.Location = new System.Drawing.Point(256, 47);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(28, 20);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 24;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // button3
             // 
@@ -137,19 +151,18 @@
             this.Codigo,
             this.Descripcion,
             this.StockActual,
-            this.StockMin,
             this.UnidadVenta,
             this.Sugerencia,
             this.Cantidadpedida,
             this.Seleccionar});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ActiveBorder;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.ActiveBorder;
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle30;
             this.dataGridView1.Location = new System.Drawing.Point(11, 73);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(853, 190);
@@ -175,11 +188,6 @@
             this.StockActual.Name = "StockActual";
             this.StockActual.Width = 86;
             // 
-            // StockMin
-            // 
-            this.StockMin.HeaderText = "Stock Minimo";
-            this.StockMin.Name = "StockMin";
-            // 
             // UnidadVenta
             // 
             this.UnidadVenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -190,9 +198,9 @@
             // Sugerencia
             // 
             this.Sugerencia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Sugerencia.HeaderText = "Sugerencia";
+            this.Sugerencia.HeaderText = "Sugerencia de Compra";
             this.Sugerencia.Name = "Sugerencia";
-            this.Sugerencia.Width = 86;
+            this.Sugerencia.Width = 96;
             // 
             // Cantidadpedida
             // 
@@ -240,7 +248,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(578, 268);
+            this.button2.Location = new System.Drawing.Point(469, 268);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(103, 39);
             this.button2.TabIndex = 19;
@@ -267,7 +275,6 @@
             this.button5.TabIndex = 21;
             this.button5.Text = "Borrar";
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Visible = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
@@ -278,7 +285,6 @@
             this.button4.TabIndex = 20;
             this.button4.Text = "Actualizar";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Visible = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // groupBox1
@@ -301,46 +307,13 @@
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDdetallePR,
             this.Descripcion2,
-            this.CantidadPedida2,
-            this.StockMinimo});
+            this.StockMaximo,
+            this.CantidadPedida2});
             this.dataGridView3.Location = new System.Drawing.Point(6, 19);
             this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.ReadOnly = true;
             this.dataGridView3.Size = new System.Drawing.Size(447, 238);
             this.dataGridView3.TabIndex = 0;
             this.dataGridView3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VerificarCaracter);
-            // 
-            // IDdetallePR
-            // 
-            this.IDdetallePR.HeaderText = "IDdetallePR";
-            this.IDdetallePR.Name = "IDdetallePR";
-            this.IDdetallePR.ReadOnly = true;
-            this.IDdetallePR.Visible = false;
-            // 
-            // Descripcion2
-            // 
-            this.Descripcion2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Descripcion2.HeaderText = "Producto";
-            this.Descripcion2.Name = "Descripcion2";
-            this.Descripcion2.ReadOnly = true;
-            // 
-            // CantidadPedida2
-            // 
-            this.CantidadPedida2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.CantidadPedida2.HeaderText = "Cantidad Pedida";
-            this.CantidadPedida2.MaxInputLength = 20;
-            this.CantidadPedida2.Name = "CantidadPedida2";
-            this.CantidadPedida2.ReadOnly = true;
-            this.CantidadPedida2.Width = 101;
-            // 
-            // StockMinimo
-            // 
-            this.StockMinimo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.StockMinimo.HeaderText = "Stock Minimo";
-            this.StockMinimo.Name = "StockMinimo";
-            this.StockMinimo.ReadOnly = true;
-            this.StockMinimo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.StockMinimo.Width = 88;
             // 
             // label1
             // 
@@ -373,14 +346,14 @@
             this.USUARIOSOLICITANTE,
             this.CANTIDADPRODUCTOS,
             this.ESTADO});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle29;
             this.dataGridView2.Location = new System.Drawing.Point(7, 73);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
@@ -400,6 +373,9 @@
             // FECHA
             // 
             this.FECHA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle28.Format = "dd/MM/yyyy";
+            dataGridViewCellStyle28.NullValue = null;
+            this.FECHA.DefaultCellStyle = dataGridViewCellStyle28;
             this.FECHA.HeaderText = "Fecha";
             this.FECHA.Name = "FECHA";
             this.FECHA.ReadOnly = true;
@@ -428,6 +404,38 @@
             this.ESTADO.Name = "ESTADO";
             this.ESTADO.ReadOnly = true;
             // 
+            // IDdetallePR
+            // 
+            this.IDdetallePR.HeaderText = "IDdetallePR";
+            this.IDdetallePR.Name = "IDdetallePR";
+            this.IDdetallePR.ReadOnly = true;
+            this.IDdetallePR.Visible = false;
+            // 
+            // Descripcion2
+            // 
+            this.Descripcion2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Descripcion2.HeaderText = "Producto";
+            this.Descripcion2.Name = "Descripcion2";
+            this.Descripcion2.ReadOnly = true;
+            // 
+            // StockMaximo
+            // 
+            this.StockMaximo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.StockMaximo.HeaderText = "Stock Maximo";
+            this.StockMaximo.Name = "StockMaximo";
+            this.StockMaximo.ReadOnly = true;
+            this.StockMaximo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.StockMaximo.Width = 99;
+            // 
+            // CantidadPedida2
+            // 
+            this.CantidadPedida2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CantidadPedida2.HeaderText = "Cantidad Pedida";
+            this.CantidadPedida2.MaxInputLength = 20;
+            this.CantidadPedida2.Name = "CantidadPedida2";
+            this.CantidadPedida2.ReadOnly = true;
+            this.CantidadPedida2.Width = 101;
+            // 
             // FrmGestionPR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -441,6 +449,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
@@ -471,22 +480,22 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn StockActual;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StockMin;
         private System.Windows.Forms.DataGridViewTextBoxColumn UnidadVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sugerencia;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidadpedida;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDdetallePR;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CantidadPedida2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StockMinimo;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDPR;
         private System.Windows.Forms.DataGridViewTextBoxColumn FECHA;
         private System.Windows.Forms.DataGridViewTextBoxColumn USUARIOSOLICITANTE;
         private System.Windows.Forms.DataGridViewTextBoxColumn CANTIDADPRODUCTOS;
         private System.Windows.Forms.DataGridViewTextBoxColumn ESTADO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDdetallePR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StockMaximo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CantidadPedida2;
     }
 }

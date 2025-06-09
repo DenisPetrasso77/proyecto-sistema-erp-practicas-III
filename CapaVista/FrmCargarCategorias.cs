@@ -44,9 +44,12 @@ namespace CapaVista
             try
             {
                 int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ID"].Value);
-                MessageBox.Show(metodos.ActualizarCate(id,textBox2.Text));
+                string categoria = dataGridView1.CurrentRow.Cells["CATEGORIA"].Value.ToString();
+                string estado = dataGridView1.CurrentRow.Cells["ESTADO"].Value.ToString();
+                MessageBox.Show(metodos.ActualizarCate(id, categoria, estado));
                 textBox2.Text = "";
-                textBox2.Focus();
+                textBox1.Focus();
+                button2.Visible = true;
             }
             catch
             {
@@ -60,12 +63,10 @@ namespace CapaVista
             if (!string.IsNullOrWhiteSpace(textBox2.Text))
             {
                 button2.Enabled = true;
-                button3.Enabled = true;
             }
             else
             { 
                 button2.Enabled = false;
-                button3.Enabled = false;
             }
         }
         private void Cargarcategorias()
@@ -97,7 +98,7 @@ namespace CapaVista
         {
             Cargarcategorias();
             dataGridView1.Columns["ID"].ReadOnly = true;
-            dataGridView1.Columns["CATEGORIA"].ReadOnly = true;
+            dataGridView1.Columns["CATEGORIA"].ReadOnly = false;
             dataGridView1.Columns["ESTADO"].ReadOnly = false;
         }
 
@@ -122,14 +123,10 @@ namespace CapaVista
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Cargarcategorias();
-        }
-
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             Cargarcategorias();
         }
+
     }
 }

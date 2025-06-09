@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics.Tracing;
 using System.Xml;
 
 namespace CapaDatos
@@ -152,6 +153,43 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
         }
+
+        public string InsertarProveedor(Proveedor proveedor)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_InsertarProveedor", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@NombreComercial", (object)proveedor.NombreComercial ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@RazonSocial", proveedor.RazonSocial);
+                    cmd.Parameters.AddWithValue("@TipoIdentificacion", proveedor.TipoIdentificacion);
+                    cmd.Parameters.AddWithValue("@NumeroDeIdentificacion", proveedor.NumeroDeIdentificacion);
+                    cmd.Parameters.AddWithValue("@Correo", (object)proveedor.Correo ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@CodigoArea", (object)proveedor.CodigoArea ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Telefono", (object)proveedor.Telefono ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@DireccionCalle", (object)proveedor.DireccionCalle ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@DireccionAltura", (object)proveedor.DireccionAltura ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@DireccionProvincia", (object)proveedor.DireccionProvincia ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@DireccionLocalidad", (object)proveedor.DireccionLocalidad ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@DireccionCodigoPostal", (object)proveedor.DireccionCodigoPostal ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Observaciones", (object)proveedor.Observaciones ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@FechaAlta", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@IdUsuarioAlta", proveedor.IdUsuarioAlta);
+                    cmd.ExecuteNonQuery();
+                    return "Proveedor guardado correctamente.";
+                }
+            }
+            catch (SqlException ex)
+            {
+                return "Error:" + ex.Message;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
         public string InsertarCate(string nombre)
         {
             try
@@ -194,7 +232,7 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
         }
-        public string ActualizarCate(int id,string nombre)
+        public string ActualizarCate(int id,string nombre, string estado)
         {
             try
             {
@@ -203,8 +241,32 @@ namespace CapaDatos
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", id);
                     cmd.Parameters.AddWithValue("@Categoria", nombre);
+                    cmd.Parameters.AddWithValue("@Estado", estado);
                     cmd.ExecuteNonQuery();
                     return "Categoria Actualizada";
+                }
+            }
+            catch (SqlException sqlex)
+            {
+                return sqlex.Message;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+        public string ActualizarTipoProducto(int id, string nombre,string estado)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_ActualizarTipoProducto", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", id);
+                    cmd.Parameters.AddWithValue("@TipoProducto", nombre);
+                    cmd.Parameters.AddWithValue("@Estado", estado);
+                    cmd.ExecuteNonQuery();
+                    return "Tipo de Producto Actualizado";
                 }
             }
             catch (SqlException sqlex)
@@ -317,6 +379,50 @@ namespace CapaDatos
             }
             return dt;
         }
+        public DataTable Provincias()
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarProvincias", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable Localidades(int id)
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarLocalidad", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ID", id);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public int CodigoPostal(int id)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_SeleccionarCodigoPostal", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", id);
+                    return Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+
         public DataTable Marcas()
         {
             DataTable dt = new DataTable();
@@ -383,7 +489,6 @@ namespace CapaDatos
             }
             return dt;
         }
-
         public DataTable DetallePR(int idpr)
         {
             DataTable dt = new DataTable();

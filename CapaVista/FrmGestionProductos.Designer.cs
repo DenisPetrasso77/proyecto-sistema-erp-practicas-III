@@ -1,6 +1,6 @@
 ﻿namespace CapaVista
 {
-    partial class FrmCargarProductos
+    partial class FrmGestionProductos
     {
         /// <summary>
         /// Required designer variable.
@@ -63,6 +63,7 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBox6 = new System.Windows.Forms.ComboBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -80,7 +81,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -508,6 +508,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "DATOS DEL PRODUCTO";
             // 
+            // comboBox6
+            // 
+            this.comboBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox6.FormattingEnabled = true;
+            this.comboBox6.Location = new System.Drawing.Point(272, 27);
+            this.comboBox6.Name = "comboBox6";
+            this.comboBox6.Size = new System.Drawing.Size(218, 23);
+            this.comboBox6.TabIndex = 2;
+            // 
             // pictureBox10
             // 
             this.pictureBox10.Image = global::CapaVista.Properties.Resources.iconoform;
@@ -681,22 +690,13 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // comboBox6
-            // 
-            this.comboBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(272, 27);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(218, 23);
-            this.comboBox6.TabIndex = 29;
-            // 
-            // FrmCargarProductos
+            // FrmGestionProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(542, 492);
             this.Controls.Add(this.tabControl1);
-            this.Name = "FrmCargarProductos";
+            this.Name = "FrmGestionProductos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GESTION DE PRODUCTOS";
             this.Load += new System.EventHandler(this.FrmCargarProductos_Load);

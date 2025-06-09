@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace CapaVista
 {
-    public partial class FrmCargarProductos : Form
+    public partial class FrmGestionProductos : Form
     {
         CL_Metodos metodos = new CL_Metodos();
         FrmCargarCategorias Cargarcate = new FrmCargarCategorias();
@@ -25,7 +25,7 @@ namespace CapaVista
             Cargarcbxcategorias();
         }
         
-        public FrmCargarProductos()
+        public FrmGestionProductos()
         {
             InitializeComponent();
         }
@@ -35,10 +35,14 @@ namespace CapaVista
             DataTable CacheCategorias = metodos.Categorias();
             foreach (DataRow filas in CacheCategorias.Rows)
             {
-                string fila = $"{filas["IdCategoria"]} - {filas["Categoria"]}";
-                comboBox1.Items.Add(fila);
+                if (filas["Estado"].ToString().Trim() != "Inactivo")
+                {
+                    string fila = $"{filas["IdCategoria"]} - {filas["Categoria"]}";
+                    comboBox1.Items.Add(fila);
+                }
             }
         }
+
         private void Cargarcbxtpoproducto()
         {
             DataTable CacheTipoProducto = metodos.TipoProductos();

@@ -21,7 +21,6 @@ namespace CapaVista
             string codigo;
             string descripcion;
             int stockactual;
-            int stockminimo;
             string formadecompra;
             int sugerencia;
             int calculoreferencia;
@@ -32,11 +31,10 @@ namespace CapaVista
                 codigo = fila["CodigoProducto"].ToString();
                 descripcion = $"{fila["Producto"].ToString()} {fila["Marca"].ToString()} {fila["Medida"].ToString()}";
                 stockactual = Convert.ToInt32(fila["StockActual"].ToString());
-                stockminimo = Convert.ToInt32(fila["StockMinimo"].ToString());
                 formadecompra = fila["Unidad"].ToString();
                 calculoreferencia = (Convert.ToInt32(fila["StockMaximo"]) - Convert.ToInt32(fila["StockActual"]));
                 sugerencia = calculoreferencia;
-                dataGridView1.Rows.Add(codigo, descripcion, stockactual,stockminimo, formadecompra, sugerencia);
+                dataGridView1.Rows.Add(codigo, descripcion, stockactual, formadecompra, sugerencia);
             }
         }
 
@@ -68,7 +66,7 @@ namespace CapaVista
             string cantpedida;
             string unidadcarga;
             int iddetallepr;
-            int Stockmin;
+            int Stockmax;
             int idpr = Convert.ToInt32(dataGridView2.CurrentRow.Cells["IDPR"].Value);
             detallepr = metodos.DetallePR(idpr);
             foreach (DataRow fila in detallepr.Rows)
@@ -77,8 +75,8 @@ namespace CapaVista
                 descripcion = $"{fila["Producto"]} {fila["Marca"]} {fila["Medida"]}";
                 cantpedida = fila["CantidadPedida"].ToString();
                 unidadcarga = fila["Unidad"].ToString();
-                Stockmin = Convert.ToInt32(fila["StockMinimo"].ToString());
-                dataGridView3.Rows.Add(iddetallepr, descripcion, cantpedida+ " "+ unidadcarga, Stockmin);
+                Stockmax = Convert.ToInt32(fila["StockMaximo"].ToString());
+                dataGridView3.Rows.Add(iddetallepr, descripcion, Stockmax + unidadcarga, cantpedida);
             }
         }
 
@@ -92,7 +90,7 @@ namespace CapaVista
 
             foreach (DataGridViewRow fila in dataGridView1.Rows)
             {
-                if (Convert.ToBoolean(fila.Cells["Seleccionar"].Value))
+                if (Convert.ToBoolean(fila.Cells["Seleccionar"].Value) && fila.Cells["Seleccionar"].Value != null)
                 {
                     detalle.Rows.Add(
                         fila.Cells["Codigo"].Value.ToString(),
@@ -194,5 +192,11 @@ namespace CapaVista
             Cargardgv();
             Cargardgvdetalle();
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            Cargardgv();
+        }
+        
     }
 }

@@ -41,9 +41,12 @@
             this.button3 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button7 = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.button8 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -89,8 +92,9 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(135, 30);
             this.button5.TabIndex = 2;
-            this.button5.Text = "Productos";
+            this.button5.Text = "Proveedores";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             this.button5.MouseEnter += new System.EventHandler(this.btnMouseEnter);
             this.button5.MouseLeave += new System.EventHandler(this.btnMouseLeave);
             // 
@@ -214,11 +218,37 @@
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel4.Controls.Add(this.button8);
+            this.panel4.Location = new System.Drawing.Point(327, 51);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(152, 118);
+            this.panel4.TabIndex = 6;
+            this.panel4.Visible = false;
+            // 
+            // button8
+            // 
+            this.button8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button8.FlatAppearance.BorderSize = 0;
+            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Location = new System.Drawing.Point(6, 5);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(140, 45);
+            this.button8.TabIndex = 2;
+            this.button8.Text = "CARGAR NUEVO";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // Frm_AdminHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 470);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label2);
@@ -232,6 +262,7 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -252,5 +283,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button button8;
     }
 }

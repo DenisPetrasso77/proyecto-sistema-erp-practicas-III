@@ -47,5 +47,23 @@ namespace CapaVista
             dataGridView1.Columns["ESTADO"].ReadOnly = false;
             CargarTipoProductos();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ID"].Value);
+                string categoria = dataGridView1.CurrentRow.Cells["CATEGORIA"].Value.ToString();
+                string estado = dataGridView1.CurrentRow.Cells["ESTADO"].Value.ToString();
+                MessageBox.Show(metodos.ActualizarTipoProducto(id, categoria,estado));
+                textBox2.Text = "";
+                textBox2.Focus();
+            }
+            catch
+            {
+                MessageBox.Show("Error al contactar con la Base de Datos");
+            }
+            CargarTipoProductos();
+        }
     }
 }

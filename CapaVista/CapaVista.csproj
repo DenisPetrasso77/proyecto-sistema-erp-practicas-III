@@ -84,17 +84,23 @@
     <Compile Include="FrmCargarMarcas.Designer.cs">
       <DependentUpon>FrmCargarMarcas.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmCargarProductos.cs">
+    <Compile Include="FrmGestionProductos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmCargarProductos.Designer.cs">
-      <DependentUpon>FrmCargarProductos.cs</DependentUpon>
+    <Compile Include="FrmGestionProductos.Designer.cs">
+      <DependentUpon>FrmGestionProductos.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmCargarTipoProducto.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmCargarTipoProducto.Designer.cs">
       <DependentUpon>FrmCargarTipoProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGestionProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGestionProveedores.Designer.cs">
+      <DependentUpon>FrmGestionProveedores.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmModUsuarios.cs">
       <SubType>Form</SubType>
@@ -138,11 +144,14 @@
     <EmbeddedResource Include="FrmCargarMarcas.resx">
       <DependentUpon>FrmCargarMarcas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmCargarProductos.resx">
-      <DependentUpon>FrmCargarProductos.cs</DependentUpon>
+    <EmbeddedResource Include="FrmGestionProductos.resx">
+      <DependentUpon>FrmGestionProductos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCargarTipoProducto.resx">
       <DependentUpon>FrmCargarTipoProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGestionProveedores.resx">
+      <DependentUpon>FrmGestionProveedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmModUsuarios.resx">
       <DependentUpon>FrmModUsuarios.cs</DependentUpon>
