@@ -28,13 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.IDPR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FECHA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.USUARIOSOLICITANTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CANTIDADPRODUCTOS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -44,6 +40,12 @@
             this.Proveedor1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.Proveedor2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.Proveedor3 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.IDPR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FECHA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.USUARIOSOLICITANTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CANTIDADPRODUCTOS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaLimite = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.SuspendLayout();
@@ -59,56 +61,23 @@
             this.IDPR,
             this.FECHA,
             this.USUARIOSOLICITANTE,
-            this.CANTIDADPRODUCTOS});
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle14;
+            this.CANTIDADPRODUCTOS,
+            this.FechaLimite});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView2.Location = new System.Drawing.Point(12, 63);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(424, 187);
+            this.dataGridView2.Size = new System.Drawing.Size(441, 187);
             this.dataGridView2.TabIndex = 15;
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
-            // 
-            // IDPR
-            // 
-            this.IDPR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.IDPR.HeaderText = "Nro. Pedido";
-            this.IDPR.Name = "IDPR";
-            this.IDPR.ReadOnly = true;
-            this.IDPR.Width = 81;
-            // 
-            // FECHA
-            // 
-            this.FECHA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle13.Format = "dd/MM/yyyy";
-            dataGridViewCellStyle13.NullValue = null;
-            this.FECHA.DefaultCellStyle = dataGridViewCellStyle13;
-            this.FECHA.HeaderText = "Fecha";
-            this.FECHA.Name = "FECHA";
-            this.FECHA.ReadOnly = true;
-            this.FECHA.Width = 62;
-            // 
-            // USUARIOSOLICITANTE
-            // 
-            this.USUARIOSOLICITANTE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.USUARIOSOLICITANTE.HeaderText = "Pedido Por";
-            this.USUARIOSOLICITANTE.Name = "USUARIOSOLICITANTE";
-            this.USUARIOSOLICITANTE.ReadOnly = true;
-            this.USUARIOSOLICITANTE.Width = 78;
-            // 
-            // CANTIDADPRODUCTOS
-            // 
-            this.CANTIDADPRODUCTOS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CANTIDADPRODUCTOS.HeaderText = "Cantidad de Productos";
-            this.CANTIDADPRODUCTOS.Name = "CANTIDADPRODUCTOS";
-            this.CANTIDADPRODUCTOS.ReadOnly = true;
             // 
             // dataGridView3
             // 
@@ -124,9 +93,9 @@
             this.Proveedor1,
             this.Proveedor2,
             this.Proveedor3});
-            this.dataGridView3.Location = new System.Drawing.Point(459, 63);
+            this.dataGridView3.Location = new System.Drawing.Point(471, 63);
             this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(635, 187);
+            this.dataGridView3.Size = new System.Drawing.Size(623, 187);
             this.dataGridView3.TabIndex = 16;
             this.dataGridView3.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellValueChanged);
             // 
@@ -152,6 +121,7 @@
             // 
             // IDProducto
             // 
+            this.IDProducto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.IDProducto.HeaderText = "IDProducto";
             this.IDProducto.Name = "IDProducto";
             this.IDProducto.Visible = false;
@@ -170,36 +140,84 @@
             // 
             // Proveedor1
             // 
-            this.Proveedor1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Proveedor1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Proveedor1.HeaderText = "Proveedor 1";
             this.Proveedor1.Name = "Proveedor1";
             this.Proveedor1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Proveedor1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Proveedor1.Width = 90;
             // 
             // Proveedor2
             // 
-            this.Proveedor2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Proveedor2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Proveedor2.HeaderText = "Proveedor 2";
             this.Proveedor2.Name = "Proveedor2";
             this.Proveedor2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Proveedor2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Proveedor2.Width = 90;
             // 
             // Proveedor3
             // 
-            this.Proveedor3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Proveedor3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Proveedor3.HeaderText = "Proveedor 3";
             this.Proveedor3.Name = "Proveedor3";
             this.Proveedor3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Proveedor3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Proveedor3.Width = 90;
+            // 
+            // IDPR
+            // 
+            this.IDPR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.IDPR.HeaderText = "Nro. Pedido";
+            this.IDPR.Name = "IDPR";
+            this.IDPR.ReadOnly = true;
+            this.IDPR.Width = 88;
+            // 
+            // FECHA
+            // 
+            this.FECHA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle3.Format = "dd/MM/yyyy";
+            dataGridViewCellStyle3.NullValue = null;
+            this.FECHA.DefaultCellStyle = dataGridViewCellStyle3;
+            this.FECHA.HeaderText = "Fecha";
+            this.FECHA.Name = "FECHA";
+            this.FECHA.ReadOnly = true;
+            this.FECHA.Width = 62;
+            // 
+            // USUARIOSOLICITANTE
+            // 
+            this.USUARIOSOLICITANTE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.USUARIOSOLICITANTE.HeaderText = "Pedido Por";
+            this.USUARIOSOLICITANTE.Name = "USUARIOSOLICITANTE";
+            this.USUARIOSOLICITANTE.ReadOnly = true;
+            this.USUARIOSOLICITANTE.Width = 84;
+            // 
+            // CANTIDADPRODUCTOS
+            // 
+            this.CANTIDADPRODUCTOS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CANTIDADPRODUCTOS.HeaderText = "Cantidad";
+            this.CANTIDADPRODUCTOS.Name = "CANTIDADPRODUCTOS";
+            this.CANTIDADPRODUCTOS.ReadOnly = true;
+            // 
+            // FechaLimite
+            // 
+            this.FechaLimite.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.FechaLimite.HeaderText = "Fecha Limite";
+            this.FechaLimite.Name = "FechaLimite";
+            this.FechaLimite.ReadOnly = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(12, 274);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(139, 43);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "Mandar Solicitud";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // FrmGestionPedidoCotizaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1106, 329);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dataGridView3);
@@ -218,10 +236,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDPR;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FECHA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn USUARIOSOLICITANTE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CANTIDADPRODUCTOS;
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -231,5 +245,11 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn Proveedor1;
         private System.Windows.Forms.DataGridViewComboBoxColumn Proveedor2;
         private System.Windows.Forms.DataGridViewComboBoxColumn Proveedor3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDPR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FECHA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn USUARIOSOLICITANTE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CANTIDADPRODUCTOS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaLimite;
+        private System.Windows.Forms.Button button1;
     }
 }

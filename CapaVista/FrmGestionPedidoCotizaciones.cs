@@ -1,5 +1,6 @@
 ﻿using CapaLogica;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
@@ -14,7 +15,7 @@ namespace CapaVista
         public FrmGestionPedidoCotizaciones()
         {
             InitializeComponent();
-            
+
         }
         private void Cargardgv()
         {
@@ -51,7 +52,7 @@ namespace CapaVista
                 producto = $"{fila["Producto"]} {fila["Marca"]} {fila["Medida"]}";
                 cantpedida = fila["CantidadPedida"].ToString();
                 unidadcarga = fila["Unidad"].ToString();
-                dataGridView3.Rows.Add(idproducto, producto, cantpedida +" "+ unidadcarga,DBNull.Value);
+                dataGridView3.Rows.Add(idproducto, producto, cantpedida + " " + unidadcarga, DBNull.Value);
             }
         }
 
@@ -64,9 +65,8 @@ namespace CapaVista
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DetallePR();
-           
 
-            // Asignar el DataSource a la columna combo solo una vez
+
             var comboCol = (DataGridViewComboBoxColumn)dataGridView3.Columns["Proveedor1"];
             comboCol.DataSource = cacheproveedores;
             comboCol.DisplayMember = "DisplayProveedor";
@@ -78,26 +78,93 @@ namespace CapaVista
 
         private void dataGridView3_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView3.Columns[e.ColumnIndex].Name == "Proveedor1")
+            if (e.RowIndex < 0)
+                return;
+
+            if (e.ColumnIndex == dataGridView3.Columns["Proveedor1"].Index)
             {
-                var row = dataGridView3.Rows[e.RowIndex];
-                var proveedor1 = row.Cells["Proveedor1"].Value;
+                var celdaProveedor1 = (DataGridViewComboBoxCell)dataGridView3.Rows[e.RowIndex].Cells["Proveedor1"];
+                var celdaProveedor2 = (DataGridViewComboBoxCell)dataGridView3.Rows[e.RowIndex].Cells["Proveedor2"];
+                var celdaProveedor3 = (DataGridViewComboBoxCell)dataGridView3.Rows[e.RowIndex].Cells["Proveedor3"];
 
-                if (proveedor1 != null)
+                if (celdaProveedor1.Value != null && celdaProveedor1.Value != DBNull.Value)
                 {
-                    // Clonar tabla y filtrar
-                    DataView dv = new DataView(cacheproveedores);
-                    dv.RowFilter = $"IdProveedor <> {proveedor1}";
+                    int proveedor1Seleccionado = Convert.ToInt32(celdaProveedor1.Value);
 
-                    // Acceder al ComboBox de la columna Proveedor2
-                    DataGridViewComboBoxCell celdaProveedor2 = (DataGridViewComboBoxCell)row.Cells["Proveedor2"];
-                    celdaProveedor2.DataSource = dv.ToTable();
-                    celdaProveedor2.DisplayMember = "RazonSocial";
+                    celdaProveedor2.ReadOnly = false;
+
+                    var dtProveedor2 = FiltrarProveedores(excluirIds: new List<int> { proveedor1Seleccionado });
+                    celdaProveedor2.DataSource = dtProveedor2;
+                    celdaProveedor2.DisplayMember = "DisplayProveedor";
                     celdaProveedor2.ValueMember = "IdProveedor";
-                    celdaProveedor2.Value = null; // limpiar selección anterior
-                    celdaProveedor2.ReadOnly = false; // habilitar si estaba deshabilitada
+
+                    celdaProveedor2.Value = null;
+
+                    celdaProveedor3.ReadOnly = true;
+                    celdaProveedor3.Value = null;
+                    celdaProveedor3.DataSource = null;
+                }
+                else
+                {
+                    var combo2 = (DataGridViewComboBoxCell)dataGridView3.Rows[e.RowIndex].Cells["Proveedor2"];
+                    combo2.ReadOnly = true;
+                    combo2.Value = null;
+                    combo2.DataSource = null;
+
+                    var combo3 = (DataGridViewComboBoxCell)dataGridView3.Rows[e.RowIndex].Cells["Proveedor3"];
+                    combo3.ReadOnly = true;
+                    combo3.Value = null;
+                    combo3.DataSource = null;
+                }
+
+                dataGridView3.InvalidateRow(e.RowIndex);
+            }
+            else if (e.ColumnIndex == dataGridView3.Columns["Proveedor2"].Index)
+            {
+                var celdaProveedor1 = (DataGridViewComboBoxCell)dataGridView3.Rows[e.RowIndex].Cells["Proveedor1"];
+                var celdaProveedor2 = (DataGridViewComboBoxCell)dataGridView3.Rows[e.RowIndex].Cells["Proveedor2"];
+                var celdaProveedor3 = (DataGridViewComboBoxCell)dataGridView3.Rows[e.RowIndex].Cells["Proveedor3"];
+
+                if (celdaProveedor2.Value != null && celdaProveedor2.Value != DBNull.Value)
+                {
+                    int proveedor1Seleccionado = celdaProveedor1.Value != null && celdaProveedor1.Value != DBNull.Value
+                        ? Convert.ToInt32(celdaProveedor1.Value)
+                        : -1;
+
+                    int proveedor2Seleccionado = Convert.ToInt32(celdaProveedor2.Value);
+
+                    celdaProveedor3.ReadOnly = false;
+
+                    var dtProveedor3 = FiltrarProveedores(excluirIds: new List<int> { proveedor1Seleccionado, proveedor2Seleccionado });
+                    celdaProveedor3.DataSource = dtProveedor3;
+                    celdaProveedor3.DisplayMember = "DisplayProveedor";
+                    celdaProveedor3.ValueMember = "IdProveedor"; 
+                    celdaProveedor3.Value = null;
+                }
+                else
+                {
+                    celdaProveedor3.ReadOnly = true;
+                    celdaProveedor3.Value = null;
+                    celdaProveedor3.DataSource = null;
+                }
+
+                dataGridView3.InvalidateRow(e.RowIndex);
+            }
+        }
+        private DataTable FiltrarProveedores(List<int> excluirIds)
+        {
+            var dtFiltrado = cacheproveedores.Clone();
+
+            foreach (DataRow dr in cacheproveedores.Rows)
+            {
+                int id = Convert.ToInt32(dr["IdProveedor"]);
+                if (!excluirIds.Contains(id))
+                {
+                    dtFiltrado.ImportRow(dr);
                 }
             }
+
+            return dtFiltrado;
         }
     }
 }
