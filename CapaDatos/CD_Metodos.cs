@@ -129,6 +129,7 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("@Estado", producto.Estado);
                     cmd.Parameters.AddWithValue("@FechaAlta", producto.FechaAlta);
                     cmd.Parameters.AddWithValue("@IdUsuarioAlta", producto.IdUsuarioAlta);
+                    cmd.Parameters.AddWithValue("@Dvh", producto.DVH);
                     DataTable dtDescuentos = new DataTable();
 
                     dtDescuentos.Columns.Add("CantidadMin", typeof(int));
@@ -153,7 +154,6 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
         }
-
         public string InsertarProveedor(Proveedor proveedor)
         {
             try
@@ -482,6 +482,17 @@ namespace CapaDatos
         {
             DataTable dt = new DataTable();
             using (SqlCommand cmd = new SqlCommand("sp_SeleccionarTipoProductos", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable Proveedores()
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarProveedores", conexion.Abrir()))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 SqlDataAdapter da = new SqlDataAdapter(cmd);

@@ -84,6 +84,12 @@
     <Compile Include="FrmCargarMarcas.Designer.cs">
       <DependentUpon>FrmCargarMarcas.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmGestionPedidoCotizaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGestionPedidoCotizaciones.Designer.cs">
+      <DependentUpon>FrmGestionPedidoCotizaciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmGestionProductos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCargarMarcas.resx">
       <DependentUpon>FrmCargarMarcas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGestionPedidoCotizaciones.resx">
+      <DependentUpon>FrmGestionPedidoCotizaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmGestionProductos.resx">
       <DependentUpon>FrmGestionProductos.cs</DependentUpon>

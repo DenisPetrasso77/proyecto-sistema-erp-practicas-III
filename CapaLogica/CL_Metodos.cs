@@ -3,6 +3,7 @@ using CapaEntities;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace CapaLogica
 {
@@ -18,6 +19,10 @@ namespace CapaLogica
         public string InsertarProveedor(Proveedor proveedor)
         {
             return metodos.InsertarProveedor(proveedor);
+        }
+        public DataTable Proveedores()
+        {
+            return metodos.Proveedores();
         }
         public DataTable Localidades(int id)
         { 

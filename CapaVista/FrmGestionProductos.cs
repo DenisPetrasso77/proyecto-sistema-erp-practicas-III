@@ -17,6 +17,7 @@ namespace CapaVista
         FrmCargarMarcas Cargarmarcas = new FrmCargarMarcas();
         FrmCargarTipoProducto Tipoproducto = new FrmCargarTipoProducto();
         CV_Utiles utiles = new CV_Utiles();
+        CV_Seguridad seguridad = new CV_Seguridad();
         
         
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -119,6 +120,8 @@ namespace CapaVista
             int por3 = string.IsNullOrWhiteSpace(textBox14.Text) ? 0 : Convert.ToInt32(textBox14.Text.Trim());
             int can4 = string.IsNullOrWhiteSpace(textBox17.Text) ? 0 : Convert.ToInt32(textBox17.Text.Trim());
             int por4 = string.IsNullOrWhiteSpace(textBox16.Text) ? 0 : Convert.ToInt32(textBox16.Text.Trim());
+            DateTime fecha = DateTime.Now;
+            
             var descuentos = new List<(int cantidadMinima, int porcentaje)>
             {
                 (can1, por1),
@@ -140,11 +143,12 @@ namespace CapaVista
                 StockMax = stockmax,
                 StockActual = stockactual,
                 Estado = estado,
-                FechaAlta = DateTime.Now,
+                FechaAlta = fecha,
                 IdUsuarioAlta = 1,
                 PrecioCompra = preciocompra,
                 PrecioVenta = precioventa,
                 Descuentos = descuentos,
+                DVH = seguridad.CalcularDVH(codigo+tipoproducto+cate+ marca+ medidas+ fventa+estado+fecha+1+"Normal")
             };
 
             string resultado = metodos.InsertarProducto(productoNuevo);

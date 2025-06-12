@@ -15,8 +15,10 @@ namespace CapaVista
         FrmGestionProveedores proveedores = new FrmGestionProveedores();
         FrmGestionProductos productos;
         FrmGestionPR gestionpr = new FrmGestionPR();
+        FrmGestionPedidoCotizaciones cotizaciones = new FrmGestionPedidoCotizaciones();
         //Usuarioactual Usuarioactual;
         FrmAdmusuarios Admusuarios;
+        CV_Seguridad seguridad = new CV_Seguridad();
 
         public Frm_AdminHome()
         {
@@ -275,6 +277,21 @@ namespace CapaVista
         {
             this.Hide();
             proveedores.ShowDialog();
+            this.Show();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            if (!panel5.Visible)
+                panel5.Visible = true;
+            else
+                panel5.Visible = false;
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            cotizaciones.ShowDialog();
             this.Show();
         }
     }
