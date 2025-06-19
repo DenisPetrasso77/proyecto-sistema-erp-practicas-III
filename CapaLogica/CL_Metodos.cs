@@ -16,6 +16,26 @@ namespace CapaLogica
         //{
         //    return metodos.DatosIngreso(Usuario);
         //}
+        public DataTable Proveedores(int? id = null)
+        { 
+            return metodos.Proveedores(id);
+        }
+        public string ActualizarMarca(int id, string nombre, string estado)
+        {
+            return metodos.ActualizarMarca(id,nombre,estado);
+        }
+        public string ActualizarMedidas(int id, string nombre, string estado)
+        {
+            return metodos.ActualizarMedidas(id, nombre, estado);
+        }
+        public string InsertarMedidas(string nombre)
+        { 
+            return metodos.InsertarMedidas(nombre);
+        }
+        public string InsertarSolicitudCotizacion(PedidoCotizacion pedidoCotizacion, DataTable detalle)
+        {
+            return metodos.InsertarSolicitudCotizacion(pedidoCotizacion,detalle);
+        }
         public string InsertarProveedor(Proveedor proveedor)
         {
             return metodos.InsertarProveedor(proveedor);
@@ -23,6 +43,10 @@ namespace CapaLogica
         public DataTable Proveedores()
         {
             return metodos.Proveedores();
+        }
+        public DataTable SolicitudCotizaciones()
+        {
+            return metodos.SolicitudCotizacion();
         }
         public DataTable Localidades(int id)
         { 

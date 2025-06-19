@@ -7,7 +7,8 @@ namespace CapaVista
 {
     public partial class FrmCargarCategorias : Form
     {
-        CL_Metodos metodos = new CL_Metodos();
+        private readonly CL_Metodos metodos = new CL_Metodos();
+        FrmNuevaCate nuevacate = new FrmNuevaCate();
         DataTable cachecategorias = new DataTable();
         public FrmCargarCategorias()
         {
@@ -19,55 +20,16 @@ namespace CapaVista
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(textBox2.Text))
-            {
-                MessageBox.Show("Por favor ingrese el nombre de la nueva categoria");
-                return;
-            }
-            try
-            {
-                MessageBox.Show(metodos.InsertarCate(textBox2.Text));
-                textBox2.Text = "";
-                textBox2.Focus();
-            }
-            catch
-            {
-                MessageBox.Show("Error al contactar con la Base de Datos");
-            }
-            Cargarcategorias();
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
-            try
-            {
-                int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ID"].Value);
-                string categoria = dataGridView1.CurrentRow.Cells["CATEGORIA"].Value.ToString();
-                string estado = dataGridView1.CurrentRow.Cells["ESTADO"].Value.ToString();
-                MessageBox.Show(metodos.ActualizarCate(id, categoria, estado));
-                textBox2.Text = "";
-                textBox1.Focus();
-                button2.Visible = true;
-            }
-            catch
-            {
-                MessageBox.Show("Error al contactar con la Base de Datos");
-            }
-            Cargarcategorias();
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrWhiteSpace(textBox2.Text))
-            {
-                button2.Enabled = true;
-            }
-            else
-            { 
-                button2.Enabled = false;
-            }
+            button4.Visible = false;
+            button2.Visible = false;
+            button1.Visible = true;
+            button3.Visible = true;
+            DataGridViewRow fila = dataGridView1.CurrentRow;
+            fila.Cells["CATEGORIA"].ReadOnly = false;
+            fila.Cells["ESTADO"].ReadOnly = false;
+            fila.Cells["ID"].ReadOnly = true;
         }
         private void Cargarcategorias()
         {
@@ -97,11 +59,17 @@ namespace CapaVista
         private void FrmCargarCategorias_Load(object sender, EventArgs e)
         {
             Cargarcategorias();
-            dataGridView1.Columns["ID"].ReadOnly = true;
-            dataGridView1.Columns["CATEGORIA"].ReadOnly = false;
-            dataGridView1.Columns["ESTADO"].ReadOnly = false;
+            BloquearDatagrid(dataGridView1);
         }
-
+        private void BloquearDatagrid(DataGridView dgv )
+        {
+            foreach (DataGridViewRow fila in dgv.Rows)
+            {
+                fila.Cells["ID"].ReadOnly = true;
+                fila.Cells["CATEGORIA"].ReadOnly = true;
+                fila.Cells["ESTADO"].ReadOnly = true;
+            }
+        }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             Cargarcategorias();
@@ -126,7 +94,45 @@ namespace CapaVista
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             Cargarcategorias();
+            BloquearDatagrid(dataGridView1);
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ID"].Value);
+                string categoria = dataGridView1.CurrentRow.Cells["CATEGORIA"].Value.ToString();
+                string estado = dataGridView1.CurrentRow.Cells["ESTADO"].Value.ToString();
+                MessageBox.Show(metodos.ActualizarCate(id, categoria, estado));
+                textBox1.Focus();
+                button4.Visible = !button4.Visible;
+                button2.Visible = !button2.Visible;
+                button3.Visible = !button3.Visible;
+                button1.Visible = !button1.Visible;
+                button2.Visible = !button2.Visible;
+            }
+            catch
+            {
+                MessageBox.Show("Error al contactar con la Base de Datos");
+            }
+            Cargarcategorias();
+            BloquearDatagrid(dataGridView1);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            nuevacate.ShowDialog();
+            Cargarcategorias();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            button1.Visible = false;
+            button3.Visible = false;
+            button2.Visible = true;
+            button4.Visible = true;
+            BloquearDatagrid(dataGridView1);
+        }
     }
 }

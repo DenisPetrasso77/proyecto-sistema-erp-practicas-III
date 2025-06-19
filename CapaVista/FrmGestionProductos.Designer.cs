@@ -359,6 +359,7 @@
             this.textBox5.Size = new System.Drawing.Size(68, 21);
             this.textBox5.TabIndex = 11;
             this.textBox5.Text = "0";
+            this.textBox5.Leave += new System.EventHandler(this.textBox5_Leave);
             // 
             // checkBox1
             // 
@@ -390,6 +391,7 @@
             this.textBox4.Size = new System.Drawing.Size(77, 21);
             this.textBox4.TabIndex = 10;
             this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VerificarCaracter);
+            this.textBox4.Leave += new System.EventHandler(this.textBox4_Leave);
             // 
             // textBox10
             // 
@@ -469,6 +471,7 @@
             this.textBox3.Size = new System.Drawing.Size(82, 21);
             this.textBox3.TabIndex = 9;
             this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VerificarCaracter);
+            this.textBox3.Leave += new System.EventHandler(this.textBox3_Leave);
             // 
             // checkBox2
             // 
@@ -578,6 +581,7 @@
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox9.TabIndex = 25;
             this.pictureBox9.TabStop = false;
+            this.pictureBox9.Click += new System.EventHandler(this.pictureBox9_Click);
             // 
             // comboBox4
             // 

@@ -379,7 +379,7 @@
             this.Controls.Add(this.label5);
             this.Name = "FrmGestionProveedores";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "GESTION DE PROVEEDORES";
+            this.Text = "NUEVO PROVEEDOR";
             this.Load += new System.EventHandler(this.FrmGestionProveedores_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

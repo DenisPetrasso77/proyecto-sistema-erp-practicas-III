@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DetalleSoliCotizaciones.cs" />
+    <Compile Include="PedidoCotizacion.cs" />
     <Compile Include="PedidodeReaprovionamiento.cs" />
     <Compile Include="ProductoNuevo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

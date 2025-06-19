@@ -10,15 +10,18 @@ namespace CapaVista
     public partial class Frm_AdminHome : Form
     {
         CL_Metodos metodos = new CL_Metodos();
-        private DataTable productosCache = new DataTable();
+        DataTable productosCache = new DataTable();
         FrmCargarCategorias cate = new FrmCargarCategorias();
         FrmGestionProveedores proveedores = new FrmGestionProveedores();
         FrmGestionProductos productos;
         FrmGestionPR gestionpr = new FrmGestionPR();
         FrmGestionPedidoCotizaciones cotizaciones = new FrmGestionPedidoCotizaciones();
+        FrmGestionOrdenCompra ordenCompra = new FrmGestionOrdenCompra();
+        FrmGestionRecepcion recepcion = new FrmGestionRecepcion();
         //Usuarioactual Usuarioactual;
         FrmAdmusuarios Admusuarios;
         CV_Seguridad seguridad = new CV_Seguridad();
+        GestionProveedores gestionproveedores = new GestionProveedores();
 
         public Frm_AdminHome()
         {
@@ -293,6 +296,48 @@ namespace CapaVista
             this.Hide();
             cotizaciones.ShowDialog();
             this.Show();
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ordenCompra.ShowDialog();
+            this.Show();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            if (!panel6.Visible)
+                panel6.Visible = true;
+            else
+                panel6.Visible = false;
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            if (!panel7.Visible)
+                panel7.Visible = true;
+            else
+                panel7.Visible = false;
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            recepcion.ShowDialog();
+            recepcion.Show();
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            gestionproveedores.ShowDialog();
+            this.Hide();
+        }
+
+        private void Frm_AdminHome_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1,15 +1,21 @@
-﻿using CapaLogica;
+﻿using CapaEntities;
+using CapaLogica;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace CapaVista
 {
     public partial class FrmGestionPedidoCotizaciones : Form
     {
         CL_Metodos metodos = new CL_Metodos();
+        CV_Utiles utiles = new CV_Utiles();
         DataTable cacheproveedores;
+        DataTable detalleCotizaciones;
+
 
 
         public FrmGestionPedidoCotizaciones()
@@ -28,13 +34,15 @@ namespace CapaVista
             DataTable prpedidos = metodos.PRpedidos();
             foreach (DataRow fila in prpedidos.Rows)
             {
-                idpr = Convert.ToInt32(fila["IdPR"]);
-                fecha = Convert.ToDateTime(fila["Fecha"]).ToString("dd/mm/yyyy");
-                usuario = fila["Usuario"].ToString();
-                cantproductos = $"{Convert.ToInt32(fila["CantidadProductos"])} productos";
-                estado = fila["Estado"].ToString();
-
-                dataGridView2.Rows.Add(idpr, fecha, usuario, cantproductos);
+                if (fila["Estado"].ToString() != "Esperando Cotizacion")
+                {
+                    idpr = Convert.ToInt32(fila["IdPR"]);
+                    fecha = Convert.ToDateTime(fila["Fecha"]).ToString("dd/mm/yyyy");
+                    usuario = fila["Usuario"].ToString();
+                    cantproductos = $"{Convert.ToInt32(fila["CantidadProductos"])} productos";
+                    estado = fila["Estado"].ToString();
+                    dataGridView2.Rows.Add(idpr, fecha, usuario, cantproductos);
+                }
             }
         }
         private void DetallePR()
@@ -43,12 +51,12 @@ namespace CapaVista
             string producto;
             string cantpedida;
             string unidadcarga;
-            int idproducto;
+            string idproducto;
             int idpr = Convert.ToInt32(dataGridView2.CurrentRow.Cells["IDPR"].Value);
             DataTable detallepr = metodos.DetallePR(idpr);
             foreach (DataRow fila in detallepr.Rows)
             {
-                idproducto = Convert.ToInt32(fila["Producto"].ToString());
+                idproducto = fila["CodigoProducto"].ToString();
                 producto = $"{fila["Producto"]} {fila["Marca"]} {fila["Medida"]}";
                 cantpedida = fila["CantidadPedida"].ToString();
                 unidadcarga = fila["Unidad"].ToString();
@@ -61,12 +69,14 @@ namespace CapaVista
             Cargardgv();
             cacheproveedores = metodos.Proveedores();
             cacheproveedores.Columns.Add("DisplayProveedor", typeof(string), "RazonSocial + ' (' + NumeroDeIdentificacion + ')'");
+            dataGridView3.ReadOnly = true;
+            button1.Enabled = false;
+            button3.Enabled = false;
+            dateTimePicker1.Enabled = false;
         }
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DetallePR();
-
-
             var comboCol = (DataGridViewComboBoxColumn)dataGridView3.Columns["Proveedor1"];
             comboCol.DataSource = cacheproveedores;
             comboCol.DisplayMember = "DisplayProveedor";
@@ -165,6 +175,110 @@ namespace CapaVista
             }
 
             return dtFiltrado;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            dataGridView3.ReadOnly = false;
+            dataGridView2.ReadOnly = true;
+            button1.Enabled = true;
+            button3.Enabled = true;
+            dateTimePicker1.Enabled = true;
+            button2.Enabled = false;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            dataGridView3.Rows.Clear();
+            dataGridView2.ReadOnly=false;
+            dataGridView3.ReadOnly = true;
+            button1.Enabled = false;
+            button3.Enabled = false;
+            dateTimePicker1.Enabled = false;
+            button2.Enabled = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            PedidoCotizacion pedido = new PedidoCotizacion
+            {
+                IdPR = Convert.ToInt32(dataGridView2.CurrentRow.Cells["IdPR"].Value),
+                Estado = "Activo",
+                FechaAlta = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                IdUsuarioAlta = 1,
+                FechaUltModificacion = DateTime.Now,
+                IdUsuarioUltModificacion = 1
+            };
+
+            DateTime fechaLimite = dateTimePicker1.Value;
+
+            List<DetalleSoliCotizaciones> detalles = new List<DetalleSoliCotizaciones>();
+
+            foreach (DataGridViewRow row in dataGridView3.Rows)
+            {
+                if (row.IsNewRow) continue;
+
+                string idProducto = row.Cells["IDProducto"].Value?.ToString();
+                string cantidad = row.Cells["CantidadPedida"].Value.ToString();
+
+                if (row.Cells["Proveedor1"].Value != null)
+                {
+                    detalles.Add(new DetalleSoliCotizaciones
+                    {
+                        IdProducto = idProducto,
+                        IdProveedor = Convert.ToInt32(row.Cells["Proveedor1"].Value),
+                        FechaLimite = fechaLimite,
+                        Cantidad = cantidad
+                    });
+                }
+                if (row.Cells["Proveedor2"].Value != null)
+                {
+                    detalles.Add(new DetalleSoliCotizaciones
+                    {
+                        IdProducto = idProducto,
+                        IdProveedor = Convert.ToInt32(row.Cells["Proveedor2"].Value),
+                        FechaLimite = fechaLimite,
+                        Cantidad = cantidad
+                    });
+                }
+                if (row.Cells["Proveedor3"].Value != null)
+                {
+                    detalles.Add(new DetalleSoliCotizaciones
+                    {
+                        IdProducto = idProducto,
+                        IdProveedor = Convert.ToInt32(row.Cells["Proveedor3"].Value),
+                        FechaLimite = fechaLimite,
+                        Cantidad = cantidad
+                    });
+                }
+            }
+
+            DataTable detalleTable = ConvertirADetalleCotizacionesTipo(detalles);
+            string resultado = metodos.InsertarSolicitudCotizacion(pedido, detalleTable);
+
+            MessageBox.Show(resultado);
+            dataGridView3.Rows.Clear();
+            Cargardgv();
+        }
+        private DataTable ConvertirADetalleCotizacionesTipo(List<DetalleSoliCotizaciones> lista)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("IdProducto", typeof(string));
+            dt.Columns.Add("IdProveedor", typeof(int));
+            dt.Columns.Add("FechaLimite", typeof(DateTime));
+            dt.Columns.Add("Cantidad", typeof(string));
+
+            foreach (var item in lista)
+            {
+                dt.Rows.Add(item.IdProducto, item.IdProveedor, item.FechaLimite, item.Cantidad);
+            }
+
+            return dt;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

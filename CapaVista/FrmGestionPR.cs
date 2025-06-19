@@ -9,7 +9,7 @@ namespace CapaVista
     public partial class FrmGestionPR : Form
     {
         DataTable stockproducmin = new DataTable();
-        CL_Metodos metodos = new CL_Metodos();
+        private readonly CL_Metodos metodos = new CL_Metodos();
         DataTable prpedidos;
         DataTable detallepr;
         public FrmGestionPR()
@@ -26,6 +26,7 @@ namespace CapaVista
             int calculoreferencia;
             stockproducmin = metodos.ProductosStockMin();
             dataGridView1.Rows.Clear();
+
             foreach (DataRow fila in stockproducmin.Rows)
             {
                 codigo = fila["CodigoProducto"].ToString();
@@ -37,7 +38,6 @@ namespace CapaVista
                 dataGridView1.Rows.Add(codigo, descripcion, stockactual, formadecompra, sugerencia);
             }
         }
-
         private void Cargardgvdetalle()
         {
             dataGridView2.Rows.Clear();
@@ -49,20 +49,21 @@ namespace CapaVista
             prpedidos = metodos.PRpedidos();
             foreach (DataRow fila in prpedidos.Rows)
             {
+                estado = fila["Estado"].ToString();
+                if (estado != "pendiente" && !checkBox1.Checked)
+                    continue;
                 idpr = Convert.ToInt32(fila["IdPR"]);
                 fecha = Convert.ToDateTime(fila["Fecha"]).ToString("dd/mm/yyyy");
                 usuario = fila["Usuario"].ToString();
                 cantproductos = $"{Convert.ToInt32(fila["CantidadProductos"])} productos";
-                estado = fila["Estado"].ToString();
-                
                 dataGridView2.Rows.Add(idpr, fecha, usuario, cantproductos, estado);
             }
         }
-
         private void DetallePR()
         {
             dataGridView3.Rows.Clear();
             string descripcion;
+            string codigo;
             string cantpedida;
             string unidadcarga;
             int iddetallepr;
@@ -72,14 +73,14 @@ namespace CapaVista
             foreach (DataRow fila in detallepr.Rows)
             {
                 iddetallepr = Convert.ToInt32(fila["IdDetallePR"].ToString());
-                descripcion = $"{fila["Producto"]} {fila["Marca"]} {fila["Medida"]}";
+                descripcion = $"{fila["TipoProducto"]} {fila["Marca"]} {fila["Medida"]}";
                 cantpedida = fila["CantidadPedida"].ToString();
                 unidadcarga = fila["Unidad"].ToString();
                 Stockmax = Convert.ToInt32(fila["StockMaximo"].ToString());
-                dataGridView3.Rows.Add(iddetallepr, descripcion, Stockmax + unidadcarga, cantpedida);
+                codigo = fila["CodigoProducto"].ToString();
+                dataGridView3.Rows.Add(iddetallepr, codigo,descripcion, Stockmax +" "+ unidadcarga, cantpedida);
             }
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
             DataTable detalle = new DataTable();
@@ -111,37 +112,30 @@ namespace CapaVista
             }
             
         }
-
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DetallePR();
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
+            if (dataGridView2.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione algun pedido");
+                return;
+            }
+            if (dataGridView2.CurrentRow.Cells["ESTADO"].Value.ToString() != "Pendiente")
+            {
+                MessageBox.Show("No se puede modificar un pedido que ya se envio a pedir cotizacion");
+                return;
+            }
             dataGridView3.ReadOnly = false;
             dataGridView2.ReadOnly = true;
-            dataGridView3.Columns["Descripcion2"].ReadOnly = true;
+            dataGridView3.Columns["CantidadPedida2"].ReadOnly = false;
             button4.Visible = true;
-            button5.Visible = true;
             button6.Visible = true;
-            dataGridView3.Rows.Clear();
-            string descripcion;
-            string cantpedida;
-            string unidadcarga;
-            string idproducto;
-            int idpr = Convert.ToInt32(dataGridView2.CurrentRow.Cells["IDPR"].Value);
-            detallepr = metodos.DetallePR(idpr);
-            foreach (DataRow fila in detallepr.Rows)
-            {
-                idproducto = fila["IdDetallePR"].ToString();
-                descripcion = fila["Descripcion"].ToString();
-                cantpedida = fila["CantidadPedida"].ToString();
-                unidadcarga = fila["UnidadCarga"].ToString();
-                dataGridView3.Rows.Add(idproducto,descripcion, cantpedida);
-            }
+            button2.Visible = false;
+            button5.Visible = true;
         }
-
         private void VerificarCaracter(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
@@ -149,7 +143,6 @@ namespace CapaVista
                 e.Handled = true;
             }
         }
-
         private void button4_Click(object sender, EventArgs e)
         {
             int iddetallepr;
@@ -163,40 +156,43 @@ namespace CapaVista
                 
             }
             DetallePR();
+            button2.Visible= false;
+            button6.Visible= false;
         }
-
         private void button5_Click(object sender, EventArgs e)
         {
             int iddetallepr = Convert.ToInt32(dataGridView3.CurrentRow.Cells["IDdetallePR"].Value);
             metodos.BorrardetallePR(iddetallepr);
             DetallePR();
         }
-
         private void button6_Click(object sender, EventArgs e)
         {
             dataGridView3.ReadOnly = !dataGridView3.ReadOnly;
             dataGridView2.ReadOnly = !dataGridView2.ReadOnly;
-            dataGridView3.Columns["Descripcion2"].ReadOnly = !dataGridView3.Columns["Descripcion2"].ReadOnly;
-            button4.Visible = !button4.Visible;
-            button5.Visible = !button5.Visible;
-            button6.Visible = !button6.Visible;
+            dataGridView3.Columns["CantidadPedida2"].ReadOnly = !dataGridView3.Columns["CantidadPedida2"].ReadOnly;
+            button4.Visible = false;
+            button2.Visible = true;
+            button5.Visible = true;
+            button6.Visible = false;
             Cargardgvdetalle();
         }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             Cargardgvdetalle();
         }
-
         private void FrmGestionPR_Load(object sender, EventArgs e)
         {
             Cargardgv();
             Cargardgvdetalle();
         }
-
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             Cargardgv();
         }
-        
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            Cargardgvdetalle();
+        }
     }
 }

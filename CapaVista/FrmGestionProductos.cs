@@ -17,6 +17,7 @@ namespace CapaVista
         FrmCargarMarcas Cargarmarcas = new FrmCargarMarcas();
         FrmCargarTipoProducto Tipoproducto = new FrmCargarTipoProducto();
         CV_Utiles utiles = new CV_Utiles();
+        FrmGestionMedidas medidas = new FrmGestionMedidas();
         CV_Seguridad seguridad = new CV_Seguridad();
         
         
@@ -33,6 +34,7 @@ namespace CapaVista
 
         private void Cargarcbxcategorias()
         {
+            comboBox1.Items.Clear();
             DataTable CacheCategorias = metodos.Categorias();
             foreach (DataRow filas in CacheCategorias.Rows)
             {
@@ -46,6 +48,7 @@ namespace CapaVista
 
         private void Cargarcbxtpoproducto()
         {
+            comboBox6.Items.Clear();
             DataTable CacheTipoProducto = metodos.TipoProductos();
             foreach (DataRow filas in CacheTipoProducto.Rows)
             {
@@ -55,6 +58,7 @@ namespace CapaVista
         }
         private void Cargarcbxmedidas()
         {
+            comboBox2.Items.Clear();
             DataTable CacheMedidas = metodos.Medidas();
             foreach (DataRow filas in CacheMedidas.Rows)
             {
@@ -64,6 +68,7 @@ namespace CapaVista
         }
         private void Cargarcbxmarcas()
         {
+            comboBox4.Items.Clear();
             DataTable CacheMarcas = metodos.Marcas();
             foreach (DataRow filas in CacheMarcas.Rows)
             {
@@ -162,7 +167,11 @@ namespace CapaVista
         }
         private void VerificarCaracter(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != '.')
+            if (e.KeyChar == '.')
+            {
+                e.KeyChar = ',';
+            }
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != ',')
             {
                 e.Handled = true;
             }
@@ -258,6 +267,7 @@ namespace CapaVista
         private void pictureBox8_Click(object sender, EventArgs e)
         {
             Cargarmarcas.ShowDialog();
+            Cargarcbxmedidas();
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
@@ -285,6 +295,38 @@ namespace CapaVista
         {
             Tipoproducto.ShowDialog();
             Cargarcbxtpoproducto();
+        }
+
+        private void pictureBox9_Click(object sender, EventArgs e)
+        {
+            medidas.ShowDialog();
+            Cargarcbxmedidas();
+        }
+
+        private void textBox5_Leave(object sender, EventArgs e)
+        {
+            ConvertirDecimal(textBox5);
+        }
+        private void ConvertirDecimal(TextBox tx)
+        {
+            if (!string.IsNullOrEmpty(tx.Text))
+            {
+                tx.Text = decimal.Parse(tx.Text).ToString("N2");
+            }
+            else
+            {
+                MessageBox.Show("Ingrese un valor de compra");
+            }
+        }
+
+        private void textBox3_Leave(object sender, EventArgs e)
+        {
+            ConvertirDecimal(textBox3);
+        }
+
+        private void textBox4_Leave(object sender, EventArgs e)
+        {
+            ConvertirDecimal(textBox4);
         }
     }
 }

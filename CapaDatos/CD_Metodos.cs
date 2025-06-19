@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Diagnostics.Tracing;
 using System.Xml;
@@ -232,6 +233,27 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
         }
+        public string InsertarMedidas(string nombre)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_InsertarMedidas", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Medida", nombre);
+                    cmd.ExecuteNonQuery();
+                    return "Medida Cargada";
+                }
+            }
+            catch (SqlException sqlex)
+            {
+                return sqlex.Message;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
         public string ActualizarCate(int id,string nombre, string estado)
         {
             try
@@ -244,6 +266,52 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("@Estado", estado);
                     cmd.ExecuteNonQuery();
                     return "Categoria Actualizada";
+                }
+            }
+            catch (SqlException sqlex)
+            {
+                return sqlex.Message;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+        public string ActualizarMarca(int id, string nombre, string estado)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_ActualizarMarca", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", id);
+                    cmd.Parameters.AddWithValue("@Marca", nombre);
+                    cmd.Parameters.AddWithValue("@Estado", estado);
+                    cmd.ExecuteNonQuery();
+                    return "Marca Actualizada";
+                }
+            }
+            catch (SqlException sqlex)
+            {
+                return sqlex.Message;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+        public string ActualizarMedidas(int id, string nombre, string estado)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_ActualizarMedidas", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", id);
+                    cmd.Parameters.AddWithValue("@@Medida", nombre);
+                    cmd.Parameters.AddWithValue("@Estado", estado);
+                    cmd.ExecuteNonQuery();
+                    return "Medida Actualizada";
                 }
             }
             catch (SqlException sqlex)
@@ -278,6 +346,7 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
         }
+
         public int ActualizarUsuario(string usuario, string nombre, string apellido, string dni, int rol, int bloqueado)
         {
             try
@@ -422,7 +491,6 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
         }
-
         public DataTable Marcas()
         {
             DataTable dt = new DataTable();
@@ -434,10 +502,32 @@ namespace CapaDatos
             }
             return dt;
         }
+        public DataTable SolicitudCotizacion()
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarSolicitudCotizaciones", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
         public DataTable Medidas()
         {
             DataTable dt = new DataTable();
             using (SqlCommand cmd = new SqlCommand("sp_SeleccionarMedidas", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable Proveedores(int? id = null)
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarProveedores", conexion.Abrir()))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -489,17 +579,6 @@ namespace CapaDatos
             }
             return dt;
         }
-        public DataTable Proveedores()
-        {
-            DataTable dt = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarProveedores", conexion.Abrir()))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
-            }
-            return dt;
-        }
         public DataTable DetallePR(int idpr)
         {
             DataTable dt = new DataTable();
@@ -531,6 +610,37 @@ namespace CapaDatos
             catch (SqlException ex)
             {
                 return "Error:" + ex.Message;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+        public string InsertarSolicitudCotizacion(PedidoCotizacion pedidoCotizacion, DataTable detalle)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_InsertarSolicitudCotizacion", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@IdPR", pedidoCotizacion.IdPR);
+                    cmd.Parameters.AddWithValue("@FechaAlta", pedidoCotizacion.FechaAlta);
+                    cmd.Parameters.AddWithValue("@IdUsuarioAlta", pedidoCotizacion.IdUsuarioAlta);
+                    cmd.Parameters.AddWithValue("@FechaUltModificacion", pedidoCotizacion.FechaUltModificacion);
+                    cmd.Parameters.AddWithValue("@IdUsuarioUltModificacion", pedidoCotizacion.IdUsuarioUltModificacion);
+
+                    SqlParameter tvpParam = cmd.Parameters.AddWithValue("@DetallesCotizacion", detalle);
+                    tvpParam.SqlDbType = SqlDbType.Structured;
+                    tvpParam.TypeName = "DetalleCotizacionesTipo";
+
+                    cmd.ExecuteNonQuery();
+                    return "Solicitud de cotización generada correctamente";
+                }
+            }
+            catch (SqlException ex)
+            {
+                return "Error: " + ex.Message;
             }
             finally
             {
