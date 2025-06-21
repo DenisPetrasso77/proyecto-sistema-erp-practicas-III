@@ -303,10 +303,6 @@ namespace CapaVista
             Cargarcbxmedidas();
         }
 
-        private void textBox5_Leave(object sender, EventArgs e)
-        {
-            ConvertirDecimal(textBox5);
-        }
         private void ConvertirDecimal(TextBox tx)
         {
             if (!string.IsNullOrEmpty(tx.Text))

@@ -359,7 +359,6 @@
             this.textBox5.Size = new System.Drawing.Size(68, 21);
             this.textBox5.TabIndex = 11;
             this.textBox5.Text = "0";
-            this.textBox5.Leave += new System.EventHandler(this.textBox5_Leave);
             // 
             // checkBox1
             // 

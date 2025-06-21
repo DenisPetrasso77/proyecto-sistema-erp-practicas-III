@@ -3,9 +3,7 @@ using CapaLogica;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace CapaVista
 {
@@ -57,10 +55,28 @@ namespace CapaVista
             foreach (DataRow fila in detallepr.Rows)
             {
                 idproducto = fila["CodigoProducto"].ToString();
-                producto = $"{fila["Producto"]} {fila["Marca"]} {fila["Medida"]}";
+                producto = $"{fila["TipoProducto"]} {fila["Marca"]} {fila["Medida"]}";
                 cantpedida = fila["CantidadPedida"].ToString();
                 unidadcarga = fila["Unidad"].ToString();
                 dataGridView3.Rows.Add(idproducto, producto, cantpedida + " " + unidadcarga, DBNull.Value);
+            }
+        }
+        private void Solicitudes()
+        {
+            dataGridView4.Rows.Clear();
+            string nrocoti;
+            DateTime _fecha;
+            string fecha;
+            string usuario;
+            
+            DataTable solicitudes = metodos.SolicitudCotizaciones();
+            foreach (DataRow fila in solicitudes.Rows)
+            {
+                nrocoti = fila["IdSolicitud"].ToString();
+                _fecha = Convert.ToDateTime(fila["FechaLimite"]);
+                fecha = _fecha.ToString("dd-MM-yyyy");
+                usuario = fila["Usuario"].ToString();
+                dataGridView4.Rows.Add(nrocoti, fecha, usuario);
             }
         }
 
@@ -73,6 +89,7 @@ namespace CapaVista
             button1.Enabled = false;
             button3.Enabled = false;
             dateTimePicker1.Enabled = false;
+            Solicitudes();
         }
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -218,7 +235,7 @@ namespace CapaVista
             {
                 if (row.IsNewRow) continue;
 
-                string idProducto = row.Cells["IDProducto"].Value?.ToString();
+                string idProducto = row.Cells["Descripcion2"].Value?.ToString();
                 string cantidad = row.Cells["CantidadPedida"].Value.ToString();
 
                 if (row.Cells["Proveedor1"].Value != null)
@@ -226,6 +243,7 @@ namespace CapaVista
                     detalles.Add(new DetalleSoliCotizaciones
                     {
                         IdProducto = idProducto,
+                        Producto = row.Cells["Descripcion2"].Value.ToString(),
                         IdProveedor = Convert.ToInt32(row.Cells["Proveedor1"].Value),
                         FechaLimite = fechaLimite,
                         Cantidad = cantidad
@@ -236,7 +254,8 @@ namespace CapaVista
                     detalles.Add(new DetalleSoliCotizaciones
                     {
                         IdProducto = idProducto,
-                        IdProveedor = Convert.ToInt32(row.Cells["Proveedor2"].Value),
+                        Producto = row.Cells["Descripcion2"].Value.ToString(),
+                        IdProveedor = Convert.ToInt32(row.Cells["Proveedor1"].Value),
                         FechaLimite = fechaLimite,
                         Cantidad = cantidad
                     });
@@ -246,7 +265,8 @@ namespace CapaVista
                     detalles.Add(new DetalleSoliCotizaciones
                     {
                         IdProducto = idProducto,
-                        IdProveedor = Convert.ToInt32(row.Cells["Proveedor3"].Value),
+                        Producto = row.Cells["Descripcion2"].Value.ToString(),
+                        IdProveedor = Convert.ToInt32(row.Cells["Proveedor1"].Value),
                         FechaLimite = fechaLimite,
                         Cantidad = cantidad
                     });
@@ -278,6 +298,12 @@ namespace CapaVista
 
         private void button4_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void dataGridView4_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
 
         }
     }

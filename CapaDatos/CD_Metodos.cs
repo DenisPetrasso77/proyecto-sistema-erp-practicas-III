@@ -254,6 +254,27 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
         }
+        public string BorrarPR(int id)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_BorrarPR", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IddetallePR", id);
+                    cmd.ExecuteNonQuery();
+                    return "Pedido Borrado Completamente";
+                }
+            }
+            catch (SqlException sqlex)
+            {
+                return sqlex.Message;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
         public string ActualizarCate(int id,string nombre, string estado)
         {
             try
@@ -448,6 +469,17 @@ namespace CapaDatos
             }
             return dt;
         }
+        public DataTable SolcitudesCotizacion()
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarSolicitudCotizaciones", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
         public DataTable Provincias()
         {
             DataTable dt = new DataTable();
@@ -466,6 +498,18 @@ namespace CapaDatos
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@ID", id);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable DetalleCotizaciones(int id)
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_DetalleCotizaciones", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Id", id);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
             }

@@ -16,6 +16,18 @@ namespace CapaLogica
         //{
         //    return metodos.DatosIngreso(Usuario);
         //}
+        public DataTable DetalleCotizaciones(int id)
+        {
+            return metodos.DetalleCotizaciones(id);
+        }
+        public DataTable SolcitudesCotizacion()
+        { 
+            return metodos.SolcitudesCotizacion();
+        }
+        public string BorrarPR(int id)
+        { 
+            return metodos.BorrarPR(id);
+        }
         public DataTable Proveedores(int? id = null)
         { 
             return metodos.Proveedores(id);

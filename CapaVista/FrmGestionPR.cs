@@ -29,13 +29,13 @@ namespace CapaVista
 
             foreach (DataRow fila in stockproducmin.Rows)
             {
-                codigo = fila["CodigoProducto"].ToString();
-                descripcion = $"{fila["Producto"].ToString()} {fila["Marca"].ToString()} {fila["Medida"].ToString()}";
-                stockactual = Convert.ToInt32(fila["StockActual"].ToString());
-                formadecompra = fila["Unidad"].ToString();
+                codigo = fila["CodigoProducto"].ToString().ToUpper(); ;
+                descripcion = $"{fila["Producto"]} {fila["Marca"]} {fila["Medida"]}".ToString().ToUpper();
+                stockactual = Convert.ToInt32(fila["StockActual"].ToString().ToUpper());
+                formadecompra = fila["Unidad"].ToString().ToUpper();
                 calculoreferencia = (Convert.ToInt32(fila["StockMaximo"]) - Convert.ToInt32(fila["StockActual"]));
                 sugerencia = calculoreferencia;
-                dataGridView1.Rows.Add(codigo, descripcion, stockactual, formadecompra, sugerencia);
+                dataGridView1.Rows.Add(codigo, descripcion, $"{stockactual} {formadecompra}", $"{sugerencia} {formadecompra}");
             }
         }
         private void Cargardgvdetalle()
@@ -50,7 +50,7 @@ namespace CapaVista
             foreach (DataRow fila in prpedidos.Rows)
             {
                 estado = fila["Estado"].ToString();
-                if (estado != "pendiente" && !checkBox1.Checked)
+                if (estado != "Pendiente" && !checkBox1.Checked)
                     continue;
                 idpr = Convert.ToInt32(fila["IdPR"]);
                 fecha = Convert.ToDateTime(fila["Fecha"]).ToString("dd/mm/yyyy");
@@ -95,9 +95,9 @@ namespace CapaVista
                 {
                     detalle.Rows.Add(
                         fila.Cells["Codigo"].Value.ToString(),
-                        Convert.ToInt32(fila.Cells["Cantidadpedida"].Value.ToString()),
-                        Convert.ToInt32(fila.Cells["StockActual"].Value.ToString()),
-                        fila.Cells["UnidadVenta"].Value.ToString()
+                        Convert.ToInt32(fila.Cells["Cantidadpedida"].Value.ToString().Split(' ')[0]),
+                        Convert.ToInt32(fila.Cells["StockActual"].Value.ToString().Split(' ')[0]),
+                        fila.Cells["StockActual"].Value.ToString().Split(' ')[1]
                     );
                 }
             }
@@ -161,6 +161,11 @@ namespace CapaVista
         }
         private void button5_Click(object sender, EventArgs e)
         {
+            if (dataGridView3.Rows.Count == 1)
+            {
+                MessageBox.Show($"Para eliminar el pedido toque el boton: {"Eliminar Pedido"}");
+                return;
+            }
             int iddetallepr = Convert.ToInt32(dataGridView3.CurrentRow.Cells["IDdetallePR"].Value);
             metodos.BorrardetallePR(iddetallepr);
             DetallePR();
@@ -192,6 +197,15 @@ namespace CapaVista
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
+            Cargardgvdetalle();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int idpr = Convert.ToInt32(dataGridView2.CurrentRow.Cells["IDPR"].Value);
+            string resultado = metodos.BorrarPR(idpr);
+            MessageBox.Show(resultado);
+            DetallePR();
             Cargardgvdetalle();
         }
     }
