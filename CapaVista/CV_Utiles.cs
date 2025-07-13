@@ -71,7 +71,6 @@ namespace CapaVista
                 }
             }
         }
-
         public void LimpiarFormulario(Control control)
         {
             foreach (Control c in control.Controls)
@@ -116,9 +115,5 @@ namespace CapaVista
             Random random = new Random();
             return random.Next(1000, 10000);
         }
-
-
-
     }
-
 }

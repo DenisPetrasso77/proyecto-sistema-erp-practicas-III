@@ -1,9 +1,7 @@
 ﻿using CapaDatos;
 using CapaEntities;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace CapaLogica
 {
@@ -12,13 +10,30 @@ namespace CapaLogica
         CD_Metodos metodos = new CD_Metodos();
 
         #region METODOS
-        //public Usuarioactual DatosIngreso(string Usuario)
-        //{
-        //    return metodos.DatosIngreso(Usuario);
-        //}
+        public int Intentos(string usuario)
+        { 
+            return metodos.Intentos(usuario);
+        }
+
+        public int BorrarDetalleBitacora(int id)
+        {
+            return metodos.BorrarDetalleBitacora(id);
+        }
+        public int BorrarBitacora()
+        { 
+            return metodos.BorrarBitacora();
+        }
+        public UsuarioActual DatosIngreso(string Usuario)
+        {
+            return metodos.DatosIngreso(Usuario);
+        }
         public DataTable DetalleCotizaciones(int id)
         {
             return metodos.DetalleCotizaciones(id);
+        }
+        public DataTable ProveedoresCotizacion(int id)
+        {
+            return metodos.ProveedoresCotizacion(id);
         }
         public DataTable SolcitudesCotizacion()
         { 
@@ -31,6 +46,10 @@ namespace CapaLogica
         public DataTable Proveedores(int? id = null)
         { 
             return metodos.Proveedores(id);
+        }
+        public DataTable Usuarios(int? idusuario = null)
+        {
+            return metodos.Usuarios(idusuario);
         }
         public string ActualizarMarca(int id, string nombre, string estado)
         {
@@ -72,29 +91,21 @@ namespace CapaLogica
         {
             return metodos.ProductosStockMin();
         }
-        public DataTable Provincias()
-        { 
-            return metodos.Provincias();
-        }
-        public DataTable TipoProductos()
+        public DataTable TipoProductos(string tabla)
         {
-            return metodos.TipoProductos();
+            return metodos.TipoProductos(tabla);
         }
         public DataTable DetallePR(int idpr)
         { 
             return metodos.DetallePR(idpr);
         }
+        public DataTable TraerTodo(string tabla)
+        {
+            return metodos.TraerTodo(tabla);
+        }
         public DataTable PRpedidos()
         { 
             return metodos.PRpedidos();
-        }
-        public DataTable Medidas()
-        {
-            return metodos.Medidas();
-        }
-        public DataTable UnidadVenta()
-        {
-            return metodos.UnidadVenta();
         }
         public string ActualizarTipoProducto(int id, string nombre, string estado)
         {
@@ -112,9 +123,9 @@ namespace CapaLogica
         {
             return metodos.ActualizarUsuario(usuario, nombre, apellido, dni, rol, bloqueado);
         }
-        public int Bitacora(string descripcion, DateTime fecha)
+        public int Bitacora(string usuario, string tabla, string descripcion)
         { 
-            return metodos.Bitacora(descripcion, fecha);
+            return metodos.Bitacora(usuario, tabla, descripcion);
         }
         public string InsertarCate(string nombre)
         {
@@ -129,22 +140,14 @@ namespace CapaLogica
         {
             return metodos.ActualizarCate(id,nombre, estado);
         }
-        public DataTable Categorias()
-        {
-            return metodos.Categorias();
-        }
-        public DataTable Marcas()
-        {
-            return metodos.Marcas();
-        }
         public string InsertarProducto(ProductoNuevo productoNuevo)
         {
             return metodos.InsertarProducto(productoNuevo);
         }
 
-        public string Registro(string usuario, string clave, string nombre, string apellido)
+        public string Registro(UsuarioNuevo usuarioNuevo)
         {
-            return metodos.Registro(usuario,clave,nombre, apellido);
+            return metodos.Registro(usuarioNuevo);
         }
 
         public int StatusBloq(string Usuario)

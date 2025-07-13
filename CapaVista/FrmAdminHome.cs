@@ -1,5 +1,5 @@
-﻿using CapaLogica;
-using CapaEntities;
+﻿using CapaEntities;
+using CapaLogica;
 using System;
 using System.Data;
 using System.Drawing;
@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace CapaVista
 {
-    public partial class Frm_AdminHome : Form
+    public partial class FrmAdminHome : Form
     {
         CL_Metodos metodos = new CL_Metodos();
         DataTable productosCache = new DataTable();
@@ -18,15 +18,17 @@ namespace CapaVista
         FrmGestionPedidoCotizaciones cotizaciones = new FrmGestionPedidoCotizaciones();
         FrmGestionOrdenCompra ordenCompra = new FrmGestionOrdenCompra();
         FrmGestionRecepcion recepcion = new FrmGestionRecepcion();
-        //Usuarioactual Usuarioactual;
-        FrmAdmusuarios Admusuarios;
+        UsuarioActual Usuarioactual;
+        FrmAdmusuarios Admusuarios = new FrmAdmusuarios();
         CV_Seguridad seguridad = new CV_Seguridad();
         GestionProveedores gestionproveedores = new GestionProveedores();
+        FrmPagos pagos = new FrmPagos();
+        FrmBitacora bitacora = new FrmBitacora();
 
-        public Frm_AdminHome()
+        public FrmAdminHome(UsuarioActual usuarioactual)
         {
             InitializeComponent();
-            
+            Usuarioactual = usuarioactual;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -187,7 +189,7 @@ namespace CapaVista
         private void button2_Click(object sender, EventArgs e)
         {
             panel1.Controls.Remove(p);
-            productos = new FrmGestionProductos();
+            productos = new FrmGestionProductos(Usuarioactual);
             productos.ShowDialog();
             Cargarbuscador();
         }
@@ -257,8 +259,7 @@ namespace CapaVista
         private void button7_Click(object sender, EventArgs e)
         {
             panel1.Controls.Remove(p);
-            Admusuarios = new FrmAdmusuarios();
-            Admusuarios.ShowDialog();
+            pagos.ShowDialog();
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -325,19 +326,39 @@ namespace CapaVista
         {
             this.Hide();
             recepcion.ShowDialog();
-            recepcion.Show();
+            this.Show();
         }
 
         private void button15_Click(object sender, EventArgs e)
         {
-            this.Close();
-            gestionproveedores.ShowDialog();
             this.Hide();
+            gestionproveedores.ShowDialog();
+            this.Show();
         }
 
         private void Frm_AdminHome_Load(object sender, EventArgs e)
         {
+        }
 
+        private void button16_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Admusuarios.ShowDialog();
+            this.Show();
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            bitacora.ShowDialog();
+            this.Show();
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            this.Close();        
+            FrmLogin login = new FrmLogin();
+            login.Show();
         }
     }
 }

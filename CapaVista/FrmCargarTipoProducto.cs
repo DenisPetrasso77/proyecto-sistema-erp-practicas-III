@@ -15,7 +15,7 @@ namespace CapaVista
         }
         private void CargarTipoProductos()
         {
-            cachetipos = metodos.TipoProductos();
+            cachetipos = metodos.TipoProductos("TipoProductos");
             string texto = textBox1.Text.Trim().ToLower();
             dataGridView1.Rows.Clear();
 

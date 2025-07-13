@@ -1,6 +1,7 @@
 ﻿using CapaLogica;
 using System;
 using System.Data;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace CapaVista
@@ -16,7 +17,7 @@ namespace CapaVista
         }
         private void Cargarmarcas()
         {
-            cachemarcas = metodos.Marcas();
+            cachemarcas = metodos.TraerTodo("Marca");
             string texto = textBox1.Text.Trim().ToLower();
             dataGridView1.Rows.Clear();
 

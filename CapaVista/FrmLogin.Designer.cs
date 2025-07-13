@@ -1,6 +1,6 @@
 ﻿namespace CapaVista
 {
-    partial class Frm_Login
+    partial class FrmLogin
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -99,7 +99,7 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "¿Olvidaste tu contraseña?";
             // 
-            // Frm_Login
+            // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -113,10 +113,11 @@
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.MaximizeBox = false;
-            this.Name = "Frm_Login";
+            this.Name = "FrmLogin";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "INGRESO";
+            this.Load += new System.EventHandler(this.FrmLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

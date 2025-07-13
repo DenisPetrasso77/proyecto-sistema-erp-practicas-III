@@ -69,7 +69,7 @@ namespace CapaVista
         private void CargarProvincias()
         {
             utiles.LimpiarControles(comboBox2);
-            DataTable cacheprovincias = metodos.Provincias();
+            DataTable cacheprovincias = metodos.TraerTodo("Provincias");
             foreach (DataRow filas in cacheprovincias.Rows)
             {
                 string fila = $"{filas["IdProvincia"]} - {filas["Provincia"]}";

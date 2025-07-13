@@ -7,7 +7,7 @@ namespace CapaVista
 {
     public partial class FrmCargarCategorias : Form
     {
-        private readonly CL_Metodos metodos = new CL_Metodos();
+        private CL_Metodos metodos = new CL_Metodos();
         FrmNuevaCate nuevacate = new FrmNuevaCate();
         DataTable cachecategorias = new DataTable();
         public FrmCargarCategorias()
@@ -33,7 +33,7 @@ namespace CapaVista
         }
         private void Cargarcategorias()
         {
-            cachecategorias = metodos.Categorias();
+            cachecategorias = metodos.TraerTodo("CategoriasProductos");
             string texto = textBox1.Text.Trim().ToLower();
             dataGridView1.Rows.Clear();
 

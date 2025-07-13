@@ -1,29 +1,45 @@
 ﻿using CapaEntities;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.Common;
 using System.Data.SqlClient;
-using System.Diagnostics.Tracing;
-using System.Xml;
 
 namespace CapaDatos
 {
     public class CD_Metodos
     {
         CD_Conexion conexion = new CD_Conexion();
-
-
         #region METODOS
-        public int Bitacora(string descripcion, DateTime fecha)
+
+        public int Bitacora(string usuario,string tabla,string descripcion)
         {
             try
             {
-                using (SqlCommand cmd = new SqlCommand("sp_Bitacora", conexion.Abrir()))
+                using (SqlCommand cmd = new SqlCommand("sp_InsertarBitacora", conexion.Abrir()))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("Descripcion", descripcion);
-                    cmd.Parameters.AddWithValue("Fecha", fecha);
+                    cmd.Parameters.AddWithValue("@Usuario", usuario);
+                    cmd.Parameters.AddWithValue("@Tabla", tabla);
+                    cmd.Parameters.AddWithValue("@Descripcion", descripcion);
+                    return cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+        public int Intentos(string usuario)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_IntentosFallidos", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Usuario", usuario);
                     return cmd.ExecuteNonQuery();
                 }
             }
@@ -85,19 +101,171 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
         }
-        public string Registro(string usuario,string clave, string nombre, string apellido)
+        public int ActualizarUsuario(string usuario, string nombre, string apellido, string dni, int rol, int bloqueado)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_ActualizarUsuario", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("Usuario", usuario);
+                    cmd.Parameters.AddWithValue("Nombre", nombre);
+                    cmd.Parameters.AddWithValue("Apellido", apellido);
+                    cmd.Parameters.AddWithValue("Dni", dni);
+                    cmd.Parameters.AddWithValue("Rol", rol);
+                    cmd.Parameters.AddWithValue("Bloqueado", bloqueado);
+                    return cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+        public int ActualizarDetallPR(int iddetallepr, int IdPR, int CantidadNueva, int Usuariomodificacion, DateTime Fechamodificacion)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_ActualizardetallePR", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IddetallePR", iddetallepr);
+                    cmd.Parameters.AddWithValue("@IdPR", IdPR);
+                    cmd.Parameters.AddWithValue("@CantidadNueva", CantidadNueva);
+                    cmd.Parameters.AddWithValue("@Usuariomodificacion", Usuariomodificacion);
+                    cmd.Parameters.AddWithValue("@Fechamodificacion", Fechamodificacion);
+                    return cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+        public int CodigoPostal(int id)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_SeleccionarCodigoPostal", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", id);
+                    return Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+        public int BorrarDetalleBitacora(int id)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_EliminarDetalleBitacora", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IdBitacora", id);
+                    return Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+        public int BorrarBitacora()
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_EliminarBitacora", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    return Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+        public int StatusBloq(string usuario)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_EstadoBloqueo", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("Usuario", usuario);
+                    return cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+        public int BorrarUsuario(string usuario)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_BorrarUsuario", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("Usuario", usuario);
+                    return cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+
+        }
+        public string Registro(UsuarioNuevo usuarioNuevo)
         {
             try
             {
                 using (SqlCommand cmd = new SqlCommand("InsertarUsuario", conexion.Abrir()))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Usuario", usuario);
-                    cmd.Parameters.AddWithValue("@Contraseña", clave);
-                    cmd.Parameters.AddWithValue("@Nombre", nombre);
-                    cmd.Parameters.AddWithValue("@Apellido", apellido);
+                    cmd.Parameters.AddWithValue("@Usuario", usuarioNuevo.Usuario);
+                    cmd.Parameters.AddWithValue("@Contraseña", usuarioNuevo.Contraseña);
+                    cmd.Parameters.AddWithValue("@Nombre", usuarioNuevo.Nombre);
+                    cmd.Parameters.AddWithValue("@Apellido", usuarioNuevo.Apellido);
+                    cmd.Parameters.AddWithValue("@Dni", usuarioNuevo.Dni);
+                    cmd.Parameters.AddWithValue("@IdRol", usuarioNuevo.Rol);
+                    cmd.Parameters.AddWithValue("@dv", usuarioNuevo.dv);
                     cmd.ExecuteNonQuery();
-                    return "ok";
+                    return "Usuario Registrado con Exito";
                 }
             }
             catch (SqlException ex)
@@ -367,274 +535,6 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
         }
-
-        public int ActualizarUsuario(string usuario, string nombre, string apellido, string dni, int rol, int bloqueado)
-        {
-            try
-            {
-                using (SqlCommand cmd = new SqlCommand("sp_ActualizarUsuario", conexion.Abrir()))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("Usuario", usuario);
-                    cmd.Parameters.AddWithValue("Nombre", nombre);
-                    cmd.Parameters.AddWithValue("Apellido", apellido);
-                    cmd.Parameters.AddWithValue("Dni", dni);
-                    cmd.Parameters.AddWithValue("Rol", rol);
-                    cmd.Parameters.AddWithValue("Bloqueado", bloqueado);
-                    return cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception)
-            {
-                return 0;
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-        }
-        public int ActualizarDetallPR(int iddetallepr, int IdPR, int  CantidadNueva, int Usuariomodificacion, DateTime Fechamodificacion )
-        {
-            try
-            {
-                using (SqlCommand cmd = new SqlCommand("sp_ActualizardetallePR", conexion.Abrir()))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@IddetallePR", iddetallepr);
-                    cmd.Parameters.AddWithValue("@IdPR", IdPR);
-                    cmd.Parameters.AddWithValue("@CantidadNueva", CantidadNueva);
-                    cmd.Parameters.AddWithValue("@Usuariomodificacion", Usuariomodificacion);
-                    cmd.Parameters.AddWithValue("@Fechamodificacion", Fechamodificacion);
-                    return cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception)
-            {
-                return 0;
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-        }
-        public int StatusBloq(string usuario)
-        {
-            try
-            {
-                using (SqlCommand cmd = new SqlCommand("sp_EstadoBloqueo", conexion.Abrir()))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("Usuario", usuario);
-                    return cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception)
-            {
-                return 0;
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-        }
-        public int BorrarUsuario(string usuario)
-        {
-            try
-            {
-                using (SqlCommand cmd = new SqlCommand("sp_BorrarUsuario", conexion.Abrir()))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("Usuario", usuario);
-                    return cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception)
-            {
-                return 0;
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-
-        }
-        public DataTable Categorias()
-        {
-            DataTable dt = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarCate", conexion.Abrir()))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
-            }
-            return dt;
-        }
-        public DataTable SolcitudesCotizacion()
-        {
-            DataTable dt = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarSolicitudCotizaciones", conexion.Abrir()))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
-            }
-            return dt;
-        }
-        public DataTable Provincias()
-        {
-            DataTable dt = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarProvincias", conexion.Abrir()))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
-            }
-            return dt;
-        }
-        public DataTable Localidades(int id)
-        {
-            DataTable dt = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarLocalidad", conexion.Abrir()))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@ID", id);
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
-            }
-            return dt;
-        }
-        public DataTable DetalleCotizaciones(int id)
-        {
-            DataTable dt = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("sp_DetalleCotizaciones", conexion.Abrir()))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Id", id);
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
-            }
-            return dt;
-        }
-        public int CodigoPostal(int id)
-        {
-            try
-            {
-                using (SqlCommand cmd = new SqlCommand("sp_SeleccionarCodigoPostal", conexion.Abrir()))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ID", id);
-                    return Convert.ToInt32(cmd.ExecuteScalar());
-                }
-            }
-            catch (Exception)
-            {
-                return 0;
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-        }
-        public DataTable Marcas()
-        {
-            DataTable dt = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarMarca", conexion.Abrir()))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
-            }
-            return dt;
-        }
-        public DataTable SolicitudCotizacion()
-        {
-            DataTable dt = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarSolicitudCotizaciones", conexion.Abrir()))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
-            }
-            return dt;
-        }
-        public DataTable Medidas()
-        {
-            DataTable dt = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarMedidas", conexion.Abrir()))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
-            }
-            return dt;
-        }
-        public DataTable Proveedores(int? id = null)
-        {
-            DataTable dt = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarProveedores", conexion.Abrir()))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
-            }
-            return dt;
-        }
-        public DataTable UnidadVenta()
-        {
-            DataTable dt = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarFormaVenta", conexion.Abrir()))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
-            }
-            return dt;
-        }
-        public DataTable PRpedidos()
-        {
-            DataTable dt = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("sp_PRpedidos", conexion.Abrir()))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
-            }
-            return dt;
-        }
-        public DataTable ProductosStockMin()
-        {
-            DataTable dt = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("sp_StockMinimo", conexion.Abrir()))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
-            }
-            return dt;
-        }
-        public DataTable TipoProductos()
-        {
-            DataTable dt = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarTipoProductos", conexion.Abrir()))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
-            }
-            return dt;
-        }
-        public DataTable DetallePR(int idpr)
-        {
-            DataTable dt = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("sp_DetallePR", conexion.Abrir()))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Idpr", idpr);
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
-            }
-            return dt;
-        }
         public string InsertarPR(int idusuario, DataTable detallepr)
         {
             try
@@ -691,35 +591,194 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
         }
-        //public Usuarioactual DatosIngreso(string Usuario)
-        //{
-        //    DataTable dt = new DataTable();
-        //    using (SqlCommand cmd = new SqlCommand("sp_Datosingreso", conexion.Abrir()))
-        //    {
-        //        cmd.CommandType = CommandType.StoredProcedure;
-        //        cmd.Parameters.AddWithValue("@usuario", Usuario);
-        //        SqlDataAdapter da = new SqlDataAdapter(cmd);
-        //        da.Fill(dt);
-        //    }
-        //    try
-        //    {
-        //        if (dt.Rows.Count > 0)
-        //        {
-        //            return new Usuarioactual()
-        //            {
-        //                id = Convert.ToInt32(dt.Rows[0]["Id"].ToString()),
-        //                usuario = dt.Rows[0]["Usuario"].ToString(),
-        //                contraseña = dt.Rows[0]["Contraseña"].ToString(),
+        public DataTable SolcitudesCotizacion()
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarSolicitudCotizaciones", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable Localidades(int id)
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarLocalidad", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ID", id);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable DetalleCotizaciones(int id)
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_DetalleCotizaciones", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Id", id);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable SolicitudCotizacion()
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarSolicitudCotizaciones", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable Proveedores(int? id = null)
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarProveedores", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable PRpedidos()
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_PRpedidos", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable ProductosStockMin()
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_StockMinimo", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable TipoProductos(string tabla)
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_TraerTodo", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("tabla",tabla);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable DetallePR(int idpr)
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_DetallePR", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Idpr", idpr);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable ProveedoresCotizacion(int id)
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_CotizacionProveedores", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Id", id);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable Usuarios(int? idusuario = null)
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarUsuarios", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                if (idusuario.HasValue)
+                    cmd.Parameters.AddWithValue("@IdUsuario", idusuario.Value);
+                else
+                    cmd.Parameters.AddWithValue("@IdUsuario", DBNull.Value);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public UsuarioActual DatosIngreso(string Usuario)
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_Datosingreso", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Usuario", Usuario);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
 
-        //            };     
-        //        }
-        //    }
-        //    catch
-        //    {
-        //        return null;
-        //    }
-        //    return null;
-        //}
+            if (dt.Rows.Count > 0)
+            {
+                var usuarioActual = new UsuarioActual()
+                {
+                    IdUsuario = Convert.ToInt32(dt.Rows[0]["IdUsuario"]),
+                    Usuario = dt.Rows[0]["Usuario"].ToString(),
+                    Contraseña = dt.Rows[0]["Contraseña"].ToString(),
+                    Nombre = dt.Rows[0]["Nombre"].ToString(),
+                    Apellido = dt.Rows[0]["Apellido"].ToString(),
+                    Intentos = dt.Rows[0]["Intentos"].ToString(),
+                    Bloqueado = dt.Rows[0]["Bloqueado"].ToString(),
+                    Rol = dt.Rows[0]["NombreRol"].ToString(),
+                    dni = Convert.ToInt32(dt.Rows[0]["Dni"])
+                };
+                int idRol = Convert.ToInt32(dt.Rows[0]["IdRol"]);
+                using (SqlCommand cmdPermisos = new SqlCommand(@"SELECT p.NombrePermiso 
+                                                         FROM RolPermisos rp 
+                                                         JOIN Permisos p ON p.IdPermiso = rp.IdPermiso 
+                                                         WHERE rp.IdRol = @IdRol", conexion.Abrir()))
+                {
+                    cmdPermisos.Parameters.AddWithValue("@IdRol", idRol);
+                    using (SqlDataReader reader = cmdPermisos.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            usuarioActual.Permisos.Add(reader["NombrePermiso"].ToString());
+                        }
+                    }
+                }
+
+                return usuarioActual;
+            }
+
+            return null;
+        }
+        public DataTable TraerTodo(string tabla)
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_TraerTodo", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@tabla", tabla);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
         #endregion
     }
 }

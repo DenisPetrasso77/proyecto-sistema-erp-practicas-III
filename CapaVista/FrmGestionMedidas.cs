@@ -1,15 +1,22 @@
 ﻿using CapaLogica;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CapaVista
 {
-    public partial class FrmGestionMedidas : Form
+    public partial class FrmGestionMedidas : PlantillaDetalle
     {
         DataTable cachemedidas = new DataTable();
         CL_Metodos metodos = new CL_Metodos();
         FrmNuevaMedida medida = new FrmNuevaMedida();
+
         public FrmGestionMedidas()
         {
             InitializeComponent();
@@ -28,11 +35,12 @@ namespace CapaVista
             if (string.IsNullOrWhiteSpace(textBox1.Text))
             {
                 textBox1.Text = "BUSCADOR...";
+
             }
         }
         private void Cargarmedidas()
         {
-            cachemedidas = metodos.Medidas();
+            cachemedidas = metodos.TraerTodo("Medidas");
             string texto = textBox1.Text.Trim().ToLower();
             dataGridView1.Rows.Clear();
 
@@ -82,6 +90,7 @@ namespace CapaVista
             button2.Visible = true;
             button4.Visible = true;
             BloquearDatagrid(dataGridView1);
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -90,10 +99,11 @@ namespace CapaVista
             button2.Visible = false;
             button1.Visible = true;
             button3.Visible = true;
-            DataGridViewRow fila = dataGridView1.CurrentRow;
-            fila.Cells["MARCA"].ReadOnly = false;
-            fila.Cells["ESTADO"].ReadOnly = false;
-            fila.Cells["ID"].ReadOnly = true;
+            button1.Focus();
+            dataGridView1.Columns["ID"].ReadOnly = true;
+            dataGridView1.Columns["MARCA"].ReadOnly = false;
+            dataGridView1.Columns["ESTADO"].ReadOnly = false;
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -128,6 +138,7 @@ namespace CapaVista
         {
             Cargarmedidas();
             BloquearDatagrid(dataGridView1);
+
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -135,6 +146,7 @@ namespace CapaVista
             medida.ShowDialog();
             Cargarmedidas();
             BloquearDatagrid(dataGridView1);
+
         }
     }
 }

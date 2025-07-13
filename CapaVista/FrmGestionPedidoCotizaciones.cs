@@ -13,6 +13,7 @@ namespace CapaVista
         CV_Utiles utiles = new CV_Utiles();
         DataTable cacheproveedores;
         DataTable detalleCotizaciones;
+        DataTable detallecoti;
 
 
 
@@ -71,7 +72,7 @@ namespace CapaVista
             
             DataTable solicitudes = metodos.SolicitudCotizaciones();
             foreach (DataRow fila in solicitudes.Rows)
-            {
+            { 
                 nrocoti = fila["IdSolicitud"].ToString();
                 _fecha = Convert.ToDateTime(fila["FechaLimite"]);
                 fecha = _fecha.ToString("dd-MM-yyyy");
@@ -217,7 +218,7 @@ namespace CapaVista
 
         private void button1_Click(object sender, EventArgs e)
         {
-            PedidoCotizacion pedido = new PedidoCotizacion
+            var pedido = new PedidoCotizacion
             {
                 IdPR = Convert.ToInt32(dataGridView2.CurrentRow.Cells["IdPR"].Value),
                 Estado = "Activo",
@@ -228,48 +229,29 @@ namespace CapaVista
             };
 
             DateTime fechaLimite = dateTimePicker1.Value;
-
-            List<DetalleSoliCotizaciones> detalles = new List<DetalleSoliCotizaciones>();
+            var detalles = new List<DetalleSoliCotizaciones>();
 
             foreach (DataGridViewRow row in dataGridView3.Rows)
             {
                 if (row.IsNewRow) continue;
 
-                string idProducto = row.Cells["Descripcion2"].Value?.ToString();
-                string cantidad = row.Cells["CantidadPedida"].Value.ToString();
+                string idProducto = row.Cells["IDProducto"].Value?.ToString();
+                string cantidad = row.Cells["CantidadPedida"].Value?.ToString();
 
-                if (row.Cells["Proveedor1"].Value != null)
+                for (int i = 1; i <= 3; i++)
                 {
-                    detalles.Add(new DetalleSoliCotizaciones
+                    var proveedorCell = row.Cells[$"Proveedor{i}"];
+                    if (proveedorCell?.Value != null)
                     {
-                        IdProducto = idProducto,
-                        Producto = row.Cells["Descripcion2"].Value.ToString(),
-                        IdProveedor = Convert.ToInt32(row.Cells["Proveedor1"].Value),
-                        FechaLimite = fechaLimite,
-                        Cantidad = cantidad
-                    });
-                }
-                if (row.Cells["Proveedor2"].Value != null)
-                {
-                    detalles.Add(new DetalleSoliCotizaciones
-                    {
-                        IdProducto = idProducto,
-                        Producto = row.Cells["Descripcion2"].Value.ToString(),
-                        IdProveedor = Convert.ToInt32(row.Cells["Proveedor1"].Value),
-                        FechaLimite = fechaLimite,
-                        Cantidad = cantidad
-                    });
-                }
-                if (row.Cells["Proveedor3"].Value != null)
-                {
-                    detalles.Add(new DetalleSoliCotizaciones
-                    {
-                        IdProducto = idProducto,
-                        Producto = row.Cells["Descripcion2"].Value.ToString(),
-                        IdProveedor = Convert.ToInt32(row.Cells["Proveedor1"].Value),
-                        FechaLimite = fechaLimite,
-                        Cantidad = cantidad
-                    });
+                        detalles.Add(new DetalleSoliCotizaciones
+                        {
+                            IdProducto = idProducto,
+                            Producto = row.Cells["Descripcion2"].Value?.ToString(),
+                            IdProveedor = Convert.ToInt32(proveedorCell.Value),
+                            FechaLimite = fechaLimite,
+                            Cantidad = cantidad
+                        });
+                    }
                 }
             }
 
@@ -287,10 +269,11 @@ namespace CapaVista
             dt.Columns.Add("IdProveedor", typeof(int));
             dt.Columns.Add("FechaLimite", typeof(DateTime));
             dt.Columns.Add("Cantidad", typeof(string));
+            dt.Columns.Add("Producto", typeof(string));
 
             foreach (var item in lista)
             {
-                dt.Rows.Add(item.IdProducto, item.IdProveedor, item.FechaLimite, item.Cantidad);
+                dt.Rows.Add(item.IdProducto, item.IdProveedor, item.FechaLimite, item.Cantidad, item.Producto);
             }
 
             return dt;
@@ -301,10 +284,47 @@ namespace CapaVista
 
         }
 
+        private void DetalleCotizaciones()
+        {
+        }
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Solicitudes();
+        }
+
         private void dataGridView4_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-           
+            CargarProveedoress();
+        }
+        private void CargarProveedoress()
+        {
+            dataGridView1.Rows.Clear();
+            string idproducto;
+            string producto;
+            string prov1;
+            string prov2;
+            string prov3;
+            int id = Convert.ToInt32(dataGridView4.CurrentRow.Cells["IdCotizacion"].Value.ToString());
+            detallecoti = metodos.ProveedoresCotizacion(id);
+            foreach (DataRow fila in detallecoti.Rows)
+            {
+                idproducto = fila["IdProducto"].ToString();
+                producto = fila["Producto"].ToString();
+                prov1 = fila["Proveedor1"].ToString();
+                prov2 = fila["Proveedor2"].ToString();
+                prov3 = fila["Proveedor3"].ToString();
 
+                prov1 = string.IsNullOrWhiteSpace(prov1) ? "No Asignado" : prov1;
+                prov2 = string.IsNullOrWhiteSpace(prov2) ? "No Asignado" : prov2;
+                prov3 = string.IsNullOrWhiteSpace(prov3) ? "No Asignado" : prov3;
+
+                int index = dataGridView1.Rows.Add();
+                dataGridView1.Rows[index].Cells["IdProducto2"].Value = idproducto;
+                dataGridView1.Rows[index].Cells["Producto"].Value = producto;
+                dataGridView1.Rows[index].Cells["Provedor1"].Value = prov1;
+                dataGridView1.Rows[index].Cells["Provedor2"].Value = prov2;
+                dataGridView1.Rows[index].Cells["Provedor3"].Value = prov3;
+            }
         }
     }
 }

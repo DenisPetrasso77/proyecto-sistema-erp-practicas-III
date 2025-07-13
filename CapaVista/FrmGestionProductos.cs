@@ -3,8 +3,6 @@ using CapaLogica;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlTypes;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -19,6 +17,7 @@ namespace CapaVista
         CV_Utiles utiles = new CV_Utiles();
         FrmGestionMedidas medidas = new FrmGestionMedidas();
         CV_Seguridad seguridad = new CV_Seguridad();
+        UsuarioActual UsuarioActual = new UsuarioActual();
         
         
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -27,15 +26,16 @@ namespace CapaVista
             Cargarcbxcategorias();
         }
         
-        public FrmGestionProductos()
+        public FrmGestionProductos( UsuarioActual usuarioActual)
         {
             InitializeComponent();
+            UsuarioActual = usuarioActual;
         }
 
         private void Cargarcbxcategorias()
         {
             comboBox1.Items.Clear();
-            DataTable CacheCategorias = metodos.Categorias();
+            DataTable CacheCategorias = metodos.TraerTodo("CategoriasProductos");
             foreach (DataRow filas in CacheCategorias.Rows)
             {
                 if (filas["Estado"].ToString().Trim() != "Inactivo")
@@ -49,7 +49,7 @@ namespace CapaVista
         private void Cargarcbxtpoproducto()
         {
             comboBox6.Items.Clear();
-            DataTable CacheTipoProducto = metodos.TipoProductos();
+            DataTable CacheTipoProducto = metodos.TraerTodo("TipoProductos");
             foreach (DataRow filas in CacheTipoProducto.Rows)
             {
                 string fila = $"{filas["IdTipoProducto"]} - {filas["TipoProducto"]}";
@@ -59,7 +59,7 @@ namespace CapaVista
         private void Cargarcbxmedidas()
         {
             comboBox2.Items.Clear();
-            DataTable CacheMedidas = metodos.Medidas();
+            DataTable CacheMedidas = metodos.TraerTodo("Medidas");
             foreach (DataRow filas in CacheMedidas.Rows)
             {
                 string fila = $"{filas["Idmedidas"]} - {filas["Medida"]}";
@@ -69,7 +69,7 @@ namespace CapaVista
         private void Cargarcbxmarcas()
         {
             comboBox4.Items.Clear();
-            DataTable CacheMarcas = metodos.Marcas();
+            DataTable CacheMarcas = metodos.TraerTodo("Marca");
             foreach (DataRow filas in CacheMarcas.Rows)
             {
                 string fila = $"{filas["Idmarca"]} - {filas["Marca"]}";
@@ -78,7 +78,7 @@ namespace CapaVista
         }
         private void Cargarcbxventa()
         {
-            DataTable CacheFVentas = metodos.UnidadVenta();
+            DataTable CacheFVentas = metodos.TraerTodo("UnidadReferencia");
             foreach (DataRow filas in CacheFVentas.Rows)
             {
                 string fila = $"{filas["idUnidad"]} - {filas["Unidad"]}";
@@ -149,7 +149,7 @@ namespace CapaVista
                 StockActual = stockactual,
                 Estado = estado,
                 FechaAlta = fecha,
-                IdUsuarioAlta = 1,
+                IdUsuarioAlta = UsuarioActual.IdUsuario,
                 PrecioCompra = preciocompra,
                 PrecioVenta = precioventa,
                 Descuentos = descuentos,
