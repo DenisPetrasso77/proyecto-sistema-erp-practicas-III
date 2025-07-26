@@ -7,7 +7,6 @@ namespace CapaVista
 {
     public partial class FrmAdmusuarios : Form
     {
-        FrmRegistro registro = new FrmRegistro();
         CL_Metodos metodos = new CL_Metodos();
         DataTable UsuariosCache;
         public FrmAdmusuarios()
@@ -38,7 +37,7 @@ namespace CapaVista
         }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            registro.ShowDialog();
+            new FrmRegistro().ShowDialog();
             Cargarbuscador();
         }
 

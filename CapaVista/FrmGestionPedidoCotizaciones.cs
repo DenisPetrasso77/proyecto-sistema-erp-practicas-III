@@ -10,33 +10,23 @@ namespace CapaVista
     public partial class FrmGestionPedidoCotizaciones : Form
     {
         CL_Metodos metodos = new CL_Metodos();
-        CV_Utiles utiles = new CV_Utiles();
         DataTable cacheproveedores;
-        DataTable detalleCotizaciones;
-        DataTable detallecoti;
-
-
-
         public FrmGestionPedidoCotizaciones()
         {
             InitializeComponent();
-
         }
         private void Cargardgv()
         {
             dataGridView2.Rows.Clear();
             int idpr;
-            string fecha;
-            string usuario;
-            string cantproductos;
-            string estado;
+            string fecha, usuario, cantproductos, estado;
             DataTable prpedidos = metodos.PRpedidos();
             foreach (DataRow fila in prpedidos.Rows)
             {
                 if (fila["Estado"].ToString() != "Esperando Cotizacion")
                 {
                     idpr = Convert.ToInt32(fila["IdPR"]);
-                    fecha = Convert.ToDateTime(fila["Fecha"]).ToString("dd/mm/yyyy");
+                    fecha = Convert.ToDateTime(fila["Fecha"]).ToString("dd/MM/yyyy");
                     usuario = fila["Usuario"].ToString();
                     cantproductos = $"{Convert.ToInt32(fila["CantidadProductos"])} productos";
                     estado = fila["Estado"].ToString();
@@ -47,10 +37,7 @@ namespace CapaVista
         private void DetallePR()
         {
             dataGridView3.Rows.Clear();
-            string producto;
-            string cantpedida;
-            string unidadcarga;
-            string idproducto;
+            string producto, cantpedida, unidadcarga, idproducto;
             int idpr = Convert.ToInt32(dataGridView2.CurrentRow.Cells["IDPR"].Value);
             DataTable detallepr = metodos.DetallePR(idpr);
             foreach (DataRow fila in detallepr.Rows)
@@ -65,22 +52,16 @@ namespace CapaVista
         private void Solicitudes()
         {
             dataGridView4.Rows.Clear();
-            string nrocoti;
-            DateTime _fecha;
-            string fecha;
-            string usuario;
-            
+            string nrocoti, fecha, usuario;  
             DataTable solicitudes = metodos.SolicitudCotizaciones();
             foreach (DataRow fila in solicitudes.Rows)
             { 
                 nrocoti = fila["IdSolicitud"].ToString();
-                _fecha = Convert.ToDateTime(fila["FechaLimite"]);
-                fecha = _fecha.ToString("dd-MM-yyyy");
+                fecha = Convert.ToDateTime(fila["FechaLimite"]).ToString("dd-MM-yyyy");
                 usuario = fila["Usuario"].ToString();
                 dataGridView4.Rows.Add(nrocoti, fecha, usuario);
             }
         }
-
         private void FrmGestionPedidoCotizaciones_Load(object sender, EventArgs e)
         {
             Cargardgv();
@@ -103,7 +84,6 @@ namespace CapaVista
             dataGridView3.Columns["Proveedor3"].ReadOnly = true;
 
         }
-
         private void dataGridView3_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0)
@@ -194,7 +174,6 @@ namespace CapaVista
 
             return dtFiltrado;
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             dataGridView3.ReadOnly = false;
@@ -221,11 +200,6 @@ namespace CapaVista
             var pedido = new PedidoCotizacion
             {
                 IdPR = Convert.ToInt32(dataGridView2.CurrentRow.Cells["IdPR"].Value),
-                Estado = "Activo",
-                FechaAlta = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
-                IdUsuarioAlta = 1,
-                FechaUltModificacion = DateTime.Now,
-                IdUsuarioUltModificacion = 1
             };
 
             DateTime fechaLimite = dateTimePicker1.Value;
@@ -284,9 +258,6 @@ namespace CapaVista
 
         }
 
-        private void DetalleCotizaciones()
-        {
-        }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             Solicitudes();
@@ -299,24 +270,16 @@ namespace CapaVista
         private void CargarProveedoress()
         {
             dataGridView1.Rows.Clear();
-            string idproducto;
-            string producto;
-            string prov1;
-            string prov2;
-            string prov3;
+            string idproducto, producto, prov1, prov2, prov3;
             int id = Convert.ToInt32(dataGridView4.CurrentRow.Cells["IdCotizacion"].Value.ToString());
-            detallecoti = metodos.ProveedoresCotizacion(id);
+            DataTable detallecoti = metodos.ProveedoresCotizacion(id);
             foreach (DataRow fila in detallecoti.Rows)
             {
                 idproducto = fila["IdProducto"].ToString();
                 producto = fila["Producto"].ToString();
-                prov1 = fila["Proveedor1"].ToString();
-                prov2 = fila["Proveedor2"].ToString();
-                prov3 = fila["Proveedor3"].ToString();
-
-                prov1 = string.IsNullOrWhiteSpace(prov1) ? "No Asignado" : prov1;
-                prov2 = string.IsNullOrWhiteSpace(prov2) ? "No Asignado" : prov2;
-                prov3 = string.IsNullOrWhiteSpace(prov3) ? "No Asignado" : prov3;
+                prov1 = string.IsNullOrWhiteSpace(fila["Proveedor1"].ToString()) ? "No Asignado" : fila["Proveedor1"].ToString();
+                prov2 = string.IsNullOrWhiteSpace(fila["Proveedor2"].ToString()) ? "No Asignado" : fila["Proveedor2"].ToString();
+                prov3 = string.IsNullOrWhiteSpace(fila["Proveedor3"].ToString()) ? "No Asignado" : fila["Proveedor3"].ToString();
 
                 int index = dataGridView1.Rows.Add();
                 dataGridView1.Rows[index].Cells["IdProducto2"].Value = idproducto;

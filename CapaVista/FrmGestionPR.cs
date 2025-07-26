@@ -8,10 +8,8 @@ namespace CapaVista
 {
     public partial class FrmGestionPR : Form
     {
-        DataTable stockproducmin = new DataTable();
-        private readonly CL_Metodos metodos = new CL_Metodos();
-        DataTable prpedidos;
-        DataTable detallepr;
+
+        CL_Metodos metodos = new CL_Metodos();
         public FrmGestionPR()
         {
             InitializeComponent();
@@ -24,7 +22,7 @@ namespace CapaVista
             string formadecompra;
             int sugerencia;
             int calculoreferencia;
-            stockproducmin = metodos.ProductosStockMin();
+            DataTable stockproducmin = metodos.ProductosStockMin();
             dataGridView1.Rows.Clear();
 
             foreach (DataRow fila in stockproducmin.Rows)
@@ -46,7 +44,7 @@ namespace CapaVista
             string usuario;
             string cantproductos;
             string estado;
-            prpedidos = metodos.PRpedidos();
+            DataTable prpedidos = metodos.PRpedidos();
             foreach (DataRow fila in prpedidos.Rows)
             {
                 estado = fila["Estado"].ToString();
@@ -69,7 +67,7 @@ namespace CapaVista
             int iddetallepr;
             int Stockmax;
             int idpr = Convert.ToInt32(dataGridView2.CurrentRow.Cells["IDPR"].Value);
-            detallepr = metodos.DetallePR(idpr);
+            DataTable detallepr = metodos.DetallePR(idpr);
             foreach (DataRow fila in detallepr.Rows)
             {
                 iddetallepr = Convert.ToInt32(fila["IdDetallePR"].ToString());
@@ -91,7 +89,12 @@ namespace CapaVista
 
             foreach (DataGridViewRow fila in dataGridView1.Rows)
             {
-                if (Convert.ToBoolean(fila.Cells["Seleccionar"].Value) && fila.Cells["Seleccionar"].Value != null)
+                if (fila.Cells["Seleccionar"].Value != null && fila.Cells["Cantidadpedida"].Value == null)
+                {
+                    MessageBox.Show("Por favor ingrese la cantidad a pedir");
+                    return;
+                }
+                if (fila.Cells["Seleccionar"].Value != null && Convert.ToBoolean(fila.Cells["Seleccionar"].Value))
                 {
                     detalle.Rows.Add(
                         fila.Cells["Codigo"].Value.ToString(),
@@ -100,6 +103,7 @@ namespace CapaVista
                         fila.Cells["StockActual"].Value.ToString().Split(' ')[1]
                     );
                 }
+
             }
             try
             {

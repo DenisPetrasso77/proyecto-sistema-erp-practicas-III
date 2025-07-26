@@ -9,53 +9,48 @@ namespace CapaVista
     public partial class FrmLogin : Form
     {
         CL_Metodos metodos = new CL_Metodos();
-        CV_Utiles utiles = new CV_Utiles();
-        CV_Seguridad seguridad = new CV_Seguridad();
-        UsuarioActual usuarioactual;
-        FrmRegistro registro = new FrmRegistro();
-
         public FrmLogin()
         {
             InitializeComponent();
         }
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            if (utiles.TextboxVacios(txtUsuario, txtContraseña))
+            if (CV_Utiles.TextboxVacios(txtUsuario, txtContraseña))
             {
                 MessageBox.Show("Por favor complete los datos de ingreso");
                 return;
             }
-            if (utiles.CamposNumericos(txtUsuario, txtContraseña))
+            if (CV_Utiles.CamposNumericos(txtUsuario, txtContraseña))
             {
                 MessageBox.Show("Los datos no pueden ser numericos");
                 return;
             }
-            usuarioactual = metodos.DatosIngreso(txtUsuario.Text);
+            Sesion.Usuario = metodos.DatosIngreso(txtUsuario.Text);
 
-            if (usuarioactual == null)
+            if (Sesion.Usuario == null)
             {
                 MessageBox.Show("Datos Incorrectos");
                 return;
             }
-            if (usuarioactual.Bloqueado == "1")
+            if (Sesion.Usuario.Bloqueado == "1")
             {
-                metodos.Bitacora(usuarioactual.Usuario, "Usuarios", $"Intento de Login Con Usuario Bloqueado");
+                metodos.Bitacora(Sesion.Usuario.Usuario, "Usuarios", "Intento de Login Con Usuario Bloqueado");
                 MessageBox.Show("Usuario Bloqueado, Contacte con Administracion");
                 return;
             }
             try
             {
-                if (seguridad.VertificarHasheo(usuarioactual.Contraseña, txtContraseña.Text))
+                if (CV_Seguridad.VertificarHasheo(Sesion.Usuario.Contraseña, txtContraseña.Text))
                 {
-                    metodos.Bitacora(usuarioactual.Usuario, "Usuarios", $"Intento de Login Exitoso");
+                    metodos.Bitacora(Sesion.Usuario.Usuario, "Usuarios", $"Intento de Login Exitoso");
                     this.Hide();
-                    FrmAdminHome home = new FrmAdminHome(usuarioactual);
+                    FrmAdminHome home = new FrmAdminHome();
                     home.Show();
                 }
                 else
                 {
-                    metodos.Bitacora(usuarioactual.Usuario, "Usuarios", $"Intento de Login Erroneo Clave Usada {txtContraseña.Text}");
-                    metodos.Intentos(usuarioactual.Usuario);
+                    metodos.Bitacora(Sesion.Usuario.Usuario, "Usuarios", $"Intento de Login Erroneo Clave Usada {txtContraseña.Text}");
+                    metodos.Intentos(Sesion.Usuario.Usuario);
                     MessageBox.Show("Datos Incorrectos");
                     return;
                 }
@@ -68,6 +63,7 @@ namespace CapaVista
 
         private void FrmLogin_Load(object sender, EventArgs e)
         {
+            
             //if (!VerificarIntegridadUsuarios())
             //{
             //    MessageBox.Show("Error en la integridad de los datos, por favor contacte con soporte");
@@ -92,7 +88,7 @@ namespace CapaVista
                                 + fila["Idrol"].ToString()
                                 + fila["Dni"].ToString();
 
-                int recalculadoDV = seguridad.CalcularDVH(cadena);
+                int recalculadoDV = CV_Seguridad.CalcularDVH(cadena);
                 if (DVoriginal != recalculadoDV)
                 {
                     metodos.Bitacora(fila["Usuario"].ToString(), "Usuarios", $"DV esperado: {fila["dv"].ToString()} DV Obtenido {recalculadoDV}");

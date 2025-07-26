@@ -1,6 +1,8 @@
 ﻿using CapaLogica;
 using System;
 using System.Data;
+using System.Drawing;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Windows.Forms;
 
 namespace CapaVista
@@ -64,6 +66,11 @@ namespace CapaVista
 
         private void button2_Click(object sender, EventArgs e)
         {
+            var valor = dataGridView1.CurrentRow;
+            if (valor == null)
+            {
+                return;
+            }
             int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["IdBitacora"].Value);
             DialogResult resultado = MessageBox.Show("¿Desea Eliminar el Registro Seleccionado?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)

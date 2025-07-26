@@ -569,10 +569,8 @@ namespace CapaDatos
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.AddWithValue("@IdPR", pedidoCotizacion.IdPR);
-                    cmd.Parameters.AddWithValue("@FechaAlta", pedidoCotizacion.FechaAlta);
-                    cmd.Parameters.AddWithValue("@IdUsuarioAlta", pedidoCotizacion.IdUsuarioAlta);
-                    cmd.Parameters.AddWithValue("@FechaUltModificacion", pedidoCotizacion.FechaUltModificacion);
-                    cmd.Parameters.AddWithValue("@IdUsuarioUltModificacion", pedidoCotizacion.IdUsuarioUltModificacion);
+                    cmd.Parameters.AddWithValue("@FechaAlta", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@IdUsuarioAlta", Sesion.Usuario.IdUsuario);
 
                     SqlParameter tvpParam = cmd.Parameters.AddWithValue("@DetallesCotizacion", detalle);
                     tvpParam.SqlDbType = SqlDbType.Structured;
@@ -734,7 +732,7 @@ namespace CapaDatos
 
             if (dt.Rows.Count > 0)
             {
-                var usuarioActual = new UsuarioActual()
+                var UsuarioActual  = new UsuarioActual
                 {
                     IdUsuario = Convert.ToInt32(dt.Rows[0]["IdUsuario"]),
                     Usuario = dt.Rows[0]["Usuario"].ToString(),
@@ -757,12 +755,12 @@ namespace CapaDatos
                     {
                         while (reader.Read())
                         {
-                            usuarioActual.Permisos.Add(reader["NombrePermiso"].ToString());
+                            UsuarioActual.Permisos.Add(reader["NombrePermiso"].ToString());
                         }
                     }
                 }
-
-                return usuarioActual;
+                Sesion.Usuario = UsuarioActual;
+                return UsuarioActual;
             }
 
             return null;

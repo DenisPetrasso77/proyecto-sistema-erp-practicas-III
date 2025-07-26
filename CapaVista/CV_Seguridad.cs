@@ -4,17 +4,17 @@ namespace CapaVista
 {
     public class CV_Seguridad
     {
-        public string Hasheo(string password)
+        public static string Hasheo(string password)
         {
             return BCrypt.Net.BCrypt.HashPassword(password, BCrypt.Net.BCrypt.GenerateSalt());
         }
 
-        public bool VertificarHasheo(string storedHash, string inputPassword)
+        public static bool VertificarHasheo(string storedHash, string inputPassword)
         {
             return BCrypt.Net.BCrypt.Verify(inputPassword, storedHash);
         }
 
-        public int CalcularDVH(string texto)
+        public static int CalcularDVH(string texto)
         {
             return texto.Sum(c => (int)c);
         }

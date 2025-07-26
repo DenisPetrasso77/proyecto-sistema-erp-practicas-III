@@ -15,7 +15,6 @@ namespace CapaVista
     public partial class FrmGestionProveedores : Form
     {
         CL_Metodos metodos = new CL_Metodos();
-        CV_Utiles utiles = new CV_Utiles();
         public FrmGestionProveedores()
         {
             InitializeComponent();
@@ -23,12 +22,12 @@ namespace CapaVista
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (utiles.TextboxVacios(textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8) && utiles.ComboboxVacios(comboBox2, comboBox3))
+            if (CV_Utiles.TextboxVacios(textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8) && CV_Utiles.ComboboxVacios(comboBox2, comboBox3))
             {
                 MessageBox.Show("Por favor complete todos los campos");
                 return;
             }
-            if (utiles.CampoMail(textBox6.Text))
+            if (CV_Utiles.CampoMail(textBox6.Text))
             {
                 MessageBox.Show("Formato de Mail Incorrecto");
                 return;
@@ -68,7 +67,7 @@ namespace CapaVista
         }
         private void CargarProvincias()
         {
-            utiles.LimpiarControles(comboBox2);
+            CV_Utiles.LimpiarControles(comboBox2);
             DataTable cacheprovincias = metodos.TraerTodo("Provincias");
             foreach (DataRow filas in cacheprovincias.Rows)
             {
@@ -78,7 +77,7 @@ namespace CapaVista
         }
         private void CargarLocalidades(int id)
         {
-            utiles.LimpiarControles(comboBox3);
+            CV_Utiles.LimpiarControles(comboBox3);
             DataTable cacheLocalidades = metodos.Localidades(id);
             foreach (DataRow filas in cacheLocalidades.Rows)
             {
@@ -101,7 +100,7 @@ namespace CapaVista
             }
             else
             {
-                utiles.LimpiarControles(comboBox2);
+                CV_Utiles.LimpiarControles(comboBox2);
                 comboBox3.Enabled = false;
             }
         }

@@ -9,7 +9,6 @@ namespace CapaVista
     public partial class FrmRegistro : Form
     {
         CL_Metodos metodos = new CL_Metodos();
-        CV_Seguridad seguridad = new CV_Seguridad();
         public FrmRegistro()
         {
             InitializeComponent();
@@ -19,12 +18,12 @@ namespace CapaVista
             UsuarioNuevo usuarioNuevo = new UsuarioNuevo()
             {
                 Usuario = textBox1.Text.Trim(),
-                Contraseña = seguridad.Hasheo(textBox2.Text).Trim(),
+                Contraseña = CV_Seguridad.Hasheo(textBox2.Text).Trim(),
                 Nombre = textBox3.Text.Trim(),
                 Apellido = textBox4.Text.Trim(),
                 Rol = Convert.ToInt32(comboBox1.Text.Split('-')[0].ToString()),
                 Dni = textBox5.Text.Trim(),
-                dv = seguridad.CalcularDVH(textBox1.Text + seguridad.Hasheo(textBox2.Text) + "Activo"+ textBox3.Text + textBox4.Text + Convert.ToInt32(comboBox1.Text.Split('-')[0].ToString()) + 0 + comboBox1.Text.Split('-')[0].ToString() + textBox5.Text)
+                dv = CV_Seguridad.CalcularDVH(textBox1.Text + CV_Seguridad.Hasheo(textBox2.Text) + "Activo"+ textBox3.Text + textBox4.Text + Convert.ToInt32(comboBox1.Text.Split('-')[0].ToString()) + 0 + comboBox1.Text.Split('-')[0].ToString() + textBox5.Text)
             };
             string resultado = metodos.Registro(usuarioNuevo);
             MessageBox.Show(resultado);

@@ -8,14 +8,13 @@ namespace CapaVista
     public partial class FrmCargarTipoProducto : Form
     {
         CL_Metodos metodos = new CL_Metodos();
-        DataTable cachetipos;
         public FrmCargarTipoProducto()
         {
             InitializeComponent();
         }
         private void CargarTipoProductos()
         {
-            cachetipos = metodos.TipoProductos("TipoProductos");
+            DataTable cachetipos = metodos.TipoProductos("TipoProductos");
             string texto = textBox1.Text.Trim().ToLower();
             dataGridView1.Rows.Clear();
 

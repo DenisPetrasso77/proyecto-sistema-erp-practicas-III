@@ -11,25 +11,15 @@ namespace CapaVista
     public partial class FrmGestionProductos : Form
     {
         CL_Metodos metodos = new CL_Metodos();
-        FrmCargarCategorias Cargarcate = new FrmCargarCategorias();
-        FrmCargarMarcas Cargarmarcas = new FrmCargarMarcas();
-        FrmCargarTipoProducto Tipoproducto = new FrmCargarTipoProducto();
-        CV_Utiles utiles = new CV_Utiles();
-        FrmGestionMedidas medidas = new FrmGestionMedidas();
-        CV_Seguridad seguridad = new CV_Seguridad();
-        UsuarioActual UsuarioActual = new UsuarioActual();
-        
-        
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            Cargarcate.ShowDialog();
+            new FrmCargarCategorias().ShowDialog();
             Cargarcbxcategorias();
         }
         
-        public FrmGestionProductos( UsuarioActual usuarioActual)
+        public FrmGestionProductos()
         {
             InitializeComponent();
-            UsuarioActual = usuarioActual;
         }
 
         private void Cargarcbxcategorias()
@@ -89,7 +79,7 @@ namespace CapaVista
         {
             if (!checkBox2.Checked)
             {
-                if (utiles.TextboxVacios(textBox1) && utiles.ComboboxVacios(comboBox1, comboBox2, comboBox4, comboBox5,comboBox6))
+                if (CV_Utiles.TextboxVacios(textBox1) && CV_Utiles.ComboboxVacios(comboBox1, comboBox2, comboBox4, comboBox5,comboBox6))
                 {
                     MessageBox.Show("Por favor complete todos los campos");
                     return;
@@ -97,7 +87,7 @@ namespace CapaVista
             }
             else if (checkBox2.Checked)
             {
-                if (utiles.TextboxVacios(textBox3, textBox4,textBox5,textBox9,textBox10) && utiles.ComboboxVacios(comboBox3))
+                if (CV_Utiles.TextboxVacios(textBox3, textBox4,textBox5,textBox9,textBox10) && CV_Utiles.ComboboxVacios(comboBox3))
                 {
                     MessageBox.Show("Por favor complete todos los campos");
                     return;
@@ -149,16 +139,16 @@ namespace CapaVista
                 StockActual = stockactual,
                 Estado = estado,
                 FechaAlta = fecha,
-                IdUsuarioAlta = UsuarioActual.IdUsuario,
+                IdUsuarioAlta = Sesion.Usuario.IdUsuario,
                 PrecioCompra = preciocompra,
                 PrecioVenta = precioventa,
                 Descuentos = descuentos,
-                DVH = seguridad.CalcularDVH(codigo+tipoproducto+cate+ marca+ medidas+ fventa+estado+fecha+1+"Normal")
+                DVH = CV_Seguridad.CalcularDVH(codigo+tipoproducto+cate+ marca+ medidas+ fventa+estado+fecha+1+"Normal")
             };
 
             string resultado = metodos.InsertarProducto(productoNuevo);
             MessageBox.Show(resultado);
-            utiles.LimpiarControles(this);
+            CV_Utiles.LimpiarControles(this);
             textBox1.Focus();
         }
         private void button2_Click(object sender, EventArgs e)
@@ -266,7 +256,7 @@ namespace CapaVista
         }
         private void pictureBox8_Click(object sender, EventArgs e)
         {
-            Cargarmarcas.ShowDialog();
+            new FrmCargarMarcas().ShowDialog();
             Cargarcbxmedidas();
         }
 
@@ -293,13 +283,13 @@ namespace CapaVista
 
         private void pictureBox10_Click(object sender, EventArgs e)
         {
-            Tipoproducto.ShowDialog();
+            new FrmCargarTipoProducto().ShowDialog();
             Cargarcbxtpoproducto();
         }
 
         private void pictureBox9_Click(object sender, EventArgs e)
         {
-            medidas.ShowDialog();
+            //new FrmGestionMedidas().ShowDialog();
             Cargarcbxmedidas();
         }
 

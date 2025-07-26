@@ -47,6 +47,7 @@
     <Compile Include="ProductoNuevo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proveedor.cs" />
+    <Compile Include="Sesion.cs" />
     <Compile Include="UsuarioActual.cs" />
     <Compile Include="UsuarioNuevo.cs" />
   </ItemGroup>

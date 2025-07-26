@@ -7,8 +7,7 @@ namespace CapaVista
 {
     public partial class FrmCargarCategorias : Form
     {
-        private CL_Metodos metodos = new CL_Metodos();
-        FrmNuevaCate nuevacate = new FrmNuevaCate();
+        CL_Metodos metodos = new CL_Metodos();
         DataTable cachecategorias = new DataTable();
         public FrmCargarCategorias()
         {
@@ -122,7 +121,7 @@ namespace CapaVista
 
         private void button5_Click(object sender, EventArgs e)
         {
-            nuevacate.ShowDialog();
+            new FrmNuevaCate().ShowDialog();
             Cargarcategorias();
         }
 

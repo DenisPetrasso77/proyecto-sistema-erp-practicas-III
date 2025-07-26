@@ -9,15 +9,13 @@ namespace CapaVista
     public partial class FrmCargarMarcas : Form
     {
         CL_Metodos metodos = new CL_Metodos();
-        DataTable cachemarcas = new DataTable();
-        FrmNuevaMarca nuevamarca = new FrmNuevaMarca();
         public FrmCargarMarcas()
         {
             InitializeComponent();
         }
         private void Cargarmarcas()
         {
-            cachemarcas = metodos.TraerTodo("Marca");
+            DataTable cachemarcas = metodos.TraerTodo("Marca");
             string texto = textBox1.Text.Trim().ToLower();
             dataGridView1.Rows.Clear();
 
@@ -68,7 +66,7 @@ namespace CapaVista
 
         private void button5_Click(object sender, System.EventArgs e)
         {
-            nuevamarca.ShowDialog();
+            new FrmNuevaMarca().ShowDialog();
             Cargarmarcas();
         }
 

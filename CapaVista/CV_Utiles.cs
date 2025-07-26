@@ -6,7 +6,7 @@ namespace CapaVista
 {
     public class CV_Utiles
     {
-        public bool TextboxVacios(params TextBox[] campos)
+        public static bool TextboxVacios(params TextBox[] campos)
         {
             foreach (TextBox campo in campos)
             {
@@ -17,7 +17,7 @@ namespace CapaVista
             }
             return false;
         }
-        public bool ComboboxVacios(params ComboBox[] campos)
+        public static bool ComboboxVacios(params ComboBox[] campos)
         {
             foreach (ComboBox campo in campos)
             {
@@ -28,7 +28,7 @@ namespace CapaVista
             }
             return false;
         }
-        public bool CamposNumericos(params TextBox[] campos)
+        public static bool CamposNumericos(params TextBox[] campos)
         {
             foreach (TextBox campo in campos)
             {
@@ -39,7 +39,7 @@ namespace CapaVista
             }
             return false;
         }
-        public bool CampoMail(string dato)
+        public static bool CampoMail(string dato)
         {
             string patron = "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$";
 
@@ -49,7 +49,7 @@ namespace CapaVista
             }
             return false;
         }
-        public void LimpiarControles(Control control)
+        public static void LimpiarControles(Control control)
         {
             foreach (Control c in control.Controls)
             {
@@ -71,7 +71,7 @@ namespace CapaVista
                 }
             }
         }
-        public void LimpiarFormulario(Control control)
+        public static void LimpiarFormulario(Control control)
         {
             foreach (Control c in control.Controls)
             {
@@ -110,7 +110,7 @@ namespace CapaVista
                 }
             }
         }
-        public int Num_aleatorio()
+        public static int Num_aleatorio()
         {
             Random random = new Random();
             return random.Next(1000, 10000);

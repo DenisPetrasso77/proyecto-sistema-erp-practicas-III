@@ -1,5 +1,4 @@
-﻿using CapaEntities;
-using CapaLogica;
+﻿using CapaLogica;
 using System;
 using System.Data;
 using System.Drawing;
@@ -12,29 +11,16 @@ namespace CapaVista
         CL_Metodos metodos = new CL_Metodos();
         DataTable productosCache = new DataTable();
         FrmCargarCategorias cate = new FrmCargarCategorias();
-        FrmGestionProveedores proveedores = new FrmGestionProveedores();
-        FrmGestionProductos productos;
-        FrmGestionPR gestionpr = new FrmGestionPR();
-        FrmGestionPedidoCotizaciones cotizaciones = new FrmGestionPedidoCotizaciones();
-        FrmGestionOrdenCompra ordenCompra = new FrmGestionOrdenCompra();
-        FrmGestionRecepcion recepcion = new FrmGestionRecepcion();
-        UsuarioActual Usuarioactual;
-        FrmAdmusuarios Admusuarios = new FrmAdmusuarios();
-        CV_Seguridad seguridad = new CV_Seguridad();
-        GestionProveedores gestionproveedores = new GestionProveedores();
-        FrmPagos pagos = new FrmPagos();
-        FrmBitacora bitacora = new FrmBitacora();
 
-        public FrmAdminHome(UsuarioActual usuarioactual)
+
+        public FrmAdminHome()
         {
             InitializeComponent();
-            Usuarioactual = usuarioactual;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             Cargarbuscador();
-            
         }
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
@@ -44,6 +30,7 @@ namespace CapaVista
                 listBox1.Focus();
                 listBox1.SelectedIndex = 0;
             }
+
         }
 
         //private void AgregarProductoSeleccionado()
@@ -189,8 +176,7 @@ namespace CapaVista
         private void button2_Click(object sender, EventArgs e)
         {
             panel1.Controls.Remove(p);
-            productos = new FrmGestionProductos(Usuarioactual);
-            productos.ShowDialog();
+           new FrmGestionProductos().ShowDialog();
             Cargarbuscador();
         }
 
@@ -259,13 +245,13 @@ namespace CapaVista
         private void button7_Click(object sender, EventArgs e)
         {
             panel1.Controls.Remove(p);
-            pagos.ShowDialog();
+            new FrmPagos().ShowDialog();
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             this.Hide();
-            gestionpr.ShowDialog();
+            new FrmGestionPR().ShowDialog();
             this.Show();
         }
 
@@ -280,7 +266,7 @@ namespace CapaVista
         private void button8_Click(object sender, EventArgs e)
         {
             this.Hide();
-            proveedores.ShowDialog();
+            new FrmGestionProveedores().ShowDialog();
             this.Show();
         }
 
@@ -295,14 +281,14 @@ namespace CapaVista
         private void button10_Click(object sender, EventArgs e)
         {
             this.Hide();
-            cotizaciones.ShowDialog();
+            new FrmGestionPedidoCotizaciones().ShowDialog();
             this.Show();
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ordenCompra.ShowDialog();
+            new FrmGestionOrdenCompra().ShowDialog();
             this.Show();
         }
 
@@ -325,14 +311,14 @@ namespace CapaVista
         private void button14_Click(object sender, EventArgs e)
         {
             this.Hide();
-            recepcion.ShowDialog();
+            new FrmGestionRecepcion().ShowDialog();
             this.Show();
         }
 
         private void button15_Click(object sender, EventArgs e)
         {
             this.Hide();
-            gestionproveedores.ShowDialog();
+            new GestionProveedores().ShowDialog();
             this.Show();
         }
 
@@ -343,22 +329,21 @@ namespace CapaVista
         private void button16_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Admusuarios.ShowDialog();
+            new FrmAdmusuarios().ShowDialog();
             this.Show();
         }
 
         private void button17_Click(object sender, EventArgs e)
         {
             this.Hide();
-            bitacora.ShowDialog();
+           new FrmBitacora().ShowDialog();
             this.Show();
         }
 
         private void button18_Click(object sender, EventArgs e)
         {
             this.Close();        
-            FrmLogin login = new FrmLogin();
-            login.Show();
+            new FrmLogin().ShowDialog();
         }
     }
 }
