@@ -284,10 +284,32 @@ namespace CapaVista
                 int index = dataGridView1.Rows.Add();
                 dataGridView1.Rows[index].Cells["IdProducto2"].Value = idproducto;
                 dataGridView1.Rows[index].Cells["Producto"].Value = producto;
-                dataGridView1.Rows[index].Cells["Provedor1"].Value = prov1;
-                dataGridView1.Rows[index].Cells["Provedor2"].Value = prov2;
-                dataGridView1.Rows[index].Cells["Provedor3"].Value = prov3;
+                dataGridView1.Rows[index].Cells["Prov1"].Value = prov1;
+                dataGridView1.Rows[index].Cells["Prov2"].Value = prov2;
+                dataGridView1.Rows[index].Cells["Prov3"].Value = prov3;
             }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            int idsolicitud = Convert.ToInt32(dataGridView4.CurrentRow.Cells["IdCotizacion"].Value);
+            foreach (DataGridViewRow fila in dataGridView1.Rows)
+            {
+                string idproducto = fila.Cells["IdProducto2"].Value.ToString();
+                for (int i = 1; i <= 3; i++)
+                {
+                    string proveedorcolum = "Prov" + i;
+                    string precioproveedorcolum = "Precio" + i;
+
+                    string proveedor = fila.Cells[proveedorcolum].Value?.ToString();
+                    decimal precio = Convert.ToDecimal(fila.Cells[precioproveedorcolum].Value);
+                    if (proveedor != "No Asignado")
+                    {
+                      metodos.ActualizarDetalleCotizaciones(idsolicitud, idproducto, proveedor, precio);
+                    }
+                }
+            }
+            MessageBox.Show("Presupuestos Actualizados");
         }
     }
 }

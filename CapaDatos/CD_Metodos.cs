@@ -150,6 +150,29 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
         }
+        public int ActualizarDetalleCotizaciones(int idsolicitud,string idproducto,string proveedor,decimal precio)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_ActualizarCotizaciones", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IdSolicitud", idsolicitud);
+                    cmd.Parameters.AddWithValue("@IdProducto", idproducto);
+                    cmd.Parameters.AddWithValue("@Proveedor", proveedor);
+                    cmd.Parameters.AddWithValue("@Precio", precio);
+                    return cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
         public int CodigoPostal(int id)
         {
             try
@@ -248,7 +271,42 @@ namespace CapaDatos
             {
                 conexion.Cerrar();
             }
+        }
+        public string InsertarOrdendeCompra(OrdendeCompra ordendeCompra)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_InsertarOrdenDeCompra", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IdUsuario", ordendeCompra.IdUsuario);
+                    cmd.Parameters.AddWithValue("@IdSolicitud", ordendeCompra.IdSolicitud);
+                    cmd.Parameters.AddWithValue("@Fecha", ordendeCompra.Fecha);
+                    DataTable detalle = new DataTable();
 
+                    detalle.Columns.Add("IdProducto", typeof(string));
+                    detalle.Columns.Add("Producto", typeof(string));
+                    detalle.Columns.Add("IdCoti", typeof(int));
+                    detalle.Columns.Add("Precio", typeof(decimal));
+
+                    foreach (var desc in ordendeCompra.Detalle)
+                    {
+                        detalle.Rows.Add(desc.IdProducto, desc.Producto,desc.IdDetalleCoti,desc.Precio);
+                    }
+                    SqlParameter tvpParam = cmd.Parameters.AddWithValue("@Detalles", detalle);
+                    tvpParam.SqlDbType = SqlDbType.Structured;
+                    tvpParam.TypeName = "dbo.t_DetalleOrdenCompra";
+                    return (string)cmd.ExecuteScalar();
+                }
+            }
+            catch (SqlException ex)
+            {
+                return "Error:" + ex.Message;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
         }
         public string Registro(UsuarioNuevo usuarioNuevo)
         {
@@ -772,6 +830,76 @@ namespace CapaDatos
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@tabla", tabla);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable TraerPresupuestos(int id)
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_CargarPresupuestos", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Idsolicitud", id);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable TraerDetalleOrdenesCompra(int id)
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_TraerDetalleOrdenCompra", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Idorden", id);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable RecepcionPedidos(int id)
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_RecepcionPedidos", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Idorden", id);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
+        public DataTable RecepcionOrdenes()
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_RecepcionOrdenes", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable TraerSolicitudesCotizaciones()
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_TraerSolicitudesCotizaciones", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable TraerOrdenesdeCompra()
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarOrdenesdeCompra", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
             }

@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DetalleSoliCotizaciones.cs" />
+    <Compile Include="OrdendeCompra.cs" />
     <Compile Include="PedidoCotizacion.cs" />
     <Compile Include="PedidodeReaprovionamiento.cs" />
     <Compile Include="ProductoNuevo.cs" />

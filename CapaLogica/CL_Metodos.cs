@@ -14,7 +14,40 @@ namespace CapaLogica
         { 
             return metodos.Intentos(usuario);
         }
+        public int ActualizarDetalleCotizaciones(int idsolicitud, string idproducto, string proveedor, decimal precio)
+        {
+            return metodos.ActualizarDetalleCotizaciones(idsolicitud, idproducto, proveedor, precio);
+        }
+        public DataTable RecepcionPedidos(int id)
+        {
+            return metodos.RecepcionPedidos(id);
+        }
+        public DataTable RecepcionOrdenes()
+        {
+            return metodos.RecepcionOrdenes();
+        }
 
+        public DataTable TraerDetalleOrdenesCompra(int id)
+        {
+            return metodos.TraerDetalleOrdenesCompra(id);
+        }
+        public DataTable TraerPresupuestos(int id)
+        {
+            return metodos.TraerPresupuestos(id);
+        }
+        public DataTable TraerOrdenesdeCompra()
+        {
+            return metodos.TraerOrdenesdeCompra();
+        }
+        public string InsertarOrdendeCompra(OrdendeCompra ordendeCompra)
+        {
+            return metodos.InsertarOrdendeCompra(ordendeCompra);
+        }
+
+        public DataTable TraerSolicitudesCotizaciones()
+        {
+            return metodos.TraerSolicitudesCotizaciones();
+        }
         public int BorrarDetalleBitacora(int id)
         {
             return metodos.BorrarDetalleBitacora(id);
