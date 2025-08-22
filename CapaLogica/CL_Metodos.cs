@@ -18,6 +18,10 @@ namespace CapaLogica
         {
             return metodos.ActualizarDetalleCotizaciones(idsolicitud, idproducto, proveedor, precio);
         }
+        public DataTable TraerBitacora()
+        { 
+            return metodos.TraerBitacora();
+        }
         public DataTable RecepcionPedidos(int id)
         {
             return metodos.RecepcionPedidos(id);
@@ -156,7 +160,7 @@ namespace CapaLogica
         {
             return metodos.ActualizarUsuario(usuario, nombre, apellido, dni, rol, bloqueado);
         }
-        public int Bitacora(string usuario, string tabla, string descripcion)
+        public string Bitacora(int usuario, string tabla, string descripcion)
         { 
             return metodos.Bitacora(usuario, tabla, descripcion);
         }

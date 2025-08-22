@@ -10,7 +10,7 @@ namespace CapaDatos
         CD_Conexion conexion = new CD_Conexion();
         #region METODOS
 
-        public int Bitacora(string usuario,string tabla,string descripcion)
+        public string Bitacora(int usuario,string tabla,string descripcion)
         {
             try
             {
@@ -20,12 +20,12 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("@Usuario", usuario);
                     cmd.Parameters.AddWithValue("@Tabla", tabla);
                     cmd.Parameters.AddWithValue("@Descripcion", descripcion);
-                    return cmd.ExecuteNonQuery();
+                    return (string)cmd.ExecuteScalar();
                 }
             }
-            catch (Exception)
+            catch (SqlException ex)
             {
-                return 0;
+                return "Error:" + ex.Message;
             }
             finally
             {
@@ -898,6 +898,17 @@ namespace CapaDatos
         {
             DataTable dt = new DataTable();
             using (SqlCommand cmd = new SqlCommand("sp_SeleccionarOrdenesdeCompra", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable TraerBitacora()
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarBitacora", conexion.Abrir()))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 SqlDataAdapter da = new SqlDataAdapter(cmd);

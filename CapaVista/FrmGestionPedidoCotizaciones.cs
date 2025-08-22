@@ -311,5 +311,14 @@ namespace CapaVista
             }
             MessageBox.Show("Presupuestos Actualizados");
         }
+
+        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Decimal || e.KeyCode == Keys.OemPeriod)
+            {
+                e.Handled = true;       
+                SendKeys.Send(",");
+            }
+        }
     }
 }

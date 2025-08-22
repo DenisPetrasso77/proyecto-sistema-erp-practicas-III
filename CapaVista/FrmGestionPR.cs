@@ -1,4 +1,5 @@
-﻿using CapaLogica;
+﻿using CapaEntities;
+using CapaLogica;
 using System;
 using System.Data;
 using System.Web;

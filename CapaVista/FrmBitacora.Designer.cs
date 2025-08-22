@@ -30,6 +30,11 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.IdBitacora = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaHora = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tabla = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
@@ -46,11 +51,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.IdBitacora = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechaHora = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tabla = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -82,6 +82,44 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(782, 150);
             this.dataGridView1.TabIndex = 1;
+            // 
+            // IdBitacora
+            // 
+            this.IdBitacora.HeaderText = "IdBitacora";
+            this.IdBitacora.Name = "IdBitacora";
+            this.IdBitacora.ReadOnly = true;
+            this.IdBitacora.Visible = false;
+            this.IdBitacora.Width = 148;
+            // 
+            // FechaHora
+            // 
+            this.FechaHora.HeaderText = "Fecha y Hora";
+            this.FechaHora.Name = "FechaHora";
+            this.FechaHora.ReadOnly = true;
+            this.FechaHora.Width = 185;
+            // 
+            // Usuario
+            // 
+            this.Usuario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Usuario.HeaderText = "Usuario";
+            this.Usuario.Name = "Usuario";
+            this.Usuario.ReadOnly = true;
+            this.Usuario.Width = 68;
+            // 
+            // Tabla
+            // 
+            this.Tabla.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Tabla.HeaderText = "Tabla Afectada";
+            this.Tabla.Name = "Tabla";
+            this.Tabla.ReadOnly = true;
+            this.Tabla.Width = 97;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
             // 
             // label2
             // 
@@ -241,44 +279,6 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // IdBitacora
-            // 
-            this.IdBitacora.HeaderText = "IdBitacora";
-            this.IdBitacora.Name = "IdBitacora";
-            this.IdBitacora.ReadOnly = true;
-            this.IdBitacora.Visible = false;
-            this.IdBitacora.Width = 148;
-            // 
-            // FechaHora
-            // 
-            this.FechaHora.HeaderText = "Fecha y Hora";
-            this.FechaHora.Name = "FechaHora";
-            this.FechaHora.ReadOnly = true;
-            this.FechaHora.Width = 185;
-            // 
-            // Usuario
-            // 
-            this.Usuario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Usuario.HeaderText = "Usuario";
-            this.Usuario.Name = "Usuario";
-            this.Usuario.ReadOnly = true;
-            this.Usuario.Width = 68;
-            // 
-            // Tabla
-            // 
-            this.Tabla.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Tabla.HeaderText = "Tabla Afectada";
-            this.Tabla.Name = "Tabla";
-            this.Tabla.ReadOnly = true;
-            this.Tabla.Width = 97;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.ReadOnly = true;
-            // 
             // FrmBitacora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -294,6 +294,7 @@
             this.Name = "FrmBitacora";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestion de Bitacora";
+            this.Load += new System.EventHandler(this.FrmBitacora_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

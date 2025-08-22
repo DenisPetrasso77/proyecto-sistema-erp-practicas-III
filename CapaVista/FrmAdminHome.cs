@@ -1,4 +1,5 @@
-﻿using CapaLogica;
+﻿using CapaEntities;
+using CapaLogica;
 using System;
 using System.Data;
 using System.Drawing;
@@ -176,8 +177,9 @@ namespace CapaVista
         private void button2_Click(object sender, EventArgs e)
         {
             panel1.Controls.Remove(p);
-           new FrmGestionProductos().ShowDialog();
+            new FrmGestionProductos().ShowDialog();
             Cargarbuscador();
+            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Productos", "Accedio al Menu Gestion Productos");
         }
 
         private void Calculartotal()
@@ -246,6 +248,8 @@ namespace CapaVista
         {
             panel1.Controls.Remove(p);
             new FrmPagos().ShowDialog();
+            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Pagos", "Accedio al Menu Gestion Pagos");
+
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -253,6 +257,8 @@ namespace CapaVista
             this.Hide();
             new FrmGestionPR().ShowDialog();
             this.Show();
+            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Pedidos Reaprovisionamiento", "Accedio al Menu Gestion Pedidos de Reaprovisionamiento");
+
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -268,6 +274,8 @@ namespace CapaVista
             this.Hide();
             new FrmGestionProveedores().ShowDialog();
             this.Show();
+            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Proveedores", "Accedio al Menu Gestion Proveedores");
+
         }
 
         private void button9_Click(object sender, EventArgs e)
@@ -283,6 +291,8 @@ namespace CapaVista
             this.Hide();
             new FrmGestionPedidoCotizaciones().ShowDialog();
             this.Show();
+            metodos.Bitacora(Sesion.Usuario.IdUsuario,"Cotizaciones", "Accedio al Menu Gestion Cotizaciones");
+
         }
 
         private void button12_Click(object sender, EventArgs e)
@@ -290,6 +300,8 @@ namespace CapaVista
             this.Hide();
             new FrmGestionOrdenCompra().ShowDialog();
             this.Show();
+            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Ordenes de Compra", "Accedio al Menu Gestion Ordenes de Compra");
+
         }
 
         private void button11_Click(object sender, EventArgs e)
@@ -313,6 +325,8 @@ namespace CapaVista
             this.Hide();
             new FrmGestionRecepcion().ShowDialog();
             this.Show();
+            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Recepcion Mercaderia", "Accedio al Menu Gestion Recepcion");
+
         }
 
         private void button15_Click(object sender, EventArgs e)
@@ -320,6 +334,8 @@ namespace CapaVista
             this.Hide();
             new GestionProveedores().ShowDialog();
             this.Show();
+            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Proveedores", "Accedio al Menu Modificar Proveedores");
+
         }
 
         private void Frm_AdminHome_Load(object sender, EventArgs e)
@@ -331,19 +347,26 @@ namespace CapaVista
             this.Hide();
             new FrmAdmusuarios().ShowDialog();
             this.Show();
+            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Usuarios", "Accedio al Menu Gestion Usuarios");
+
         }
 
         private void button17_Click(object sender, EventArgs e)
         {
+            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Bitacora", "Accedio al Menu Gestion Bitacora");
             this.Hide();
-           new FrmBitacora().ShowDialog();
+            new FrmBitacora().ShowDialog();
             this.Show();
+
         }
 
         private void button18_Click(object sender, EventArgs e)
         {
+            metodos.Bitacora(Sesion.Usuario.IdUsuario, null, "Salio del Sistema");
+
             this.Close();        
             new FrmLogin().ShowDialog();
+
         }
     }
 }

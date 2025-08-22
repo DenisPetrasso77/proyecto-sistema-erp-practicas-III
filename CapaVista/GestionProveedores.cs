@@ -1,4 +1,5 @@
-﻿using CapaLogica;
+﻿using CapaEntities;
+using CapaLogica;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -103,6 +104,9 @@ namespace CapaVista
             textBox1.Text = listBox1.SelectedItem.ToString();
             AgregarProveedor(Convert.ToInt32(textBox1.Text.Split('-')[0].ToString()));
         }
-        
+
+        private void GestionProveedores_Load(object sender, EventArgs e)
+        {
+        }
     }
 }

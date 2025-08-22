@@ -34,7 +34,7 @@ namespace CapaVista
             }
             if (Sesion.Usuario.Bloqueado == "1")
             {
-                metodos.Bitacora(Sesion.Usuario.Usuario, "Usuarios", "Intento de Login Con Usuario Bloqueado");
+                metodos.Bitacora(Sesion.Usuario.IdUsuario, "Usuarios", "Intento de Login Con Usuario Bloqueado");
                 MessageBox.Show("Usuario Bloqueado, Contacte con Administracion");
                 return;
             }
@@ -42,14 +42,14 @@ namespace CapaVista
             {
                 if (CV_Seguridad.VertificarHasheo(Sesion.Usuario.Contraseña, txtContraseña.Text))
                 {
-                    metodos.Bitacora(Sesion.Usuario.Usuario, "Usuarios", $"Intento de Login Exitoso");
+                    metodos.Bitacora(Sesion.Usuario.IdUsuario, "Usuarios", $"Intento de Login Exitoso");
                     this.Hide();
                     FrmAdminHome home = new FrmAdminHome();
                     home.Show();
                 }
                 else
                 {
-                    metodos.Bitacora(Sesion.Usuario.Usuario, "Usuarios", $"Intento de Login Erroneo Clave Usada {txtContraseña.Text}");
+                    metodos.Bitacora(Sesion.Usuario.IdUsuario, "Usuarios", $"Intento de Login Erroneo Clave Usada {txtContraseña.Text}");
                     metodos.Intentos(Sesion.Usuario.Usuario);
                     MessageBox.Show("Datos Incorrectos");
                     return;
@@ -91,7 +91,7 @@ namespace CapaVista
                 int recalculadoDV = CV_Seguridad.CalcularDVH(cadena);
                 if (DVoriginal != recalculadoDV)
                 {
-                    metodos.Bitacora(fila["Usuario"].ToString(), "Usuarios", $"DV esperado: {fila["dv"].ToString()} DV Obtenido {recalculadoDV}");
+                    metodos.Bitacora(Convert.ToInt32(fila["IdUsuario"].ToString()), "Usuarios", $"DV esperado: {fila["dv"].ToString()} DV Obtenido {recalculadoDV}");
                     return false;
                 }
             }

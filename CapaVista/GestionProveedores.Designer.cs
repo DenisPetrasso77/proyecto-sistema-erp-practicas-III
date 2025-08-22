@@ -39,9 +39,11 @@
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -57,8 +59,6 @@
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
@@ -188,13 +188,36 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "DATOS PRINCIPALES";
             // 
-            // textBox5
+            // label6
             // 
-            this.textBox5.Location = new System.Drawing.Point(132, 12);
-            this.textBox5.MaxLength = 8;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(213, 20);
-            this.textBox5.TabIndex = 31;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(225, 121);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(53, 16);
+            this.label6.TabIndex = 35;
+            this.label6.Text = "Estado:";
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Items.AddRange(new object[] {
+            "CUIL",
+            "CUIT",
+            "DNI"});
+            this.comboBox4.Location = new System.Drawing.Point(283, 117);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(62, 21);
+            this.comboBox4.TabIndex = 34;
+            this.comboBox4.Text = "Activo";
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(132, 89);
+            this.textBox7.MaxLength = 8;
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(213, 20);
+            this.textBox7.TabIndex = 33;
             // 
             // textBox6
             // 
@@ -204,13 +227,13 @@
             this.textBox6.Size = new System.Drawing.Size(213, 20);
             this.textBox6.TabIndex = 32;
             // 
-            // textBox7
+            // textBox5
             // 
-            this.textBox7.Location = new System.Drawing.Point(132, 89);
-            this.textBox7.MaxLength = 8;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(213, 20);
-            this.textBox7.TabIndex = 33;
+            this.textBox5.Location = new System.Drawing.Point(132, 12);
+            this.textBox5.MaxLength = 8;
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(213, 20);
+            this.textBox5.TabIndex = 31;
             // 
             // groupBox2
             // 
@@ -361,29 +384,6 @@
             this.button2.Text = "SALIR";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // comboBox4
-            // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
-            "CUIL",
-            "CUIT",
-            "DNI"});
-            this.comboBox4.Location = new System.Drawing.Point(283, 117);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(62, 21);
-            this.comboBox4.TabIndex = 34;
-            this.comboBox4.Text = "Activo";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(225, 121);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 16);
-            this.label6.TabIndex = 35;
-            this.label6.Text = "Estado:";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -420,6 +420,7 @@
             this.Name = "GestionProveedores";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GESTION DE PROVEEDORES";
+            this.Load += new System.EventHandler(this.GestionProveedores_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

@@ -1,4 +1,5 @@
-﻿using CapaLogica;
+﻿using CapaEntities;
+using CapaLogica;
 using System;
 using System.Data;
 using System.Drawing;
@@ -14,11 +15,10 @@ namespace CapaVista
         public FrmBitacora()
         {
             InitializeComponent();
-            CargarDetalle();
         }
         private void CargarDetalle()
         {
-            cachebitacora = metodos.TraerTodo("Bitacora");
+            cachebitacora = metodos.TraerBitacora();
 
             string usuario = textBox1.Text.Trim().ToLower();
             string tabla = textBox2.Text.Trim().ToLower();
@@ -110,6 +110,11 @@ namespace CapaVista
         private void button4_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void FrmBitacora_Load(object sender, EventArgs e)
+        {
+            CargarDetalle();
         }
     }
 }

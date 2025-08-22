@@ -95,37 +95,65 @@ namespace CapaVista
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var detalle = new List<(string IdProducto, string Producto, int IdDetalleCoti, decimal Precio)>();
             int idcoti = Convert.ToInt32(dataGridView1.CurrentRow.Cells["IdCotizacion"].Value.ToString());
+
+            var agrupadoPorProveedor = new Dictionary<int, List<(string IdProducto, string Producto, int IdDetalleCoti, decimal Precio)>>();
+
             foreach (DataGridViewRow fila in dataGridView2.Rows)
             {
+                if (fila.IsNewRow) continue;
+
                 string idproducto = fila.Cells["IdProducto"].Value.ToString();
                 string producto = fila.Cells["Producto"].Value.ToString();
-                decimal precio = Convert.ToDecimal(fila.Cells["Cotizacion"].Value.ToString().Split('$')[1]);
-                detalle.Add((idproducto,producto,idcoti,precio));
+
+                string seleccionado = fila.Cells["Cotizacion"].Value.ToString();
+
+                string[] partes = seleccionado.Split('-');
+                int idProveedor = Convert.ToInt32(partes[0]);
+
+                string razonYPrecio = partes[1];
+                string[] subPartes = razonYPrecio.Split('$');
+                string razonSocial = subPartes[0].Trim();
+                decimal precio = Convert.ToDecimal(subPartes[1].Trim());
+
+                var detalleItem = (idproducto, producto, idcoti, precio);
+
+                if (!agrupadoPorProveedor.ContainsKey(idProveedor))
+                    agrupadoPorProveedor[idProveedor] = new List<(string, string, int, decimal)>();
+
+                agrupadoPorProveedor[idProveedor].Add(detalleItem);
             }
-            OrdendeCompra ordendeCompra = new OrdendeCompra
-            {
-                IdUsuario = Sesion.Usuario.IdUsuario,
-                IdSolicitud = idcoti,
-                Fecha = DateTime.Now,
-                Detalle = detalle
-            };
+
             try
             {
-                var resultado = metodos.InsertarOrdendeCompra(ordendeCompra);
-                MessageBox.Show(resultado);
+                foreach (var kvp in agrupadoPorProveedor)
+                {
+                    int idProveedor = kvp.Key;
+                    var detalleProveedor = kvp.Value;
+
+                    OrdendeCompra ordendeCompra = new OrdendeCompra
+                    {
+                        IdUsuario = Sesion.Usuario.IdUsuario,
+                        IdSolicitud = idcoti,
+                        Fecha = DateTime.Now,
+                        IdProveedor = idProveedor,
+                        Detalle = detalleProveedor
+                    };
+
+                    var resultado = metodos.InsertarOrdendeCompra(ordendeCompra);
+                    MessageBox.Show($"Orden de compra generada para Proveedor {idProveedor}: {resultado}");
+                }
             }
             catch (SqlException sqlex)
             {
                 MessageBox.Show(sqlex.Message);
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            CargarSolicitudes();
 
+            CargarSolicitudes();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
