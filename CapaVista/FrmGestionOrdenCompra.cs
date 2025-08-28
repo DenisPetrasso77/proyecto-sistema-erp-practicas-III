@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace CapaVista
@@ -42,31 +43,45 @@ namespace CapaVista
 
             dataGridView2.Rows.Clear();
 
-            string idAnterior = string.Empty;
-            DataGridViewComboBoxCell comboCell = null;
-            int nrofila = -1;
+            Dictionary<string, int> mapaFilas = new Dictionary<string, int>();
 
             foreach (DataRow fila in presupuestos.Rows)
             {
-                string idActual = fila["IdProducto"].ToString();
+                string idProducto = fila["IdProducto"].ToString();
                 string producto = fila["Producto"].ToString();
-                string itemCombo = $"{fila["IdProveedor"]}-{fila["RazonSocial"]} ${fila["Precio"]}";
 
-                if (idActual != idAnterior)
+                if (fila["Precio"] == DBNull.Value) continue;
+                decimal precio = Convert.ToDecimal(fila["Precio"]);
+                if (precio <= 0) continue;
+
+                string itemCombo = $"{fila["IdProveedor"]}-{fila["RazonSocial"]} ${precio:N2}";
+
+                if (!mapaFilas.ContainsKey(idProducto))
                 {
-                    nrofila = dataGridView2.Rows.Add();
-                    dataGridView2.Rows[nrofila].Cells["IdProducto"].Value = idActual;
+                    int nrofila = dataGridView2.Rows.Add();
+                    dataGridView2.Rows[nrofila].Cells["IdProducto"].Value = idProducto;
                     dataGridView2.Rows[nrofila].Cells["Producto"].Value = producto;
 
-                    comboCell = (DataGridViewComboBoxCell)dataGridView2.Rows[nrofila].Cells["Cotizacion"];
-                    comboCell.Items.Clear();
+                    var comboCell = (DataGridViewComboBoxCell)dataGridView2.Rows[nrofila].Cells["Cotizacion"];
                     comboCell.Items.Add(itemCombo);
-                    comboCell.Value = itemCombo;
-                    idAnterior = idActual;
+                    comboCell.Value = itemCombo; 
+
+                    mapaFilas[idProducto] = nrofila; 
                 }
                 else
                 {
+                    int nrofila = mapaFilas[idProducto];
+                    var comboCell = (DataGridViewComboBoxCell)dataGridView2.Rows[nrofila].Cells["Cotizacion"];
                     comboCell.Items.Add(itemCombo);
+                }
+            }
+
+            foreach (DataGridViewRow row in dataGridView2.Rows.Cast<DataGridViewRow>().ToList())
+            {
+                var comboCell = (DataGridViewComboBoxCell)row.Cells["Cotizacion"];
+                if (comboCell.Items.Count == 0)
+                {
+                    dataGridView2.Rows.Remove(row);
                 }
             }
         }

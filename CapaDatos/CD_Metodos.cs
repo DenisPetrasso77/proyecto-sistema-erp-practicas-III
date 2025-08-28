@@ -647,6 +647,85 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
         }
+        public string InsertarInformeRecepcion(InformesRecepcion informesRecepcion)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_InsertarRecepcionMercaderia", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IdOrdenCompra", informesRecepcion.IdOrdenCompra);
+                    cmd.Parameters.AddWithValue("@IdUsuario", informesRecepcion.IdUsuario);
+                    cmd.Parameters.AddWithValue("@Estado", informesRecepcion.Estado);
+                    cmd.Parameters.AddWithValue("@PuestoVenta", informesRecepcion.puestonumero);
+                    cmd.Parameters.AddWithValue("@NumeroRemito", informesRecepcion.numeroremito);
+                    cmd.Parameters.AddWithValue("@Cuit", informesRecepcion.cuit);
+                    cmd.Parameters.AddWithValue("@RazonSocial", informesRecepcion.razonsocial);
+                    DataTable detalle = new DataTable();
+
+                    detalle.Columns.Add("IdProducto", typeof(string));
+                    detalle.Columns.Add("Producto", typeof(string));
+                    detalle.Columns.Add("CantidadPedida", typeof(int));
+                    detalle.Columns.Add("CantidadRecibida", typeof(int));
+                    detalle.Columns.Add("Diferencia", typeof(int));
+                    detalle.Columns.Add("IdProveedor", typeof(string));
+                    detalle.Columns.Add("Motivo", typeof(int));
+
+                    foreach (var desc in informesRecepcion.Detalle)
+                    {
+                        detalle.Rows.Add(desc.Idproducto, desc.Producto, desc.CantidadPedida, desc.CantidadRecibida,desc.Diferencia,desc.IdProveedor,desc.Motivo);
+                    }
+                    SqlParameter tvpParam = cmd.Parameters.AddWithValue("@Detalles", detalle);
+                    tvpParam.SqlDbType = SqlDbType.Structured;
+                    tvpParam.TypeName = "dbo.t_DetalleRecepcionMercaderia";
+                    return (string)cmd.ExecuteScalar();
+                }
+            }
+            catch (SqlException ex)
+            {
+                return "Error:" + ex.Message;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+        public string InsertarDevolucion(Devoluciones devoluciones)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_InsertarDevoluciones", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    DataTable detalle = new DataTable();
+
+                    detalle.Columns.Add("IdRecepcion", typeof(int));
+                    detalle.Columns.Add("IdProducto", typeof(string));
+                    detalle.Columns.Add("Cantidad", typeof(int));
+                    detalle.Columns.Add("Estado", typeof(string));
+                    detalle.Columns.Add("IdUsuario", typeof(int));
+
+                    foreach (var desc in devoluciones.Detalle)
+                    {
+                       
+                        detalle.Rows.Add(desc.IdRecepcion, desc.IdProducto.Trim(), desc.Cantidad, desc.Estado.Trim(), desc.IdUsuario);
+                    }
+
+                    SqlParameter tvpParam = cmd.Parameters.AddWithValue("@Detalle", detalle);
+                    tvpParam.SqlDbType = SqlDbType.Structured;
+                    tvpParam.TypeName = "dbo.t_DetalleDevoluciones";
+                    return (string)cmd.ExecuteScalar();
+                }
+            }
+            catch (SqlException ex)
+            {
+                return "Error:" + ex.Message;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
         public DataTable SolcitudesCotizacion()
         {
             DataTable dt = new DataTable();
@@ -871,7 +950,18 @@ namespace CapaDatos
             }
             return dt;
         }
-
+        public DataTable TraerDetalleDevoluciones(int id)
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarDetalleDevolucionesPendientes", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@IdRecepcion", id);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
         public DataTable RecepcionOrdenes()
         {
             DataTable dt = new DataTable();
@@ -916,6 +1006,18 @@ namespace CapaDatos
             }
             return dt;
         }
+        public DataTable TraerDevoluciones()
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarDevolucionesPendientes", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
         #endregion
     }
 }

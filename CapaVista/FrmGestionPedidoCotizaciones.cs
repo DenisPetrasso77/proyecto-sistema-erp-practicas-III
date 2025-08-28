@@ -68,6 +68,7 @@ namespace CapaVista
             cacheproveedores = metodos.Proveedores();
             cacheproveedores.Columns.Add("DisplayProveedor", typeof(string), "RazonSocial + ' (' + NumeroDeIdentificacion + ')'");
             dataGridView3.ReadOnly = true;
+            dataGridView1.ReadOnly = true;
             button1.Enabled = false;
             button3.Enabled = false;
             dateTimePicker1.Enabled = false;
@@ -235,6 +236,10 @@ namespace CapaVista
             MessageBox.Show(resultado);
             dataGridView3.Rows.Clear();
             Cargardgv();
+            button1.Enabled = false;
+            button3.Enabled = false;
+            button2.Enabled = true;
+
         }
         private DataTable ConvertirADetalleCotizacionesTipo(List<DetalleSoliCotizaciones> lista)
         {
@@ -255,7 +260,10 @@ namespace CapaVista
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            button4.Enabled = false;
+            button5.Enabled = true;
+            button6.Enabled =true;
+            dataGridView1.ReadOnly=false;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -310,7 +318,13 @@ namespace CapaVista
                 }
             }
             MessageBox.Show("Presupuestos Actualizados");
+            dataGridView1.Rows.Clear();
+            Solicitudes();
+            button5.Enabled = false;
+            button6.Enabled = false;
+            button4.Enabled = true;
         }
+        
 
         private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -319,6 +333,15 @@ namespace CapaVista
                 e.Handled = true;       
                 SendKeys.Send(",");
             }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            button4.Enabled = true;
+            button5.Enabled = false;
+            button6.Enabled = false;
+            dataGridView1.ReadOnly = true;
+
         }
     }
 }

@@ -1,16 +1,12 @@
-﻿using CapaEntities;
-using CapaLogica;
+﻿using CapaLogica;
 using System;
 using System.Data;
-using System.Drawing;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Windows.Forms;
 
 namespace CapaVista
 {
     public partial class FrmBitacora : Form
     {
-        DataTable cachebitacora;
         CL_Metodos metodos = new CL_Metodos();
         public FrmBitacora()
         {
@@ -18,7 +14,7 @@ namespace CapaVista
         }
         private void CargarDetalle()
         {
-            cachebitacora = metodos.TraerBitacora();
+            DataTable cachebitacora = metodos.TraerBitacora();
 
             string usuario = textBox1.Text.Trim().ToLower();
             string tabla = textBox2.Text.Trim().ToLower();
@@ -26,11 +22,11 @@ namespace CapaVista
 
             dataGridView1.Rows.Clear();
 
-            foreach (DataRow dr in cachebitacora.Rows)
+            foreach (DataRow fila in cachebitacora.Rows)
             {
-                string usuario2 = dr["Usuario"].ToString().ToLower();
-                string tabla2 = dr["TablaAfectada"].ToString().ToLower();
-                string descripcion2 = dr["Descripcion"].ToString().ToLower();
+                string usuario2 = fila["Usuario"].ToString().ToLower();
+                string tabla2 = fila["TablaAfectada"].ToString().ToLower();
+                string descripcion2 = fila["Descripcion"].ToString().ToLower();
 
                 bool coincideUsuario = string.IsNullOrWhiteSpace(usuario) || usuario2.Contains(usuario);
                 bool coincideTabla = string.IsNullOrWhiteSpace(tabla) || tabla2.Contains(tabla);
@@ -39,11 +35,11 @@ namespace CapaVista
                 if (coincideUsuario && coincideTabla && coincideDescripcion)
                 {
                     dataGridView1.Rows.Add(
-                        dr["IdBitacora"].ToString(),
-                        Convert.ToDateTime(dr["FechaHora"]).ToString("d/M/yyyy HH:mm:ss"),
-                        dr["Usuario"].ToString(),
-                        dr["TablaAfectada"].ToString(),
-                        dr["Descripcion"].ToString()
+                        fila["IdBitacora"].ToString(),
+                        Convert.ToDateTime(fila["FechaHora"]).ToString("d/M/yyyy HH:mm:ss"),
+                        fila["Usuario"].ToString(),
+                        fila["TablaAfectada"].ToString(),
+                        fila["Descripcion"].ToString()
                     );
                 }
             }

@@ -31,11 +31,20 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CantidadPedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecioUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Recibida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Diferencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Motivo = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -46,15 +55,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
+            this.listBox2 = new System.Windows.Forms.ListBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewComboBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Codigo2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Producto2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Diferencia2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -65,15 +73,8 @@
             this.label16 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CantidadPedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrecioUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Recibida = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Diferencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Motivo = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -116,11 +117,29 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Recepcion Productos";
             this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(551, 83);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(0, 13);
+            this.label20.TabIndex = 15;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(497, 83);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(54, 13);
+            this.label19.TabIndex = 14;
+            this.label19.Text = "Operador:";
             // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(6, 31);
+            this.listBox1.Location = new System.Drawing.Point(6, 30);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(233, 56);
             this.listBox1.TabIndex = 13;
@@ -155,6 +174,7 @@
             this.button1.TabIndex = 10;
             this.button1.Text = "GUARDAR";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dataGridView1
             // 
@@ -175,6 +195,60 @@
             this.dataGridView1.Size = new System.Drawing.Size(657, 150);
             this.dataGridView1.TabIndex = 9;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
+            // 
+            // Codigo
+            // 
+            this.Codigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
+            this.Codigo.Width = 65;
+            // 
+            // Producto
+            // 
+            this.Producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Producto.HeaderText = "Producto";
+            this.Producto.Name = "Producto";
+            this.Producto.ReadOnly = true;
+            this.Producto.Width = 75;
+            // 
+            // CantidadPedida
+            // 
+            this.CantidadPedida.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CantidadPedida.HeaderText = "Cantidad";
+            this.CantidadPedida.Name = "CantidadPedida";
+            this.CantidadPedida.ReadOnly = true;
+            this.CantidadPedida.Width = 74;
+            // 
+            // PrecioUnitario
+            // 
+            this.PrecioUnitario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.PrecioUnitario.HeaderText = "PrecioUnitario";
+            this.PrecioUnitario.Name = "PrecioUnitario";
+            this.PrecioUnitario.ReadOnly = true;
+            this.PrecioUnitario.Width = 98;
+            // 
+            // Recibida
+            // 
+            this.Recibida.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Recibida.HeaderText = "Recibida";
+            this.Recibida.Name = "Recibida";
+            this.Recibida.Width = 74;
+            // 
+            // Diferencia
+            // 
+            this.Diferencia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Diferencia.HeaderText = "Diferencia";
+            this.Diferencia.Name = "Diferencia";
+            this.Diferencia.ReadOnly = true;
+            this.Diferencia.Width = 80;
+            // 
+            // Motivo
+            // 
+            this.Motivo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Motivo.HeaderText = "Motivo";
+            this.Motivo.Name = "Motivo";
+            this.Motivo.Width = 45;
             // 
             // label7
             // 
@@ -258,7 +332,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(233, 20);
             this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "BUSCADOR PROVEEDOR";
+            this.textBox1.Text = "BUSCAR PROVEEDOR";
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
             this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
@@ -268,6 +342,7 @@
             // 
             this.tabPage2.Controls.Add(this.label17);
             this.tabPage2.Controls.Add(this.label18);
+            this.tabPage2.Controls.Add(this.listBox2);
             this.tabPage2.Controls.Add(this.button4);
             this.tabPage2.Controls.Add(this.button6);
             this.tabPage2.Controls.Add(this.dataGridView2);
@@ -287,25 +362,15 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Recepcion Devoluciones";
             // 
-            // label17
+            // listBox2
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(86, 62);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(35, 16);
-            this.label17.TabIndex = 27;
-            this.label17.Text = "1598";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(6, 62);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(83, 16);
-            this.label18.TabIndex = 26;
-            this.label18.Text = "Nro. Factura:";
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Location = new System.Drawing.Point(6, 30);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(233, 56);
+            this.listBox2.TabIndex = 26;
+            this.listBox2.Visible = false;
+            this.listBox2.DoubleClick += new System.EventHandler(this.listBox2_DoubleClick);
             // 
             // button4
             // 
@@ -324,53 +389,55 @@
             this.button6.TabIndex = 23;
             this.button6.Text = "GUARDAR";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewComboBoxColumn1});
+            this.Codigo2,
+            this.Producto2,
+            this.Diferencia2,
+            this.Estado2});
             this.dataGridView2.Location = new System.Drawing.Point(6, 98);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(657, 150);
             this.dataGridView2.TabIndex = 22;
             // 
-            // dataGridViewTextBoxColumn1
+            // Codigo2
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Codigo";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.Codigo2.HeaderText = "Codigo";
+            this.Codigo2.Name = "Codigo2";
             // 
-            // dataGridViewTextBoxColumn2
+            // Producto2
             // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Producto";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.Producto2.HeaderText = "Producto";
+            this.Producto2.Name = "Producto2";
             // 
-            // dataGridViewTextBoxColumn6
+            // Diferencia2
             // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "Diferencia";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.Diferencia2.HeaderText = "Diferencia";
+            this.Diferencia2.Name = "Diferencia2";
             // 
-            // dataGridViewComboBoxColumn1
+            // Estado2
             // 
-            this.dataGridViewComboBoxColumn1.HeaderText = "Estado";
-            this.dataGridViewComboBoxColumn1.Items.AddRange(new object[] {
+            this.Estado2.HeaderText = "Estado";
+            this.Estado2.Items.AddRange(new object[] {
             "1-Completada",
             "2-Nota de Credito"});
-            this.dataGridViewComboBoxColumn1.Name = "dataGridViewComboBoxColumn1";
+            this.Estado2.Name = "Estado2";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(86, 46);
+            this.label9.Location = new System.Drawing.Point(95, 46);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(58, 16);
+            this.label9.Size = new System.Drawing.Size(0, 16);
             this.label9.TabIndex = 21;
-            this.label9.Text = "OC-0001";
             // 
             // label10
             // 
@@ -378,19 +445,18 @@
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(6, 46);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(82, 16);
+            this.label10.Size = new System.Drawing.Size(96, 16);
             this.label10.TabIndex = 20;
-            this.label10.Text = "N. de Orden:";
+            this.label10.Text = "Recepcion  N°:";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(86, 30);
+            this.label11.Location = new System.Drawing.Point(75, 30);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(111, 16);
+            this.label11.Size = new System.Drawing.Size(0, 16);
             this.label11.TabIndex = 19;
-            this.label11.Text = "aaaaaaaaaaaaa";
             // 
             // label12
             // 
@@ -446,82 +512,32 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(233, 20);
             this.textBox2.TabIndex = 13;
-            this.textBox2.Text = "BUSCADOR OC/ PROVEEDOR";
+            this.textBox2.Text = "BUSCAR PROVEEDOR";
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.textBox2.Enter += new System.EventHandler(this.textBox2_Enter);
+            this.textBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox2_KeyDown);
+            this.textBox2.Leave += new System.EventHandler(this.textBox2_Leave);
             // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // Codigo
+            // label17
             // 
-            this.Codigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Codigo.HeaderText = "Codigo";
-            this.Codigo.Name = "Codigo";
-            this.Codigo.ReadOnly = true;
-            this.Codigo.Width = 65;
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(565, 82);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(0, 13);
+            this.label17.TabIndex = 28;
             // 
-            // Producto
+            // label18
             // 
-            this.Producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Producto.HeaderText = "Producto";
-            this.Producto.Name = "Producto";
-            this.Producto.ReadOnly = true;
-            this.Producto.Width = 75;
-            // 
-            // CantidadPedida
-            // 
-            this.CantidadPedida.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.CantidadPedida.HeaderText = "Cantidad";
-            this.CantidadPedida.Name = "CantidadPedida";
-            this.CantidadPedida.ReadOnly = true;
-            this.CantidadPedida.Width = 74;
-            // 
-            // PrecioUnitario
-            // 
-            this.PrecioUnitario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.PrecioUnitario.HeaderText = "PrecioUnitario";
-            this.PrecioUnitario.Name = "PrecioUnitario";
-            this.PrecioUnitario.ReadOnly = true;
-            this.PrecioUnitario.Width = 98;
-            // 
-            // Recibida
-            // 
-            this.Recibida.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Recibida.HeaderText = "Recibida";
-            this.Recibida.Name = "Recibida";
-            this.Recibida.Width = 74;
-            // 
-            // Diferencia
-            // 
-            this.Diferencia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Diferencia.HeaderText = "Diferencia";
-            this.Diferencia.Name = "Diferencia";
-            this.Diferencia.ReadOnly = true;
-            this.Diferencia.Width = 80;
-            // 
-            // Motivo
-            // 
-            this.Motivo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Motivo.HeaderText = "Motivo";
-            this.Motivo.Name = "Motivo";
-            this.Motivo.Width = 45;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(497, 83);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(54, 13);
-            this.label19.TabIndex = 14;
-            this.label19.Text = "Operador:";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(551, 83);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(0, 13);
-            this.label20.TabIndex = 15;
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(511, 82);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(54, 13);
+            this.label18.TabIndex = 27;
+            this.label18.Text = "Operador:";
             // 
             // FrmGestionRecepcion
             // 
@@ -574,12 +590,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn1;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
@@ -591,5 +601,12 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn Motivo;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Producto2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Diferencia2;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Estado2;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
     }
 }
