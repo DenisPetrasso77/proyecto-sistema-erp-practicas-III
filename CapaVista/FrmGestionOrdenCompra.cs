@@ -30,7 +30,7 @@ namespace CapaVista
             {
                 string estado = fila["Estado"].ToString();
 
-                if (estado != "Activo")
+                if (estado != "Seleccionando Cotizacion")
                     continue;
                 dataGridView1.Rows.Add(fila["idsolicitud"].ToString(), fila["Usuario"].ToString());
 
@@ -117,19 +117,13 @@ namespace CapaVista
             foreach (DataGridViewRow fila in dataGridView2.Rows)
             {
                 if (fila.IsNewRow) continue;
+                if (fila.Cells["Cotizacion"].Value == null) continue;
 
                 string idproducto = fila.Cells["IdProducto"].Value.ToString();
                 string producto = fila.Cells["Producto"].Value.ToString();
-
-                string seleccionado = fila.Cells["Cotizacion"].Value.ToString();
-
-                string[] partes = seleccionado.Split('-');
-                int idProveedor = Convert.ToInt32(partes[0]);
-
-                string razonYPrecio = partes[1];
-                string[] subPartes = razonYPrecio.Split('$');
-                string razonSocial = subPartes[0].Trim();
-                decimal precio = Convert.ToDecimal(subPartes[1].Trim());
+                int idProveedor = Convert.ToInt32(fila.Cells["Cotizacion"].Value.ToString().Split('-')[0]);
+                string razonSocial = fila.Cells["Cotizacion"].Value.ToString().Split('-')[1].Split('$')[0].Trim();
+                decimal precio = Convert.ToDecimal(fila.Cells["Cotizacion"].Value.ToString().Split('$')[1]);
 
                 var detalleItem = (idproducto, producto, idcoti, precio);
 
@@ -154,7 +148,6 @@ namespace CapaVista
                         IdProveedor = idProveedor,
                         Detalle = detalleProveedor
                     };
-
                     var resultado = metodos.InsertarOrdendeCompra(ordendeCompra);
                     MessageBox.Show($"Orden de compra generada para Proveedor {idProveedor}: {resultado}");
                 }

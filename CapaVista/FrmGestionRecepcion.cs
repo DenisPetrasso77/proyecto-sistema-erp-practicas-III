@@ -50,19 +50,19 @@ namespace CapaVista
             DataTable cacheordenes = metodos.RecepcionOrdenes();
             foreach (DataRow fila in cacheordenes.Rows)
             {
-                string idOrden = fila["IdOrden"].ToString();
-                string razon = fila["RazonSocial"].ToString();
-                string cuit = fila["Cuit"].ToString();
-                string item = $"{idOrden} - {razon} {"("}{cuit}{")"}";
-
-                if (idOrden.Contains(texto) || razon.ToLower().Contains(texto.ToLower()) || cuit.Contains(texto))
+                if (fila["Estado"].ToString() == "Esperando Recepcion")
                 {
-                    listBox1.Items.Add(item);
+                    string idOrden = fila["IdOrden"].ToString();
+                    string razon = fila["RazonSocial"].ToString();
+                    string cuit = fila["Cuit"].ToString();
+                    string item = $"{idOrden} - {razon} {"("}{cuit}{")"}";
+
+                    if (idOrden.Contains(texto) || razon.ToLower().Contains(texto.ToLower()) || cuit.Contains(texto))
+                    {
+                        listBox1.Items.Add(item);
+                    }
                 }
-                //if (fila["Estado"].ToString() == "Enviado a Proveedor")
-                //{
-                    
-                //}            
+   
             }
 
             listBox1.Visible = listBox1.Items.Count > 0;
@@ -283,6 +283,10 @@ namespace CapaVista
                 razonsocial = razonsocial,
                 Detalle = detalle
             };
+            foreach (var i in detalle)
+            {
+                MessageBox.Show(i.ToString());
+            }
             var resultado = metodos.InsertarInformeRecepcion(informesRecepcion);
             MessageBox.Show(resultado);
             dataGridView1.Rows.Clear();
@@ -339,30 +343,34 @@ namespace CapaVista
         {
             
             var detalle = new List<(int IdRecepcion, string IdProducto, int Cantidad, string Estado, int IdUsuario)>();
-            int idrecepcion = Convert.ToInt32(label9.Text.Split('-')[1].ToString());
-            foreach (DataGridViewRow fila in dataGridView2.Rows)
+            try
             {
-                detalle.Add
-                    ((
-                   idrecepcion,
-                   fila.Cells["Codigo2"].Value.ToString(),
-                   Convert.ToInt32(fila.Cells["Diferencia2"].Value.ToString()),
-                   fila.Cells["Estado2"].Value.ToString().Split('-')[1],
-                   Sesion.Usuario.IdUsuario
-                   ));
+                int idrecepcion = Convert.ToInt32(label9.Text.Split('-')[1].ToString());
+                foreach (DataGridViewRow fila in dataGridView2.Rows)
+                {
+                    detalle.Add
+                        ((
+                       idrecepcion,
+                       fila.Cells["Codigo2"].Value.ToString(),
+                       Convert.ToInt32(fila.Cells["Diferencia2"].Value.ToString()),
+                       fila.Cells["Estado2"].Value.ToString().Split('-')[1],
+                       Sesion.Usuario.IdUsuario
+                       ));
+                }
+                Devoluciones devoluciones = new Devoluciones
+                {
+                    Detalle = detalle
+                };
+                var resultado = metodos.InsertarDevolucion(devoluciones);
+                MessageBox.Show(resultado);
             }
-            Devoluciones devoluciones = new Devoluciones
+            catch(Exception ex)
             {
-                Detalle = detalle
-            };
-            foreach (var d in detalle)
-            {
-                MessageBox.Show($"{d.IdRecepcion};{d.IdProducto};{d.Cantidad};{d.Estado};{d.IdUsuario}");
+                MessageBox.Show($"Error al registrar la devolucion {ex.Message}");
             }
-            var resultado = metodos.InsertarDevolucion(devoluciones);
-            MessageBox.Show(resultado);
             label11.Text = string.Empty;
             label9.Text = string.Empty;
+            dataGridView2.Rows.Clear();
         }
     }
 }

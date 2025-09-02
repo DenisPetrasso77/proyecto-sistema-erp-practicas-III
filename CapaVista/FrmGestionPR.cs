@@ -157,23 +157,31 @@ namespace CapaVista
             {
                 iddetallepr = Convert.ToInt32(fila.Cells["IDdetallePR"].Value);
                 cantpedida = Convert.ToInt32(fila.Cells["CantidadPedida2"].Value);
-                metodos.ActualizarDetallPR(iddetallepr, idpr,cantpedida,1,DateTime.Now);
+                metodos.ActualizarDetallPR(iddetallepr, idpr,cantpedida,Sesion.Usuario.IdUsuario,DateTime.Now);
                 
             }
             DetallePR();
-            button2.Visible= false;
+            button4.Visible=false;
+            button5.Visible = false;
+            button2.Visible= true;
             button6.Visible= false;
         }
         private void button5_Click(object sender, EventArgs e)
         {
             if (dataGridView3.Rows.Count == 1)
             {
-                MessageBox.Show($"Para eliminar el pedido toque el boton: {"Eliminar Pedido"}");
+                MessageBox.Show($"Para eliminar el pedido toque el boton: {"Borrar Pedido"}");
                 return;
             }
-            int iddetallepr = Convert.ToInt32(dataGridView3.CurrentRow.Cells["IDdetallePR"].Value);
-            metodos.BorrardetallePR(iddetallepr);
-            DetallePR();
+            string idproducto = dataGridView3.CurrentRow.Cells["Descripcion2"].Value.ToString();
+            var resultado =MessageBox.Show($"Desea borrar el producto {idproducto}","CONFIRMACION",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            if (resultado == DialogResult.Yes)
+            {
+                int iddetallepr = Convert.ToInt32(dataGridView3.CurrentRow.Cells["IDdetallePR"].Value);
+                metodos.BorrardetallePR(iddetallepr);
+                DetallePR();
+            }
+            
         }
         private void button6_Click(object sender, EventArgs e)
         {
@@ -184,6 +192,7 @@ namespace CapaVista
             button2.Visible = true;
             button5.Visible = true;
             button6.Visible = false;
+            button5.Visible = false;
             Cargardgvdetalle();
         }
         private void pictureBox1_Click(object sender, EventArgs e)

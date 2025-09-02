@@ -152,36 +152,8 @@ namespace CapaVista
             //Calculartotal();
         }
 
-        Panel p = new Panel();
-        private void btnMouseEnter(object sender, EventArgs e)
-        {
-            Button btn = sender as Button;
-            panel1.Controls.Add(p);
-            p.BackColor = Color.FromArgb(90, 210, 2);
-            p.Size = new Size(135, 35);
-            p.Location = new Point(btn.Location.X, btn.Location.Y);
-        }
-        private void btnMouseLeave(object sender, EventArgs e)
-        {
-            panel1.Controls.Remove(p);
-        }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (!panel2.Visible)
-                panel2.Visible = true;
-            else
-                panel2.Visible = false;
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            panel1.Controls.Remove(p);
-            new FrmGestionProductos().ShowDialog();
-            Cargarbuscador();
-            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Productos", "Accedio al Menu Gestion Productos");
-        }
-
+        
         private void Calculartotal()
         {
             //decimal Total = 0;
@@ -238,15 +210,11 @@ namespace CapaVista
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if (!panel3.Visible)
-                panel3.Visible = true;
-            else
-                panel3.Visible = false;
+            
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            panel1.Controls.Remove(p);
             new FrmPagos().ShowDialog();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Pagos", "Accedio al Menu Gestion Pagos");
 
@@ -263,10 +231,7 @@ namespace CapaVista
 
         private void button5_Click(object sender, EventArgs e)
         {
-            if (!panel4.Visible)
-                panel4.Visible = true;
-            else
-                panel4.Visible = false;
+            
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -280,10 +245,7 @@ namespace CapaVista
 
         private void button9_Click(object sender, EventArgs e)
         {
-            if (!panel5.Visible)
-                panel5.Visible = true;
-            else
-                panel5.Visible = false;
+            
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -306,18 +268,12 @@ namespace CapaVista
 
         private void button11_Click(object sender, EventArgs e)
         {
-            if (!panel6.Visible)
-                panel6.Visible = true;
-            else
-                panel6.Visible = false;
+            
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
-            if (!panel7.Visible)
-                panel7.Visible = true;
-            else
-                panel7.Visible = false;
+          
         }
 
         private void button14_Click(object sender, EventArgs e)
@@ -367,6 +323,13 @@ namespace CapaVista
             this.Close();        
             new FrmLogin().ShowDialog();
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            new FrmGestionProductos().ShowDialog();
+            Cargarbuscador();
+            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Productos", "Accedio al Menu Gestion Productos");
         }
     }
 }

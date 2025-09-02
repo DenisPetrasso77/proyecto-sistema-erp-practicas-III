@@ -293,10 +293,12 @@ namespace CapaDatos
                     {
                         detalle.Rows.Add(desc.IdProducto, desc.Producto,desc.IdDetalleCoti,desc.Precio);
                     }
+
                     SqlParameter tvpParam = cmd.Parameters.AddWithValue("@Detalles", detalle);
                     tvpParam.SqlDbType = SqlDbType.Structured;
                     tvpParam.TypeName = "dbo.t_DetalleOrdenCompra";
-                    return (string)cmd.ExecuteScalar();
+                    var result = cmd.ExecuteScalar();
+                    return result?.ToString() ?? "Error desconocido al crear la orden de compra.";
                 }
             }
             catch (SqlException ex)
@@ -597,7 +599,7 @@ namespace CapaDatos
         {
             try
             {
-                using (SqlCommand cmd = new SqlCommand("sp_GuardarPR", conexion.Abrir()))
+                using (SqlCommand cmd = new SqlCommand("sp_InsertarPR", conexion.Abrir()))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Idusuario", idusuario);
