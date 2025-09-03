@@ -107,7 +107,6 @@ namespace CapaVista
 
             this.ActiveControl = null;
             UI_Utilidad.EstiloForm(this);
-
             UI_Utilidad.RedondearForm(this, 28);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnIngresar);
             UI_Utilidad.EstiloTextBox(txtUsuario, "Ingrese su usuario");

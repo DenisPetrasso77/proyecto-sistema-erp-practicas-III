@@ -1,7 +1,8 @@
-﻿using CapaLogica;
-using System;
+﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using CapaLogica;
+using ProyectoPracticas;
 
 namespace CapaVista
 {
@@ -16,9 +17,9 @@ namespace CapaVista
         {
             DataTable cachebitacora = metodos.TraerBitacora();
 
-            string usuario = textBox1.Text.Trim().ToLower();
-            string tabla = textBox2.Text.Trim().ToLower();
-            string descripcion = textBox3.Text.Trim().ToLower();
+            string usuario = txtUsuario.Text.Trim().ToLower();
+            string tabla = txtTabla.Text.Trim().ToLower();
+            string descripcion = txtDescripcion.Text.Trim().ToLower();
 
             dataGridView1.Rows.Clear();
 
@@ -111,6 +112,28 @@ namespace CapaVista
         private void FrmBitacora_Load(object sender, EventArgs e)
         {
             CargarDetalle();
+        }
+
+        private void FrmBitacora_Shown(object sender, EventArgs e)
+        {
+            this.ActiveControl = null;
+
+            UI_Utilidad.EstiloLabels(this);
+
+            UI_Utilidad.EstiloForm(this);
+            UI_Utilidad.RedondearForm(this, 28);
+
+            UI_Utilidad.EstiloBotonPrimarioDegradado(bntEliminar);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnLimpiar);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnSalir);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnSalir);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnBuscar);
+
+
+            UI_Utilidad.EstiloTextBox(txtUsuario);
+            UI_Utilidad.EstiloTextBox(txtTabla);
+            UI_Utilidad.EstiloTextBox(txtDescripcion);
+
         }
     }
 }

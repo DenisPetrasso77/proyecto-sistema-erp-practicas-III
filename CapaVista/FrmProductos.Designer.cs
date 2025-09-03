@@ -76,10 +76,10 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox1.Location = new System.Drawing.Point(356, 145);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(190, 23);
+            this.checkBox1.Size = new System.Drawing.Size(159, 25);
             this.checkBox1.TabIndex = 5;
             this.checkBox1.Text = "Mostrar Stock Bajo";
             this.checkBox1.UseVisualStyleBackColor = true;

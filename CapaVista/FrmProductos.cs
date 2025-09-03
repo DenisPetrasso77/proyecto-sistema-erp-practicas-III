@@ -28,6 +28,7 @@ namespace CapaVista
         private void FrmProductos_Shown(object sender, EventArgs e)
         {
             this.ActiveControl = null;
+            UI_Utilidad.EstiloLabels(this);
             UI_Utilidad.EstiloForm(this);
             UI_Utilidad.RedondearForm(this, 28);
             UI_Utilidad.EstiloTextBox(txtBuscador, "Buscador...");

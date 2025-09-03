@@ -7,49 +7,78 @@ namespace ProyectoPracticas
 {
     public static class UI_Utilidad
     {
-       
+        public static void EstiloLabels(Form form)
+        {
+            AplicarEstiloLabelsRecursivo(form);
+        }
+
+        private static void AplicarEstiloLabelsRecursivo(Control parent)
+        {
+            foreach (Control ctrl in parent.Controls)
+            {
+                if (ctrl is Label lbl)
+                {
+                    // 🔹 Solo modificar si el Label está en tamaño chico (ej. <= 12)
+                    if (lbl.Font.Size <= 12)
+                    {
+                        lbl.Font = new Font("Segoe UI", 12, FontStyle.Regular);
+                        lbl.ForeColor = Color.Black; // opcional
+                    }
+                }
+
+                if (ctrl.HasChildren)
+                {
+                    AplicarEstiloLabelsRecursivo(ctrl);
+                }
+            }
+        }
+
         public static void EstiloTextBox(TextBox txt, string placeholder = "")
         {
+            // Aplicar bordes redondeados
             RedondearControl(txt, 15);
 
+            // Estilos base
             txt.BorderStyle = BorderStyle.None;
             txt.BackColor = Color.White;
-            txt.Font = new Font("Consolas", 10, FontStyle.Regular);
             txt.ForeColor = Color.Black;
+            txt.Font = new Font("Segoe UI", 10, FontStyle.Regular);
 
+            // Agregar padding interno
+            txt.Padding = new Padding(8, 5, 8, 5);
 
-            if (string.IsNullOrWhiteSpace(placeholder))
-                return;
-
-            // Aplicar placeholder inicial
-            txt.Text = placeholder;
-            txt.ForeColor = Color.Gray;
-            txt.Font = new Font("Consolas", 10, FontStyle.Italic);
-
-            // Cuando el usuario cliquea/entra en el textbox -> borrar siempre
-            txt.GotFocus += (s, e) =>
+            if (!string.IsNullOrWhiteSpace(placeholder))
             {
-                txt.Clear();
-                txt.ForeColor = Color.Black;
-                txt.Font = new Font("Consolas", 10, FontStyle.Regular);
-            };
+                // Aplicar placeholder inicial
+                txt.Text = placeholder;
+                txt.ForeColor = Color.Gray;
 
-            // Cuando pierde el foco -> restaurar placeholder si quedó vacío
-            txt.LostFocus += (s, e) =>
-            {
-                if (string.IsNullOrWhiteSpace(txt.Text))
+                // Evento al entrar
+                txt.GotFocus += (s, e) =>
                 {
-                    txt.Text = placeholder;
-                    txt.ForeColor = Color.Gray;
-                    txt.Font = new Font("Consolas", 10, FontStyle.Italic);
-                }
-            };
+                    if (txt.Text == placeholder)
+                    {
+                        txt.Text = "";
+                        txt.ForeColor = Color.Black;
+                    }
+                };
+
+                // Evento al salir
+                txt.LostFocus += (s, e) =>
+                {
+                    if (string.IsNullOrWhiteSpace(txt.Text))
+                    {
+                        txt.Text = placeholder;
+                        txt.ForeColor = Color.Gray;
+                    }
+                };
+            }
         }
 
         public static void EstiloForm(Form form)
         {
             form.BackColor = Color.FromArgb(230, 230, 230); // Gris claro
-            form.FormBorderStyle = FormBorderStyle.None;    // Sin borde feo
+            form.FormBorderStyle = FormBorderStyle.None;
         }
         
         public static void RedondearControl(Control control, int radio = 15)
@@ -81,19 +110,19 @@ namespace ProyectoPracticas
 
         public static void EstiloBotonPrimarioDegradado(Button boton, int radio = 15)
         {
-            // 1️⃣ Configuración básica
+            //  Configuración básica
             boton.FlatStyle = FlatStyle.Flat;
             boton.FlatAppearance.BorderSize = 0;
             boton.UseVisualStyleBackColor = false;
-            boton.BackColor = Color.FromArgb(100, 149, 237); // azul suave por defecto
+            boton.BackColor = Color.FromArgb(100, 140, 230); // azul suave por defecto
             boton.ForeColor = Color.White;
-            boton.Font = new Font("Consolas", 11, FontStyle.Bold);
+            boton.Font = new Font("Segoe UI", 12, FontStyle.Bold);
 
-            // 2️⃣ Guardar color original para hover
+            //  Guardar color original para hover
             boton.Tag = boton.BackColor; // guardamos el color normal
-            Color colorHover = Color.FromArgb(65, 105, 225); // azul más fuerte al pasar mouse
+            Color colorHover = Color.FromArgb(65, 110, 225); // azul más fuerte al pasar mouse
 
-            // 3️⃣ Eventos hover
+            // Eventos hover
             boton.MouseEnter += (s, e) =>
             {
                 boton.BackColor = colorHover;
@@ -123,6 +152,26 @@ namespace ProyectoPracticas
             Redondear(); // redondeo inicial
             boton.Resize += (s, e) => Redondear(); // redondeo dinámico si cambia el tamaño
         }
+
+        public static void EstiloFormDegradado(Form form, Color color1, Color color2, float angle = 90f)
+        {
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.BackColor = Color.White; // cualquier color sólido sino rompe
+
+            // Suscribir al evento Paint para dibujar el fondo
+            form.Paint += (s, e) =>
+            {
+                using (LinearGradientBrush brush = new LinearGradientBrush(
+                    form.ClientRectangle, color1, color2, angle))
+                {
+                    e.Graphics.FillRectangle(brush, form.ClientRectangle);
+                }
+            };
+
+            // Forzar redibujado si el form cambia de tamaño
+            form.Resize += (s, e) => form.Invalidate();
+        }
+
 
     }
 }

@@ -283,6 +283,17 @@ namespace CapaVista
         private void FrmAdminHome_Shown(object sender, EventArgs e)
         {
             this.ActiveControl = null;
+
+
+            //UI_Utilidad.EstiloFormDegradado(this,
+            //    Color.FromArgb(230, 230, 230),  // gris clarito
+            //    Color.FromArgb(180, 180, 180),  // gris oscurito
+            //    90f);
+
+
+
+            UI_Utilidad.EstiloLabels(this);
+
             UI_Utilidad.EstiloForm(this);
             UI_Utilidad.RedondearForm(this, 28);
 
@@ -297,8 +308,6 @@ namespace CapaVista
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnOrden);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnRecepcion);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnSalir);
-
-
         }
 
 

@@ -18,26 +18,12 @@ namespace CapaVista
             InitializeComponent();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void FrmProductoNuevo_Shown(object sender, EventArgs e)
         {
             this.ActiveControl = null;
+            UI_Utilidad.EstiloLabels(this);
             UI_Utilidad.EstiloForm(this);
             UI_Utilidad.RedondearForm(this, 28);
-
-        }
-
-        private void FrmProductoNuevo_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FrmProductoNuevo_SizeChanged(object sender, EventArgs e)
-        {
             UI_Utilidad.EstiloTextBox(textBox1);
             UI_Utilidad.EstiloTextBox(textBox2);
             UI_Utilidad.EstiloTextBox(textBox3);
@@ -49,13 +35,9 @@ namespace CapaVista
             UI_Utilidad.EstiloTextBox(textBox9);
             UI_Utilidad.EstiloTextBox(textBox10);
             UI_Utilidad.EstiloTextBox(textBox11);
-
             UI_Utilidad.EstiloBotonPrimarioDegradado(bntCargarImagen);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnSalir);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnGuardar);
-          
-
-
-        }
+        }   
     }
 }
