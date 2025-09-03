@@ -175,10 +175,7 @@ namespace CapaVista
 
         private void button2_Click(object sender, EventArgs e)
         {
-            panel1.Controls.Remove(p);
-            new FrmGestionProductos().ShowDialog();
-            Cargarbuscador();
-            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Productos", "Accedio al Menu Gestion Productos");
+            
         }
 
         private void Calculartotal()
@@ -240,59 +237,19 @@ namespace CapaVista
           
         }
 
-        private void button7_Click(object sender, EventArgs e)
-        {
-            panel1.Controls.Remove(p);
-            new FrmPagos().ShowDialog();
-            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Pagos", "Accedio al Menu Gestion Pagos");
-
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            new FrmGestionPR().ShowDialog();
-            this.Show();
-            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Pedidos Reaprovisionamiento", "Accedio al Menu Gestion Pedidos de Reaprovisionamiento");
-
-        }
 
         private void button5_Click(object sender, EventArgs e)
         {
             
         }
 
-        private void button8_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            new FrmGestionProveedores().ShowDialog();
-            this.Show();
-            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Proveedores", "Accedio al Menu Gestion Proveedores");
-
-        }
 
         private void button9_Click(object sender, EventArgs e)
         {
            
         }
 
-        private void button10_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            new FrmGestionPedidoCotizaciones().ShowDialog();
-            this.Show();
-            metodos.Bitacora(Sesion.Usuario.IdUsuario,"Cotizaciones", "Accedio al Menu Gestion Cotizaciones");
-
-        }
-
-        private void button12_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            new FrmGestionOrdenCompra().ShowDialog();
-            this.Show();
-            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Ordenes de Compra", "Accedio al Menu Gestion Ordenes de Compra");
-
-        }
+      
 
         private void button11_Click(object sender, EventArgs e)
         {
@@ -304,67 +261,7 @@ namespace CapaVista
            
         }
 
-        private void button14_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            new FrmGestionRecepcion().ShowDialog();
-            this.Show();
-            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Recepcion Mercaderia", "Accedio al Menu Gestion Recepcion");
-
-        }
-
-        private void button15_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            new GestionProveedores().ShowDialog();
-            this.Show();
-            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Proveedores", "Accedio al Menu Modificar Proveedores");
-
-        }
-
-        private void Frm_AdminHome_Load(object sender, EventArgs e)
-        {
-            RedondearBoton(button3, 15);
-            RedondearBoton(button1, 20);
-            RedondearBoton(button4, 20);
-            UI_Utilidad.RedondearControl(pnlProductos, 15);
-            UI_Utilidad.RedondearControl(pnlPagos, 15);
-            UI_Utilidad.RedondearControl(pnlProveedores, 15);
-            UI_Utilidad.RedondearControl(pnlUsuarios, 15);
-            UI_Utilidad.RedondearControl(pnlCompras, 15);
-            UI_Utilidad.RedondearControl(pnlAlmacen, 15);
-
-            UI_Utilidad.EstiloBotonPrimarioDegradado(button2);
-            UI_Utilidad.EstiloBotonPrimarioDegradado(button6);
-            UI_Utilidad.EstiloBotonPrimarioDegradado(button7);
-            UI_Utilidad.EstiloBotonPrimarioDegradado(button2);
-            UI_Utilidad.EstiloBotonPrimarioDegradado(button8);
-            UI_Utilidad.EstiloBotonPrimarioDegradado(button15);
-            UI_Utilidad.EstiloBotonPrimarioDegradado(button16);
-            UI_Utilidad.EstiloBotonPrimarioDegradado(button17);
-            UI_Utilidad.EstiloBotonPrimarioDegradado(button10);
-            UI_Utilidad.EstiloBotonPrimarioDegradado(button12);
-            UI_Utilidad.EstiloBotonPrimarioDegradado(button14);
-
-        }
-
-        private void button16_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            new FrmAdmusuarios().ShowDialog();
-            this.Show();
-            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Usuarios", "Accedio al Menu Gestion Usuarios");
-
-        }
-
-        private void button17_Click(object sender, EventArgs e)
-        {
-            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Bitacora", "Accedio al Menu Gestion Bitacora");
-            this.Hide();
-            new FrmBitacora().ShowDialog();
-            this.Show();
-
-        }
+       
 
         private void button18_Click(object sender, EventArgs e)
         {
@@ -374,21 +271,114 @@ namespace CapaVista
             new FrmLogin().ShowDialog();
 
         }
-        /*------------------------------------------------------------------------------------*/
-        public static void RedondearBoton(Button boton, int radio = 20)
-        {
-            GraphicsPath path = new GraphicsPath();
-            path.AddArc(0, 0, radio, radio, 180, 90);
-            path.AddArc(boton.Width - radio, 0, radio, radio, 270, 90);
-            path.AddArc(boton.Width - radio, boton.Height - radio, radio, radio, 0, 90);
-            path.AddArc(0, boton.Height - radio, radio, radio, 90, 90);
-            path.CloseAllFigures();
-            boton.Region = new Region(path);
-        }
 
         private void pictureBox7_Click(object sender, EventArgs e)
         {
             
+        }
+
+        /*------------------------------------------------------------------------------------*/
+
+
+        private void FrmAdminHome_Shown(object sender, EventArgs e)
+        {
+            this.ActiveControl = null;
+            UI_Utilidad.EstiloForm(this);
+            UI_Utilidad.RedondearForm(this, 28);
+
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnGestion);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnReabastecer);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnGestionPagos);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnCargarNuevo);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnModificar);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnBitacora);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnGestionAdmin);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btncotizacion);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnOrden);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnRecepcion);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnSalir);
+
+
+        }
+
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Remove(p);
+            new FrmGestionProductos().ShowDialog();
+            Cargarbuscador();
+            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Productos", "Accedio al Menu Gestion Productos");
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            new FrmGestionPR().ShowDialog();
+            this.Show();
+            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Pedidos Reaprovisionamiento", "Accedio al Menu Gestion Pedidos de Reaprovisionamiento");
+        }
+
+        private void btnGestionPagos_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Remove(p);
+            new FrmPagos().ShowDialog();
+            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Pagos", "Accedio al Menu Gestion Pagos");
+        }
+
+        private void button2_Click_2(object sender, EventArgs e)
+        {
+            this.Hide();
+            new FrmGestionProveedores().ShowDialog();
+            this.Show();
+            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Proveedores", "Accedio al Menu Gestion Proveedores");
+        }
+
+        private void button7_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            new GestionProveedores().ShowDialog();
+            this.Show();
+            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Proveedores", "Accedio al Menu Modificar Proveedores");
+        }
+
+        private void btnGestionAdmin_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new FrmAdmusuarios().ShowDialog();
+            this.Show();
+            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Usuarios", "Accedio al Menu Gestion Usuarios");
+        }
+
+        private void btnBitacora_Click(object sender, EventArgs e)
+        {
+            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Bitacora", "Accedio al Menu Gestion Bitacora");
+            this.Hide();
+            new FrmBitacora().ShowDialog();
+            this.Show();
+        }
+
+        private void btncotizacion_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new FrmGestionPedidoCotizaciones().ShowDialog();
+            this.Show();
+            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Cotizaciones", "Accedio al Menu Gestion Cotizaciones");
+        }
+
+        private void button7_Click_2(object sender, EventArgs e)
+        {
+            this.Hide();
+            new FrmGestionOrdenCompra().ShowDialog();
+            this.Show();
+            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Ordenes de Compra", "Accedio al Menu Gestion Ordenes de Compra");
+        }
+
+        private void btnRecepcion_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new FrmGestionRecepcion().ShowDialog();
+            this.Show();
+            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Recepcion Mercaderia", "Accedio al Menu Gestion Recepcion");
         }
     }
 }

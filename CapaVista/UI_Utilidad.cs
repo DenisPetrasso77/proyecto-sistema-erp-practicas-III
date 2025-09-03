@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
@@ -6,57 +7,52 @@ namespace ProyectoPracticas
 {
     public static class UI_Utilidad
     {
-        // 🔹 Botón redondeado con estilo principal
-        public static void EstiloBotonPrimario(Button boton)
+       
+        public static void EstiloTextBox(TextBox txt, string placeholder = "")
         {
-            boton.BackColor = Color.FromArgb(33, 150, 243); // Azul Material
-            boton.ForeColor = Color.White;
-            boton.FlatStyle = FlatStyle.Flat;
-            boton.FlatAppearance.BorderSize = 0;
-            boton.Font = new Font("Consolas", 14, FontStyle.Bold);
+            RedondearControl(txt, 15);
 
-            // Bordes redondeados
-            RedondearControl(boton, 15);
-        }
-
-        // TextBox redondeado con placeholder
-        public static void EstiloTextBox(TextBox txt)
-        {
             txt.BorderStyle = BorderStyle.None;
             txt.BackColor = Color.White;
+            txt.Font = new Font("Consolas", 10, FontStyle.Regular);
+            txt.ForeColor = Color.Black;
+
+
+            if (string.IsNullOrWhiteSpace(placeholder))
+                return;
+
+            // Aplicar placeholder inicial
+            txt.Text = placeholder;
             txt.ForeColor = Color.Gray;
-            txt.Font = new Font("Segoe UI", 10, FontStyle.Italic);
-            
+            txt.Font = new Font("Consolas", 10, FontStyle.Italic);
 
-            // Bordes redondeados
-            RedondearControl(txt, 10);
+            // Cuando el usuario cliquea/entra en el textbox -> borrar siempre
+            txt.GotFocus += (s, e) =>
+            {
+                txt.Clear();
+                txt.ForeColor = Color.Black;
+                txt.Font = new Font("Consolas", 10, FontStyle.Regular);
+            };
+
+            // Cuando pierde el foco -> restaurar placeholder si quedó vacío
+            txt.LostFocus += (s, e) =>
+            {
+                if (string.IsNullOrWhiteSpace(txt.Text))
+                {
+                    txt.Text = placeholder;
+                    txt.ForeColor = Color.Gray;
+                    txt.Font = new Font("Consolas", 10, FontStyle.Italic);
+                }
+            };
         }
 
-        // Label de títulos
-        public static void EstiloTitulo(Label lbl)
-        {
-            lbl.Font = new Font("Consolas", 16, FontStyle.Bold);
-            lbl.ForeColor = Color.Black;
-        }
-
-        // Label de subtítulos / links
-        public static void EstiloLink(Label lbl)
-        {
-            lbl.Font = new Font("Consolas", 9, FontStyle.Regular);
-            lbl.ForeColor = Color.FromArgb(33, 150, 243);
-        }
-
-        // Fondo del Form
         public static void EstiloForm(Form form)
         {
-            form.BackColor = Color.FromArgb(245, 245, 245); // Gris claro
+            form.BackColor = Color.FromArgb(230, 230, 230); // Gris claro
             form.FormBorderStyle = FormBorderStyle.None;    // Sin borde feo
         }
-
-      
-        // Método auxiliar general
-      
-         public static void RedondearControl(Control control, int radio = 15)
+        
+        public static void RedondearControl(Control control, int radio = 15)
         {
             GraphicsPath path = new GraphicsPath();
             path.AddArc(0, 0, radio, radio, 180, 90);
@@ -83,27 +79,49 @@ namespace ProyectoPracticas
             form.Region = new Region(path);
         }
 
-        //Botones del Home
-
-        public static void EstiloBotonPrimarioDegradado(Button boton)
+        public static void EstiloBotonPrimarioDegradado(Button boton, int radio = 15)
         {
+            // 1️⃣ Configuración básica
             boton.FlatStyle = FlatStyle.Flat;
             boton.FlatAppearance.BorderSize = 0;
-            boton.BackColor = Color.FromArgb(245, 246, 248); // gris MUY claro
-            boton.ForeColor = Color.FromArgb(30, 30, 30);    // gris oscuro para texto
+            boton.UseVisualStyleBackColor = false;
+            boton.BackColor = Color.FromArgb(100, 149, 237); // azul suave por defecto
+            boton.ForeColor = Color.White;
             boton.Font = new Font("Consolas", 11, FontStyle.Bold);
 
-            // Redondear esquinas
-            int radio = 15;
-            using (GraphicsPath path = new GraphicsPath())
+            // 2️⃣ Guardar color original para hover
+            boton.Tag = boton.BackColor; // guardamos el color normal
+            Color colorHover = Color.FromArgb(65, 105, 225); // azul más fuerte al pasar mouse
+
+            // 3️⃣ Eventos hover
+            boton.MouseEnter += (s, e) =>
             {
-                path.AddArc(0, 0, radio, radio, 180, 90);
-                path.AddArc(boton.Width - radio, 0, radio, radio, 270, 90);
-                path.AddArc(boton.Width - radio, boton.Height - radio, radio, radio, 0, 90);
-                path.AddArc(0, boton.Height - radio, radio, radio, 90, 90);
-                path.CloseAllFigures();
-                boton.Region = new Region(path);
+                boton.BackColor = colorHover;
+                boton.Refresh();
+            };
+            boton.MouseLeave += (s, e) =>
+            {
+                boton.BackColor = (Color)boton.Tag;
+                boton.Refresh();
+            };
+
+            // 4️⃣ Redondear esquinas dinámicamente
+            void Redondear()
+            {
+                int r = Math.Min(radio, Math.Min(boton.Width, boton.Height) / 2);
+                using (GraphicsPath path = new GraphicsPath())
+                {
+                    path.AddArc(0, 0, r, r, 180, 90);
+                    path.AddArc(boton.Width - r, 0, r, r, 270, 90);
+                    path.AddArc(boton.Width - r, boton.Height - r, r, r, 0, 90);
+                    path.AddArc(0, boton.Height - r, r, r, 90, 90);
+                    path.CloseAllFigures();
+                    boton.Region = new Region(path);
+                }
             }
+
+            Redondear(); // redondeo inicial
+            boton.Resize += (s, e) => Redondear(); // redondeo dinámico si cambia el tamaño
         }
 
     }

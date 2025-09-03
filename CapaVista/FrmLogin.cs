@@ -71,23 +71,7 @@ namespace CapaVista
             //{
             //    MessageBox.Show("Error en la integridad de los datos, por favor contacte con soporte");
             //    this.Close();
-            //}
 
-            // Fondo general
-            UI_Utilidad.EstiloForm(this);
-
-            UI_Utilidad.RedondearForm(this, 28);
-
-            // Estilos botones
-            UI_Utilidad.EstiloBotonPrimario(btnIngresar);
-
-            // Estilos textbox
-            UI_Utilidad.EstiloTextBox(txtUsuario);
-            UI_Utilidad.EstiloTextBox(txtContraseña);
-
-            // Labels
-            UI_Utilidad.EstiloTitulo(lblTitulo);
-            UI_Utilidad.EstiloLink(lblOlvidoContraseña);
 
         }
         public bool VerificarIntegridadUsuarios()
@@ -118,7 +102,25 @@ namespace CapaVista
             return true;
         }
 
+        private void FrmLogin_Shown(object sender, EventArgs e)
+        {
+
+            this.ActiveControl = null;
+            UI_Utilidad.EstiloForm(this);
+
+            UI_Utilidad.RedondearForm(this, 28);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnIngresar);
+            UI_Utilidad.EstiloTextBox(txtUsuario, "Ingrese su usuario");
+            UI_Utilidad.EstiloTextBox(txtContraseña, "Ingrese su contraseña");   
+
+        }
+
+        private void txtUsuario_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         /*------------------------------------------------------------------------------------*/
-     
+
     }
 }
