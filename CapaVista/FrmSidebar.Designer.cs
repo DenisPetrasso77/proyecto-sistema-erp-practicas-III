@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSidebar));
             this.sidebar = new System.Windows.Forms.Panel();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.btnAcerca = new System.Windows.Forms.Button();
             this.btnAyuda = new System.Windows.Forms.Button();
             this.btnConfig = new System.Windows.Forms.Button();
@@ -38,7 +39,6 @@
             this.SidebarTimer = new System.Windows.Forms.Timer(this.components);
             this.lbltituloHome = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnSalir = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pbSalir = new System.Windows.Forms.PictureBox();
             this.pbAcerca = new System.Windows.Forms.PictureBox();
@@ -75,6 +75,16 @@
             this.sidebar.Name = "sidebar";
             this.sidebar.Size = new System.Drawing.Size(200, 581);
             this.sidebar.TabIndex = 0;
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Location = new System.Drawing.Point(12, 438);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(120, 40);
+            this.btnSalir.TabIndex = 5;
+            this.btnSalir.Text = "Salir del Sistema";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnAcerca
             // 
@@ -142,16 +152,6 @@
             this.panel1.Size = new System.Drawing.Size(1014, 100);
             this.panel1.TabIndex = 7;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.Location = new System.Drawing.Point(12, 438);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(120, 40);
-            this.btnSalir.TabIndex = 5;
-            this.btnSalir.Text = "Salir del Sistema";
-            this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox1
             // 
@@ -227,7 +227,7 @@
             this.btnMenu.UseVisualStyleBackColor = false;
             this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click_1);
             // 
-            // Form1
+            // FrmSidebar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -235,7 +235,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.sidebar);
-            this.Name = "Form1";
+            this.Name = "FrmSidebar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sidebar";
             this.Load += new System.EventHandler(this.Form1_Load);

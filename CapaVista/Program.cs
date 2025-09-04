@@ -17,7 +17,8 @@ namespace CapaVista
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmSidebar());
+            //Application.Run(new FrmSidebar());
+            Application.Run(new FrmLogin());
         }
     }
 }

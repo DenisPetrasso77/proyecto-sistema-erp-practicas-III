@@ -152,9 +152,9 @@
             // btnBuscar
             // 
             this.btnBuscar.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.Location = new System.Drawing.Point(84, 142);
+            this.btnBuscar.Location = new System.Drawing.Point(95, 139);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(130, 35);
+            this.btnBuscar.Size = new System.Drawing.Size(120, 40);
             this.btnBuscar.TabIndex = 6;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
@@ -251,9 +251,9 @@
             // 
             this.bntEliminar.Location = new System.Drawing.Point(12, 486);
             this.bntEliminar.Name = "bntEliminar";
-            this.bntEliminar.Size = new System.Drawing.Size(130, 35);
+            this.bntEliminar.Size = new System.Drawing.Size(120, 40);
             this.bntEliminar.TabIndex = 7;
-            this.bntEliminar.Text = "Eliminar Seleccion";
+            this.bntEliminar.Text = "Eliminar";
             this.bntEliminar.UseVisualStyleBackColor = true;
             this.bntEliminar.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -261,9 +261,9 @@
             // 
             this.btnLimpiar.Location = new System.Drawing.Point(148, 486);
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(130, 35);
+            this.btnLimpiar.Size = new System.Drawing.Size(120, 40);
             this.btnLimpiar.TabIndex = 10;
-            this.btnLimpiar.Text = "Limpiar Registro";
+            this.btnLimpiar.Text = "Limpiar ";
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -271,7 +271,7 @@
             // 
             this.btnSalir.Location = new System.Drawing.Point(284, 486);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(130, 35);
+            this.btnSalir.Size = new System.Drawing.Size(120, 40);
             this.btnSalir.TabIndex = 11;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;

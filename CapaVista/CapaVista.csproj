@@ -443,5 +443,26 @@
   <ItemGroup>
     <None Include="Resources\circulo %283%29.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\agregar-producto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\metodo-de-pago.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\proveedor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gestion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\carrito-de-supermercado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\almacen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bienvenido-de-nuevo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -155,30 +155,6 @@ namespace CapaVista
             //Calculartotal();
         }
 
-        Panel p = new Panel();
-        private void btnMouseEnter(object sender, EventArgs e)
-        {
-            Button btn = sender as Button;
-            panel1.Controls.Add(p);
-            p.BackColor = Color.FromArgb(90, 210, 2);
-            p.Size = new Size(135, 35);
-            p.Location = new Point(btn.Location.X, btn.Location.Y);
-        }
-        private void btnMouseLeave(object sender, EventArgs e)
-        {
-            panel1.Controls.Remove(p);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void Calculartotal()
         {
             //decimal Total = 0;
@@ -282,7 +258,7 @@ namespace CapaVista
 
         private void button20_Click(object sender, EventArgs e)
         {
-            panel1.Controls.Remove(p);
+           
             new FrmGestionProductos().ShowDialog();
             Cargarbuscador();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Productos", "Accedio al Menu Gestion Productos");
@@ -298,7 +274,6 @@ namespace CapaVista
 
         private void btnGestionPagos_Click(object sender, EventArgs e)
         {
-            panel1.Controls.Remove(p);
             new FrmPagos().ShowDialog();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Pagos", "Accedio al Menu Gestion Pagos");
         }
