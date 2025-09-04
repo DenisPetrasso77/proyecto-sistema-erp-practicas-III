@@ -22,10 +22,7 @@ namespace SidebarMenu
         private void btnMenu_Click_1(object sender, EventArgs e)
         {
             SidebarTimer.Start();
-
         }
-
-
 
         private void SidebarTimer_Tick_1(object sender, EventArgs e)
         {
@@ -117,11 +114,6 @@ namespace SidebarMenu
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnSalir);
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void btnHome_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -129,20 +121,11 @@ namespace SidebarMenu
             home.Show();
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
-        }
 
-       
     }
 }

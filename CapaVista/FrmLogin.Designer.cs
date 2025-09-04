@@ -38,9 +38,11 @@
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.pbSalir = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSalir)).BeginInit();
             this.SuspendLayout();
             // 
             // txtContraseña
@@ -55,6 +57,7 @@
             // 
             // btnIngresar
             // 
+            this.btnIngresar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnIngresar.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIngresar.ForeColor = System.Drawing.SystemColors.Desktop;
             this.btnIngresar.Location = new System.Drawing.Point(141, 381);
@@ -139,12 +142,27 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "Login";
             // 
+            // pbSalir
+            // 
+            this.pbSalir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbSalir.Image = global::CapaVista.Properties.Resources.circulo__1_1;
+            this.pbSalir.Location = new System.Drawing.Point(351, 451);
+            this.pbSalir.Name = "pbSalir";
+            this.pbSalir.Size = new System.Drawing.Size(40, 40);
+            this.pbSalir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbSalir.TabIndex = 12;
+            this.pbSalir.TabStop = false;
+            this.pbSalir.Click += new System.EventHandler(this.pbSalir_Click);
+            this.pbSalir.MouseEnter += new System.EventHandler(this.pbSalir_MouseEnter);
+            this.pbSalir.MouseLeave += new System.EventHandler(this.pbSalir_MouseLeave);
+            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(403, 500);
+            this.Controls.Add(this.pbSalir);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
@@ -165,6 +183,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSalir)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,6 +199,7 @@
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pbSalir;
     }
 }
 

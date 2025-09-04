@@ -115,6 +115,24 @@ namespace CapaVista
 
         }
 
+        private void pbSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void pbSalir_MouseEnter(object sender, EventArgs e)
+        {
+            
+            pbSalir.Size = new Size(45,45); //Se agranda
+          
+        }
+
+        private void pbSalir_MouseLeave(object sender, EventArgs e)
+        {
+            pbSalir.Size = new Size(40, 40); // volver al tamaño original
+
+        }
+
         /*------------------------------------------------------------------------------------*/
 
     }

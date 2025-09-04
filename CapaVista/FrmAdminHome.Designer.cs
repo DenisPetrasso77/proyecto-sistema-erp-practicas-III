@@ -244,6 +244,7 @@
             // 
             // btnReabastecer
             // 
+            this.btnReabastecer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnReabastecer.Location = new System.Drawing.Point(73, 155);
             this.btnReabastecer.Name = "btnReabastecer";
             this.btnReabastecer.Size = new System.Drawing.Size(120, 40);
@@ -254,6 +255,7 @@
             // 
             // btnGestion
             // 
+            this.btnGestion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGestion.Location = new System.Drawing.Point(73, 108);
             this.btnGestion.Name = "btnGestion";
             this.btnGestion.Size = new System.Drawing.Size(120, 40);
@@ -275,6 +277,7 @@
             // 
             // btnGestionPagos
             // 
+            this.btnGestionPagos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGestionPagos.Location = new System.Drawing.Point(84, 108);
             this.btnGestionPagos.Name = "btnGestionPagos";
             this.btnGestionPagos.Size = new System.Drawing.Size(120, 40);
@@ -297,6 +300,7 @@
             // 
             // btnModificar
             // 
+            this.btnModificar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnModificar.Location = new System.Drawing.Point(74, 155);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(120, 40);
@@ -308,6 +312,7 @@
             // btnCargarNuevo
             // 
             this.btnCargarNuevo.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.btnCargarNuevo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCargarNuevo.Location = new System.Drawing.Point(74, 108);
             this.btnCargarNuevo.Name = "btnCargarNuevo";
             this.btnCargarNuevo.Size = new System.Drawing.Size(120, 40);
@@ -330,6 +335,7 @@
             // 
             // btnBitacora
             // 
+            this.btnBitacora.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBitacora.Location = new System.Drawing.Point(73, 157);
             this.btnBitacora.Name = "btnBitacora";
             this.btnBitacora.Size = new System.Drawing.Size(120, 40);
@@ -340,6 +346,7 @@
             // 
             // btnGestionAdmin
             // 
+            this.btnGestionAdmin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGestionAdmin.Location = new System.Drawing.Point(73, 114);
             this.btnGestionAdmin.Name = "btnGestionAdmin";
             this.btnGestionAdmin.Size = new System.Drawing.Size(120, 40);
@@ -362,6 +369,7 @@
             // 
             // btncotizacion
             // 
+            this.btncotizacion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btncotizacion.Location = new System.Drawing.Point(84, 114);
             this.btncotizacion.Name = "btncotizacion";
             this.btncotizacion.Size = new System.Drawing.Size(120, 40);
@@ -372,6 +380,7 @@
             // 
             // btnOrden
             // 
+            this.btnOrden.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOrden.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOrden.Location = new System.Drawing.Point(84, 157);
             this.btnOrden.Name = "btnOrden";
@@ -394,6 +403,7 @@
             // 
             // btnRecepcion
             // 
+            this.btnRecepcion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRecepcion.Location = new System.Drawing.Point(74, 114);
             this.btnRecepcion.Name = "btnRecepcion";
             this.btnRecepcion.Size = new System.Drawing.Size(120, 40);
