@@ -210,6 +210,12 @@
     <Compile Include="FrmGestionPR.Designer.cs">
       <DependentUpon>FrmGestionPR.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmSidebar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSidebar.Designer.cs">
+      <DependentUpon>FrmSidebar.cs</DependentUpon>
+    </Compile>
     <Compile Include="GestionProveedores.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -288,6 +294,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmGestionPR.resx">
       <DependentUpon>FrmGestionPR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSidebar.resx">
+      <DependentUpon>FrmSidebar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GestionProveedores.resx">
       <DependentUpon>GestionProveedores.cs</DependentUpon>
@@ -400,6 +409,39 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\administracion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cuadrado-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cuadrado-removebg-preview1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\engranaje.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\circulo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vaso.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\circulo %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\configuracion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\circulo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\circulo %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\circulo %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\circulo %283%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

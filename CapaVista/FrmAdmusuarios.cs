@@ -100,5 +100,10 @@ namespace CapaVista
             UI_Utilidad.RedondearForm(this, 28);
             UI_Utilidad.EstiloTextBox(txtBuscador, "Buscador de Usuarios");
         }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

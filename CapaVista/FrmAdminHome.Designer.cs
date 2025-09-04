@@ -81,7 +81,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(46, 605);
+            this.textBox1.Location = new System.Drawing.Point(37, 661);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(403, 20);
             this.textBox1.TabIndex = 0;
@@ -92,7 +92,7 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(46, 631);
+            this.listBox1.Location = new System.Drawing.Point(37, 687);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(403, 95);
             this.listBox1.TabIndex = 2;
@@ -107,7 +107,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1236, 72);
+            this.panel1.Size = new System.Drawing.Size(1037, 72);
             this.panel1.TabIndex = 3;
             // 
             // lbltituloHome
@@ -115,7 +115,7 @@
             this.lbltituloHome.AutoSize = true;
             this.lbltituloHome.Font = new System.Drawing.Font("Consolas", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbltituloHome.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lbltituloHome.Location = new System.Drawing.Point(343, 21);
+            this.lbltituloHome.Location = new System.Drawing.Point(248, 23);
             this.lbltituloHome.Name = "lbltituloHome";
             this.lbltituloHome.Size = new System.Drawing.Size(539, 37);
             this.lbltituloHome.TabIndex = 6;
@@ -128,11 +128,11 @@
             this.btnSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalir.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Location = new System.Drawing.Point(848, 567);
+            this.btnSalir.Location = new System.Drawing.Point(864, 707);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(110, 34);
             this.btnSalir.TabIndex = 5;
-            this.btnSalir.Text = "Salir";
+            this.btnSalir.Text = "Atras";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.button18_Click);
             // 
@@ -142,14 +142,13 @@
             this.button13.FlatAppearance.BorderSize = 0;
             this.button13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.Location = new System.Drawing.Point(74, 79);
+            this.button13.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button13.Location = new System.Drawing.Point(74, 73);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(130, 35);
+            this.button13.Size = new System.Drawing.Size(120, 40);
             this.button13.TabIndex = 5;
             this.button13.Text = "Almacen";
             this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // button11
             // 
@@ -157,14 +156,13 @@
             this.button11.FlatAppearance.BorderSize = 0;
             this.button11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.Location = new System.Drawing.Point(74, 78);
+            this.button11.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button11.Location = new System.Drawing.Point(84, 73);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(130, 35);
+            this.button11.Size = new System.Drawing.Size(120, 40);
             this.button11.TabIndex = 4;
             this.button11.Text = "Compras";
             this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button9
             // 
@@ -172,14 +170,13 @@
             this.button9.FlatAppearance.BorderSize = 0;
             this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(58, 78);
+            this.button9.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button9.Location = new System.Drawing.Point(58, 73);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(158, 35);
             this.button9.TabIndex = 3;
             this.button9.Text = "Administración";
             this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button5
             // 
@@ -187,14 +184,13 @@
             this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(74, 79);
+            this.button5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(74, 67);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(130, 35);
             this.button5.TabIndex = 2;
             this.button5.Text = "Proveedores";
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
@@ -202,14 +198,13 @@
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(74, 79);
+            this.button4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(74, 67);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(130, 35);
             this.button4.TabIndex = 1;
             this.button4.Text = "Pagos";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button1
             // 
@@ -217,8 +212,8 @@
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(73, 79);
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(73, 67);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(130, 35);
             this.button1.TabIndex = 0;
@@ -238,21 +233,21 @@
             // 
             // pnlProductos
             // 
-            this.pnlProductos.BackColor = System.Drawing.Color.White;
+            this.pnlProductos.BackColor = System.Drawing.SystemColors.Highlight;
             this.pnlProductos.Controls.Add(this.btnReabastecer);
             this.pnlProductos.Controls.Add(this.btnGestion);
             this.pnlProductos.Controls.Add(this.pictureBox1);
             this.pnlProductos.Controls.Add(this.button1);
             this.pnlProductos.Location = new System.Drawing.Point(69, 94);
             this.pnlProductos.Name = "pnlProductos";
-            this.pnlProductos.Size = new System.Drawing.Size(280, 200);
+            this.pnlProductos.Size = new System.Drawing.Size(280, 211);
             this.pnlProductos.TabIndex = 0;
             // 
             // btnReabastecer
             // 
             this.btnReabastecer.Location = new System.Drawing.Point(73, 155);
             this.btnReabastecer.Name = "btnReabastecer";
-            this.btnReabastecer.Size = new System.Drawing.Size(130, 42);
+            this.btnReabastecer.Size = new System.Drawing.Size(120, 40);
             this.btnReabastecer.TabIndex = 17;
             this.btnReabastecer.Text = "Reabastecer";
             this.btnReabastecer.UseVisualStyleBackColor = true;
@@ -262,7 +257,7 @@
             // 
             this.btnGestion.Location = new System.Drawing.Point(73, 108);
             this.btnGestion.Name = "btnGestion";
-            this.btnGestion.Size = new System.Drawing.Size(130, 35);
+            this.btnGestion.Size = new System.Drawing.Size(120, 40);
             this.btnGestion.TabIndex = 16;
             this.btnGestion.Text = "Gestión";
             this.btnGestion.UseVisualStyleBackColor = true;
@@ -270,6 +265,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.Highlight;
             this.pictureBox1.Image = global::CapaVista.Properties.Resources.box;
             this.pictureBox1.Location = new System.Drawing.Point(107, 12);
             this.pictureBox1.Name = "pictureBox1";
@@ -280,20 +276,20 @@
             // 
             // pnlPagos
             // 
-            this.pnlPagos.BackColor = System.Drawing.Color.White;
+            this.pnlPagos.BackColor = System.Drawing.SystemColors.Highlight;
             this.pnlPagos.Controls.Add(this.btnGestionPagos);
             this.pnlPagos.Controls.Add(this.pictureBox2);
             this.pnlPagos.Controls.Add(this.button4);
             this.pnlPagos.Location = new System.Drawing.Point(378, 94);
             this.pnlPagos.Name = "pnlPagos";
-            this.pnlPagos.Size = new System.Drawing.Size(280, 200);
+            this.pnlPagos.Size = new System.Drawing.Size(280, 211);
             this.pnlPagos.TabIndex = 10;
             // 
             // btnGestionPagos
             // 
-            this.btnGestionPagos.Location = new System.Drawing.Point(74, 108);
+            this.btnGestionPagos.Location = new System.Drawing.Point(84, 108);
             this.btnGestionPagos.Name = "btnGestionPagos";
-            this.btnGestionPagos.Size = new System.Drawing.Size(130, 35);
+            this.btnGestionPagos.Size = new System.Drawing.Size(120, 40);
             this.btnGestionPagos.TabIndex = 17;
             this.btnGestionPagos.Text = "Gestión";
             this.btnGestionPagos.UseVisualStyleBackColor = true;
@@ -311,21 +307,21 @@
             // 
             // pnlProveedores
             // 
-            this.pnlProveedores.BackColor = System.Drawing.Color.White;
+            this.pnlProveedores.BackColor = System.Drawing.SystemColors.Highlight;
             this.pnlProveedores.Controls.Add(this.btnModificar);
             this.pnlProveedores.Controls.Add(this.pictureBox3);
             this.pnlProveedores.Controls.Add(this.btnCargarNuevo);
             this.pnlProveedores.Controls.Add(this.button5);
             this.pnlProveedores.Location = new System.Drawing.Point(678, 94);
             this.pnlProveedores.Name = "pnlProveedores";
-            this.pnlProveedores.Size = new System.Drawing.Size(280, 200);
+            this.pnlProveedores.Size = new System.Drawing.Size(280, 211);
             this.pnlProveedores.TabIndex = 11;
             // 
             // btnModificar
             // 
             this.btnModificar.Location = new System.Drawing.Point(74, 155);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(130, 35);
+            this.btnModificar.Size = new System.Drawing.Size(120, 40);
             this.btnModificar.TabIndex = 19;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
@@ -346,29 +342,29 @@
             this.btnCargarNuevo.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.btnCargarNuevo.Location = new System.Drawing.Point(74, 108);
             this.btnCargarNuevo.Name = "btnCargarNuevo";
-            this.btnCargarNuevo.Size = new System.Drawing.Size(130, 35);
+            this.btnCargarNuevo.Size = new System.Drawing.Size(120, 40);
             this.btnCargarNuevo.TabIndex = 18;
-            this.btnCargarNuevo.Text = "Cargar Nuevo";
+            this.btnCargarNuevo.Text = "Cargar";
             this.btnCargarNuevo.UseVisualStyleBackColor = true;
             this.btnCargarNuevo.Click += new System.EventHandler(this.button2_Click_2);
             // 
             // pnlUsuarios
             // 
-            this.pnlUsuarios.BackColor = System.Drawing.Color.White;
+            this.pnlUsuarios.BackColor = System.Drawing.SystemColors.Highlight;
             this.pnlUsuarios.Controls.Add(this.btnBitacora);
             this.pnlUsuarios.Controls.Add(this.pictureBox4);
             this.pnlUsuarios.Controls.Add(this.btnGestionAdmin);
             this.pnlUsuarios.Controls.Add(this.button9);
-            this.pnlUsuarios.Location = new System.Drawing.Point(69, 301);
+            this.pnlUsuarios.Location = new System.Drawing.Point(69, 334);
             this.pnlUsuarios.Name = "pnlUsuarios";
-            this.pnlUsuarios.Size = new System.Drawing.Size(280, 200);
+            this.pnlUsuarios.Size = new System.Drawing.Size(280, 211);
             this.pnlUsuarios.TabIndex = 12;
             // 
             // btnBitacora
             // 
             this.btnBitacora.Location = new System.Drawing.Point(73, 157);
             this.btnBitacora.Name = "btnBitacora";
-            this.btnBitacora.Size = new System.Drawing.Size(130, 35);
+            this.btnBitacora.Size = new System.Drawing.Size(120, 40);
             this.btnBitacora.TabIndex = 19;
             this.btnBitacora.Text = "Bitacora";
             this.btnBitacora.UseVisualStyleBackColor = true;
@@ -388,7 +384,7 @@
             // 
             this.btnGestionAdmin.Location = new System.Drawing.Point(73, 114);
             this.btnGestionAdmin.Name = "btnGestionAdmin";
-            this.btnGestionAdmin.Size = new System.Drawing.Size(130, 35);
+            this.btnGestionAdmin.Size = new System.Drawing.Size(120, 40);
             this.btnGestionAdmin.TabIndex = 18;
             this.btnGestionAdmin.Text = "Gestión";
             this.btnGestionAdmin.UseVisualStyleBackColor = true;
@@ -396,21 +392,21 @@
             // 
             // pnlCompras
             // 
-            this.pnlCompras.BackColor = System.Drawing.Color.White;
+            this.pnlCompras.BackColor = System.Drawing.SystemColors.Highlight;
             this.pnlCompras.Controls.Add(this.btncotizacion);
             this.pnlCompras.Controls.Add(this.btnOrden);
             this.pnlCompras.Controls.Add(this.pictureBox5);
             this.pnlCompras.Controls.Add(this.button11);
-            this.pnlCompras.Location = new System.Drawing.Point(378, 301);
+            this.pnlCompras.Location = new System.Drawing.Point(378, 334);
             this.pnlCompras.Name = "pnlCompras";
-            this.pnlCompras.Size = new System.Drawing.Size(280, 200);
+            this.pnlCompras.Size = new System.Drawing.Size(280, 211);
             this.pnlCompras.TabIndex = 13;
             // 
             // btncotizacion
             // 
-            this.btncotizacion.Location = new System.Drawing.Point(74, 114);
+            this.btncotizacion.Location = new System.Drawing.Point(84, 114);
             this.btncotizacion.Name = "btncotizacion";
-            this.btncotizacion.Size = new System.Drawing.Size(130, 35);
+            this.btncotizacion.Size = new System.Drawing.Size(120, 40);
             this.btncotizacion.TabIndex = 19;
             this.btncotizacion.Text = "Cotizacion";
             this.btncotizacion.UseVisualStyleBackColor = true;
@@ -419,18 +415,18 @@
             // btnOrden
             // 
             this.btnOrden.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOrden.Location = new System.Drawing.Point(53, 155);
+            this.btnOrden.Location = new System.Drawing.Point(84, 157);
             this.btnOrden.Name = "btnOrden";
-            this.btnOrden.Size = new System.Drawing.Size(182, 35);
+            this.btnOrden.Size = new System.Drawing.Size(120, 40);
             this.btnOrden.TabIndex = 20;
-            this.btnOrden.Text = "Orden de Compra";
+            this.btnOrden.Text = "O.C.";
             this.btnOrden.UseVisualStyleBackColor = true;
             this.btnOrden.Click += new System.EventHandler(this.button7_Click_2);
             // 
             // pictureBox5
             // 
             this.pictureBox5.Image = global::CapaVista.Properties.Resources.grocery_store;
-            this.pictureBox5.Location = new System.Drawing.Point(109, 13);
+            this.pictureBox5.Location = new System.Drawing.Point(109, 7);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(60, 60);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -439,20 +435,20 @@
             // 
             // pnlAlmacen
             // 
-            this.pnlAlmacen.BackColor = System.Drawing.Color.White;
+            this.pnlAlmacen.BackColor = System.Drawing.SystemColors.Highlight;
             this.pnlAlmacen.Controls.Add(this.btnRecepcion);
             this.pnlAlmacen.Controls.Add(this.pictureBox6);
             this.pnlAlmacen.Controls.Add(this.button13);
-            this.pnlAlmacen.Location = new System.Drawing.Point(678, 301);
+            this.pnlAlmacen.Location = new System.Drawing.Point(678, 334);
             this.pnlAlmacen.Name = "pnlAlmacen";
-            this.pnlAlmacen.Size = new System.Drawing.Size(280, 200);
+            this.pnlAlmacen.Size = new System.Drawing.Size(280, 211);
             this.pnlAlmacen.TabIndex = 14;
             // 
             // btnRecepcion
             // 
             this.btnRecepcion.Location = new System.Drawing.Point(74, 114);
             this.btnRecepcion.Name = "btnRecepcion";
-            this.btnRecepcion.Size = new System.Drawing.Size(130, 35);
+            this.btnRecepcion.Size = new System.Drawing.Size(120, 40);
             this.btnRecepcion.TabIndex = 20;
             this.btnRecepcion.Text = "Recepción";
             this.btnRecepcion.UseVisualStyleBackColor = true;
@@ -471,20 +467,19 @@
             // pictureBox7
             // 
             this.pictureBox7.Image = global::CapaVista.Properties.Resources.sign_out;
-            this.pictureBox7.Location = new System.Drawing.Point(879, 521);
+            this.pictureBox7.Location = new System.Drawing.Point(895, 661);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(40, 40);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox7.TabIndex = 15;
             this.pictureBox7.TabStop = false;
-            this.pictureBox7.Click += new System.EventHandler(this.pictureBox7_Click);
             // 
             // FrmAdminHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(1236, 796);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(1037, 796);
             this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.pnlAlmacen);

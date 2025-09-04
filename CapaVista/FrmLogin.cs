@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using CapaEntities;
 using CapaLogica;
 using ProyectoPracticas;
+using SidebarMenu;
 
 namespace CapaVista
 {
@@ -47,7 +48,7 @@ namespace CapaVista
                 {
                     metodos.Bitacora(Sesion.Usuario.IdUsuario, "Usuarios", $"Intento de Login Exitoso");
                     this.Hide();
-                    FrmAdminHome home = new FrmAdminHome();
+                    FrmSidebar home = new FrmSidebar();
                     home.Show();
                 }
                 else

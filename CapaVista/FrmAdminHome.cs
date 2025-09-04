@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using CapaEntities;
 using CapaLogica;
 using ProyectoPracticas;
+using SidebarMenu;
 
 namespace CapaVista
 {
@@ -232,49 +233,14 @@ namespace CapaVista
             listBox1.Visible = listBox1.Items.Count > 0;
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-          
-        }
-
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-      
-
-        private void button11_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void button13_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-       
 
         private void button18_Click(object sender, EventArgs e)
         {
             metodos.Bitacora(Sesion.Usuario.IdUsuario, null, "Salio del Sistema");
 
             this.Close();
-            new FrmLogin().ShowDialog();
+            new FrmSidebar().ShowDialog();
 
-        }
-
-        private void pictureBox7_Click(object sender, EventArgs e)
-        {
-            
         }
 
         /*------------------------------------------------------------------------------------*/
@@ -290,12 +256,15 @@ namespace CapaVista
             //    Color.FromArgb(180, 180, 180),  // gris oscurito
             //    90f);
 
-
-
-            UI_Utilidad.EstiloLabels(this);
-
             UI_Utilidad.EstiloForm(this);
             UI_Utilidad.RedondearForm(this, 28);
+
+            UI_Utilidad.RedondearControl(pnlProductos,28);
+            UI_Utilidad.RedondearControl(pnlPagos, 28);
+            UI_Utilidad.RedondearControl(pnlProveedores, 28);
+            UI_Utilidad.RedondearControl(pnlUsuarios, 28);
+            UI_Utilidad.RedondearControl(pnlCompras, 28);
+            UI_Utilidad.RedondearControl(pnlAlmacen, 28);
 
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnGestion);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnReabastecer);
