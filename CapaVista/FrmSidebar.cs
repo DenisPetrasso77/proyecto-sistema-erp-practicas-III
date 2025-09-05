@@ -112,6 +112,12 @@ namespace SidebarMenu
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnConfig);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnAcerca);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnSalir);
+
+            UI_Utilidad.AplicarEfectoHover(pbHome);
+            UI_Utilidad.AplicarEfectoHover(pbAyuda);
+            UI_Utilidad.AplicarEfectoHover(pbAcerca);
+            UI_Utilidad.AplicarEfectoHover(pbConfig);
+            UI_Utilidad.AplicarEfectoHover(pbSalir);
         }
 
         private void btnHome_Click(object sender, EventArgs e)
@@ -123,9 +129,23 @@ namespace SidebarMenu
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
+            FrmLogin login = new FrmLogin();
+            login.Show();
         }
 
+        private void pbHome_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            FrmAdminHome home = new FrmAdminHome();
+            home.Show();
+        }
 
+        private void pbSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            FrmLogin login = new FrmLogin();
+            login.Show();
+        }
     }
 }

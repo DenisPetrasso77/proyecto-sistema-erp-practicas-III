@@ -80,7 +80,24 @@ namespace ProyectoPracticas
             form.BackColor = Color.FromArgb(230, 230, 230); // Gris claro
             form.FormBorderStyle = FormBorderStyle.None;
         }
-        
+
+        //public static void CambiarColorPaneles(Control parent)
+        //{
+        //    foreach (Control ctrl in parent.Controls)
+        //    {
+        //        if (ctrl is Panel)
+        //        {
+        //            ctrl.BackColor = Color.FromArgb(245, 245, 245); // gris claro
+        //        }
+
+        //        // Si tiene hijos, los recorro también
+        //        if (ctrl.HasChildren)
+        //        {
+        //            CambiarColorPaneles(ctrl);
+        //        }
+        //    }
+        //}
+
         public static void RedondearControl(Control control, int radio = 15)
         {
             GraphicsPath path = new GraphicsPath();
@@ -115,7 +132,7 @@ namespace ProyectoPracticas
             boton.FlatAppearance.BorderSize = 0;
             boton.UseVisualStyleBackColor = false;
             boton.BackColor = Color.FromArgb(100, 140, 230); // azul suave por defecto
-            boton.ForeColor = Color.White;
+            boton.ForeColor = Color.WhiteSmoke;
             boton.Font = new Font("Segoe UI", 12, FontStyle.Bold);
 
             //  Guardar color original para hover
@@ -153,24 +170,79 @@ namespace ProyectoPracticas
             boton.Resize += (s, e) => Redondear(); // redondeo dinámico si cambia el tamaño
         }
 
-        public static void EstiloFormDegradado(Form form, Color color1, Color color2, float angle = 90f)
-        {
-            form.FormBorderStyle = FormBorderStyle.None;
-            form.BackColor = Color.White; // cualquier color sólido sino rompe
+        //public static void DibujarFondo(Form form)
+        //{
+        //    // 🔹 Activar DoubleBuffered con reflexión (evita parpadeos)
+        //    typeof(Form).InvokeMember("DoubleBuffered",
+        //        System.Reflection.BindingFlags.SetProperty |
+        //        System.Reflection.BindingFlags.Instance |
+        //        System.Reflection.BindingFlags.NonPublic,
+        //        null, form, new object[] { true });
 
-            // Suscribir al evento Paint para dibujar el fondo
-            form.Paint += (s, e) =>
+        //    // 🔹 Suscribimos al evento Paint
+        //    form.Paint += (s, e) =>
+        //    {
+        //        Graphics g = e.Graphics;
+        //        g.SmoothingMode = SmoothingMode.AntiAlias;
+
+        //        // Fondo degradado (podés cambiar colores o ángulo)
+        //        using (LinearGradientBrush brush = new LinearGradientBrush(
+        //            form.ClientRectangle,
+        //            Color.MediumPurple,
+        //            Color.DeepSkyBlue,
+        //            LinearGradientMode.ForwardDiagonal))
+        //        {
+        //            g.FillRectangle(brush, form.ClientRectangle);
+        //        }
+        //    };
+
+        //    // 🔹 Redibujar si el form cambia de tamaño
+        //    form.Resize += (s, e) => form.Invalidate();
+
+        //    // 🔹 Hacer controles transparentes (recursivo)
+        //    HacerControlesTransparentes(form);
+        //}
+
+
+        public static void AplicarEfectoHover(PictureBox pb, int tamañoOriginal = 40, int tamañoAgrandado = 47)
+        {
+            // Cuando el mouse entra
+            pb.MouseEnter += (s, e) =>
             {
-                using (LinearGradientBrush brush = new LinearGradientBrush(
-                    form.ClientRectangle, color1, color2, angle))
-                {
-                    e.Graphics.FillRectangle(brush, form.ClientRectangle);
-                }
+                pb.Size = new Size(tamañoAgrandado, tamañoAgrandado);
+                // Opcional: mantener centrado
+                pb.Location = new Point(pb.Location.X - (tamañoAgrandado - tamañoOriginal) / 2,
+                                        pb.Location.Y - (tamañoAgrandado - tamañoOriginal) / 2);
             };
 
-            // Forzar redibujado si el form cambia de tamaño
-            form.Resize += (s, e) => form.Invalidate();
+            // Cuando el mouse sale
+            pb.MouseLeave += (s, e) =>
+            {
+                pb.Size = new Size(tamañoOriginal, tamañoOriginal);
+                // Volver a la posición original
+                pb.Location = new Point(pb.Location.X + (tamañoAgrandado - tamañoOriginal) / 2,
+                                        pb.Location.Y + (tamañoAgrandado - tamañoOriginal) / 2);
+            };
         }
+
+
+        //private static void HacerControlesTransparentes(Control parent)
+        //{
+        //    foreach (Control ctrl in parent.Controls)
+        //    {
+        //        // Los que pueden tapar el degradado
+        //        if (ctrl is Label || ctrl is PictureBox)
+        //        {
+        //            ctrl.BackColor = Color.Transparent;
+        //        }
+
+        //        // Si tiene hijos, aplicar recursivo
+        //        if (ctrl.HasChildren)
+        //        {
+        //            HacerControlesTransparentes(ctrl);
+        //        }
+        //    }
+        //}
 
 
     }

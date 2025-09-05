@@ -2,6 +2,7 @@
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using CapaEntities;
 using CapaLogica;
@@ -253,6 +254,10 @@ namespace CapaVista
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnOrden);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnRecepcion);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnSalir);
+
+          
+
+            //UI_Utilidad.DibujarFondo(this);
         }
 
 
@@ -333,5 +338,9 @@ namespace CapaVista
             this.Show();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Recepcion Mercaderia", "Accedio al Menu Gestion Recepcion");
         }
+
+
+
+ 
     }
 }

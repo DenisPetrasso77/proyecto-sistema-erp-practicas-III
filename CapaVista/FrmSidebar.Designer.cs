@@ -31,36 +31,36 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSidebar));
             this.sidebar = new System.Windows.Forms.Panel();
-            this.pbSalir = new System.Windows.Forms.PictureBox();
-            this.pbAcerca = new System.Windows.Forms.PictureBox();
-            this.pbAyuda = new System.Windows.Forms.PictureBox();
-            this.pbConfig = new System.Windows.Forms.PictureBox();
-            this.pbHome = new System.Windows.Forms.PictureBox();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnAcerca = new System.Windows.Forms.Button();
             this.btnAyuda = new System.Windows.Forms.Button();
             this.btnConfig = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
-            this.btnMenu = new System.Windows.Forms.Button();
             this.SidebarTimer = new System.Windows.Forms.Timer(this.components);
             this.lbltituloHome = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbAcerca = new System.Windows.Forms.PictureBox();
+            this.pbSalir = new System.Windows.Forms.PictureBox();
+            this.pbAyuda = new System.Windows.Forms.PictureBox();
+            this.pbConfig = new System.Windows.Forms.PictureBox();
+            this.pbHome = new System.Windows.Forms.PictureBox();
+            this.btnMenu = new System.Windows.Forms.Button();
             this.sidebar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbSalir)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAcerca)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSalir)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAyuda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbConfig)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHome)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // sidebar
             // 
             this.sidebar.BackColor = System.Drawing.SystemColors.Highlight;
-            this.sidebar.Controls.Add(this.pbSalir);
             this.sidebar.Controls.Add(this.pbAcerca);
+            this.sidebar.Controls.Add(this.pbSalir);
             this.sidebar.Controls.Add(this.pbAyuda);
             this.sidebar.Controls.Add(this.pbConfig);
             this.sidebar.Controls.Add(this.pbHome);
@@ -75,56 +75,6 @@
             this.sidebar.Name = "sidebar";
             this.sidebar.Size = new System.Drawing.Size(200, 581);
             this.sidebar.TabIndex = 0;
-            // 
-            // pbSalir
-            // 
-            this.pbSalir.Image = global::CapaVista.Properties.Resources.circulo__1_1;
-            this.pbSalir.Location = new System.Drawing.Point(12, 438);
-            this.pbSalir.Name = "pbSalir";
-            this.pbSalir.Size = new System.Drawing.Size(40, 40);
-            this.pbSalir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbSalir.TabIndex = 10;
-            this.pbSalir.TabStop = false;
-            // 
-            // pbAcerca
-            // 
-            this.pbAcerca.Image = global::CapaVista.Properties.Resources.circulo__2_;
-            this.pbAcerca.Location = new System.Drawing.Point(12, 324);
-            this.pbAcerca.Name = "pbAcerca";
-            this.pbAcerca.Size = new System.Drawing.Size(40, 40);
-            this.pbAcerca.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbAcerca.TabIndex = 9;
-            this.pbAcerca.TabStop = false;
-            // 
-            // pbAyuda
-            // 
-            this.pbAyuda.Image = global::CapaVista.Properties.Resources.circulo1;
-            this.pbAyuda.Location = new System.Drawing.Point(12, 269);
-            this.pbAyuda.Name = "pbAyuda";
-            this.pbAyuda.Size = new System.Drawing.Size(40, 40);
-            this.pbAyuda.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbAyuda.TabIndex = 8;
-            this.pbAyuda.TabStop = false;
-            // 
-            // pbConfig
-            // 
-            this.pbConfig.Image = global::CapaVista.Properties.Resources.configuracion;
-            this.pbConfig.Location = new System.Drawing.Point(12, 214);
-            this.pbConfig.Name = "pbConfig";
-            this.pbConfig.Size = new System.Drawing.Size(40, 40);
-            this.pbConfig.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbConfig.TabIndex = 7;
-            this.pbConfig.TabStop = false;
-            // 
-            // pbHome
-            // 
-            this.pbHome.Image = global::CapaVista.Properties.Resources._10542477;
-            this.pbHome.Location = new System.Drawing.Point(12, 163);
-            this.pbHome.Name = "pbHome";
-            this.pbHome.Size = new System.Drawing.Size(40, 40);
-            this.pbHome.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbHome.TabIndex = 6;
-            this.pbHome.TabStop = false;
             // 
             // btnSalir
             // 
@@ -178,20 +128,6 @@
             this.btnHome.UseVisualStyleBackColor = true;
             this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
-            // btnMenu
-            // 
-            this.btnMenu.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.btnMenu.BackColor = System.Drawing.Color.Transparent;
-            this.btnMenu.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMenu.FlatAppearance.BorderSize = 0;
-            this.btnMenu.Image = global::CapaVista.Properties.Resources.circulo__3_;
-            this.btnMenu.Location = new System.Drawing.Point(12, 12);
-            this.btnMenu.Name = "btnMenu";
-            this.btnMenu.Size = new System.Drawing.Size(40, 40);
-            this.btnMenu.TabIndex = 0;
-            this.btnMenu.UseVisualStyleBackColor = false;
-            this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click_1);
-            // 
             // SidebarTimer
             // 
             this.SidebarTimer.Enabled = true;
@@ -232,6 +168,74 @@
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
+            // pbAcerca
+            // 
+            this.pbAcerca.BackColor = System.Drawing.SystemColors.Highlight;
+            this.pbAcerca.Image = global::CapaVista.Properties.Resources.idioma;
+            this.pbAcerca.Location = new System.Drawing.Point(12, 324);
+            this.pbAcerca.Name = "pbAcerca";
+            this.pbAcerca.Size = new System.Drawing.Size(40, 40);
+            this.pbAcerca.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbAcerca.TabIndex = 9;
+            this.pbAcerca.TabStop = false;
+            // 
+            // pbSalir
+            // 
+            this.pbSalir.Image = global::CapaVista.Properties.Resources.circulo__1_1;
+            this.pbSalir.Location = new System.Drawing.Point(12, 438);
+            this.pbSalir.Name = "pbSalir";
+            this.pbSalir.Size = new System.Drawing.Size(40, 40);
+            this.pbSalir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbSalir.TabIndex = 10;
+            this.pbSalir.TabStop = false;
+            this.pbSalir.Click += new System.EventHandler(this.pbSalir_Click);
+            // 
+            // pbAyuda
+            // 
+            this.pbAyuda.Image = global::CapaVista.Properties.Resources.circulo1;
+            this.pbAyuda.Location = new System.Drawing.Point(12, 269);
+            this.pbAyuda.Name = "pbAyuda";
+            this.pbAyuda.Size = new System.Drawing.Size(40, 40);
+            this.pbAyuda.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbAyuda.TabIndex = 8;
+            this.pbAyuda.TabStop = false;
+            // 
+            // pbConfig
+            // 
+            this.pbConfig.Image = global::CapaVista.Properties.Resources.configuracion;
+            this.pbConfig.Location = new System.Drawing.Point(12, 214);
+            this.pbConfig.Name = "pbConfig";
+            this.pbConfig.Size = new System.Drawing.Size(40, 40);
+            this.pbConfig.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbConfig.TabIndex = 7;
+            this.pbConfig.TabStop = false;
+            // 
+            // pbHome
+            // 
+            this.pbHome.Image = global::CapaVista.Properties.Resources._10542477;
+            this.pbHome.Location = new System.Drawing.Point(12, 163);
+            this.pbHome.Name = "pbHome";
+            this.pbHome.Size = new System.Drawing.Size(40, 40);
+            this.pbHome.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbHome.TabIndex = 6;
+            this.pbHome.TabStop = false;
+            this.pbHome.Click += new System.EventHandler(this.pbHome_Click);
+            // 
+            // btnMenu
+            // 
+            this.btnMenu.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.btnMenu.BackColor = System.Drawing.Color.Transparent;
+            this.btnMenu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMenu.FlatAppearance.BorderSize = 0;
+            this.btnMenu.ForeColor = System.Drawing.Color.Transparent;
+            this.btnMenu.Image = global::CapaVista.Properties.Resources.square1;
+            this.btnMenu.Location = new System.Drawing.Point(12, 12);
+            this.btnMenu.Name = "btnMenu";
+            this.btnMenu.Size = new System.Drawing.Size(40, 40);
+            this.btnMenu.TabIndex = 0;
+            this.btnMenu.UseVisualStyleBackColor = false;
+            this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click_1);
+            // 
             // FrmSidebar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -245,14 +249,14 @@
             this.Text = "Sidebar";
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.sidebar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbSalir)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbAcerca)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbAyuda)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbConfig)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbHome)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAcerca)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSalir)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAyuda)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbConfig)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHome)).EndInit();
             this.ResumeLayout(false);
 
         }

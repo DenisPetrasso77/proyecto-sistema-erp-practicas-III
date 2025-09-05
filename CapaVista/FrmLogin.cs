@@ -16,6 +16,7 @@ namespace CapaVista
         public FrmLogin()
         {
             InitializeComponent();
+          
         }
         private void btnIngresar_Click(object sender, EventArgs e)
         {
@@ -111,26 +112,14 @@ namespace CapaVista
             UI_Utilidad.RedondearForm(this, 28);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnIngresar);
             UI_Utilidad.EstiloTextBox(txtUsuario, "Ingrese su usuario");
-            UI_Utilidad.EstiloTextBox(txtContraseña, "Ingrese su contraseña");   
+            UI_Utilidad.EstiloTextBox(txtContraseña, "Ingrese su contraseña");
+            UI_Utilidad.AplicarEfectoHover(pbSalir);
 
         }
 
         private void pbSalir_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void pbSalir_MouseEnter(object sender, EventArgs e)
-        {
-            
-            pbSalir.Size = new Size(45,45); //Se agranda
-          
-        }
-
-        private void pbSalir_MouseLeave(object sender, EventArgs e)
-        {
-            pbSalir.Size = new Size(40, 40); // volver al tamaño original
-
         }
 
         /*------------------------------------------------------------------------------------*/

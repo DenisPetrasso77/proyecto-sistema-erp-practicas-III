@@ -153,14 +153,13 @@
             this.pbSalir.TabIndex = 12;
             this.pbSalir.TabStop = false;
             this.pbSalir.Click += new System.EventHandler(this.pbSalir_Click);
-            this.pbSalir.MouseEnter += new System.EventHandler(this.pbSalir_MouseEnter);
-            this.pbSalir.MouseLeave += new System.EventHandler(this.pbSalir_MouseLeave);
+
             // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(403, 500);
             this.Controls.Add(this.pbSalir);
             this.Controls.Add(this.label1);
