@@ -213,6 +213,32 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
         }
+        public int InsertarFacturas(int recepcion,int puesto,int factura, int tipo,string cuit,string razonsocial,decimal total)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_InsertarFacturas", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IdRecepcion", recepcion);
+                    cmd.Parameters.AddWithValue("@NPuesto", puesto);
+                    cmd.Parameters.AddWithValue("@NFactura", factura);
+                    cmd.Parameters.AddWithValue("@TipoFactura", tipo);
+                    cmd.Parameters.AddWithValue("@Cuit", cuit);
+                    cmd.Parameters.AddWithValue("@RazonSocial", razonsocial);
+                    cmd.Parameters.AddWithValue("@Total", total);
+                    return Convert.ToInt32(cmd.ExecuteNonQuery());
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
         public int BorrarBitacora()
         {
             try
@@ -964,6 +990,18 @@ namespace CapaDatos
             }
             return dt;
         }
+        public DataTable TraerDatosProveedorFactura(string proveedor)
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarDatosFacturas", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Proveedor", proveedor);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
         public DataTable RecepcionOrdenes()
         {
             DataTable dt = new DataTable();
@@ -1019,6 +1057,41 @@ namespace CapaDatos
             }
             return dt;
         }
+        public DataTable TraerPagosPendientes()
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarPagosPendientes", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable TraerTipoFacturas()
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarTipoFacturas", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable TraerDetalleMercaderia(int recepcion)
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarDetalleMercaderia", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@IdRecepcion", recepcion);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
 
         #endregion
     }

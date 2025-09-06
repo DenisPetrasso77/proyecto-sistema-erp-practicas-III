@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace CapaVista
 {
-    public partial class FrmFacturaRemito : Form
+    public partial class FrmRemito : Form
     {
-        public FrmFacturaRemito()
+        public FrmRemito()
         {
             InitializeComponent();
         }

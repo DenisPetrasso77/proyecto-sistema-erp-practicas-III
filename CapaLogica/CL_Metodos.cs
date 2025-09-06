@@ -14,9 +14,29 @@ namespace CapaLogica
         { 
             return metodos.Intentos(usuario);
         }
+        public int InsertarFacturas(int recepcion, int puesto, int factura, int tipo, string cuit, string razonsocial, decimal total)
+        {  
+            return metodos.InsertarFacturas(recepcion, puesto, factura, tipo, cuit, razonsocial, total);
+        }
         public string InsertarDevolucion(Devoluciones devoluciones)
         {
             return metodos.InsertarDevolucion(devoluciones);
+        }
+        public DataTable TraerDetalleMercaderia(int recepcion)
+        {
+            return metodos.TraerDetalleMercaderia(recepcion);
+        }
+        public DataTable TraerTipoFacturas()
+        { 
+            return metodos.TraerTipoFacturas();
+        }
+        public DataTable TraerDatosProveedorFactura(string proveedor)
+        { 
+            return metodos.TraerDatosProveedorFactura(proveedor);
+        }
+        public DataTable TraerPagosPendientes()
+        { 
+            return metodos.TraerPagosPendientes();
         }
         public DataTable TraerDevoluciones()
         { 

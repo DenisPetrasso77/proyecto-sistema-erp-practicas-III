@@ -1,6 +1,6 @@
 ﻿namespace CapaVista
 {
-    partial class FrmFacturaRemito
+    partial class FrmRemito
     {
         /// <summary>
         /// Required designer variable.

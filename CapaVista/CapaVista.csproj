@@ -72,6 +72,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CV_Utiles.cs" />
+    <Compile Include="UI_Utilidad.cs" />
+    <Compile Include="FrmDetalleRecepcion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDetalleRecepcion.Designer.cs">
+      <DependentUpon>FrmDetalleRecepcion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFactura.Designer.cs">
+      <DependentUpon>FrmFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmAdmusuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,11 +115,11 @@
     <Compile Include="FrmComprobante.Designer.cs">
       <DependentUpon>FrmComprobante.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmFacturaRemito.cs">
+    <Compile Include="FrmRemito.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmFacturaRemito.Designer.cs">
-      <DependentUpon>FrmFacturaRemito.cs</DependentUpon>
+    <Compile Include="FrmRemito.Designer.cs">
+      <DependentUpon>FrmRemito.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmGestionOrdenCompra.cs">
       <SubType>Form</SubType>
@@ -207,6 +220,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CV_Seguridad.cs" />
+    <EmbeddedResource Include="FrmDetalleRecepcion.resx">
+      <DependentUpon>FrmDetalleRecepcion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFactura.resx">
+      <DependentUpon>FrmFactura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmAdmusuarios.resx">
       <DependentUpon>FrmAdmusuarios.cs</DependentUpon>
     </EmbeddedResource>
@@ -222,8 +241,8 @@
     <EmbeddedResource Include="FrmComprobante.resx">
       <DependentUpon>FrmComprobante.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmFacturaRemito.resx">
-      <DependentUpon>FrmFacturaRemito.cs</DependentUpon>
+    <EmbeddedResource Include="FrmRemito.resx">
+      <DependentUpon>FrmRemito.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmGestionOrdenCompra.resx">
       <DependentUpon>FrmGestionOrdenCompra.cs</DependentUpon>
@@ -372,6 +391,75 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\warehouse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\administracion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\agregar-producto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\almacen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bienvenido-de-nuevo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\box %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\carrito-de-supermercado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\circulo %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\circulo %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\circulo %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\circulo %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\circulo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\circulo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\configuracion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cuadrado-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cuadrado-removebg-preview1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\engranaje.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gestion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IMG_7030.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\metodo-de-pago.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\proveedor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vaso.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

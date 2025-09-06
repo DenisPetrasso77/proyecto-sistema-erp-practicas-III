@@ -1,5 +1,6 @@
 ﻿using CapaEntities;
 using CapaLogica;
+using ProyectoPracticas;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -18,7 +19,7 @@ namespace CapaVista
         private void Cargarbuscador()
         {
             UsuariosCache = metodos.Usuarios();
-            string texto = textBox1.Text.Trim().ToLower();
+            string texto = txtBuscador.Text.Trim().ToLower();
             dataGridView1.Rows.Clear();
 
             foreach (DataRow fila in UsuariosCache.Rows)
@@ -26,7 +27,7 @@ namespace CapaVista
                 string usuario = fila["Usuario"].ToString().ToLower();
                 string estado = fila["Estado"].ToString();
                 string bloqueado = Convert.ToInt32(fila["Bloqueado"]) == 0 ? "No" : "Si";
-                if (string.IsNullOrWhiteSpace(texto) || textBox1.Text == "BUSCADOR...")
+                if (string.IsNullOrWhiteSpace(texto) || txtBuscador.Text == "BUSCADOR...")
                 {
                     dataGridView1.Rows.Add(fila["IdUsuario"], fila["Usuario"], fila["Nombre"], fila["Apellido"], fila["Dni"], fila["NombreRol"], bloqueado, fila["Estado"].ToString());
                 }
@@ -36,13 +37,25 @@ namespace CapaVista
                 }
             }
         }
+
+        private void FrmAdmusuarios_Load(object sender, EventArgs e)
+        {
+            Cargarbuscador();
+        }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+            new FrmRegistro().ShowDialog();
+            Cargarbuscador();
+        }
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             new FrmRegistro().ShowDialog();
             Cargarbuscador();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void txtBuscador_TextChanged(object sender, EventArgs e)
         {
             Cargarbuscador();
         }
@@ -87,9 +100,17 @@ namespace CapaVista
             modUsuarios.Show();
         }
 
-        private void FrmAdmusuarios_Load(object sender, EventArgs e)
+        private void btnSalir_Click(object sender, EventArgs e)
         {
-            Cargarbuscador();
+            this.Close();
+        }
+
+        private void FrmAdmusuarios_Shown(object sender, EventArgs e)
+        {
+            this.ActiveControl = null;
+            UI_Utilidad.EstiloForm(this);
+            UI_Utilidad.RedondearForm(this, 28);
+            UI_Utilidad.EstiloTextBox(txtBuscador, "Buscador de Usuarios");
         }
     }
 }

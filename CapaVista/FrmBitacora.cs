@@ -1,4 +1,5 @@
 ﻿using CapaLogica;
+using ProyectoPracticas;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -16,9 +17,9 @@ namespace CapaVista
         {
             DataTable cachebitacora = metodos.TraerBitacora();
 
-            string usuario = textBox1.Text.Trim().ToLower();
-            string tabla = textBox2.Text.Trim().ToLower();
-            string descripcion = textBox3.Text.Trim().ToLower();
+            string usuario = txtUsuario.Text.Trim().ToLower();
+            string tabla = txtTabla.Text.Trim().ToLower();
+            string descripcion = txtDescripcion.Text.Trim().ToLower();
 
             dataGridView1.Rows.Clear();
 
@@ -45,22 +46,30 @@ namespace CapaVista
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+
+        private void FrmBitacora_Load(object sender, EventArgs e)
         {
             CargarDetalle();
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        private void txtUsuario_TextChanged(object sender, EventArgs e)
         {
             CargarDetalle();
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
+        private void txtTabla_TextChanged(object sender, EventArgs e)
         {
             CargarDetalle();
+
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void txtDescripcion_TextChanged(object sender, EventArgs e)
+        {
+            CargarDetalle();
+
+        }
+
+        private void bntEliminar_Click(object sender, EventArgs e)
         {
             var valor = dataGridView1.CurrentRow;
             if (valor == null)
@@ -82,10 +91,9 @@ namespace CapaVista
                 return;
             }
             CargarDetalle();
-
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnLimpiar_Click(object sender, EventArgs e)
         {
             DialogResult resultado = MessageBox.Show("¿Desea Eliminar el Registro Completo?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
@@ -103,14 +111,30 @@ namespace CapaVista
             CargarDetalle();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void FrmBitacora_Load(object sender, EventArgs e)
+        private void FrmBitacora_Shown(object sender, EventArgs e)
         {
-            CargarDetalle();
+            this.ActiveControl = null;
+
+            UI_Utilidad.EstiloLabels(this);
+
+            UI_Utilidad.EstiloForm(this);
+            UI_Utilidad.RedondearForm(this, 28);
+
+            UI_Utilidad.EstiloBotonPrimarioDegradado(bntEliminar);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnLimpiar);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnSalir);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnSalir);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnBuscar);
+
+
+            UI_Utilidad.EstiloTextBox(txtUsuario);
+            UI_Utilidad.EstiloTextBox(txtTabla);
+            UI_Utilidad.EstiloTextBox(txtDescripcion);
         }
     }
 }

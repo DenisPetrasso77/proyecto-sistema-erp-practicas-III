@@ -11,7 +11,7 @@ namespace CapaVista
 {
     public partial class FrmGestionRecepcion : Form
     {
-        FrmFacturaRemito facturaremito = new FrmFacturaRemito();
+        FrmRemito facturaremito = new FrmRemito();
         CL_Metodos metodos = new CL_Metodos();
         string idproveedor = string.Empty;
         int puestoventa = 0;
