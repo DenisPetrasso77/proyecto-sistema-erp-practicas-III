@@ -536,5 +536,17 @@
   <ItemGroup>
     <None Include="Resources\administrar.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lapiz.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\factura.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\metodo-de-pago %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\caja-de-entrega.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

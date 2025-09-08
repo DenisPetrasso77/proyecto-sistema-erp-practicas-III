@@ -20,7 +20,7 @@ namespace CapaVista
             //Application.Run(new FrmSidebar());
             //Application.Run(new FrmPagos());
             //Application.Run(new FrmRegistro());
-            Application.Run(new FrmLogin());
+            Application.Run(new FrmGestionPR());
         }
     }
 }

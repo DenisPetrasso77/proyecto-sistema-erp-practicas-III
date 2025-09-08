@@ -1,9 +1,10 @@
-﻿using CapaEntities;
-using CapaLogica;
-using System;
+﻿using System;
 using System.Data;
 using System.Web;
 using System.Windows.Forms;
+using CapaEntities;
+using CapaLogica;
+using ProyectoPracticas;
 
 namespace CapaVista
 {
@@ -212,6 +213,27 @@ namespace CapaVista
             MessageBox.Show(resultado);
             DetallePR();
             Cargardgvdetalle();
+        }
+
+        private void FrmGestionPR_Shown(object sender, EventArgs e)
+        {
+            this.ActiveControl = null;
+
+            UI_Utilidad.EstiloForm(this);
+            UI_Utilidad.RedondearForm(this, 28);
+
+            
+            UI_Utilidad.EstiloBotonPrimarioDegradado(button1);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(button2);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(button3);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(button4);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(button5);
+           
+
+
+
+
+
         }
     }
 }

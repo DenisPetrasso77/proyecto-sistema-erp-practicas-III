@@ -52,10 +52,12 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbltituloHome = new System.Windows.Forms.Label();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -280,6 +282,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel1.Controls.Add(this.pictureBox8);
             this.panel1.Controls.Add(this.lbltituloHome);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -297,6 +300,16 @@
             this.lbltituloHome.Size = new System.Drawing.Size(305, 37);
             this.lbltituloHome.TabIndex = 6;
             this.lbltituloHome.Text = "Gestión Bitácora";
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = global::CapaVista.Properties.Resources.lapiz;
+            this.pictureBox8.Location = new System.Drawing.Point(221, 8);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox8.TabIndex = 33;
+            this.pictureBox8.TabStop = false;
             // 
             // FrmBitacora
             // 
@@ -322,6 +335,7 @@
             this.groupBox2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -351,5 +365,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lbltituloHome;
+        private System.Windows.Forms.PictureBox pictureBox8;
     }
 }
