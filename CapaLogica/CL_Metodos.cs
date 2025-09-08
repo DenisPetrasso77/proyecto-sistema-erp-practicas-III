@@ -219,6 +219,12 @@ namespace CapaLogica
         {
             return metodos.InsertarPR(idusuario,detallepr);
         }
+
+        public DataTable TraerDetalleOrden(int nroOrden)
+        {
+            return metodos.TraerDetalleOrden(nroOrden);
+        }
+
         #endregion
     }
 }

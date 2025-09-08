@@ -99,6 +99,12 @@
     <Compile Include="FrmComprobante.Designer.cs">
       <DependentUpon>FrmComprobante.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmDetalleOrdenPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDetalleOrdenPago.Designer.cs">
+      <DependentUpon>FrmDetalleOrdenPago.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmFacturaRemito.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,11 +183,23 @@
     <Compile Include="FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmNuevaNotaCredito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNuevaNotaCredito.Designer.cs">
+      <DependentUpon>FrmNuevaNotaCredito.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPagos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmPagos.Designer.cs">
       <DependentUpon>FrmPagos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPerfil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPerfil.Designer.cs">
+      <DependentUpon>FrmPerfil.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmProductoNuevo.cs">
       <SubType>Form</SubType>
@@ -238,6 +256,9 @@
     <EmbeddedResource Include="FrmComprobante.resx">
       <DependentUpon>FrmComprobante.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmDetalleOrdenPago.resx">
+      <DependentUpon>FrmDetalleOrdenPago.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmFacturaRemito.resx">
       <DependentUpon>FrmFacturaRemito.cs</DependentUpon>
     </EmbeddedResource>
@@ -277,8 +298,14 @@
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmNuevaNotaCredito.resx">
+      <DependentUpon>FrmNuevaNotaCredito.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmPagos.resx">
       <DependentUpon>FrmPagos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPerfil.resx">
+      <DependentUpon>FrmPerfil.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProductoNuevo.resx">
       <DependentUpon>FrmProductoNuevo.cs</DependentUpon>
@@ -496,6 +523,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\idioma.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usuario2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Alan_turing_header.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\administrar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

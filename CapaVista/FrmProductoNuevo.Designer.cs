@@ -67,6 +67,7 @@
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -77,6 +78,7 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox2
@@ -84,7 +86,7 @@
             this.textBox2.Location = new System.Drawing.Point(15, 207);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(185, 30);
+            this.textBox2.Size = new System.Drawing.Size(185, 26);
             this.textBox2.TabIndex = 2;
             // 
             // bntCargarImagen
@@ -102,7 +104,7 @@
             this.textBox1.Location = new System.Drawing.Point(262, 65);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(185, 30);
+            this.textBox1.Size = new System.Drawing.Size(185, 26);
             this.textBox1.TabIndex = 6;
             // 
             // label1
@@ -150,7 +152,7 @@
             this.textBox3.Location = new System.Drawing.Point(15, 65);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(185, 30);
+            this.textBox3.Size = new System.Drawing.Size(185, 26);
             this.textBox3.TabIndex = 11;
             // 
             // textBox4
@@ -158,7 +160,7 @@
             this.textBox4.Location = new System.Drawing.Point(15, 143);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(185, 30);
+            this.textBox4.Size = new System.Drawing.Size(185, 26);
             this.textBox4.TabIndex = 12;
             // 
             // textBox5
@@ -166,7 +168,7 @@
             this.textBox5.Location = new System.Drawing.Point(263, 143);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(185, 30);
+            this.textBox5.Size = new System.Drawing.Size(185, 26);
             this.textBox5.TabIndex = 13;
             // 
             // label5
@@ -182,6 +184,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel1.Controls.Add(this.pictureBox8);
             this.panel1.Controls.Add(this.pictureBox7);
             this.panel1.Controls.Add(this.lbltituloHome);
             this.panel1.Controls.Add(this.button18);
@@ -295,7 +298,7 @@
             this.btnGuardar.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.Location = new System.Drawing.Point(411, 779);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(145, 36);
+            this.btnGuardar.Size = new System.Drawing.Size(145, 35);
             this.btnGuardar.TabIndex = 29;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
@@ -305,17 +308,18 @@
             this.btnSalir.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.Location = new System.Drawing.Point(568, 779);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(145, 36);
+            this.btnSalir.Size = new System.Drawing.Size(145, 35);
             this.btnSalir.TabIndex = 30;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // textBox9
             // 
             this.textBox9.Location = new System.Drawing.Point(254, 147);
             this.textBox9.Multiline = true;
             this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(185, 30);
+            this.textBox9.Size = new System.Drawing.Size(185, 26);
             this.textBox9.TabIndex = 21;
             // 
             // label9
@@ -333,7 +337,7 @@
             this.textBox6.Location = new System.Drawing.Point(15, 74);
             this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(185, 30);
+            this.textBox6.Size = new System.Drawing.Size(185, 26);
             this.textBox6.TabIndex = 15;
             // 
             // label8
@@ -371,7 +375,7 @@
             this.textBox7.Location = new System.Drawing.Point(254, 74);
             this.textBox7.Multiline = true;
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(185, 30);
+            this.textBox7.Size = new System.Drawing.Size(185, 26);
             this.textBox7.TabIndex = 12;
             // 
             // textBox8
@@ -379,7 +383,7 @@
             this.textBox8.Location = new System.Drawing.Point(15, 147);
             this.textBox8.Multiline = true;
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(185, 30);
+            this.textBox8.Size = new System.Drawing.Size(185, 26);
             this.textBox8.TabIndex = 24;
             // 
             // groupBox1
@@ -431,7 +435,7 @@
             this.textBox11.Location = new System.Drawing.Point(142, 294);
             this.textBox11.Multiline = true;
             this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(95, 30);
+            this.textBox11.Size = new System.Drawing.Size(95, 26);
             this.textBox11.TabIndex = 28;
             // 
             // label11
@@ -449,7 +453,7 @@
             this.textBox10.Location = new System.Drawing.Point(7, 294);
             this.textBox10.Multiline = true;
             this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(114, 30);
+            this.textBox10.Size = new System.Drawing.Size(115, 26);
             this.textBox10.TabIndex = 26;
             // 
             // label10
@@ -471,6 +475,17 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.BackColor = System.Drawing.SystemColors.Highlight;
+            this.pictureBox8.Image = global::CapaVista.Properties.Resources.agregar_producto;
+            this.pictureBox8.Location = new System.Drawing.Point(202, 12);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox8.TabIndex = 16;
+            this.pictureBox8.TabStop = false;
             // 
             // FrmProductoNuevo
             // 
@@ -502,6 +517,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -546,5 +562,6 @@
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.PictureBox pictureBox8;
     }
 }

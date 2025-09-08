@@ -236,12 +236,6 @@ namespace CapaVista
             UI_Utilidad.EstiloForm(this);
             UI_Utilidad.RedondearForm(this, 28);
 
-            UI_Utilidad.RedondearControl(pnlProductos,28);
-            UI_Utilidad.RedondearControl(pnlPagos, 28);
-            UI_Utilidad.RedondearControl(pnlProveedores, 28);
-            UI_Utilidad.RedondearControl(pnlUsuarios, 28);
-            UI_Utilidad.RedondearControl(pnlCompras, 28);
-            UI_Utilidad.RedondearControl(pnlAlmacen, 28);
 
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnGestion);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnReabastecer);
@@ -264,7 +258,7 @@ namespace CapaVista
         private void button20_Click(object sender, EventArgs e)
         {
            
-            new FrmGestionProductos().ShowDialog();
+            new FrmProductoNuevo().ShowDialog();
             Cargarbuscador();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Productos", "Accedio al Menu Gestion Productos");
         }
@@ -338,9 +332,6 @@ namespace CapaVista
             this.Show();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Recepcion Mercaderia", "Accedio al Menu Gestion Recepcion");
         }
-
-
-
- 
+  
     }
 }

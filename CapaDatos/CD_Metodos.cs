@@ -1018,6 +1018,24 @@ namespace CapaDatos
             return dt;
         }
 
+
+        /*------------------------------------------------------------*/
+
+        public DataTable TraerDetalleOrden(int nroOrden)
+        {
+            using (SqlCommand cmd = new SqlCommand("sp_DetalleOrdenesConNotasCredito", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@NroOrden", nroOrden);
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+        }
+
+
         #endregion
     }
 }

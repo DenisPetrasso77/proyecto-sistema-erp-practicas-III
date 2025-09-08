@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace ProyectoPracticas
@@ -33,80 +34,124 @@ namespace ProyectoPracticas
             }
         }
 
-        public static void EstiloTextBox(TextBox txt, string placeholder = "")
+        public static void EstiloTextBox(Control ctrl, string placeholder = "")
         {
-            // Aplicar bordes redondeados
-            RedondearControl(txt, 15);
-
-            // Estilos base
-            txt.BorderStyle = BorderStyle.None;
-            txt.BackColor = Color.White;
-            txt.ForeColor = Color.Black;
-            txt.Font = new Font("Segoe UI", 10, FontStyle.Regular);
-
-            // Agregar padding interno
-            txt.Padding = new Padding(8, 5, 8, 5);
-
-            if (!string.IsNullOrWhiteSpace(placeholder))
+            if (ctrl is TextBox txt)
             {
-                // Aplicar placeholder inicial
-                txt.Text = placeholder;
-                txt.ForeColor = Color.Gray;
+                txt.Multiline = true; // 🔹 Para permitir centrar el texto
+                txt.AutoSize = false;
+                txt.BorderStyle = BorderStyle.None;
+                txt.BackColor = Color.White;
+                txt.ForeColor = Color.Black;
+                txt.Font = new Font("Segoe UI", 12, FontStyle.Regular);
+                TextBoxHelper.SetPadding(txt, 25, 5); // 25px a la izquierda, 5px a la derecha
 
-                // Evento al entrar
-                txt.GotFocus += (s, e) =>
+                // Esquinas redondeadas
+                txt.Region = new Region(RoundedRect(txt.ClientRectangle, txt.Height / 2));
+
+                txt.Paint += (s, e) =>
                 {
-                    if (txt.Text == placeholder)
+                    e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                    using (SolidBrush backBrush = new SolidBrush(txt.BackColor))
+                    using (Pen borderPen = new Pen(Color.LightGray, 1.5f))
                     {
-                        txt.Text = "";
-                        txt.ForeColor = Color.Black;
+                        var rect = txt.ClientRectangle;
+                        rect.Width -= 1;
+                        rect.Height -= 1;
+                        var path = RoundedRect(rect, txt.Height / 2);
+                        e.Graphics.FillPath(backBrush, path);
+                        e.Graphics.DrawPath(borderPen, path);
                     }
                 };
 
-                // Evento al salir
-                txt.LostFocus += (s, e) =>
+                // Placeholder
+                if (!string.IsNullOrWhiteSpace(placeholder))
                 {
-                    if (string.IsNullOrWhiteSpace(txt.Text))
+                    txt.Text = placeholder;
+                    txt.ForeColor = Color.Gray;
+
+                    txt.GotFocus += (s, e) =>
                     {
-                        txt.Text = placeholder;
-                        txt.ForeColor = Color.Gray;
-                    }
-                };
+                        if (txt.Text == placeholder)
+                        {
+                            txt.Text = "";
+                            txt.ForeColor = Color.Black;
+                        }
+                    };
+                    txt.LostFocus += (s, e) =>
+                    {
+                        if (string.IsNullOrWhiteSpace(txt.Text))
+                        {
+                            txt.Text = placeholder;
+                            txt.ForeColor = Color.Gray;
+                        }
+                    };
+                }
             }
+            else if (ctrl is ComboBox cb)
+            {
+                cb.FlatStyle = FlatStyle.Flat;
+                cb.BackColor = Color.White;
+                cb.ForeColor = Color.Black;
+                cb.Font = new Font("Segoe UI", 10, FontStyle.Regular);
+                cb.DropDownStyle = ComboBoxStyle.DropDownList;
+
+                cb.Region = new Region(RoundedRect(cb.ClientRectangle, cb.Height / 2));
+
+                cb.Paint += (s, e) =>
+                {
+                    e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                    using (SolidBrush backBrush = new SolidBrush(cb.BackColor))
+                    using (Pen borderPen = new Pen(Color.LightGray, 1.5f))
+                    {
+                        var rect = cb.ClientRectangle;
+                        rect.Width -= 1;
+                        rect.Height -= 1;
+                        var path = RoundedRect(rect, cb.Height / 2);
+                        e.Graphics.FillPath(backBrush, path);
+                        e.Graphics.DrawPath(borderPen, path);
+                    }
+                };
+
+                // Placeholder visual
+                if (!string.IsNullOrWhiteSpace(placeholder))
+                {
+                    cb.Items.Insert(0, placeholder);
+                    cb.SelectedIndex = 0;
+                    cb.ForeColor = Color.Gray;
+
+                    cb.SelectedIndexChanged += (s, e) =>
+                    {
+                        if (cb.SelectedIndex == 0)
+                        {
+                            cb.ForeColor = Color.Gray;
+                        }
+                        else
+                        {
+                            cb.ForeColor = Color.Black;
+                        }
+                    };
+                }
+            }
+        }
+
+        // auxiliar para redondear
+        private static System.Drawing.Drawing2D.GraphicsPath RoundedRect(Rectangle bounds, int radius)
+        {
+            int d = radius * 2;
+            var path = new System.Drawing.Drawing2D.GraphicsPath();
+            path.AddArc(bounds.X, bounds.Y, d, d, 180, 90);
+            path.AddArc(bounds.Right - d, bounds.Y, d, d, 270, 90);
+            path.AddArc(bounds.Right - d, bounds.Bottom - d, d, d, 0, 90);
+            path.AddArc(bounds.X, bounds.Bottom - d, d, d, 90, 90);
+            path.CloseFigure();
+            return path;
         }
 
         public static void EstiloForm(Form form)
         {
             form.BackColor = Color.FromArgb(230, 230, 230); // Gris claro
             form.FormBorderStyle = FormBorderStyle.None;
-        }
-
-        //public static void CambiarColorPaneles(Control parent)
-        //{
-        //    foreach (Control ctrl in parent.Controls)
-        //    {
-        //        if (ctrl is Panel)
-        //        {
-        //            ctrl.BackColor = Color.FromArgb(245, 245, 245); // gris claro
-        //        }
-
-        //        // Si tiene hijos, los recorro también
-        //        if (ctrl.HasChildren)
-        //        {
-        //            CambiarColorPaneles(ctrl);
-        //        }
-        //    }
-        //}
-
-        public static void RedondearControl(Control control, int radio = 15)
-        {
-            GraphicsPath path = new GraphicsPath();
-            path.AddArc(0, 0, radio, radio, 180, 90);
-            path.AddArc(control.Width - radio, 0, radio, radio, 270, 90);
-            path.AddArc(control.Width - radio, control.Height - radio, radio, radio, 0, 90);
-            path.AddArc(0, control.Height - radio, radio, radio, 90, 90);
-            path.CloseAllFigures();
-            control.Region = new Region(path);
         }
 
         public static void RedondearForm(Form form, int radio = 30)
@@ -151,7 +196,7 @@ namespace ProyectoPracticas
                 boton.Refresh();
             };
 
-            // 4️⃣ Redondear esquinas dinámicamente
+
             void Redondear()
             {
                 int r = Math.Min(radio, Math.Min(boton.Width, boton.Height) / 2);
@@ -203,7 +248,6 @@ namespace ProyectoPracticas
         //    HacerControlesTransparentes(form);
         //}
 
-
         public static void AplicarEfectoHover(PictureBox pb, int tamañoOriginal = 40, int tamañoAgrandado = 47)
         {
             // Cuando el mouse entra
@@ -244,6 +288,47 @@ namespace ProyectoPracticas
         //    }
         //}
 
+        public static void HacerCircular(PictureBox pictureBox)
+        {
+            // Crear un GraphicsPath que contenga un círculo
+            GraphicsPath path = new GraphicsPath();
+            path.AddEllipse(0, 0, pictureBox.Width, pictureBox.Height);
+
+            // Aplicar la región circular al PictureBox
+            pictureBox.Region = new Region(path);
+        }
+
+        public class TextBoxHelper
+        {
+            private const int EM_SETMARGINS = 0xD3;
+            private const int EC_LEFTMARGIN = 0x1;
+            private const int EC_RIGHTMARGIN = 0x2;
+
+            [DllImport("user32.dll", CharSet = CharSet.Auto)]
+            private static extern IntPtr SendMessage(IntPtr hWnd, int msg, int wParam, int lParam);
+
+            public static void SetPadding(TextBox txt, int left, int right)
+            {
+                SendMessage(txt.Handle, EM_SETMARGINS, EC_LEFTMARGIN | EC_RIGHTMARGIN, (right << 16) | left);
+            }
+        }
+
+        //public static void CambiarColorPaneles(Control parent)
+        //{
+        //    foreach (Control ctrl in parent.Controls)
+        //    {
+        //        if (ctrl is Panel)
+        //        {
+        //            ctrl.BackColor = Color.FromArgb(245, 245, 245); // gris claro
+        //        }
+
+        //        // Si tiene hijos, los recorro también
+        //        if (ctrl.HasChildren)
+        //        {
+        //            CambiarColorPaneles(ctrl);
+        //        }
+        //    }
+        //}
 
     }
 }

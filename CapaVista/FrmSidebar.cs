@@ -80,8 +80,8 @@ namespace SidebarMenu
                     // Mostrar texto
                     btnHome.Text = "Home";
                     btnConfig.Text = "Configuración";
-                    btnAyuda.Text = "Ayuda";
-                    btnAcerca.Text = "idioma";
+                    btnAyuda.Text = "Help";
+                    btnAcerca.Text = "Idioma";
                     btnSalir.Text = "Salir del Sistema";
 
                     // ancho fijo cuando está expandido
@@ -118,6 +118,7 @@ namespace SidebarMenu
             UI_Utilidad.AplicarEfectoHover(pbAcerca);
             UI_Utilidad.AplicarEfectoHover(pbConfig);
             UI_Utilidad.AplicarEfectoHover(pbSalir);
+            UI_Utilidad.AplicarEfectoHover(pbPerfil);
         }
 
         private void btnHome_Click(object sender, EventArgs e)
@@ -147,5 +148,23 @@ namespace SidebarMenu
             FrmLogin login = new FrmLogin();
             login.Show();
         }
+
+        private void pbPerfil_Click(object sender, EventArgs e)
+        {
+            this.Close(); 
+            FrmPerfil perfil = new FrmPerfil();
+            perfil.ShowDialog();
+        }
+
+        private void sidebar_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnMenu_Click(object sender, EventArgs e)
+        {
+            SidebarTimer.Start();
+        }
     }
+    
 }

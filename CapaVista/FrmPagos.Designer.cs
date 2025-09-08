@@ -30,56 +30,51 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.btnAtras = new System.Windows.Forms.Button();
+            this.btnEmitirOrdenPago = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.RazonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CUITCUIL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NroFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Remito = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NotasCredito = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label7 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.NOrden = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Proveedor2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnAgregarNotaCredito = new System.Windows.Forms.Button();
+            this.btnAgregarFactura = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.NroInforme = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Factura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NOTACREDITO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button5 = new System.Windows.Forms.Button();
+            this.txtBuscador1 = new System.Windows.Forms.TextBox();
+            this.lblBuscador = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnVolver = new System.Windows.Forms.Button();
+            this.btnDetalle = new System.Windows.Forms.Button();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbFormaPago = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnPagar = new System.Windows.Forms.Button();
+            this.txtTotalPagar = new System.Windows.Forms.TextBox();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.IdOrden = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MontoNotaDeCredito = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MontoFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EstadoOrdenDePago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -87,38 +82,89 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(6, 4);
+            this.tabControl1.Location = new System.Drawing.Point(2, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(455, 344);
+            this.tabControl1.Size = new System.Drawing.Size(628, 522);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.button4);
-            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.btnAtras);
+            this.tabPage1.Controls.Add(this.btnEmitirOrdenPago);
+            this.tabPage1.Controls.Add(this.panel1);
+            this.tabPage1.Controls.Add(this.btnAgregarNotaCredito);
+            this.tabPage1.Controls.Add(this.btnAgregarFactura);
             this.tabPage1.Controls.Add(this.dataGridView1);
-            this.tabPage1.Controls.Add(this.textBox1);
-            this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.txtBuscador1);
+            this.tabPage1.Controls.Add(this.lblBuscador);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(447, 318);
+            this.tabPage1.Size = new System.Drawing.Size(620, 496);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Documentacion";
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
-            // button1
+            // btnAtras
             // 
-            this.button1.Location = new System.Drawing.Point(10, 206);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(93, 43);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Agregar Factura";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnAtras.Location = new System.Drawing.Point(452, 426);
+            this.btnAtras.Name = "btnAtras";
+            this.btnAtras.Size = new System.Drawing.Size(140, 35);
+            this.btnAtras.TabIndex = 8;
+            this.btnAtras.Text = "Atras";
+            this.btnAtras.UseVisualStyleBackColor = true;
+            this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
+            // 
+            // btnEmitirOrdenPago
+            // 
+            this.btnEmitirOrdenPago.Location = new System.Drawing.Point(386, 352);
+            this.btnEmitirOrdenPago.Name = "btnEmitirOrdenPago";
+            this.btnEmitirOrdenPago.Size = new System.Drawing.Size(140, 35);
+            this.btnEmitirOrdenPago.TabIndex = 7;
+            this.btnEmitirOrdenPago.Text = "Emitir Orden de Pago";
+            this.btnEmitirOrdenPago.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel1.Controls.Add(this.pictureBox2);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(-4, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(635, 72);
+            this.panel1.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(126, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(397, 45);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Carga de Documentación";
+            // 
+            // btnAgregarNotaCredito
+            // 
+            this.btnAgregarNotaCredito.Location = new System.Drawing.Point(240, 352);
+            this.btnAgregarNotaCredito.Name = "btnAgregarNotaCredito";
+            this.btnAgregarNotaCredito.Size = new System.Drawing.Size(140, 35);
+            this.btnAgregarNotaCredito.TabIndex = 5;
+            this.btnAgregarNotaCredito.Text = "Cargar Nota de Credito";
+            this.btnAgregarNotaCredito.UseVisualStyleBackColor = true;
+            // 
+            // btnAgregarFactura
+            // 
+            this.btnAgregarFactura.Location = new System.Drawing.Point(94, 352);
+            this.btnAgregarFactura.Name = "btnAgregarFactura";
+            this.btnAgregarFactura.Size = new System.Drawing.Size(140, 35);
+            this.btnAgregarFactura.TabIndex = 4;
+            this.btnAgregarFactura.Text = "Cargar Factura";
+            this.btnAgregarFactura.UseVisualStyleBackColor = true;
+            this.btnAgregarFactura.Click += new System.EventHandler(this.button1_Click);
             // 
             // dataGridView1
             // 
@@ -129,325 +175,22 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NroInforme,
             this.Proveedor,
-            this.Fecha,
             this.Factura,
             this.NOTACREDITO});
-            this.dataGridView1.Location = new System.Drawing.Point(10, 77);
+            this.dataGridView1.Location = new System.Drawing.Point(94, 179);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(432, 123);
+            this.dataGridView1.Size = new System.Drawing.Size(432, 155);
             this.dataGridView1.TabIndex = 3;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(69, 51);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(184, 20);
-            this.textBox1.TabIndex = 2;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 59);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Buscador:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(65, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(288, 24);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "CARGA DE FACTURA PEDIDOS";
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.button2);
-            this.tabPage2.Controls.Add(this.groupBox1);
-            this.tabPage2.Controls.Add(this.dataGridView2);
-            this.tabPage2.Controls.Add(this.textBox2);
-            this.tabPage2.Controls.Add(this.label3);
-            this.tabPage2.Controls.Add(this.label4);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(447, 318);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Emitir Orden de Pago";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(9, 265);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(124, 44);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Emitir Orden de Pago";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Location = new System.Drawing.Point(9, 193);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 66);
-            this.groupBox1.TabIndex = 12;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Detalle";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(94, 36);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(70, 21);
-            this.comboBox1.TabIndex = 13;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 41);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(82, 13);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Forma de Pago:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 16);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(74, 13);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Total a Pagar:";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(94, 9);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(70, 20);
-            this.textBox3.TabIndex = 11;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.RazonSocial,
-            this.CUITCUIL,
-            this.NroFactura,
-            this.Remito,
-            this.NotasCredito});
-            this.dataGridView2.Location = new System.Drawing.Point(9, 64);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(432, 123);
-            this.dataGridView2.TabIndex = 8;
-            // 
-            // RazonSocial
-            // 
-            this.RazonSocial.HeaderText = "Razon Social";
-            this.RazonSocial.Name = "RazonSocial";
-            // 
-            // CUITCUIL
-            // 
-            this.CUITCUIL.HeaderText = "CUIT/CUIL";
-            this.CUITCUIL.Name = "CUITCUIL";
-            // 
-            // NroFactura
-            // 
-            this.NroFactura.HeaderText = "N. Factura";
-            this.NroFactura.Name = "NroFactura";
-            // 
-            // Remito
-            // 
-            this.Remito.HeaderText = "Remito";
-            this.Remito.Name = "Remito";
-            // 
-            // NotasCredito
-            // 
-            this.NotasCredito.HeaderText = "Notas de Credito";
-            this.NotasCredito.Name = "NotasCredito";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(68, 38);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(184, 20);
-            this.textBox2.TabIndex = 7;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 46);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Buscador:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(88, 13);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(260, 24);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "EMITIR ORDENES DE PAGO";
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.button5);
-            this.tabPage3.Controls.Add(this.checkBox1);
-            this.tabPage3.Controls.Add(this.dateTimePicker1);
-            this.tabPage3.Controls.Add(this.label7);
-            this.tabPage3.Controls.Add(this.button3);
-            this.tabPage3.Controls.Add(this.dataGridView3);
-            this.tabPage3.Controls.Add(this.textBox5);
-            this.tabPage3.Controls.Add(this.label9);
-            this.tabPage3.Controls.Add(this.label10);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(447, 318);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Pagos Pendientes";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(347, 38);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(89, 17);
-            this.checkBox1.TabIndex = 22;
-            this.checkBox1.Text = "Mostrar Todo";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(102, 192);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(83, 20);
-            this.dateTimePicker1.TabIndex = 21;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 196);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(83, 13);
-            this.label7.TabIndex = 20;
-            this.label7.Text = "Fecha de Pago:";
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(9, 218);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(124, 44);
-            this.button3.TabIndex = 19;
-            this.button3.Text = "Confrmar Pago";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView3
-            // 
-            this.dataGridView3.AllowUserToAddRows = false;
-            this.dataGridView3.AllowUserToDeleteRows = false;
-            this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.NOrden,
-            this.Proveedor2,
-            this.FPago,
-            this.Total,
-            this.Estado});
-            this.dataGridView3.Location = new System.Drawing.Point(9, 62);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(432, 123);
-            this.dataGridView3.TabIndex = 17;
-            // 
-            // NOrden
-            // 
-            this.NOrden.HeaderText = "Nro. Orden";
-            this.NOrden.Name = "NOrden";
-            // 
-            // Proveedor2
-            // 
-            this.Proveedor2.HeaderText = "Proveedor";
-            this.Proveedor2.Name = "Proveedor2";
-            // 
-            // FPago
-            // 
-            this.FPago.HeaderText = "Forma de Pago";
-            this.FPago.Name = "FPago";
-            // 
-            // Total
-            // 
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            // 
-            // Estado
-            // 
-            this.Estado.HeaderText = "Estado";
-            this.Estado.Name = "Estado";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(68, 36);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(184, 20);
-            this.textBox5.TabIndex = 16;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 44);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(55, 13);
-            this.label9.TabIndex = 15;
-            this.label9.Text = "Buscador:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(114, 9);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(201, 24);
-            this.label10.TabIndex = 14;
-            this.label10.Text = "PAGOS PENDIENTES";
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(109, 206);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(93, 43);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Agregar NC";
-            this.button4.UseVisualStyleBackColor = true;
             // 
             // NroInforme
             // 
-            this.NroInforme.HeaderText = "Nro. Informe";
+            this.NroInforme.HeaderText = "Id Orden de Compra";
             this.NroInforme.Name = "NroInforme";
             // 
             // Proveedor
             // 
-            this.Proveedor.HeaderText = "Proveedor";
+            this.Proveedor.HeaderText = "Importe";
             this.Proveedor.Name = "Proveedor";
-            // 
-            // Fecha
-            // 
-            this.Fecha.HeaderText = "Fecha";
-            this.Fecha.Name = "Fecha";
             // 
             // Factura
             // 
@@ -459,37 +202,263 @@
             this.NOTACREDITO.HeaderText = "Nota de Credito";
             this.NOTACREDITO.Name = "NOTACREDITO";
             // 
-            // button5
+            // txtBuscador1
             // 
-            this.button5.Location = new System.Drawing.Point(179, 218);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(124, 44);
-            this.button5.TabIndex = 23;
-            this.button5.Text = "Agregar Documentacion";
-            this.button5.UseVisualStyleBackColor = true;
+            this.txtBuscador1.Location = new System.Drawing.Point(94, 143);
+            this.txtBuscador1.Multiline = true;
+            this.txtBuscador1.Name = "txtBuscador1";
+            this.txtBuscador1.Size = new System.Drawing.Size(432, 30);
+            this.txtBuscador1.TabIndex = 2;
+            // 
+            // lblBuscador
+            // 
+            this.lblBuscador.AutoSize = true;
+            this.lblBuscador.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBuscador.Location = new System.Drawing.Point(90, 121);
+            this.lblBuscador.Name = "lblBuscador";
+            this.lblBuscador.Size = new System.Drawing.Size(252, 19);
+            this.lblBuscador.TabIndex = 1;
+            this.lblBuscador.Text = "Buscar por Orden de Compra:";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.btnVolver);
+            this.tabPage2.Controls.Add(this.btnDetalle);
+            this.tabPage2.Controls.Add(this.txtBuscar);
+            this.tabPage2.Controls.Add(this.label3);
+            this.tabPage2.Controls.Add(this.panel2);
+            this.tabPage2.Controls.Add(this.groupBox1);
+            this.tabPage2.Controls.Add(this.dataGridView2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(620, 496);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Gestión Pagos";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnVolver
+            // 
+            this.btnVolver.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVolver.Location = new System.Drawing.Point(513, 460);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(97, 30);
+            this.btnVolver.TabIndex = 18;
+            this.btnVolver.Text = "Atras";
+            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            // 
+            // btnDetalle
+            // 
+            this.btnDetalle.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDetalle.Location = new System.Drawing.Point(494, 143);
+            this.btnDetalle.Name = "btnDetalle";
+            this.btnDetalle.Size = new System.Drawing.Size(97, 30);
+            this.btnDetalle.TabIndex = 17;
+            this.btnDetalle.Text = "Detalle";
+            this.btnDetalle.UseVisualStyleBackColor = true;
+            this.btnDetalle.Click += new System.EventHandler(this.btnDetalle_Click);
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Location = new System.Drawing.Point(67, 143);
+            this.txtBuscar.Multiline = true;
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(350, 30);
+            this.txtBuscar.TabIndex = 16;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(71, 121);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(333, 19);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Buscar por Orden de Pago/Nro Factura";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Location = new System.Drawing.Point(0, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(620, 72);
+            this.panel2.TabIndex = 14;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label2.Location = new System.Drawing.Point(184, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(233, 45);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Gestión Pagos";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.cmbFormaPago);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.btnPagar);
+            this.groupBox1.Controls.Add(this.txtTotalPagar);
+            this.groupBox1.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(88, 319);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(385, 162);
+            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Detalle";
+            // 
+            // cmbFormaPago
+            // 
+            this.cmbFormaPago.FormattingEnabled = true;
+            this.cmbFormaPago.Items.AddRange(new object[] {
+            "Tranferencia"});
+            this.cmbFormaPago.Location = new System.Drawing.Point(166, 77);
+            this.cmbFormaPago.Name = "cmbFormaPago";
+            this.cmbFormaPago.Size = new System.Drawing.Size(150, 27);
+            this.cmbFormaPago.TabIndex = 13;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(25, 79);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(126, 19);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Forma de Pago";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(25, 44);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(126, 19);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "TOTAL A PAGAR";
+            // 
+            // btnPagar
+            // 
+            this.btnPagar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPagar.Location = new System.Drawing.Point(166, 120);
+            this.btnPagar.Name = "btnPagar";
+            this.btnPagar.Size = new System.Drawing.Size(150, 30);
+            this.btnPagar.TabIndex = 13;
+            this.btnPagar.Text = "Pagar";
+            this.btnPagar.UseVisualStyleBackColor = true;
+            // 
+            // txtTotalPagar
+            // 
+            this.txtTotalPagar.Location = new System.Drawing.Point(166, 38);
+            this.txtTotalPagar.Multiline = true;
+            this.txtTotalPagar.Name = "txtTotalPagar";
+            this.txtTotalPagar.Size = new System.Drawing.Size(150, 25);
+            this.txtTotalPagar.TabIndex = 11;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdOrden,
+            this.IdProveedor,
+            this.MontoNotaDeCredito,
+            this.MontoFactura,
+            this.EstadoOrdenDePago});
+            this.dataGridView2.Location = new System.Drawing.Point(67, 189);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(524, 124);
+            this.dataGridView2.TabIndex = 8;
+            // 
+            // IdOrden
+            // 
+            this.IdOrden.HeaderText = "Nro Orden de Pago";
+            this.IdOrden.Name = "IdOrden";
+            // 
+            // IdProveedor
+            // 
+            this.IdProveedor.HeaderText = "Proveedor";
+            this.IdProveedor.Name = "IdProveedor";
+            // 
+            // MontoNotaDeCredito
+            // 
+            this.MontoNotaDeCredito.HeaderText = "Monto de Nota de Crédito";
+            this.MontoNotaDeCredito.Name = "MontoNotaDeCredito";
+            // 
+            // MontoFactura
+            // 
+            this.MontoFactura.HeaderText = "Monto de Factura";
+            this.MontoFactura.Name = "MontoFactura";
+            // 
+            // EstadoOrdenDePago
+            // 
+            this.EstadoOrdenDePago.HeaderText = "Estado Orden De Pago";
+            this.EstadoOrdenDePago.Name = "EstadoOrdenDePago";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(620, 496);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Pagos Pendientes";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::CapaVista.Properties.Resources.metodo_de_pago;
+            this.pictureBox2.Location = new System.Drawing.Point(70, 7);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::CapaVista.Properties.Resources.metodo_de_pago;
+            this.pictureBox1.Location = new System.Drawing.Point(128, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
             // 
             // FrmPagos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(458, 345);
+            this.ClientSize = new System.Drawing.Size(628, 528);
             this.Controls.Add(this.tabControl1);
             this.Name = "FrmPagos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmPagos";
             this.Load += new System.EventHandler(this.FrmPagos_Load);
+            this.Shown += new System.EventHandler(this.FrmPagos_Shown);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -499,46 +468,39 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtBuscador1;
+        private System.Windows.Forms.Label lblBuscador;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAgregarFactura;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbFormaPago;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RazonSocial;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CUITCUIL;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NroFactura;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Remito;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NotasCredito;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox txtTotalPagar;
+        private System.Windows.Forms.Button btnPagar;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NOrden;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Proveedor2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FPago;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnAgregarNotaCredito;
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn NroInforme;
         private System.Windows.Forms.DataGridViewTextBoxColumn Proveedor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn Factura;
         private System.Windows.Forms.DataGridViewTextBoxColumn NOTACREDITO;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnEmitirOrdenPago;
+        private System.Windows.Forms.Button btnAtras;
+        private System.Windows.Forms.TextBox txtBuscar;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnDetalle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdOrden;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdProveedor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MontoNotaDeCredito;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MontoFactura;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EstadoOrdenDePago;
+        private System.Windows.Forms.Button btnVolver;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -38,6 +38,11 @@ namespace CapaVista
             UI_Utilidad.EstiloBotonPrimarioDegradado(bntCargarImagen);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnSalir);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnGuardar);
-        }   
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

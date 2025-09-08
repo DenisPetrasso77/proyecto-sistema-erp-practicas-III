@@ -43,40 +43,42 @@
             this.pnlProductos = new System.Windows.Forms.Panel();
             this.btnReabastecer = new System.Windows.Forms.Button();
             this.btnGestion = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlPagos = new System.Windows.Forms.Panel();
             this.btnGestionPagos = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pnlProveedores = new System.Windows.Forms.Panel();
             this.btnModificar = new System.Windows.Forms.Button();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnCargarNuevo = new System.Windows.Forms.Button();
             this.pnlUsuarios = new System.Windows.Forms.Panel();
             this.btnBitacora = new System.Windows.Forms.Button();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.btnGestionAdmin = new System.Windows.Forms.Button();
             this.pnlCompras = new System.Windows.Forms.Panel();
             this.btncotizacion = new System.Windows.Forms.Button();
             this.btnOrden = new System.Windows.Forms.Button();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pnlAlmacen = new System.Windows.Forms.Panel();
             this.btnRecepcion = new System.Windows.Forms.Button();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.pnlProductos.SuspendLayout();
-            this.pnlPagos.SuspendLayout();
-            this.pnlProveedores.SuspendLayout();
-            this.pnlUsuarios.SuspendLayout();
-            this.pnlCompras.SuspendLayout();
-            this.pnlAlmacen.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pnlPagos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.pnlProveedores.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.pnlUsuarios.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.pnlCompras.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.pnlAlmacen.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
@@ -103,6 +105,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel1.Controls.Add(this.pictureBox8);
             this.panel1.Controls.Add(this.lbltituloHome);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -115,7 +118,7 @@
             this.lbltituloHome.AutoSize = true;
             this.lbltituloHome.Font = new System.Drawing.Font("Consolas", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbltituloHome.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lbltituloHome.Location = new System.Drawing.Point(248, 23);
+            this.lbltituloHome.Location = new System.Drawing.Point(249, 18);
             this.lbltituloHome.Name = "lbltituloHome";
             this.lbltituloHome.Size = new System.Drawing.Size(539, 37);
             this.lbltituloHome.TabIndex = 6;
@@ -185,9 +188,9 @@
             this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(74, 67);
+            this.button5.Location = new System.Drawing.Point(65, 68);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(130, 35);
+            this.button5.Size = new System.Drawing.Size(151, 35);
             this.button5.TabIndex = 2;
             this.button5.Text = "Proveedores";
             this.button5.UseVisualStyleBackColor = true;
@@ -213,7 +216,7 @@
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(73, 67);
+            this.button1.Location = new System.Drawing.Point(75, 67);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(130, 35);
             this.button1.TabIndex = 0;
@@ -237,7 +240,7 @@
             this.pnlProductos.Controls.Add(this.btnGestion);
             this.pnlProductos.Controls.Add(this.pictureBox1);
             this.pnlProductos.Controls.Add(this.button1);
-            this.pnlProductos.Location = new System.Drawing.Point(69, 94);
+            this.pnlProductos.Location = new System.Drawing.Point(74, 173);
             this.pnlProductos.Name = "pnlProductos";
             this.pnlProductos.Size = new System.Drawing.Size(280, 211);
             this.pnlProductos.TabIndex = 0;
@@ -245,7 +248,7 @@
             // btnReabastecer
             // 
             this.btnReabastecer.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnReabastecer.Location = new System.Drawing.Point(73, 155);
+            this.btnReabastecer.Location = new System.Drawing.Point(75, 155);
             this.btnReabastecer.Name = "btnReabastecer";
             this.btnReabastecer.Size = new System.Drawing.Size(120, 40);
             this.btnReabastecer.TabIndex = 17;
@@ -256,7 +259,7 @@
             // btnGestion
             // 
             this.btnGestion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGestion.Location = new System.Drawing.Point(73, 108);
+            this.btnGestion.Location = new System.Drawing.Point(75, 108);
             this.btnGestion.Name = "btnGestion";
             this.btnGestion.Size = new System.Drawing.Size(120, 40);
             this.btnGestion.TabIndex = 16;
@@ -264,13 +267,24 @@
             this.btnGestion.UseVisualStyleBackColor = true;
             this.btnGestion.Click += new System.EventHandler(this.button20_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.Highlight;
+            this.pictureBox1.Image = global::CapaVista.Properties.Resources.agregar_producto;
+            this.pictureBox1.Location = new System.Drawing.Point(109, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(60, 60);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
             // pnlPagos
             // 
             this.pnlPagos.BackColor = System.Drawing.SystemColors.Highlight;
             this.pnlPagos.Controls.Add(this.btnGestionPagos);
             this.pnlPagos.Controls.Add(this.pictureBox2);
             this.pnlPagos.Controls.Add(this.button4);
-            this.pnlPagos.Location = new System.Drawing.Point(378, 94);
+            this.pnlPagos.Location = new System.Drawing.Point(383, 173);
             this.pnlPagos.Name = "pnlPagos";
             this.pnlPagos.Size = new System.Drawing.Size(280, 211);
             this.pnlPagos.TabIndex = 10;
@@ -286,6 +300,16 @@
             this.btnGestionPagos.UseVisualStyleBackColor = true;
             this.btnGestionPagos.Click += new System.EventHandler(this.btnGestionPagos_Click);
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::CapaVista.Properties.Resources.metodo_de_pago;
+            this.pictureBox2.Location = new System.Drawing.Point(109, 13);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(60, 60);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 4;
+            this.pictureBox2.TabStop = false;
+            // 
             // pnlProveedores
             // 
             this.pnlProveedores.BackColor = System.Drawing.SystemColors.Highlight;
@@ -293,7 +317,7 @@
             this.pnlProveedores.Controls.Add(this.pictureBox3);
             this.pnlProveedores.Controls.Add(this.btnCargarNuevo);
             this.pnlProveedores.Controls.Add(this.button5);
-            this.pnlProveedores.Location = new System.Drawing.Point(678, 94);
+            this.pnlProveedores.Location = new System.Drawing.Point(683, 173);
             this.pnlProveedores.Name = "pnlProveedores";
             this.pnlProveedores.Size = new System.Drawing.Size(280, 211);
             this.pnlProveedores.TabIndex = 11;
@@ -301,7 +325,7 @@
             // btnModificar
             // 
             this.btnModificar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnModificar.Location = new System.Drawing.Point(74, 155);
+            this.btnModificar.Location = new System.Drawing.Point(77, 156);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(120, 40);
             this.btnModificar.TabIndex = 19;
@@ -309,11 +333,21 @@
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.button7_Click_1);
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::CapaVista.Properties.Resources.proveedor;
+            this.pictureBox3.Location = new System.Drawing.Point(113, 14);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(60, 60);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 5;
+            this.pictureBox3.TabStop = false;
+            // 
             // btnCargarNuevo
             // 
             this.btnCargarNuevo.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.btnCargarNuevo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCargarNuevo.Location = new System.Drawing.Point(74, 108);
+            this.btnCargarNuevo.Location = new System.Drawing.Point(77, 109);
             this.btnCargarNuevo.Name = "btnCargarNuevo";
             this.btnCargarNuevo.Size = new System.Drawing.Size(120, 40);
             this.btnCargarNuevo.TabIndex = 18;
@@ -328,7 +362,7 @@
             this.pnlUsuarios.Controls.Add(this.pictureBox4);
             this.pnlUsuarios.Controls.Add(this.btnGestionAdmin);
             this.pnlUsuarios.Controls.Add(this.button9);
-            this.pnlUsuarios.Location = new System.Drawing.Point(69, 334);
+            this.pnlUsuarios.Location = new System.Drawing.Point(74, 413);
             this.pnlUsuarios.Name = "pnlUsuarios";
             this.pnlUsuarios.Size = new System.Drawing.Size(280, 211);
             this.pnlUsuarios.TabIndex = 12;
@@ -343,6 +377,16 @@
             this.btnBitacora.Text = "Bitacora";
             this.btnBitacora.UseVisualStyleBackColor = true;
             this.btnBitacora.Click += new System.EventHandler(this.btnBitacora_Click);
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::CapaVista.Properties.Resources.gestion;
+            this.pictureBox4.Location = new System.Drawing.Point(107, 13);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(60, 60);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 5;
+            this.pictureBox4.TabStop = false;
             // 
             // btnGestionAdmin
             // 
@@ -362,7 +406,7 @@
             this.pnlCompras.Controls.Add(this.btnOrden);
             this.pnlCompras.Controls.Add(this.pictureBox5);
             this.pnlCompras.Controls.Add(this.button11);
-            this.pnlCompras.Location = new System.Drawing.Point(378, 334);
+            this.pnlCompras.Location = new System.Drawing.Point(383, 413);
             this.pnlCompras.Name = "pnlCompras";
             this.pnlCompras.Size = new System.Drawing.Size(280, 211);
             this.pnlCompras.TabIndex = 13;
@@ -390,13 +434,23 @@
             this.btnOrden.UseVisualStyleBackColor = true;
             this.btnOrden.Click += new System.EventHandler(this.button7_Click_2);
             // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::CapaVista.Properties.Resources.carrito_de_supermercado;
+            this.pictureBox5.Location = new System.Drawing.Point(109, 7);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(60, 60);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 5;
+            this.pictureBox5.TabStop = false;
+            // 
             // pnlAlmacen
             // 
             this.pnlAlmacen.BackColor = System.Drawing.SystemColors.Highlight;
             this.pnlAlmacen.Controls.Add(this.btnRecepcion);
             this.pnlAlmacen.Controls.Add(this.pictureBox6);
             this.pnlAlmacen.Controls.Add(this.button13);
-            this.pnlAlmacen.Location = new System.Drawing.Point(678, 334);
+            this.pnlAlmacen.Location = new System.Drawing.Point(683, 413);
             this.pnlAlmacen.Name = "pnlAlmacen";
             this.pnlAlmacen.Size = new System.Drawing.Size(280, 211);
             this.pnlAlmacen.TabIndex = 14;
@@ -412,16 +466,6 @@
             this.btnRecepcion.UseVisualStyleBackColor = true;
             this.btnRecepcion.Click += new System.EventHandler(this.btnRecepcion_Click);
             // 
-            // pictureBox7
-            // 
-            this.pictureBox7.Image = global::CapaVista.Properties.Resources.sign_out;
-            this.pictureBox7.Location = new System.Drawing.Point(895, 661);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox7.TabIndex = 15;
-            this.pictureBox7.TabStop = false;
-            // 
             // pictureBox6
             // 
             this.pictureBox6.Image = global::CapaVista.Properties.Resources.almacen;
@@ -432,56 +476,25 @@
             this.pictureBox6.TabIndex = 6;
             this.pictureBox6.TabStop = false;
             // 
-            // pictureBox5
+            // pictureBox7
             // 
-            this.pictureBox5.Image = global::CapaVista.Properties.Resources.carrito_de_supermercado;
-            this.pictureBox5.Location = new System.Drawing.Point(109, 7);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(60, 60);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 5;
-            this.pictureBox5.TabStop = false;
+            this.pictureBox7.Image = global::CapaVista.Properties.Resources.exit1;
+            this.pictureBox7.Location = new System.Drawing.Point(895, 661);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox7.TabIndex = 15;
+            this.pictureBox7.TabStop = false;
             // 
-            // pictureBox4
+            // pictureBox8
             // 
-            this.pictureBox4.Image = global::CapaVista.Properties.Resources.gestion;
-            this.pictureBox4.Location = new System.Drawing.Point(107, 13);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(60, 60);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 5;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::CapaVista.Properties.Resources.proveedor;
-            this.pictureBox3.Location = new System.Drawing.Point(110, 13);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(60, 60);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 5;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::CapaVista.Properties.Resources.metodo_de_pago;
-            this.pictureBox2.Location = new System.Drawing.Point(109, 13);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(60, 60);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 4;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.Highlight;
-            this.pictureBox1.Image = global::CapaVista.Properties.Resources.agregar_producto;
-            this.pictureBox1.Location = new System.Drawing.Point(107, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(60, 60);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
+            this.pictureBox8.Image = global::CapaVista.Properties.Resources.administrar;
+            this.pictureBox8.Location = new System.Drawing.Point(193, 5);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox8.TabIndex = 32;
+            this.pictureBox8.TabStop = false;
             // 
             // FrmAdminHome
             // 
@@ -508,18 +521,19 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.pnlProductos.ResumeLayout(false);
-            this.pnlPagos.ResumeLayout(false);
-            this.pnlProveedores.ResumeLayout(false);
-            this.pnlUsuarios.ResumeLayout(false);
-            this.pnlCompras.ResumeLayout(false);
-            this.pnlAlmacen.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.pnlPagos.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.pnlProveedores.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.pnlUsuarios.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.pnlCompras.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            this.pnlAlmacen.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -562,5 +576,6 @@
         private System.Windows.Forms.Button btnOrden;
         private System.Windows.Forms.Button btncotizacion;
         private System.Windows.Forms.Button btnRecepcion;
+        private System.Windows.Forms.PictureBox pictureBox8;
     }
 }
