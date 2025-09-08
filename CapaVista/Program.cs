@@ -17,10 +17,8 @@ namespace CapaVista
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new FrmSidebar());
-            //Application.Run(new FrmPagos());
-            //Application.Run(new FrmRegistro());
-            Application.Run(new FrmGestionPR());
+            Application.Run(new FrmGestionOrdenCompra());
+         
         }
     }
 }

@@ -236,7 +236,7 @@ namespace CapaVista
             UI_Utilidad.EstiloForm(this);
             UI_Utilidad.RedondearForm(this, 28);
 
-
+            UI_Utilidad.EstiloLabels(this);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnGestion);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnReabastecer);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnGestionPagos);

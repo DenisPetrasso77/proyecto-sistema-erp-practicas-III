@@ -32,8 +32,6 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btnAtras = new System.Windows.Forms.Button();
             this.btnEmitirOrdenPago = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnAgregarNotaCredito = new System.Windows.Forms.Button();
             this.btnAgregarFactura = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -48,8 +46,6 @@
             this.btnDetalle = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmbFormaPago = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -63,18 +59,17 @@
             this.MontoFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EstadoOrdenDePago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -82,17 +77,16 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(2, 2);
+            this.tabControl1.Location = new System.Drawing.Point(1, 79);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(628, 522);
+            this.tabControl1.Size = new System.Drawing.Size(628, 512);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.btnAtras);
             this.tabPage1.Controls.Add(this.btnEmitirOrdenPago);
-            this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Controls.Add(this.btnAgregarNotaCredito);
             this.tabPage1.Controls.Add(this.btnAgregarFactura);
             this.tabPage1.Controls.Add(this.dataGridView1);
@@ -101,7 +95,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(620, 496);
+            this.tabPage1.Size = new System.Drawing.Size(620, 486);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Documentacion";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -109,7 +103,7 @@
             // 
             // btnAtras
             // 
-            this.btnAtras.Location = new System.Drawing.Point(452, 426);
+            this.btnAtras.Location = new System.Drawing.Point(456, 424);
             this.btnAtras.Name = "btnAtras";
             this.btnAtras.Size = new System.Drawing.Size(140, 35);
             this.btnAtras.TabIndex = 8;
@@ -119,48 +113,28 @@
             // 
             // btnEmitirOrdenPago
             // 
-            this.btnEmitirOrdenPago.Location = new System.Drawing.Point(386, 352);
+            this.btnEmitirOrdenPago.Location = new System.Drawing.Point(250, 372);
             this.btnEmitirOrdenPago.Name = "btnEmitirOrdenPago";
             this.btnEmitirOrdenPago.Size = new System.Drawing.Size(140, 35);
             this.btnEmitirOrdenPago.TabIndex = 7;
             this.btnEmitirOrdenPago.Text = "Emitir Orden de Pago";
             this.btnEmitirOrdenPago.UseVisualStyleBackColor = true;
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
-            this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(-4, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(635, 72);
-            this.panel1.TabIndex = 6;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(126, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(397, 45);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Carga de Documentación";
-            // 
             // btnAgregarNotaCredito
             // 
-            this.btnAgregarNotaCredito.Location = new System.Drawing.Point(240, 352);
+            this.btnAgregarNotaCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarNotaCredito.Location = new System.Drawing.Point(328, 308);
             this.btnAgregarNotaCredito.Name = "btnAgregarNotaCredito";
-            this.btnAgregarNotaCredito.Size = new System.Drawing.Size(140, 35);
+            this.btnAgregarNotaCredito.Size = new System.Drawing.Size(187, 35);
             this.btnAgregarNotaCredito.TabIndex = 5;
-            this.btnAgregarNotaCredito.Text = "Cargar Nota de Credito";
+            this.btnAgregarNotaCredito.Text = "Cargar Nota de C.";
             this.btnAgregarNotaCredito.UseVisualStyleBackColor = true;
             // 
             // btnAgregarFactura
             // 
-            this.btnAgregarFactura.Location = new System.Drawing.Point(94, 352);
+            this.btnAgregarFactura.Location = new System.Drawing.Point(83, 308);
             this.btnAgregarFactura.Name = "btnAgregarFactura";
-            this.btnAgregarFactura.Size = new System.Drawing.Size(140, 35);
+            this.btnAgregarFactura.Size = new System.Drawing.Size(216, 35);
             this.btnAgregarFactura.TabIndex = 4;
             this.btnAgregarFactura.Text = "Cargar Factura";
             this.btnAgregarFactura.UseVisualStyleBackColor = true;
@@ -177,7 +151,7 @@
             this.Proveedor,
             this.Factura,
             this.NOTACREDITO});
-            this.dataGridView1.Location = new System.Drawing.Point(94, 179);
+            this.dataGridView1.Location = new System.Drawing.Point(83, 135);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(432, 155);
             this.dataGridView1.TabIndex = 3;
@@ -204,7 +178,7 @@
             // 
             // txtBuscador1
             // 
-            this.txtBuscador1.Location = new System.Drawing.Point(94, 143);
+            this.txtBuscador1.Location = new System.Drawing.Point(83, 99);
             this.txtBuscador1.Multiline = true;
             this.txtBuscador1.Name = "txtBuscador1";
             this.txtBuscador1.Size = new System.Drawing.Size(432, 30);
@@ -214,7 +188,7 @@
             // 
             this.lblBuscador.AutoSize = true;
             this.lblBuscador.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBuscador.Location = new System.Drawing.Point(90, 121);
+            this.lblBuscador.Location = new System.Drawing.Point(79, 77);
             this.lblBuscador.Name = "lblBuscador";
             this.lblBuscador.Size = new System.Drawing.Size(252, 19);
             this.lblBuscador.TabIndex = 1;
@@ -226,23 +200,22 @@
             this.tabPage2.Controls.Add(this.btnDetalle);
             this.tabPage2.Controls.Add(this.txtBuscar);
             this.tabPage2.Controls.Add(this.label3);
-            this.tabPage2.Controls.Add(this.panel2);
             this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Controls.Add(this.dataGridView2);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(620, 496);
+            this.tabPage2.Size = new System.Drawing.Size(620, 486);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Gestión Pagos";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // btnVolver
             // 
-            this.btnVolver.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVolver.Location = new System.Drawing.Point(513, 460);
+            this.btnVolver.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVolver.Location = new System.Drawing.Point(467, 439);
             this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(97, 30);
+            this.btnVolver.Size = new System.Drawing.Size(140, 30);
             this.btnVolver.TabIndex = 18;
             this.btnVolver.Text = "Atras";
             this.btnVolver.UseVisualStyleBackColor = true;
@@ -251,9 +224,9 @@
             // btnDetalle
             // 
             this.btnDetalle.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDetalle.Location = new System.Drawing.Point(494, 143);
+            this.btnDetalle.Location = new System.Drawing.Point(424, 87);
             this.btnDetalle.Name = "btnDetalle";
-            this.btnDetalle.Size = new System.Drawing.Size(97, 30);
+            this.btnDetalle.Size = new System.Drawing.Size(140, 30);
             this.btnDetalle.TabIndex = 17;
             this.btnDetalle.Text = "Detalle";
             this.btnDetalle.UseVisualStyleBackColor = true;
@@ -261,7 +234,7 @@
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(67, 143);
+            this.txtBuscar.Location = new System.Drawing.Point(40, 87);
             this.txtBuscar.Multiline = true;
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(350, 30);
@@ -271,32 +244,11 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(71, 121);
+            this.label3.Location = new System.Drawing.Point(44, 65);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(333, 19);
             this.label3.TabIndex = 15;
             this.label3.Text = "Buscar por Orden de Pago/Nro Factura";
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.SystemColors.Highlight;
-            this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(0, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(620, 72);
-            this.panel2.TabIndex = 14;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(184, 12);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(233, 45);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Gestión Pagos";
             // 
             // groupBox1
             // 
@@ -306,7 +258,7 @@
             this.groupBox1.Controls.Add(this.btnPagar);
             this.groupBox1.Controls.Add(this.txtTotalPagar);
             this.groupBox1.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(88, 319);
+            this.groupBox1.Location = new System.Drawing.Point(61, 263);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(385, 162);
             this.groupBox1.TabIndex = 12;
@@ -320,7 +272,7 @@
             "Tranferencia"});
             this.cmbFormaPago.Location = new System.Drawing.Point(166, 77);
             this.cmbFormaPago.Name = "cmbFormaPago";
-            this.cmbFormaPago.Size = new System.Drawing.Size(150, 27);
+            this.cmbFormaPago.Size = new System.Drawing.Size(140, 27);
             this.cmbFormaPago.TabIndex = 13;
             // 
             // label6
@@ -348,7 +300,7 @@
             this.btnPagar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPagar.Location = new System.Drawing.Point(166, 120);
             this.btnPagar.Name = "btnPagar";
-            this.btnPagar.Size = new System.Drawing.Size(150, 30);
+            this.btnPagar.Size = new System.Drawing.Size(140, 30);
             this.btnPagar.TabIndex = 13;
             this.btnPagar.Text = "Pagar";
             this.btnPagar.UseVisualStyleBackColor = true;
@@ -358,7 +310,7 @@
             this.txtTotalPagar.Location = new System.Drawing.Point(166, 38);
             this.txtTotalPagar.Multiline = true;
             this.txtTotalPagar.Name = "txtTotalPagar";
-            this.txtTotalPagar.Size = new System.Drawing.Size(150, 25);
+            this.txtTotalPagar.Size = new System.Drawing.Size(140, 25);
             this.txtTotalPagar.TabIndex = 11;
             // 
             // dataGridView2
@@ -373,7 +325,7 @@
             this.MontoNotaDeCredito,
             this.MontoFactura,
             this.EstadoOrdenDePago});
-            this.dataGridView2.Location = new System.Drawing.Point(67, 189);
+            this.dataGridView2.Location = new System.Drawing.Point(40, 133);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(524, 124);
             this.dataGridView2.TabIndex = 8;
@@ -408,10 +360,20 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(620, 496);
+            this.tabPage3.Size = new System.Drawing.Size(620, 486);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Pagos Pendientes";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel1.Controls.Add(this.pictureBox2);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(-17, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(653, 73);
+            this.panel1.TabIndex = 7;
             // 
             // pictureBox2
             // 
@@ -423,21 +385,23 @@
             this.pictureBox2.TabIndex = 5;
             this.pictureBox2.TabStop = false;
             // 
-            // pictureBox1
+            // label1
             // 
-            this.pictureBox1.Image = global::CapaVista.Properties.Resources.metodo_de_pago;
-            this.pictureBox1.Location = new System.Drawing.Point(128, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(126, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(397, 45);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Carga de Documentación";
             // 
             // FrmPagos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(628, 528);
+            this.ClientSize = new System.Drawing.Size(628, 587);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.tabControl1);
             this.Name = "FrmPagos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -447,18 +411,15 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -472,7 +433,6 @@
         private System.Windows.Forms.Label lblBuscador;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnAgregarFactura;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cmbFormaPago;
@@ -482,7 +442,6 @@
         private System.Windows.Forms.Button btnPagar;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button btnAgregarNotaCredito;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn NroInforme;
         private System.Windows.Forms.DataGridViewTextBoxColumn Proveedor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Factura;
@@ -491,8 +450,6 @@
         private System.Windows.Forms.Button btnAtras;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnDetalle;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdOrden;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdProveedor;
@@ -500,7 +457,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MontoFactura;
         private System.Windows.Forms.DataGridViewTextBoxColumn EstadoOrdenDePago;
         private System.Windows.Forms.Button btnVolver;
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label1;
     }
 }

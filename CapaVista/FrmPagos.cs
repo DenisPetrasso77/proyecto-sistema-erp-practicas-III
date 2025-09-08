@@ -49,6 +49,9 @@ namespace CapaVista
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnAtras);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnDetalle);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnPagar);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnVolver);
+
+            
         }
 
         private void btnDetalle_Click(object sender, EventArgs e)

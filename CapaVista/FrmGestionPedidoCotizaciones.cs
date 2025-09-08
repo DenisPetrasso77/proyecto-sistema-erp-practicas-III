@@ -1,9 +1,10 @@
-﻿using CapaEntities;
-using CapaLogica;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
+using CapaEntities;
+using CapaLogica;
+using ProyectoPracticas;
 
 namespace CapaVista
 {
@@ -69,8 +70,8 @@ namespace CapaVista
             cacheproveedores.Columns.Add("DisplayProveedor", typeof(string), "RazonSocial + ' (' + NumeroDeIdentificacion + ')'");
             dataGridView3.ReadOnly = true;
             dataGridView1.ReadOnly = true;
-            button1.Enabled = false;
-            button3.Enabled = false;
+            btnMandarSoli.Enabled = false;
+            btnCancelar.Enabled = false;
             dateTimePicker1.Enabled = false;
             Solicitudes();
         }
@@ -179,10 +180,10 @@ namespace CapaVista
         {
             dataGridView3.ReadOnly = false;
             dataGridView2.ReadOnly = true;
-            button1.Enabled = true;
-            button3.Enabled = true;
+            btnMandarSoli.Enabled = true;
+            btnCancelar.Enabled = true;
             dateTimePicker1.Enabled = true;
-            button2.Enabled = false;
+            btnModificar.Enabled = false;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -190,10 +191,10 @@ namespace CapaVista
             dataGridView3.Rows.Clear();
             dataGridView2.ReadOnly=false;
             dataGridView3.ReadOnly = true;
-            button1.Enabled = false;
-            button3.Enabled = false;
+            btnMandarSoli.Enabled = false;
+            btnCancelar.Enabled = false;
             dateTimePicker1.Enabled = false;
-            button2.Enabled = true;
+            btnModificar.Enabled = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -236,9 +237,9 @@ namespace CapaVista
             MessageBox.Show(resultado);
             dataGridView3.Rows.Clear();
             Cargardgv();
-            button1.Enabled = false;
-            button3.Enabled = false;
-            button2.Enabled = true;
+            btnMandarSoli.Enabled = false;
+            btnCancelar.Enabled = false;
+            btnModificar.Enabled = true;
 
         }
         private DataTable ConvertirADetalleCotizacionesTipo(List<DetalleSoliCotizaciones> lista)
@@ -341,6 +342,22 @@ namespace CapaVista
             button5.Enabled = false;
             button6.Enabled = false;
             dataGridView1.ReadOnly = true;
+
+        }
+
+        private void FrmGestionPedidoCotizaciones_Shown(object sender, EventArgs e)
+        {
+            this.ActiveControl = null;
+            UI_Utilidad.EstiloLabels(this);
+            UI_Utilidad.EstiloForm(this);
+            UI_Utilidad.RedondearForm(this, 28);
+
+
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnCancelar);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnMandarSoli);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnModificar);
+
+
 
         }
     }

@@ -1,11 +1,12 @@
-﻿using CapaEntities;
-using CapaLogica;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
+using CapaEntities;
+using CapaLogica;
+using ProyectoPracticas;
 
 namespace CapaVista
 {
@@ -197,9 +198,9 @@ namespace CapaVista
             dataGridView1.ReadOnly = true;
             dataGridView2.Columns["Cotizacion"].ReadOnly = false;
             dataGridView2.Columns["Enviar"].ReadOnly = false;
-            button2.Enabled = true;
-            button3.Enabled = true;
-            button1.Enabled = false;
+            btnEnviarOrdenes.Enabled = true;
+            btnCancelar.Enabled = true;
+            btnModificar.Enabled = false;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -207,9 +208,21 @@ namespace CapaVista
             dataGridView1.ReadOnly = false;
             dataGridView2.Columns["Cotizacion"].ReadOnly = true;
             dataGridView2.Columns["Enviar"].ReadOnly = true;
-            button2.Enabled = false;
-            button3.Enabled = false;
-            button1.Enabled = true;
+            btnEnviarOrdenes.Enabled = false;
+            btnCancelar.Enabled = false;
+            btnModificar.Enabled = true;
+
+        }
+
+        private void FrmGestionOrdenCompra_Shown(object sender, EventArgs e)
+        {
+            UI_Utilidad.EstiloLabels(this);
+            UI_Utilidad.EstiloForm(this);
+            UI_Utilidad.RedondearForm(this, 28);
+
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnCancelar);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnEnviarOrdenes);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnModificar);
 
         }
     }

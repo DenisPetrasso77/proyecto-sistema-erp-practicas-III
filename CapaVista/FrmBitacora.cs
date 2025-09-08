@@ -119,7 +119,6 @@ namespace CapaVista
             this.ActiveControl = null;
 
             UI_Utilidad.EstiloLabels(this);
-
             UI_Utilidad.EstiloForm(this);
             UI_Utilidad.RedondearForm(this, 28);
 
