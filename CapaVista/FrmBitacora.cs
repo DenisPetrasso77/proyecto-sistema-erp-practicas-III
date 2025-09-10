@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 using CapaLogica;
 using ProyectoPracticas;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace CapaVista
 {
@@ -112,6 +114,11 @@ namespace CapaVista
         private void FrmBitacora_Load(object sender, EventArgs e)
         {
             CargarDetalle();
+            UI_Utilidad.EstiloDataGridView(dataGridView1);
+
+            panel2.BackColor = Color.SteelBlue;
+            panel2.Padding = new Padding(3);
+
         }
 
         private void FrmBitacora_Shown(object sender, EventArgs e)

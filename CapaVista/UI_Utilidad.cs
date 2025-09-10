@@ -330,5 +330,57 @@ namespace ProyectoPracticas
         //    }
         //}
 
+
+
+        public static void EstiloDataGridView(DataGridView dgv)
+        {
+            if (dgv == null) return;
+
+            // 🔹 Colores base
+            dgv.BackgroundColor = Color.White;
+            dgv.BorderStyle = BorderStyle.None;
+            dgv.GridColor = Color.LightSteelBlue;
+
+            // 🔹 Filas
+            dgv.DefaultCellStyle.BackColor = Color.White;
+            dgv.DefaultCellStyle.ForeColor = Color.Black;
+            dgv.DefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Regular);
+            dgv.DefaultCellStyle.Padding = new Padding(4, 2, 4, 2); // aire interno
+            dgv.RowTemplate.Height = 28;
+
+            // 🔹 Filas alternas (zebra)
+            dgv.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(248, 248, 248);
+
+            // 🔹 Selección
+            dgv.DefaultCellStyle.SelectionBackColor = Color.FromArgb(100, 140, 230);
+            dgv.DefaultCellStyle.SelectionForeColor = Color.White;
+
+            // 🔹 Encabezados
+            dgv.EnableHeadersVisualStyles = false;
+            dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(65, 110, 225);
+            dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 12, FontStyle.Bold);
+            dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgv.ColumnHeadersHeight = 35;
+
+            // 🔹 Ajuste columnas automático
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            // 🔹 Bordes de celdas
+            dgv.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+
+            // 🔹 Estilo filas al pasar mouse (opcional)
+            dgv.RowPrePaint += (s, ev) =>
+            {
+                if ((ev.State & DataGridViewElementStates.Selected) == 0)
+                {
+                    ev.Graphics.FillRectangle(new SolidBrush(
+                        ev.RowIndex % 2 == 0 ? Color.White : Color.FromArgb(248, 248, 248)
+                    ), ev.RowBounds);
+                }
+            };
+        }
+
     }
 }

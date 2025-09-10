@@ -51,13 +51,15 @@
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lbltituloHome = new System.Windows.Forms.Label();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.lbltituloHome = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -71,10 +73,11 @@
             this.Usuario,
             this.Tabla,
             this.Descripcion});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 330);
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(782, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(808, 253);
             this.dataGridView1.TabIndex = 1;
             // 
             // IdBitacora
@@ -251,7 +254,7 @@
             // 
             // bntEliminar
             // 
-            this.bntEliminar.Location = new System.Drawing.Point(12, 486);
+            this.bntEliminar.Location = new System.Drawing.Point(12, 599);
             this.bntEliminar.Name = "bntEliminar";
             this.bntEliminar.Size = new System.Drawing.Size(120, 40);
             this.bntEliminar.TabIndex = 7;
@@ -261,7 +264,7 @@
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(148, 486);
+            this.btnLimpiar.Location = new System.Drawing.Point(148, 599);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(120, 40);
             this.btnLimpiar.TabIndex = 10;
@@ -271,7 +274,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(284, 486);
+            this.btnSalir.Location = new System.Drawing.Point(284, 599);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(120, 40);
             this.btnSalir.TabIndex = 11;
@@ -287,8 +290,18 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(882, 72);
+            this.panel1.Size = new System.Drawing.Size(832, 72);
             this.panel1.TabIndex = 12;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = global::CapaVista.Properties.Resources.lapiz;
+            this.pictureBox8.Location = new System.Drawing.Point(221, 8);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox8.TabIndex = 33;
+            this.pictureBox8.TabStop = false;
             // 
             // lbltituloHome
             // 
@@ -301,28 +314,26 @@
             this.lbltituloHome.TabIndex = 6;
             this.lbltituloHome.Text = "Gestión Bitácora";
             // 
-            // pictureBox8
+            // panel2
             // 
-            this.pictureBox8.Image = global::CapaVista.Properties.Resources.lapiz;
-            this.pictureBox8.Location = new System.Drawing.Point(221, 8);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox8.TabIndex = 33;
-            this.pictureBox8.TabStop = false;
+            this.panel2.Controls.Add(this.dataGridView1);
+            this.panel2.Location = new System.Drawing.Point(12, 330);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(808, 253);
+            this.panel2.TabIndex = 13;
             // 
             // FrmBitacora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(882, 572);
+            this.ClientSize = new System.Drawing.Size(832, 803);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.bntEliminar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.dataGridView1);
             this.Name = "FrmBitacora";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestion de Bitacora";
@@ -336,6 +347,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -366,5 +378,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lbltituloHome;
         private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.Panel panel2;
     }
 }

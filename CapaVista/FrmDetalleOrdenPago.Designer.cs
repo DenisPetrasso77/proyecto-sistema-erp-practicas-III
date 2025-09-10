@@ -44,12 +44,12 @@
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(21, 134);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(1224, 124);
+            this.dataGridView2.Size = new System.Drawing.Size(1224, 408);
             this.dataGridView2.TabIndex = 9;
             // 
             // btnAtras
             // 
-            this.btnAtras.Location = new System.Drawing.Point(1086, 378);
+            this.btnAtras.Location = new System.Drawing.Point(1094, 566);
             this.btnAtras.Name = "btnAtras";
             this.btnAtras.Size = new System.Drawing.Size(120, 35);
             this.btnAtras.TabIndex = 10;
@@ -81,16 +81,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1257, 450);
+            this.ClientSize = new System.Drawing.Size(1257, 624);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnAtras);
             this.Controls.Add(this.dataGridView2);
             this.Name = "FrmDetalleOrdenPago";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmDetalleOrdenPago";
-            this.Load += new System.EventHandler(this.FrmDetalleOrdenPago_Load);
             this.Shown += new System.EventHandler(this.FrmDetalleOrdenPago_Shown);
-            this.Leave += new System.EventHandler(this.FrmDetalleOrdenPago_Leave);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
