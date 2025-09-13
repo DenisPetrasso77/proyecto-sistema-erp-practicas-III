@@ -239,6 +239,32 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
         }
+        public string InsertarComprobanteNotaCredito(int recepcion, int puesto, int notacredito, int tipo, string cuit, string razonsocial, decimal total)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_InsertarComprobanteNotaCredito", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IdRecepcion", recepcion);
+                    cmd.Parameters.AddWithValue("@NPuesto", puesto);
+                    cmd.Parameters.AddWithValue("@NNotaCredito", notacredito);
+                    cmd.Parameters.AddWithValue("@Tipo", tipo);
+                    cmd.Parameters.AddWithValue("@Cuit", cuit);
+                    cmd.Parameters.AddWithValue("@RazonSocial", razonsocial);
+                    cmd.Parameters.AddWithValue("@Total", total);
+                    return (string)cmd.ExecuteScalar();
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
         public int BorrarBitacora()
         {
             try
@@ -398,6 +424,52 @@ namespace CapaDatos
                     tvpParam.TypeName = "dbo.TipoDescuentoProducto";
                     cmd.ExecuteNonQuery();
                     return "Producto Guardado";
+                }
+            }
+            catch (SqlException ex)
+            {
+                return "Error:" + ex.Message;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+        public string ActualizarProducto(ProductoNuevo producto)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_ActualizarDatosProducto", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Idproducto", producto.CodigoProducto);
+                    cmd.Parameters.AddWithValue("@Descripcion", producto.Nombre);
+                    cmd.Parameters.AddWithValue("@Categoria", producto.IdCategoria);
+                    cmd.Parameters.AddWithValue("@Marca", producto.IdMarca);
+                    cmd.Parameters.AddWithValue("@Medidas", producto.IdMedida);
+                    cmd.Parameters.AddWithValue("@UnidadReferencia", producto.IdUnidadVenta);
+                    cmd.Parameters.AddWithValue("@StockMin", producto.StockMin);
+                    cmd.Parameters.AddWithValue("@StockMax", producto.StockMax);
+                    cmd.Parameters.AddWithValue("@StockActual", producto.StockActual);
+                    cmd.Parameters.AddWithValue("@PrecioCompra", producto.PrecioCompra);
+                    cmd.Parameters.AddWithValue("@PrecioVenta", producto.PrecioVenta);
+                    cmd.Parameters.AddWithValue("@Estado", producto.Estado);
+                    cmd.Parameters.AddWithValue("@FechaUltActualizacion", producto.FechaAlta);
+                    cmd.Parameters.AddWithValue("@IdUsuarioUltActualizacion", producto.IdUsuarioAlta);
+                    cmd.Parameters.AddWithValue("@Dvh", producto.DVH);
+                    DataTable dtDescuentos = new DataTable();
+
+                    dtDescuentos.Columns.Add("CantidadMin", typeof(int));
+                    dtDescuentos.Columns.Add("PorcentajeDesc", typeof(int));
+                    foreach (var desc in producto.Descuentos)
+                    {
+                        dtDescuentos.Rows.Add(desc.CantidadMinima, desc.Porcentaje);
+                    }
+                    SqlParameter tvpParam = cmd.Parameters.AddWithValue("@Descuentos", dtDescuentos);
+                    tvpParam.SqlDbType = SqlDbType.Structured;
+                    tvpParam.TypeName = "dbo.TipoDescuentoProducto";
+                    cmd.ExecuteNonQuery();
+                    return "Producto Actualizado";
                 }
             }
             catch (SqlException ex)
@@ -742,7 +814,47 @@ namespace CapaDatos
                     SqlParameter tvpParam = cmd.Parameters.AddWithValue("@Detalle", detalle);
                     tvpParam.SqlDbType = SqlDbType.Structured;
                     tvpParam.TypeName = "dbo.t_DetalleDevoluciones";
-                    return (string)cmd.ExecuteScalar();
+                    return cmd.ExecuteScalar()?.ToString() ?? string.Empty;
+                }
+            }
+            catch (SqlException ex)
+            {
+                return "Error:" + ex.Message;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+        public string InsertarOrdenesPago(OrdenesPago OrdenesPago)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_InsertarOrdenesPago", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    DataTable detalle = new DataTable();
+
+                    detalle.Columns.Add("IdRecepcion", typeof(int));
+                    detalle.Columns.Add("RazonSocial", typeof(string));
+                    detalle.Columns.Add("Cuit", typeof(string));
+                    detalle.Columns.Add("NroFactura", typeof(string));
+                    detalle.Columns.Add("NroNC", typeof(string));
+                    detalle.Columns.Add("FormaPago", typeof(string));
+                    detalle.Columns.Add("FechaAlta", typeof(DateTime));
+                    detalle.Columns.Add("IdUsuarioAlta", typeof(int));
+                    detalle.Columns.Add("Estado", typeof(string));
+
+                    foreach (var desc in OrdenesPago.Detalle)
+                    {
+
+                        detalle.Rows.Add(desc.IdRecepcion, desc.RazonSocial.Trim(), desc.Cuit, desc.NroFactura.Trim(), desc.NroNC,desc.FormaPago,desc.FechaAlta,desc.IdUsuarioAlta,desc.Estado);
+                    }
+
+                    SqlParameter tvpParam = cmd.Parameters.AddWithValue("@Detalle", detalle);
+                    tvpParam.SqlDbType = SqlDbType.Structured;
+                    tvpParam.TypeName = "dbo.t_OrdenesdePago";
+                    return cmd.ExecuteScalar()?.ToString() ?? string.Empty;
                 }
             }
             catch (SqlException ex)
@@ -1057,7 +1169,18 @@ namespace CapaDatos
             }
             return dt;
         }
-        public DataTable TraerPagosPendientes()
+        public DataTable TraerPagosPendientesDocumentacion()
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarPagosPendientesDocumentacion", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable SeleccionarPagosPendientes()
         {
             DataTable dt = new DataTable();
             using (SqlCommand cmd = new SqlCommand("sp_SeleccionarPagosPendientes", conexion.Abrir()))
@@ -1079,6 +1202,28 @@ namespace CapaDatos
             }
             return dt;
         }
+        public DataTable SeleccionarProductos()
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarProductos", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable SeleccionarPagosCompletados()
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarPagosRealizados", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
         public DataTable TraerDetalleMercaderia(int recepcion)
         {
             DataTable dt = new DataTable();
@@ -1086,6 +1231,19 @@ namespace CapaDatos
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@IdRecepcion", recepcion);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
+        public DataTable TraerDetalleProductos(string idproducto)
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("[sp_SelecionarDatosProducto]", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@IdProducto", idproducto);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
             }

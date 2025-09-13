@@ -44,52 +44,50 @@ namespace CapaVista
                 e.KeyChar = ',';
             }
         }
+   
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (comboBox1.SelectedIndex != 3)
-            {
-                try
-                {
-                    int Npuesto = Convert.ToInt32(textBox1.Text);
-                    int Nfactura = Convert.ToInt32(textBox2.Text);
-                    int tipofactura = Convert.ToInt32(comboBox1.SelectedItem.ToString().Split('-')[0].Trim());
-                    string cuit = textBox4.Text;
-                    string razonsocial = textBox5.Text;
-                    decimal total = Convert.ToDecimal(textBox3.Text);
-                    int resultado = metodos.InsertarFacturas(recepcion, Npuesto, Nfactura, tipofactura, cuit, razonsocial, total);
-                    if (resultado > 0)
-                    {
-                        MessageBox.Show("Factura cargada con exito");
-                        this.Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error al cargar la factura, verifique los datos");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"{"Error"}{ex.Message}");
-                }
-            }
-            else
-            { 
-                
-            }
-            
-
-        }
         private void CargarTipoFacturas()
         {
             CV_Utiles.LimpiarControles(comboBox1);
             DataTable cachetipofacturas = metodos.TraerTipoFacturas();
             foreach (DataRow filas in cachetipofacturas.Rows)
             {
+                if (filas["TipoFactura"].ToString() == "Nota de Credito") continue;
                 string fila = $"{filas["IdTipoFactura"]} - {filas["TipoFactura"]}";
                 comboBox1.Items.Add(fila);
             }
         }
 
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int Npuesto = Convert.ToInt32(textBox1.Text);
+                int Nfactura = Convert.ToInt32(textBox2.Text);
+                int tipofactura = Convert.ToInt32(comboBox1.SelectedItem.ToString().Split('-')[0].Trim());
+                string cuit = textBox4.Text;
+                string razonsocial = textBox5.Text;
+                decimal total = Convert.ToDecimal(textBox3.Text);
+                int resultado = metodos.InsertarFacturas(recepcion, Npuesto, Nfactura, tipofactura, cuit, razonsocial, total);
+                if (resultado > 0)
+                {
+                    MessageBox.Show("Factura cargada con exito");
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Error al cargar la factura, verifique los datos");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{"Error"}{ex.Message}");
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

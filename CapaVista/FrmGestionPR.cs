@@ -15,28 +15,6 @@ namespace CapaVista
         {
             InitializeComponent();
         }
-        private void Cargardgv()
-        {
-            string codigo;
-            string descripcion;
-            int stockactual;
-            string formadecompra;
-            int sugerencia;
-            int calculoreferencia;
-            DataTable stockproducmin = metodos.ProductosStockMin();
-            dataGridView1.Rows.Clear();
-
-            foreach (DataRow fila in stockproducmin.Rows)
-            {
-                codigo = fila["CodigoProducto"].ToString().ToUpper(); ;
-                descripcion = $"{fila["Producto"]} {fila["Marca"]} {fila["Medida"]}".ToString().ToUpper();
-                stockactual = Convert.ToInt32(fila["StockActual"].ToString().ToUpper());
-                formadecompra = fila["Unidad"].ToString().ToUpper();
-                calculoreferencia = (Convert.ToInt32(fila["StockMaximo"]) - Convert.ToInt32(fila["StockActual"]));
-                sugerencia = calculoreferencia;
-                dataGridView1.Rows.Add(codigo, descripcion, $"{stockactual} {formadecompra}", $"{sugerencia} {formadecompra}");
-            }
-        }
         private void Cargardgvdetalle()
         {
             dataGridView2.Rows.Clear();
@@ -80,43 +58,7 @@ namespace CapaVista
                 dataGridView3.Rows.Add(iddetallepr, codigo,descripcion, Stockmax +" "+ unidadcarga, cantpedida);
             }
         }
-        private void button3_Click(object sender, EventArgs e)
-        {
-            DataTable detalle = new DataTable();
-            detalle.Columns.Add("IdProducto", typeof(string));
-            detalle.Columns.Add("CantidadPedida", typeof(int));
-            detalle.Columns.Add("StockAlPedir", typeof(int));
-            detalle.Columns.Add("UnidadVenta", typeof(string));
 
-            foreach (DataGridViewRow fila in dataGridView1.Rows)
-            {
-                if (fila.Cells["Seleccionar"].Value != null && fila.Cells["Cantidadpedida"].Value == null)
-                {
-                    MessageBox.Show("Por favor ingrese la cantidad a pedir");
-                    return;
-                }
-                if (fila.Cells["Seleccionar"].Value != null && Convert.ToBoolean(fila.Cells["Seleccionar"].Value))
-                {
-                    detalle.Rows.Add(
-                        fila.Cells["Codigo"].Value.ToString(),
-                        Convert.ToInt32(fila.Cells["Cantidadpedida"].Value.ToString().Split(' ')[0]),
-                        Convert.ToInt32(fila.Cells["StockActual"].Value.ToString().Split(' ')[0]),
-                        fila.Cells["StockActual"].Value.ToString().Split(' ')[1]
-                    );
-                }
-
-            }
-            try
-            {
-                MessageBox.Show(metodos.InsertarPR(1, detalle));
-                Cargardgv();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            
-        }
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DetallePR();
@@ -201,14 +143,8 @@ namespace CapaVista
         }
         private void FrmGestionPR_Load(object sender, EventArgs e)
         {
-            Cargardgv();
             Cargardgvdetalle();
         }
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-            Cargardgv();
-        }
-
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             Cargardgvdetalle();

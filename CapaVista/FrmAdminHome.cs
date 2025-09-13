@@ -35,66 +35,50 @@ namespace CapaVista
 
         private void btnReabastecer_Click(object sender, EventArgs e)
         {
-            this.Hide();
             new FrmGestionPR().ShowDialog();
-            this.Show();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Pedidos Reaprovisionamiento", "Accedio al Menu Gestion Pedidos de Reaprovisionamiento");
         }
 
         private void btnCargarNuevo_Click(object sender, EventArgs e)
         {
-            this.Hide();
             new FrmGestionProveedores().ShowDialog();
-            this.Show();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Proveedores", "Accedio al Menu Gestion Proveedores");
         }
 
         private void btncotizacion_Click(object sender, EventArgs e)
         {
-            this.Hide();
             new FrmGestionPedidoCotizaciones().ShowDialog();
-            this.Show();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Cotizaciones", "Accedio al Menu Gestion Cotizaciones");
         }
 
         private void btnOrden_Click(object sender, EventArgs e)
         {
-            this.Hide();
             new FrmGestionOrdenCompra().ShowDialog();
-            this.Show();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Ordenes de Compra", "Accedio al Menu Gestion Ordenes de Compra");
         }
 
         private void btnRecepcion_Click(object sender, EventArgs e)
         {
-            this.Hide();
             new FrmGestionRecepcion().ShowDialog();
-            this.Show();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Recepcion Mercaderia", "Accedio al Menu Gestion Recepcion");
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            this.Hide();
             new GestionProveedores().ShowDialog();
-            this.Show();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Proveedores", "Accedio al Menu Modificar Proveedores");
         }
 
         private void btnGestionAdmin_Click(object sender, EventArgs e)
         {
-            this.Hide();
             new FrmAdmusuarios().ShowDialog();
-            this.Show();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Usuarios", "Accedio al Menu Gestion Usuarios");
         }
 
         private void btnBitacora_Click(object sender, EventArgs e)
         {
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Bitacora", "Accedio al Menu Gestion Bitacora");
-            this.Hide();
             new FrmBitacora().ShowDialog();
-            this.Show();
         }
 
         private void FrmAdminHome_Shown(object sender, EventArgs e)

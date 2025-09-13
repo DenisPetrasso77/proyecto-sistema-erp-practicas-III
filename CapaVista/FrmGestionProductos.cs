@@ -1,9 +1,7 @@
 ﻿using CapaEntities;
 using CapaLogica;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace CapaVista
@@ -11,308 +9,291 @@ namespace CapaVista
     public partial class FrmGestionProductos : Form
     {
         CL_Metodos metodos = new CL_Metodos();
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            new FrmCargarCategorias().ShowDialog();
-            Cargarcbxcategorias();
-        }
-        
         public FrmGestionProductos()
         {
             InitializeComponent();
         }
+        private void CargarProductos()
+        {
+            DataTable dt = metodos.SeleccionarProductos();
+            dataGridView1.Rows.Clear();
 
-        private void Cargarcbxcategorias()
-        {
-            comboBox1.Items.Clear();
-            DataTable CacheCategorias = metodos.TraerTodo("CategoriasProductos");
-            foreach (DataRow filas in CacheCategorias.Rows)
+            foreach (DataRow fila in dt.Rows)
             {
-                if (filas["Estado"].ToString().Trim() != "Inactivo")
-                {
-                    string fila = $"{filas["IdCategoria"]} - {filas["Categoria"]}";
-                    comboBox1.Items.Add(fila);
-                }
+                string codigo = fila["CodigoProducto"].ToString();
+                string categoria = fila["Categoria"].ToString();
+                string producto = fila["Producto"].ToString();
+                string marca = fila["Marca"].ToString();
+                string medida = fila["Medida"].ToString();
+                string item = $"{producto} {marca} {medida}";
+                string stockactual = fila["StockActual"].ToString();
+                string stockminimo = fila["StockMinimo"].ToString();
+                string descuento = (fila["Descuento"] == DBNull.Value) ? "NO" : "SI";
+                string precio = fila["PrecioVenta"].ToString();
+                dataGridView1.Rows.Add(codigo,item, categoria,stockactual, stockminimo, descuento, precio);
             }
         }
 
-        private void Cargarcbxtpoproducto()
+        private void FrmProductos_Load(object sender, EventArgs e)
         {
-            comboBox6.Items.Clear();
-            DataTable CacheTipoProducto = metodos.TraerTodo("TipoProductos");
-            foreach (DataRow filas in CacheTipoProducto.Rows)
-            {
-                string fila = $"{filas["IdTipoProducto"]} - {filas["TipoProducto"]}";
-                comboBox6.Items.Add(fila);
-            }
+            CrearColumnasProductos();
+            CargarProductos();
+            CargarToolsTip();
         }
-        private void Cargarcbxmedidas()
+        private void CrearColumnasProductos()
         {
-            comboBox2.Items.Clear();
-            DataTable CacheMedidas = metodos.TraerTodo("Medidas");
-            foreach (DataRow filas in CacheMedidas.Rows)
-            {
-                string fila = $"{filas["Idmedidas"]} - {filas["Medida"]}";
-                comboBox2.Items.Add(fila);
-            }
-        }
-        private void Cargarcbxmarcas()
-        {
-            comboBox4.Items.Clear();
-            DataTable CacheMarcas = metodos.TraerTodo("Marca");
-            foreach (DataRow filas in CacheMarcas.Rows)
-            {
-                string fila = $"{filas["Idmarca"]} - {filas["Marca"]}";
-                comboBox4.Items.Add(fila);
-            }
-        }
-        private void Cargarcbxventa()
-        {
-            DataTable CacheFVentas = metodos.TraerTodo("UnidadReferencia");
-            foreach (DataRow filas in CacheFVentas.Rows)
-            {
-                string fila = $"{filas["idUnidad"]} - {filas["Unidad"]}";
-                comboBox3.Items.Add(fila);
-            }
-        }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (!checkBox2.Checked)
-            {
-                if (CV_Utiles.TextboxVacios(textBox1) && CV_Utiles.ComboboxVacios(comboBox1, comboBox2, comboBox4, comboBox5,comboBox6))
-                {
-                    MessageBox.Show("Por favor complete todos los campos");
-                    return;
-                }
-            }
-            else if (checkBox2.Checked)
-            {
-                if (CV_Utiles.TextboxVacios(textBox3, textBox4,textBox5,textBox9,textBox10) && CV_Utiles.ComboboxVacios(comboBox3))
-                {
-                    MessageBox.Show("Por favor complete todos los campos");
-                    return;
-                }
-            }
+            dataGridView1.Columns.Clear();
+            DataGridViewTextBoxColumn columnaCodigo = new DataGridViewTextBoxColumn();
+            columnaCodigo.Name = "Codigo";                  
+            columnaCodigo.HeaderText = "Código";   
+            columnaCodigo.Width = 65;                     
+            columnaCodigo.ReadOnly = true;                  
+            columnaCodigo.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            DataGridViewTextBoxColumn columnaProducto = new DataGridViewTextBoxColumn();
+            columnaProducto.Name = "Producto";
+            columnaProducto.HeaderText = "Producto";
+            columnaProducto.Width = 75;
+            columnaProducto.ReadOnly = true;
+            columnaProducto.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            DataGridViewTextBoxColumn columnaCategoria = new DataGridViewTextBoxColumn();
+            columnaCategoria.Name = "Categoria";
+            columnaCategoria.HeaderText = "Categoria";
+            columnaCategoria.Width = 77;
+            columnaCategoria.ReadOnly = true;
+            columnaCategoria.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            DataGridViewTextBoxColumn columnaCantActual = new DataGridViewTextBoxColumn();
+            columnaCantActual.Name = "CantidadActual";
+            columnaCantActual.HeaderText = "Cant. Actual";
+            columnaCantActual.Width = 90;
+            columnaCantActual.ReadOnly = true;
+            columnaCantActual.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            DataGridViewTextBoxColumn columnaCantMinima = new DataGridViewTextBoxColumn();
+            columnaCantMinima.Name = "CantidadMinima";
+            columnaCantMinima.HeaderText = "Cant. Minima";
+            columnaCantMinima.Width = 93;
+            columnaCantMinima.ReadOnly = true;
+            columnaCantMinima.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            DataGridViewTextBoxColumn Descuentos = new DataGridViewTextBoxColumn();
+            Descuentos.Name = "Descuentos";
+            Descuentos.HeaderText = "Descuentos";
+            Descuentos.Width = 89;
+            Descuentos.ReadOnly = true;
+            Descuentos.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            DataGridViewTextBoxColumn Venta = new DataGridViewTextBoxColumn();
+            Venta.Name = "PrecioVenta";
+            Venta.HeaderText = "Venta($)";
+            Venta.Width = 72;
+            Venta.ReadOnly = true;
+            Venta.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
             
-
-            string codigo = textBox1.Text.Trim();
-            int tipoproducto = Convert.ToInt32(comboBox6.Text.Split('-')[0].Trim());
-            int marca = Convert.ToInt32(comboBox4.Text.Split('-')[0].Trim());
-            int medidas = Convert.ToInt32(comboBox2.Text.Split('-')[0].Trim());
-            int cate = Convert.ToInt32(comboBox1.Text.Split('-')[0].Trim());
-            string estado = comboBox5.Text.Trim();
-            int? fventa = string.IsNullOrWhiteSpace(comboBox3.Text) ? (int?)null : Convert.ToInt32(comboBox3.Text.Split('-')[0].Trim());
-            decimal preciocompra = string.IsNullOrWhiteSpace(textBox3.Text) ? (decimal)0 : Convert.ToDecimal(textBox3.Text.Trim());
-            decimal precioventa = string.IsNullOrWhiteSpace(textBox4.Text) ? (decimal)0 : Convert.ToDecimal(textBox4.Text.Trim());
-            int stockactual = string.IsNullOrWhiteSpace(textBox5.Text) ? (int)0 : Convert.ToInt32(textBox5.Text.Trim());
-            int stockmax = string.IsNullOrWhiteSpace(textBox9.Text) ? (int)0 : Convert.ToInt32(textBox9.Text.Trim());
-            int stockmin = string.IsNullOrWhiteSpace(textBox10.Text) ? (int)0 : Convert.ToInt32(textBox10.Text.Trim());
-            int can1 = string.IsNullOrWhiteSpace(textBox8.Text) ? 0 : Convert.ToInt32(textBox8.Text.Trim());
-            int por1 = string.IsNullOrWhiteSpace(textBox11.Text) ? 0 : Convert.ToInt32(textBox11.Text.Trim());
-            int can2 = string.IsNullOrWhiteSpace(textBox13.Text) ? 0 : Convert.ToInt32(textBox13.Text.Trim());
-            int por2 = string.IsNullOrWhiteSpace(textBox12.Text) ? 0 : Convert.ToInt32(textBox12.Text.Trim());
-            int can3 = string.IsNullOrWhiteSpace(textBox15.Text) ? 0 : Convert.ToInt32(textBox15.Text.Trim());
-            int por3 = string.IsNullOrWhiteSpace(textBox14.Text) ? 0 : Convert.ToInt32(textBox14.Text.Trim());
-            int can4 = string.IsNullOrWhiteSpace(textBox17.Text) ? 0 : Convert.ToInt32(textBox17.Text.Trim());
-            int por4 = string.IsNullOrWhiteSpace(textBox16.Text) ? 0 : Convert.ToInt32(textBox16.Text.Trim());
-            DateTime fecha = DateTime.Now;
-            
-            var descuentos = new List<(int cantidadMinima, int porcentaje)>
-            {
-                (can1, por1),
-                (can2, por2),
-                (can3, por3),
-                (can4, por4)
-            }.Where(d => d.cantidadMinima > 0 && d.porcentaje > 0)
-            .OrderByDescending(d => d.cantidadMinima)
-            .ToList();
-            ProductoNuevo productoNuevo = new ProductoNuevo
-            {
-                CodigoProducto = codigo,
-                Nombre = tipoproducto,
-                IdCategoria = cate,
-                IdMarca = marca,
-                IdMedida = medidas,
-                IdUnidadVenta = fventa,
-                StockMin = stockmin,
-                StockMax = stockmax,
-                StockActual = stockactual,
-                Estado = estado,
-                FechaAlta = fecha,
-                IdUsuarioAlta = Sesion.Usuario.IdUsuario,
-                PrecioCompra = preciocompra,
-                PrecioVenta = precioventa,
-                Descuentos = descuentos,
-                DVH = CV_Seguridad.CalcularDVH(codigo+tipoproducto+cate+ marca+ medidas+ fventa+estado+fecha+1+"Normal")
-            };
-
-            string resultado = metodos.InsertarProducto(productoNuevo);
-            MessageBox.Show(resultado);
-            CV_Utiles.LimpiarControles(this);
-            textBox1.Focus();
+            dataGridView1.Columns.Add(columnaCodigo);
+            dataGridView1.Columns.Add(columnaProducto);
+            dataGridView1.Columns.Add(columnaCategoria);
+            dataGridView1.Columns.Add(columnaCantActual);
+            dataGridView1.Columns.Add(columnaCantMinima);
+            dataGridView1.Columns.Add(Descuentos);
+            dataGridView1.Columns.Add(Venta);
         }
-        private void button2_Click(object sender, EventArgs e)
+        private void CrearColumnasProductosStockBajo()
         {
-            this.Close();
+            dataGridView1.Columns.Clear();
+            DataGridViewTextBoxColumn columnaCodigo = new DataGridViewTextBoxColumn();
+            columnaCodigo.Name = "Codigo";
+            columnaCodigo.HeaderText = "Código";
+            columnaCodigo.Width = 65;
+            columnaCodigo.ReadOnly = true;
+            columnaCodigo.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            DataGridViewTextBoxColumn columnaProducto = new DataGridViewTextBoxColumn();
+            columnaProducto.Name = "Producto";
+            columnaProducto.HeaderText = "Producto";
+            columnaProducto.Width = 415;
+            columnaProducto.ReadOnly = true;
+            columnaProducto.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            DataGridViewTextBoxColumn columnaCantActual = new DataGridViewTextBoxColumn();
+            columnaCantActual.Name = "CantidadActual";
+            columnaCantActual.HeaderText = "Cant. Actual";
+            columnaCantActual.Width = 86;
+            columnaCantActual.ReadOnly = true;
+            columnaCantActual.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            DataGridViewTextBoxColumn columnaSugerencia = new DataGridViewTextBoxColumn();
+            columnaSugerencia.Name = "Sugerencia";
+            columnaSugerencia.HeaderText = "Sugerencia";
+            columnaSugerencia.Width = 96;
+            columnaSugerencia.ReadOnly = true;
+            columnaSugerencia.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            DataGridViewTextBoxColumn CantidadPedir = new DataGridViewTextBoxColumn();
+            CantidadPedir.Name = "CantidadPedir";
+            CantidadPedir.HeaderText = "Cantidad a Pedir";
+            CantidadPedir.Width = 79;
+            CantidadPedir.ReadOnly = false;
+            CantidadPedir.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            DataGridViewCheckBoxColumn Pedir = new DataGridViewCheckBoxColumn();
+            Pedir.Name = "Pedir";
+            Pedir.HeaderText = "Pedir";
+            Pedir.Width = 69;
+            Pedir.ReadOnly = false;
+            Pedir.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            dataGridView1.Columns.Add(columnaCodigo);
+            dataGridView1.Columns.Add(columnaProducto);
+            dataGridView1.Columns.Add(columnaCantActual);
+            dataGridView1.Columns.Add(columnaSugerencia);
+            dataGridView1.Columns.Add(CantidadPedir);
+            dataGridView1.Columns.Add(Pedir);
         }
-        private void VerificarCaracter(object sender, KeyPressEventArgs e)
+
+        private void CargarProductosStockBajo()
         {
-            if (e.KeyChar == '.')
+            string codigo;
+            string descripcion;
+            int stockactual;
+            string formadecompra;
+            int sugerencia;
+            int calculoreferencia;
+            DataTable stockproducmin = metodos.ProductosStockMin();
+            dataGridView1.Rows.Clear();
+
+            foreach (DataRow fila in stockproducmin.Rows)
             {
-                e.KeyChar = ',';
-            }
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != ',')
-            {
-                e.Handled = true;
+                codigo = fila["CodigoProducto"].ToString().ToUpper(); ;
+                descripcion = $"{fila["Producto"]} {fila["Marca"]} {fila["Medida"]}".ToString().ToUpper();
+                stockactual = Convert.ToInt32(fila["StockActual"].ToString().ToUpper());
+                formadecompra = fila["Unidad"].ToString().ToUpper();
+                calculoreferencia = (Convert.ToInt32(fila["StockMaximo"]) - Convert.ToInt32(fila["StockActual"]));
+                sugerencia = calculoreferencia;
+                dataGridView1.Rows.Add(codigo, descripcion, $"{stockactual} {formadecompra}", $"{sugerencia} {formadecompra}");
             }
         }
+
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox1.Checked)
             {
-                groupBox5.Enabled = true;
-                textBox12.Text = "";
-                textBox13.Text = "";
-                textBox14.Text = "";
-                textBox15.Text = "";
-                textBox16.Text = "";
-                textBox17.Text = "";
-                textBox8.Text = "";
-                textBox11.Text = "";
+                CrearColumnasProductosStockBajo();
+                CargarProductosStockBajo();
+                btnPedir.Visible = true;      
             }
             else
             {
-                groupBox5.Enabled = false;
-                textBox12.Text = Convert.ToString(0);
-                textBox13.Text = Convert.ToString(0);
-                textBox14.Text = Convert.ToString(0);
-                textBox15.Text = Convert.ToString(0);
-                textBox16.Text = Convert.ToString(0);
-                textBox17.Text = Convert.ToString(0);
-                textBox8.Text = Convert.ToString(0);
-                textBox11.Text = Convert.ToString(0);
-                pictureBox3.Visible = false;
-                pictureBox4.Visible = false;
-                pictureBox5.Visible = false;
-                pictureBox6.Visible = false;
-                pictureBox7.Visible = false;
-                textBox12.Visible = false;
-                textBox13.Visible = false;
-                textBox14.Visible = false;
-                textBox15.Visible = false;
-                textBox16.Visible = false;
-                textBox17.Visible = false;
+                btnPedir.Visible = false;
+                CrearColumnasProductos();
+                CargarProductos();
+            }
+           
+
+        }
+
+        private void btnPedir_Click(object sender, EventArgs e)
+        {
+            DataTable detalle = new DataTable();
+            detalle.Columns.Add("IdProducto", typeof(string));
+            detalle.Columns.Add("CantidadPedida", typeof(int));
+            detalle.Columns.Add("StockAlPedir", typeof(int));
+            detalle.Columns.Add("UnidadVenta", typeof(string));
+
+            foreach (DataGridViewRow fila in dataGridView1.Rows)
+            {
+                if (fila.Cells["Pedir"].Value != null && fila.Cells["CantidadPedir"].Value == null)
+                {
+                    MessageBox.Show("Por favor ingrese la cantidad a pedir");
+                    return;
+                }
+                if (fila.Cells["Pedir"].Value != null && Convert.ToBoolean(fila.Cells["Pedir"].Value))
+                {
+                    detalle.Rows.Add(
+                        fila.Cells["Codigo"].Value.ToString(),
+                        Convert.ToInt32(fila.Cells["CantidadPedir"].Value.ToString().Split(' ')[0]),
+                        Convert.ToInt32(fila.Cells["CantidadActual"].Value.ToString().Split(' ')[0]),
+                        fila.Cells["CantidadActual"].Value.ToString().Split(' ')[1]
+                    );
+                }
+
+            }
+            try
+            {
+                MessageBox.Show(metodos.InsertarPR(Sesion.Usuario.IdUsuario, detalle));
+                CargarProductosStockBajo();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-            textBox13.Visible = true;
-            textBox12.Visible = true;
-            pictureBox3.Visible = true;
-            pictureBox2.Visible = false;
-            pictureBox7.Visible = true;
-        }
+
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            textBox14.Visible = true;
-            textBox15.Visible = true;
-            pictureBox3.Visible = false;
-            pictureBox4.Visible = true;
-            pictureBox6.Visible = true;
-            pictureBox7.Visible = false;
-        }
-        private void pictureBox4_Click(object sender, EventArgs e)
-        {
-            textBox16.Visible = true;
-            textBox17.Visible = true;
-            pictureBox4.Visible = false;
-            pictureBox6.Visible = false;
-            pictureBox5.Visible = true;
-        }
-        private void pictureBox5_Click(object sender, EventArgs e)
-        {
-            textBox16.Visible= false;
-            textBox17.Visible = false;
-            pictureBox5.Visible = false;
-            pictureBox6.Visible = true;
-            pictureBox4.Visible= true;
-        }
-        private void pictureBox6_Click(object sender, EventArgs e)
-        {
-            pictureBox4.Visible = false;
-            pictureBox6.Visible = false;
-            textBox14.Visible= false;
-            textBox15.Visible = false;
-            pictureBox3.Visible = true;
-            pictureBox7.Visible = true;
-        }
-        private void pictureBox7_Click(object sender, EventArgs e)
-        {
-            pictureBox3.Visible= false;
-            pictureBox7.Visible = false;
-            pictureBox2.Visible = true;
-            textBox12.Visible= false;
-            textBox13.Visible = false;
-        }
-        private void pictureBox8_Click(object sender, EventArgs e)
-        {
-            new FrmCargarMarcas().ShowDialog();
-            Cargarcbxmedidas();
-        }
-
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox2.Checked)
+            if (checkBox1.Checked)
             {
-                groupBox2.Enabled = true;
+                CargarProductosStockBajo();
             }
             else
             {
-                groupBox2.Enabled = !groupBox2.Enabled;
+                CargarProductos();
             }
         }
 
-        private void FrmCargarProductos_Load(object sender, EventArgs e)
+        private void btnCerrar_Click(object sender, EventArgs e)
         {
-            Cargarcbxcategorias();
-            Cargarcbxmarcas();
-            Cargarcbxmedidas();
-            Cargarcbxventa();
-            Cargarcbxtpoproducto();
+            this.Close();
         }
 
-        private void pictureBox10_Click(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
-            new FrmCargarTipoProducto().ShowDialog();
-            Cargarcbxtpoproducto();
+            FrmNuevoProducto frm = new FrmNuevoProducto();
+            frm.ShowDialog();
+
         }
 
-        private void pictureBox9_Click(object sender, EventArgs e)
+        private void CargarToolsTip()
         {
-            //new FrmGestionMedidas().ShowDialog();
-            Cargarcbxmedidas();
+            toolTip1.SetToolTip(pictureBox1, "CARGAR NUEVO PRODUCTO");
+            toolTip1.SetToolTip(pictureBox2, "EDITAR PRODUCTO SELECCIONADO");
+            toolTip1.SetToolTip(pictureBox3, "REFRESCAR LISTA");
+
+            toolTip1.AutoPopDelay = 5000;   // tiempo visible (ms)
+            toolTip1.InitialDelay = 500;    // retraso antes de aparecer (ms)
+            toolTip1.ReshowDelay = 200;     // tiempo entre tooltips (ms)
+            toolTip1.ShowAlways = true;     // mostrar aunque el form no tenga foco
         }
 
-        private void ConvertirDecimal(TextBox tx)
+        private void pictureBox2_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(tx.Text))
+            if (dataGridView1.CurrentRow == null)
             {
-                tx.Text = decimal.Parse(tx.Text).ToString("N2");
+                MessageBox.Show("Debe seleccionar un producto.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
+
+            string idproducto = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            FrmEditarProducto frm = new FrmEditarProducto(idproducto);
+            frm.ShowDialog();
+            if (checkBox1.Checked)
+                CargarProductosStockBajo();
             else
-            {
-                MessageBox.Show("Ingrese un valor de compra");
-            }
+                CargarProductos();
         }
 
-        private void textBox3_Leave(object sender, EventArgs e)
+        private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            ConvertirDecimal(textBox3);
-        }
-
-        private void textBox4_Leave(object sender, EventArgs e)
-        {
-            ConvertirDecimal(textBox4);
+            string idproducto = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            FrmEditarProducto frm = new FrmEditarProducto(idproducto);
+            frm.ShowDialog();
+            if (checkBox1.Checked)
+                CargarProductosStockBajo();
+            else
+                CargarProductos();
         }
     }
 }

@@ -45,6 +45,7 @@
     <Compile Include="Devoluciones.cs" />
     <Compile Include="InformesRecepcion.cs" />
     <Compile Include="OrdendeCompra.cs" />
+    <Compile Include="OrdenesPago.cs" />
     <Compile Include="PedidoCotizacion.cs" />
     <Compile Include="PedidodeReaprovionamiento.cs" />
     <Compile Include="ProductoNuevo.cs" />

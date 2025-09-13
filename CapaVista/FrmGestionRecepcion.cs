@@ -3,7 +3,7 @@ using CapaLogica;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Runtime.InteropServices;
+using System.Drawing;
 using System.Windows.Forms;
 
 
@@ -283,10 +283,6 @@ namespace CapaVista
                 razonsocial = razonsocial,
                 Detalle = detalle
             };
-            foreach (var i in detalle)
-            {
-                MessageBox.Show(i.ToString());
-            }
             var resultado = metodos.InsertarInformeRecepcion(informesRecepcion);
             MessageBox.Show(resultado);
             dataGridView1.Rows.Clear();
@@ -343,11 +339,10 @@ namespace CapaVista
         {
             
             var detalle = new List<(int IdRecepcion, string IdProducto, int Cantidad, string Estado, int IdUsuario)>();
-            try
-            {
                 int idrecepcion = Convert.ToInt32(label9.Text.Split('-')[1].ToString());
                 foreach (DataGridViewRow fila in dataGridView2.Rows)
                 {
+                    if (fila.IsNewRow) continue;
                     detalle.Add
                         ((
                        idrecepcion,
@@ -362,11 +357,14 @@ namespace CapaVista
                     Detalle = detalle
                 };
                 var resultado = metodos.InsertarDevolucion(devoluciones);
-                MessageBox.Show(resultado);
-            }
-            catch(Exception ex)
+            if (int.TryParse(resultado, out _))
             {
-                MessageBox.Show($"Error al registrar la devolucion {ex.Message}");
+                MessageBox.Show("Datos Actualizados Correctamente");
+            }
+            else
+            {
+                MessageBox.Show("Error");
+
             }
             label11.Text = string.Empty;
             label9.Text = string.Empty;

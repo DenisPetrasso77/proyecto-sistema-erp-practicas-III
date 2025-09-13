@@ -23,7 +23,7 @@ namespace CapaVista
             DataTable prpedidos = metodos.PRpedidos();
             foreach (DataRow fila in prpedidos.Rows)
             {
-                if (fila["Estado"].ToString() != "Esperando Cotizacion")
+                if (fila["Estado"].ToString() == "Pendiente")
                 {
                     idpr = Convert.ToInt32(fila["IdPR"]);
                     fecha = Convert.ToDateTime(fila["Fecha"]).ToString("dd/MM/yyyy");
@@ -54,12 +54,16 @@ namespace CapaVista
             dataGridView4.Rows.Clear();
             string nrocoti, fecha, usuario;  
             DataTable solicitudes = metodos.SolicitudCotizaciones();
+
             foreach (DataRow fila in solicitudes.Rows)
-            { 
-                nrocoti = fila["IdSolicitud"].ToString();
-                fecha = Convert.ToDateTime(fila["FechaLimite"]).ToString("dd-MM-yyyy");
-                usuario = fila["Usuario"].ToString();
-                dataGridView4.Rows.Add(nrocoti, fecha, usuario);
+            {
+                if (fila["Estado"].ToString() == "Esperando Cotizacion")
+                {
+                    nrocoti = fila["IdSolicitud"].ToString();
+                    fecha = Convert.ToDateTime(fila["FechaLimite"]).ToString("dd-MM-yyyy");
+                    usuario = fila["Usuario"].ToString();
+                    dataGridView4.Rows.Add(nrocoti, fecha, usuario);
+                }    
             }
         }
         private void FrmGestionPedidoCotizaciones_Load(object sender, EventArgs e)

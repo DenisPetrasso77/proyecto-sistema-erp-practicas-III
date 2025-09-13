@@ -18,6 +18,26 @@ namespace CapaLogica
         {  
             return metodos.InsertarFacturas(recepcion, puesto, factura, tipo, cuit, razonsocial, total);
         }
+        public string InsertarComprobanteNotaCredito(int recepcion, int puesto, int notacredito, int tipo, string cuit, string razonsocial, decimal total)
+        { 
+            return metodos.InsertarComprobanteNotaCredito(recepcion, puesto, notacredito, tipo, cuit, razonsocial, total);
+        }
+        public DataTable SeleccionarPagosCompletados()
+        { 
+            return metodos.SeleccionarPagosCompletados();
+        }
+        public string InsertarOrdenesPago(OrdenesPago OrdenesPago)
+        { 
+            return metodos.InsertarOrdenesPago(OrdenesPago);
+        }
+        public DataTable TraerDetalleProductos(string idproducto)
+        { 
+            return metodos.TraerDetalleProductos(idproducto);
+        }
+        public DataTable SeleccionarProductos()
+        { 
+            return metodos.SeleccionarProductos();
+        }
         public string InsertarDevolucion(Devoluciones devoluciones)
         {
             return metodos.InsertarDevolucion(devoluciones);
@@ -34,9 +54,13 @@ namespace CapaLogica
         { 
             return metodos.TraerDatosProveedorFactura(proveedor);
         }
-        public DataTable TraerPagosPendientes()
+        public DataTable TraerPagosPendientesDocumentacion()
         { 
-            return metodos.TraerPagosPendientes();
+            return metodos.TraerPagosPendientesDocumentacion();
+        }
+        public DataTable SeleccionarPagosPendientes()
+        { 
+            return metodos.SeleccionarPagosPendientes();
         }
         public DataTable TraerDevoluciones()
         { 
@@ -216,6 +240,10 @@ namespace CapaLogica
         public string InsertarProducto(ProductoNuevo productoNuevo)
         {
             return metodos.InsertarProducto(productoNuevo);
+        }
+        public string ActualizarProducto(ProductoNuevo producto)
+        { 
+            return metodos.ActualizarProducto(producto);
         }
 
         public string Registro(UsuarioNuevo usuarioNuevo)
