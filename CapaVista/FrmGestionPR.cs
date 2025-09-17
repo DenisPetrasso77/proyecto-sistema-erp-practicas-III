@@ -17,22 +17,28 @@ namespace CapaVista
         }
         private void Cargardgvdetalle()
         {
+            string textoBuscado = txtBuscador.Text.Trim().ToLower();
             dataGridView2.Rows.Clear();
-            int idpr;
-            string fecha;
-            string usuario;
-            string cantproductos;
-            string estado;
             DataTable prpedidos = metodos.PRpedidos();
+
             foreach (DataRow fila in prpedidos.Rows)
             {
-                estado = fila["Estado"].ToString();
+                string estado = fila["Estado"].ToString();
+                string usuario = fila["Usuario"].ToString();
+                int idpr = Convert.ToInt32(fila["IdPR"]);
+
+                if (!string.IsNullOrEmpty(txtBuscador.Text) && txtBuscador.Text != "BUSCADOR...")
+                {
+                    if (!(usuario.ToLower().Contains(textoBuscado) || idpr.ToString().Contains(textoBuscado)))
+                        continue;
+                }
+
                 if (estado != "Pendiente" && !checkBox1.Checked)
                     continue;
-                idpr = Convert.ToInt32(fila["IdPR"]);
-                fecha = Convert.ToDateTime(fila["Fecha"]).ToString("dd/mm/yyyy");
-                usuario = fila["Usuario"].ToString();
-                cantproductos = $"{Convert.ToInt32(fila["CantidadProductos"])} productos";
+
+                string fecha = Convert.ToDateTime(fila["Fecha"]).ToString("dd/MM/yyyy");
+                string cantproductos = $"{Convert.ToInt32(fila["CantidadProductos"])} productos";
+
                 dataGridView2.Rows.Add(idpr, fecha, usuario, cantproductos, estado);
             }
         }
@@ -156,6 +162,27 @@ namespace CapaVista
             string resultado = metodos.BorrarPR(idpr);
             MessageBox.Show(resultado);
             DetallePR();
+            Cargardgvdetalle();
+        }
+
+        private void txtBuscador_Enter(object sender, EventArgs e)
+        {
+            if (txtBuscador.Text == "BUSCADOR...")
+            { 
+                txtBuscador.Text = string.Empty;
+            }
+        }
+
+        private void txtBuscador_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtBuscador.Text))
+            { 
+                txtBuscador.Text = "BUSCADOR...";
+            }
+        }
+
+        private void txtBuscador_TextChanged(object sender, EventArgs e)
+        {
             Cargardgvdetalle();
         }
     }

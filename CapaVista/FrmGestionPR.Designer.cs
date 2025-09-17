@@ -47,16 +47,16 @@
             this.StockMaximo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CantidadPedida2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBuscador = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.lbltituloHome = new System.Windows.Forms.Label();
             this.IDPR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FECHA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.USUARIOSOLICITANTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CANTIDADPRODUCTOS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.lbltituloHome = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -87,7 +87,7 @@
             this.tabPage2.Controls.Add(this.button4);
             this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Controls.Add(this.label1);
-            this.tabPage2.Controls.Add(this.textBox1);
+            this.tabPage2.Controls.Add(this.txtBuscador);
             this.tabPage2.Controls.Add(this.dataGridView2);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -249,13 +249,16 @@
             this.label1.TabIndex = 16;
             this.label1.Text = "PEDIDOS DE REAPROVISIONAMIENTO";
             // 
-            // textBox1
+            // txtBuscador
             // 
-            this.textBox1.Location = new System.Drawing.Point(7, 47);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(239, 20);
-            this.textBox1.TabIndex = 15;
-            this.textBox1.Text = "BUSCADOR...";
+            this.txtBuscador.Location = new System.Drawing.Point(7, 47);
+            this.txtBuscador.Name = "txtBuscador";
+            this.txtBuscador.Size = new System.Drawing.Size(239, 20);
+            this.txtBuscador.TabIndex = 15;
+            this.txtBuscador.Text = "BUSCADOR...";
+            this.txtBuscador.TextChanged += new System.EventHandler(this.txtBuscador_TextChanged);
+            this.txtBuscador.Enter += new System.EventHandler(this.txtBuscador_Enter);
+            this.txtBuscador.Leave += new System.EventHandler(this.txtBuscador_Leave);
             // 
             // dataGridView2
             // 
@@ -286,13 +289,45 @@
             this.dataGridView2.TabIndex = 14;
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel1.Controls.Add(this.pictureBox8);
+            this.panel1.Controls.Add(this.lbltituloHome);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(892, 72);
+            this.panel1.TabIndex = 12;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = global::CapaVista.Properties.Resources.caja_de_entrega;
+            this.pictureBox8.Location = new System.Drawing.Point(193, 5);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox8.TabIndex = 32;
+            this.pictureBox8.TabStop = false;
+            // 
+            // lbltituloHome
+            // 
+            this.lbltituloHome.AutoSize = true;
+            this.lbltituloHome.Font = new System.Drawing.Font("Consolas", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbltituloHome.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbltituloHome.Location = new System.Drawing.Point(249, 18);
+            this.lbltituloHome.Name = "lbltituloHome";
+            this.lbltituloHome.Size = new System.Drawing.Size(431, 37);
+            this.lbltituloHome.TabIndex = 6;
+            this.lbltituloHome.Text = "Productos Bajo de Stock";
+            // 
             // IDPR
             // 
-            this.IDPR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.IDPR.HeaderText = "Nro. Pedido";
+            this.IDPR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.IDPR.HeaderText = "N°Pedido";
             this.IDPR.Name = "IDPR";
             this.IDPR.ReadOnly = true;
-            this.IDPR.Width = 88;
+            this.IDPR.Width = 77;
             // 
             // FECHA
             // 
@@ -328,38 +363,6 @@
             this.ESTADO.Name = "ESTADO";
             this.ESTADO.ReadOnly = true;
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
-            this.panel1.Controls.Add(this.pictureBox8);
-            this.panel1.Controls.Add(this.lbltituloHome);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(892, 72);
-            this.panel1.TabIndex = 12;
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.Image = global::CapaVista.Properties.Resources.caja_de_entrega;
-            this.pictureBox8.Location = new System.Drawing.Point(193, 5);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox8.TabIndex = 32;
-            this.pictureBox8.TabStop = false;
-            // 
-            // lbltituloHome
-            // 
-            this.lbltituloHome.AutoSize = true;
-            this.lbltituloHome.Font = new System.Drawing.Font("Consolas", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltituloHome.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lbltituloHome.Location = new System.Drawing.Point(249, 18);
-            this.lbltituloHome.Name = "lbltituloHome";
-            this.lbltituloHome.Size = new System.Drawing.Size(431, 37);
-            this.lbltituloHome.TabIndex = 6;
-            this.lbltituloHome.Text = "Productos Bajo de Stock";
-            // 
             // FrmGestionPR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -390,7 +393,7 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBuscador;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button5;
@@ -406,13 +409,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CantidadPedida2;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.Label lbltituloHome;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDPR;
         private System.Windows.Forms.DataGridViewTextBoxColumn FECHA;
         private System.Windows.Forms.DataGridViewTextBoxColumn USUARIOSOLICITANTE;
         private System.Windows.Forms.DataGridViewTextBoxColumn CANTIDADPRODUCTOS;
         private System.Windows.Forms.DataGridViewTextBoxColumn ESTADO;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox8;
-        private System.Windows.Forms.Label lbltituloHome;
     }
 }

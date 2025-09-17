@@ -17,53 +17,92 @@ namespace CapaVista
         }
         private void Cargardgv()
         {
-            dataGridView2.Rows.Clear();
-            int idpr;
-            string fecha, usuario, cantproductos, estado;
-            DataTable prpedidos = metodos.PRpedidos();
-            foreach (DataRow fila in prpedidos.Rows)
+            try
             {
-                if (fila["Estado"].ToString() == "Pendiente")
+                dataGridView2.Rows.Clear();
+                int idpr;
+                string fecha, usuario, cantproductos, estado;
+                DataTable prpedidos = metodos.PRpedidos();
+
+                foreach (DataRow fila in prpedidos.Rows)
                 {
-                    idpr = Convert.ToInt32(fila["IdPR"]);
-                    fecha = Convert.ToDateTime(fila["Fecha"]).ToString("dd/MM/yyyy");
-                    usuario = fila["Usuario"].ToString();
-                    cantproductos = $"{Convert.ToInt32(fila["CantidadProductos"])} productos";
-                    estado = fila["Estado"].ToString();
-                    dataGridView2.Rows.Add(idpr, fecha, usuario, cantproductos);
+                    if (fila["Estado"].ToString() == "Pendiente")
+                    {
+                        idpr = Convert.ToInt32(fila["IdPR"]);
+                        fecha = Convert.ToDateTime(fila["Fecha"]).ToString("dd/MM/yyyy");
+                        usuario = fila["Usuario"].ToString();
+                        cantproductos = $"{Convert.ToInt32(fila["CantidadProductos"])} productos";
+                        estado = fila["Estado"].ToString();
+                        dataGridView2.Rows.Add(idpr, fecha, usuario, cantproductos);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar pedidos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                metodos.Bitacora(Sesion.Usuario.IdUsuario, "PedidoCotizaciones", "Error al cargar pedidos: " + ex.Message);
             }
         }
         private void DetallePR()
         {
-            dataGridView3.Rows.Clear();
-            string producto, cantpedida, unidadcarga, idproducto;
-            int idpr = Convert.ToInt32(dataGridView2.CurrentRow.Cells["IDPR"].Value);
-            DataTable detallepr = metodos.DetallePR(idpr);
-            foreach (DataRow fila in detallepr.Rows)
+            try
             {
-                idproducto = fila["CodigoProducto"].ToString();
-                producto = $"{fila["TipoProducto"]} {fila["Marca"]} {fila["Medida"]}";
-                cantpedida = fila["CantidadPedida"].ToString();
-                unidadcarga = fila["Unidad"].ToString();
-                dataGridView3.Rows.Add(idproducto, producto, cantpedida + " " + unidadcarga, DBNull.Value);
+                dataGridView3.Rows.Clear();
+                string producto, cantpedida, unidadcarga, idproducto;
+
+                if (dataGridView2.CurrentRow == null)
+                {
+                    MessageBox.Show("Seleccione un pedido primero.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                int idpr = Convert.ToInt32(dataGridView2.CurrentRow.Cells["IDPR"].Value);
+                DataTable detallepr = metodos.DetallePR(idpr);
+
+                foreach (DataRow fila in detallepr.Rows)
+                {
+                    idproducto = fila["CodigoProducto"].ToString();
+                    producto = $"{fila["TipoProducto"]} {fila["Marca"]} {fila["Medida"]}";
+                    cantpedida = fila["CantidadPedida"].ToString();
+                    unidadcarga = fila["Unidad"].ToString();
+                    dataGridView3.Rows.Add(idproducto, producto, cantpedida + " " + unidadcarga, DBNull.Value);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar el detalle del pedido: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                metodos.Bitacora(Sesion.Usuario.IdUsuario, "PedidoCotizaciones", "Error al cargar detalle Pedidos: " + ex.Message);
+
             }
         }
         private void Solicitudes()
         {
-            dataGridView4.Rows.Clear();
-            string nrocoti, fecha, usuario;  
-            DataTable solicitudes = metodos.SolicitudCotizaciones();
-
-            foreach (DataRow fila in solicitudes.Rows)
+            try
             {
-                if (fila["Estado"].ToString() == "Esperando Cotizacion")
+                dataGridView4.Rows.Clear();
+                string nrocoti, fecha, usuario;
+                DataTable solicitudes = metodos.SolicitudCotizaciones();
+
+                foreach (DataRow fila in solicitudes.Rows)
                 {
-                    nrocoti = fila["IdSolicitud"].ToString();
-                    fecha = Convert.ToDateTime(fila["FechaLimite"]).ToString("dd-MM-yyyy");
-                    usuario = fila["Usuario"].ToString();
-                    dataGridView4.Rows.Add(nrocoti, fecha, usuario);
-                }    
+                    if (fila["Estado"].ToString() == "Esperando Cotizacion")
+                    {
+                        nrocoti = fila["IdSolicitud"].ToString();
+                        if (fila["FechaLimite"] != DBNull.Value)
+                            fecha = Convert.ToDateTime(fila["FechaLimite"]).ToString("dd-MM-yyyy");
+                        else
+                            fecha = "-";
+
+                        usuario = fila["Usuario"].ToString();
+                        dataGridView4.Rows.Add(nrocoti, fecha, usuario);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar solicitudes: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                metodos.Bitacora(Sesion.Usuario.IdUsuario, "PedidoCotizaciones", "Error al cargar cotizaciones: " + ex.Message);
+
             }
         }
         private void FrmGestionPedidoCotizaciones_Load(object sender, EventArgs e)
@@ -75,8 +114,10 @@ namespace CapaVista
             dataGridView1.ReadOnly = true;
             button1.Enabled = false;
             button3.Enabled = false;
-            dateTimePicker1.Enabled = false;
+            dtpFecha.Value = DateTime.Now;
+            dtpFecha.Enabled = false;
             Solicitudes();
+
         }
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -185,7 +226,7 @@ namespace CapaVista
             dataGridView2.ReadOnly = true;
             button1.Enabled = true;
             button3.Enabled = true;
-            dateTimePicker1.Enabled = true;
+            dtpFecha.Enabled = true;
             button2.Enabled = false;
         }
 
@@ -196,7 +237,7 @@ namespace CapaVista
             dataGridView3.ReadOnly = true;
             button1.Enabled = false;
             button3.Enabled = false;
-            dateTimePicker1.Enabled = false;
+            dtpFecha.Enabled = false;
             button2.Enabled = true;
         }
 
@@ -207,7 +248,7 @@ namespace CapaVista
                 IdPR = Convert.ToInt32(dataGridView2.CurrentRow.Cells["IdPR"].Value),
             };
 
-            DateTime fechaLimite = dateTimePicker1.Value;
+            DateTime fechaLimite = dtpFecha.Value;
             var detalles = new List<DetalleSoliCotizaciones>();
 
             foreach (DataGridViewRow row in dataGridView3.Rows)
@@ -243,7 +284,7 @@ namespace CapaVista
             button1.Enabled = false;
             button3.Enabled = false;
             button2.Enabled = true;
-
+            dtpFecha.Enabled = false;
         }
         private DataTable ConvertirADetalleCotizacionesTipo(List<DetalleSoliCotizaciones> lista)
         {

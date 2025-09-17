@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace CapaVista
 {
     public partial class FrmEditarProducto : Form
     {
+        private string rutaImagenTemporal = null;
         string idproducto;
         CL_Metodos metodos = new CL_Metodos();
         public FrmEditarProducto(string idproducto)
@@ -94,7 +96,22 @@ namespace CapaVista
                 i++;
             }
         }
+        private void MostrarImagenProducto(string idproducto)
+        {
+            string carpeta = Path.Combine(Application.StartupPath, "Imagenes");
+            string rutaImagenJpg = Path.Combine(carpeta, idproducto + ".jpg");
+            string rutaImagenPng = Path.Combine(carpeta, idproducto + ".png");
+            string rutaImagenBmp = Path.Combine(carpeta, idproducto + ".bmp");
 
+            if (File.Exists(rutaImagenJpg))
+                pictureBox1.Image = Image.FromFile(rutaImagenJpg);
+            else if (File.Exists(rutaImagenPng))
+                pictureBox1.Image = Image.FromFile(rutaImagenPng);
+            else if (File.Exists(rutaImagenBmp))
+                pictureBox1.Image = Image.FromFile(rutaImagenBmp);
+            else
+                pictureBox1.Image = null;
+        }
         private void FrmEditarProducto_Load(object sender, EventArgs e)
         {
             Cargarcbxcategorias();
@@ -103,6 +120,7 @@ namespace CapaVista
             Cargarcbxmarcas();
             Cargarcbxventa();
             CargarDatos();
+            MostrarImagenProducto(idproducto);
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -388,11 +406,37 @@ namespace CapaVista
                 PrecioVenta = precioventa,
                 Descuentos = descuentos,
             };
+            string carpetaDestino = Path.Combine(Application.StartupPath, "Imagenes");
+            if (!Directory.Exists(carpetaDestino))
+                Directory.CreateDirectory(carpetaDestino);
 
+            string extension = Path.GetExtension(rutaImagenTemporal);
+            string destino = Path.Combine(carpetaDestino, txtCodigo.Text + extension);
+
+            if (File.Exists(destino))
+            {
+                File.Delete(destino);
+            }
+
+            File.Copy(rutaImagenTemporal, destino, true);
             string resultado = metodos.ActualizarProducto(productoNuevo);
             MessageBox.Show(resultado);
             CV_Utiles.LimpiarControles(this);
             txtCodigo.Focus();
+        }
+
+        private void bntCargarImagen_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Filter = "Archivos de imagen|*.jpg;*.jpeg;*.png;*.bmp";
+
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    rutaImagenTemporal = ofd.FileName;
+                    pictureBox1.Image = Image.FromFile(rutaImagenTemporal);
+                }
+            }
         }
     }
 }

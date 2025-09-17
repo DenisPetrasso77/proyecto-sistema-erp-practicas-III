@@ -78,7 +78,7 @@ namespace CapaVista
                     totalf = total.ToString("N2");
                 }
                 string estado = fila["Estado"].ToString();
-                string comprobante = fila["Comprobante"] != DBNull.Value ? fila["Comprobante"].ToString() : "CARGAR" ;
+                string comprobante = fila["Comprobante"] != DBNull.Value ? "CARGADO" : "CARGAR" ;
                 dataGridView3.Rows.Add(id, idOrdenPago, Proveedor, FormaPago,totalf,estado,comprobante);
             }
         }
@@ -196,6 +196,13 @@ namespace CapaVista
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
+            CargarPagosCompletados();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            FrmComprobante frm = new FrmComprobante(Convert.ToInt32(dataGridView3.CurrentRow.Cells[1].Value.ToString()));
+            frm.ShowDialog();
             CargarPagosCompletados();
         }
     }

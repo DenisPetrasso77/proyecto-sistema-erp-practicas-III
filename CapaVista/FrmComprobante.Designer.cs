@@ -42,11 +42,12 @@
             this.button1.TabIndex = 23;
             this.button1.Text = "Aceptar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(158, 57);
-            this.textBox1.MaxLength = 5;
+            this.textBox1.MaxLength = 21;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(117, 20);
             this.textBox1.TabIndex = 19;
@@ -83,6 +84,7 @@
             this.Name = "FrmComprobante";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Comprobante de Pago";
+            this.Load += new System.EventHandler(this.FrmComprobante_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

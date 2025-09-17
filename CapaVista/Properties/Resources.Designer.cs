@@ -73,6 +73,16 @@ namespace CapaVista.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1828926_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("_1828926_removebg_preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _8462238 {
             get {
                 object obj = ResourceManager.GetObject("_8462238", resourceCulture);
@@ -156,6 +166,16 @@ namespace CapaVista.Properties {
         internal static System.Drawing.Bitmap anadir_nuevo_usuario {
             get {
                 object obj = ResourceManager.GetObject("anadir_nuevo_usuario", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Basic_Elements__28121_29_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("Basic_Elements__28121_29_removebg_preview", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -533,6 +553,46 @@ namespace CapaVista.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap OjoAbierto {
+            get {
+                object obj = ResourceManager.GetObject("OjoAbierto", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap OjoAbierto1 {
+            get {
+                object obj = ResourceManager.GetObject("OjoAbierto1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap OjoCerrado {
+            get {
+                object obj = ResourceManager.GetObject("OjoCerrado", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap OjoCerrado1 {
+            get {
+                object obj = ResourceManager.GetObject("OjoCerrado1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap parcel {
             get {
                 object obj = ResourceManager.GetObject("parcel", resourceCulture);
@@ -576,6 +636,16 @@ namespace CapaVista.Properties {
         internal static System.Drawing.Bitmap sign_out {
             get {
                 object obj = ResourceManager.GetObject("sign_out", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Signo {
+            get {
+                object obj = ResourceManager.GetObject("Signo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

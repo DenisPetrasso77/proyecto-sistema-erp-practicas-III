@@ -63,12 +63,24 @@ namespace CapaVista
 
         private void FrmLogin_Load(object sender, EventArgs e)
         {
-            
+            CargarToolsTip();
             //if (!VerificarIntegridadUsuarios())
             //{
             //    MessageBox.Show("Error en la integridad de los datos, por favor contacte con soporte");
             //    this.Close();
             //}
+        }
+        private void CargarToolsTip()
+        {
+            toolTip1.SetToolTip(txtUsuario, "INGRESE SU USUARIO");
+            toolTip1.SetToolTip(txtContraseña, "INGRESE SU CONTRASEÑA");
+            toolTip1.SetToolTip(btnIngresar, "INGRESAR");
+            toolTip1.SetToolTip(pbSalir, "CERRAR EL SISTEMA");
+
+            toolTip1.AutoPopDelay = 5000;   // tiempo visible (ms)
+            toolTip1.InitialDelay = 500;    // retraso antes de aparecer (ms)
+            toolTip1.ReshowDelay = 200;     // tiempo entre tooltips (ms)
+            toolTip1.ShowAlways = true;     // mostrar aunque el form no tenga foco
         }
         public bool VerificarIntegridadUsuarios()
         {
@@ -96,6 +108,29 @@ namespace CapaVista
                 }
             }
             return true;
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            if (txtContraseña.UseSystemPasswordChar)
+            {
+                txtContraseña.UseSystemPasswordChar = false;
+                pictureBox4.Image= CapaVista.Properties.Resources.OjoAbierto;
+            }
+            else
+            {
+                txtContraseña.UseSystemPasswordChar = true;
+                pictureBox4.Image = CapaVista.Properties.Resources.OjoCerrado;
+            }
+        }
+
+        private void pbSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void toolTip1_Popup(object sender, PopupEventArgs e)
+        {
         }
     }
 }

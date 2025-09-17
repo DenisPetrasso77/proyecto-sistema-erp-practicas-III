@@ -18,6 +18,10 @@ namespace CapaLogica
         {  
             return metodos.InsertarFacturas(recepcion, puesto, factura, tipo, cuit, razonsocial, total);
         }
+        public int InsertarComprobantePago(int idorden, string transaccion)
+        { 
+            return metodos.InsertarComprobantePago(idorden, transaccion);
+        }
         public string InsertarComprobanteNotaCredito(int recepcion, int puesto, int notacredito, int tipo, string cuit, string razonsocial, decimal total)
         { 
             return metodos.InsertarComprobanteNotaCredito(recepcion, puesto, notacredito, tipo, cuit, razonsocial, total);

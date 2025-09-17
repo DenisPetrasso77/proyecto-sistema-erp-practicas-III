@@ -4,6 +4,8 @@ using ProyectoPracticas;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -12,6 +14,7 @@ namespace CapaVista
     public partial class FrmNuevoProducto : Form
     {
         CL_Metodos metodos = new CL_Metodos();
+        private string rutaImagenTemporal = null;
 
         public FrmNuevoProducto()
         {
@@ -353,7 +356,19 @@ namespace CapaVista
                 Descuentos = descuentos,
                 DVH = CV_Seguridad.CalcularDVH(codigo + tipoproducto + cate + marca + medidas + fventa + estado + fecha + 1 + "Normal")
             };
+            string carpetaDestino = Path.Combine(Application.StartupPath, "Imagenes");
+            if (!Directory.Exists(carpetaDestino))
+                Directory.CreateDirectory(carpetaDestino);
 
+            string extension = Path.GetExtension(rutaImagenTemporal);
+            string destino = Path.Combine(carpetaDestino, txtCodigo.Text + extension);
+
+            if (File.Exists(destino))
+            {
+                File.Delete(destino);
+            }
+
+            File.Copy(rutaImagenTemporal, destino, true);
             string resultado = metodos.InsertarProducto(productoNuevo);
             MessageBox.Show(resultado);
             CV_Utiles.LimpiarControles(this);
@@ -363,6 +378,20 @@ namespace CapaVista
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void bntCargarImagen_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Filter = "Archivos de imagen|*.jpg;*.jpeg;*.png;*.bmp";
+
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    rutaImagenTemporal = ofd.FileName; 
+                    pictureBox1.Image = Image.FromFile(rutaImagenTemporal);
+                }
+            }
         }
     }
 }

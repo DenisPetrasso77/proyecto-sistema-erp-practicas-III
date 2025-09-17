@@ -284,6 +284,27 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
         }
+        public int InsertarComprobantePago(int idorden, string transaccion)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_InsertarComprobantePago", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IdOrdenPago", idorden);
+                    cmd.Parameters.AddWithValue("@NroTransaccion", transaccion);
+                    return cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
         public int StatusBloq(string usuario)
         {
             try

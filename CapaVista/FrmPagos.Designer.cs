@@ -68,16 +68,9 @@
             this.FormaPago = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.Pagar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button5 = new System.Windows.Forms.Button();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.NOTACREDITO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NroInforme = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.IdRecepcion2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NOrden = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Proveedor2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,6 +78,13 @@
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Comprobante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.NOTACREDITO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NroInforme = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -95,8 +95,8 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -497,6 +497,17 @@
             this.tabPage3.Text = "Pagos Pendientes";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::CapaVista.Properties.Resources.SIGNO_REFRESCAR;
+            this.pictureBox2.Location = new System.Drawing.Point(258, 36);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(29, 23);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 24;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
             // button5
             // 
             this.button5.Location = new System.Drawing.Point(9, 191);
@@ -505,6 +516,7 @@
             this.button5.TabIndex = 23;
             this.button5.Text = "Agregar Comprobante";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // dataGridView3
             // 
@@ -524,6 +536,53 @@
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.Size = new System.Drawing.Size(651, 123);
             this.dataGridView3.TabIndex = 17;
+            // 
+            // IdRecepcion2
+            // 
+            this.IdRecepcion2.HeaderText = "IdRecepcion";
+            this.IdRecepcion2.Name = "IdRecepcion2";
+            this.IdRecepcion2.Visible = false;
+            // 
+            // NOrden
+            // 
+            this.NOrden.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.NOrden.HeaderText = "N° Orden";
+            this.NOrden.Name = "NOrden";
+            this.NOrden.Width = 70;
+            // 
+            // Proveedor2
+            // 
+            this.Proveedor2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Proveedor2.HeaderText = "Proveedor";
+            this.Proveedor2.Name = "Proveedor2";
+            // 
+            // FPago
+            // 
+            this.FPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.FPago.HeaderText = "Forma de Pago";
+            this.FPago.Name = "FPago";
+            this.FPago.Width = 73;
+            // 
+            // Total
+            // 
+            this.Total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            this.Total.Width = 56;
+            // 
+            // Estado
+            // 
+            this.Estado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Estado.HeaderText = "Estado";
+            this.Estado.Name = "Estado";
+            this.Estado.Width = 65;
+            // 
+            // Comprobante
+            // 
+            this.Comprobante.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Comprobante.HeaderText = "Comprobante";
+            this.Comprobante.Name = "Comprobante";
+            this.Comprobante.Width = 95;
             // 
             // textBox5
             // 
@@ -573,64 +632,6 @@
             this.NroInforme.HeaderText = "Recepcion";
             this.NroInforme.Name = "NroInforme";
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::CapaVista.Properties.Resources.SIGNO_REFRESCAR;
-            this.pictureBox2.Location = new System.Drawing.Point(258, 36);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(29, 23);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 24;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
-            // 
-            // IdRecepcion2
-            // 
-            this.IdRecepcion2.HeaderText = "IdRecepcion";
-            this.IdRecepcion2.Name = "IdRecepcion2";
-            this.IdRecepcion2.Visible = false;
-            // 
-            // NOrden
-            // 
-            this.NOrden.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.NOrden.HeaderText = "N° Orden";
-            this.NOrden.Name = "NOrden";
-            this.NOrden.Width = 76;
-            // 
-            // Proveedor2
-            // 
-            this.Proveedor2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Proveedor2.HeaderText = "Proveedor";
-            this.Proveedor2.Name = "Proveedor2";
-            // 
-            // FPago
-            // 
-            this.FPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.FPago.HeaderText = "Forma de Pago";
-            this.FPago.Name = "FPago";
-            this.FPago.Width = 104;
-            // 
-            // Total
-            // 
-            this.Total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            this.Total.Width = 56;
-            // 
-            // Estado
-            // 
-            this.Estado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Estado.HeaderText = "Estado";
-            this.Estado.Name = "Estado";
-            this.Estado.Width = 65;
-            // 
-            // Comprobante
-            // 
-            this.Comprobante.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Comprobante.HeaderText = "Comprobante";
-            this.Comprobante.Name = "Comprobante";
-            this.Comprobante.Width = 95;
-            // 
             // FrmPagos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -658,8 +659,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.ResumeLayout(false);
 
         }

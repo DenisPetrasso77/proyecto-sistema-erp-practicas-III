@@ -17,6 +17,7 @@ namespace CapaVista
         {
             DataTable dt = metodos.SeleccionarProductos();
             dataGridView1.Rows.Clear();
+            string textoBuscado = txtBuscador.Text.Trim().ToLower();
 
             foreach (DataRow fila in dt.Rows)
             {
@@ -26,11 +27,24 @@ namespace CapaVista
                 string marca = fila["Marca"].ToString();
                 string medida = fila["Medida"].ToString();
                 string item = $"{producto} {marca} {medida}";
+
+
+                if (!string.IsNullOrEmpty(textoBuscado) && textoBuscado != "Buscador...")
+                {
+                    if (!(codigo.ToLower().Contains(textoBuscado) ||
+                          categoria.ToLower().Contains(textoBuscado) ||
+                          item.ToLower().Contains(textoBuscado)))
+                    {
+                        continue;
+                    }
+                }
+
                 string stockactual = fila["StockActual"].ToString();
                 string stockminimo = fila["StockMinimo"].ToString();
                 string descuento = (fila["Descuento"] == DBNull.Value) ? "NO" : "SI";
                 string precio = fila["PrecioVenta"].ToString();
-                dataGridView1.Rows.Add(codigo,item, categoria,stockactual, stockminimo, descuento, precio);
+
+                dataGridView1.Rows.Add(codigo, item, categoria, stockactual, stockminimo, descuento, precio);
             }
         }
 
@@ -294,6 +308,35 @@ namespace CapaVista
                 CargarProductosStockBajo();
             else
                 CargarProductos();
+        }
+
+        private void toolTip1_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
+
+        private void txtBuscador_TextChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+                CargarProductosStockBajo();
+            else
+                CargarProductos();
+        }
+
+        private void txtBuscador_Enter(object sender, EventArgs e)
+        {
+            if (txtBuscador.Text == "Buscador...")
+            {
+                txtBuscador.Text = string.Empty;
+            }
+        }
+
+        private void txtBuscador_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtBuscador.Text))
+            {
+                txtBuscador.Text = "Buscador...";
+            }
         }
     }
 }

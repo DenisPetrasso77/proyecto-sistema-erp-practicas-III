@@ -738,6 +738,7 @@
             this.bntCargarImagen.TabIndex = 54;
             this.bntCargarImagen.Text = "Cargar Imagen";
             this.bntCargarImagen.UseVisualStyleBackColor = true;
+            this.bntCargarImagen.Click += new System.EventHandler(this.bntCargarImagen_Click);
             // 
             // pictureBox1
             // 
