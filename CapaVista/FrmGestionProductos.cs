@@ -350,6 +350,8 @@ namespace CapaVista
             UI_Utilidad.RedondearForm(this, 28);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnPedir);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnCerrar);
+            UI_Utilidad.AplicarEfectoHover(pictureBox1);
+            UI_Utilidad.AplicarEfectoHover(pictureBox2);
             //UI_Utilidad.EstiloDataGridView(dataGridView1);
 
         }

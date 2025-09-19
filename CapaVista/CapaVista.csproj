@@ -108,6 +108,12 @@
     <Compile Include="FrmSidebar.Designer.cs">
       <DependentUpon>FrmSidebar.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVentas.Designer.cs">
+      <DependentUpon>FrmVentas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -338,6 +344,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSidebar.resx">
       <DependentUpon>FrmSidebar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmVentas.resx">
+      <DependentUpon>FrmVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GestionProveedores.resx">
       <DependentUpon>GestionProveedores.cs</DependentUpon>
@@ -592,6 +601,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Ojo_Cerrado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ventas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lupa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ChatGPT Image 3 sept 2025, 23_41_43.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

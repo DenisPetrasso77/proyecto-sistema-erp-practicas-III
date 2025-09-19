@@ -134,12 +134,12 @@ namespace CapaVista
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnSalir);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnBuscar);
 
-
-            UI_Utilidad.EstiloTextBox(txtUsuario);
-            UI_Utilidad.EstiloTextBox(txtTabla);
-            UI_Utilidad.EstiloTextBox(txtDescripcion);
-
             UI_Utilidad.EstiloDataGridView(dataGridView1);
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

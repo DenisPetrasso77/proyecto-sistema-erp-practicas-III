@@ -25,11 +25,6 @@ namespace CapaVista
             UI_Utilidad.EstiloForm(this);
             UI_Utilidad.RedondearForm(this, 28);
 
-            UI_Utilidad.EstiloTextBox(txtNombre);
-            UI_Utilidad.EstiloTextBox(txtpellido);
-            UI_Utilidad.EstiloTextBox(txtRol);
-            UI_Utilidad.EstiloTextBox(txtMail);
-            UI_Utilidad.EstiloTextBox(txtEstado);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnGuardar);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnEditar);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnAtras);

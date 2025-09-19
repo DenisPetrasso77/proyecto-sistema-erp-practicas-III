@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
@@ -49,14 +49,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtBuscador = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.lbltituloHome = new System.Windows.Forms.Label();
             this.IDPR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FECHA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.USUARIOSOLICITANTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CANTIDADPRODUCTOS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.lbltituloHome = new System.Windows.Forms.Label();
+            this.btnAtras = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -70,21 +71,16 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 78);
+            this.tabControl1.Location = new System.Drawing.Point(23, 115);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(878, 339);
+            this.tabControl1.Size = new System.Drawing.Size(1120, 358);
             this.tabControl1.TabIndex = 10;
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.button1);
             this.tabPage2.Controls.Add(this.checkBox1);
             this.tabPage2.Controls.Add(this.pictureBox1);
-            this.tabPage2.Controls.Add(this.button2);
-            this.tabPage2.Controls.Add(this.button6);
-            this.tabPage2.Controls.Add(this.button5);
-            this.tabPage2.Controls.Add(this.button4);
             this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Controls.Add(this.label1);
             this.tabPage2.Controls.Add(this.txtBuscador);
@@ -92,16 +88,17 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(870, 313);
+            this.tabPage2.Size = new System.Drawing.Size(1112, 332);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Modificacion/Baja Pedido";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(10, 268);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(23, 479);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(91, 39);
+            this.button1.Size = new System.Drawing.Size(150, 40);
             this.button1.TabIndex = 25;
             this.button1.Text = "Borrar Pedido";
             this.button1.UseVisualStyleBackColor = true;
@@ -131,9 +128,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(755, 268);
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(1019, 475);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(103, 39);
+            this.button2.Size = new System.Drawing.Size(120, 40);
             this.button2.TabIndex = 19;
             this.button2.Text = "Modificar";
             this.button2.UseVisualStyleBackColor = true;
@@ -141,9 +139,9 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(758, 268);
+            this.button6.Location = new System.Drawing.Point(1019, 475);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(100, 39);
+            this.button6.Size = new System.Drawing.Size(120, 40);
             this.button6.TabIndex = 22;
             this.button6.Text = "Cancelar";
             this.button6.UseVisualStyleBackColor = true;
@@ -152,9 +150,10 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(675, 268);
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(893, 474);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(77, 39);
+            this.button5.Size = new System.Drawing.Size(120, 40);
             this.button5.TabIndex = 21;
             this.button5.Text = "Borrar Producto";
             this.button5.UseVisualStyleBackColor = true;
@@ -163,9 +162,10 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(566, 268);
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(767, 474);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(103, 39);
+            this.button4.Size = new System.Drawing.Size(120, 40);
             this.button4.TabIndex = 20;
             this.button4.Text = "Actualizar";
             this.button4.UseVisualStyleBackColor = true;
@@ -175,9 +175,10 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dataGridView3);
-            this.groupBox1.Location = new System.Drawing.Point(405, 6);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(588, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(459, 257);
+            this.groupBox1.Size = new System.Drawing.Size(505, 310);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detalle del Pedido";
@@ -195,10 +196,11 @@
             this.Descripcion2,
             this.StockMaximo,
             this.CantidadPedida2});
-            this.dataGridView3.Location = new System.Drawing.Point(6, 19);
+            this.dataGridView3.Location = new System.Drawing.Point(5, 67);
             this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(447, 238);
+            this.dataGridView3.Size = new System.Drawing.Size(500, 240);
             this.dataGridView3.TabIndex = 0;
+            this.dataGridView3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
             this.dataGridView3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VerificarCaracter);
             // 
             // IDdetallePR
@@ -228,7 +230,7 @@
             this.StockMaximo.Name = "StockMaximo";
             this.StockMaximo.ReadOnly = true;
             this.StockMaximo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.StockMaximo.Width = 91;
+            this.StockMaximo.Width = 140;
             // 
             // CantidadPedida2
             // 
@@ -237,7 +239,7 @@
             this.CantidadPedida2.MaxInputLength = 20;
             this.CantidadPedida2.Name = "CantidadPedida2";
             this.CantidadPedida2.ReadOnly = true;
-            this.CantidadPedida2.Width = 101;
+            this.CantidadPedida2.Width = 158;
             // 
             // label1
             // 
@@ -245,9 +247,10 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(6, 3);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(356, 24);
+            this.label1.Size = new System.Drawing.Size(289, 24);
             this.label1.TabIndex = 16;
-            this.label1.Text = "PEDIDOS DE REAPROVISIONAMIENTO";
+            this.label1.Text = "Pedidos de Reaprovicionamiento";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtBuscador
             // 
@@ -273,53 +276,21 @@
             this.USUARIOSOLICITANTE,
             this.CANTIDADPRODUCTOS,
             this.ESTADO});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridView2.Location = new System.Drawing.Point(7, 73);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(392, 190);
+            this.dataGridView2.Size = new System.Drawing.Size(500, 240);
             this.dataGridView2.TabIndex = 14;
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
-            this.panel1.Controls.Add(this.pictureBox8);
-            this.panel1.Controls.Add(this.lbltituloHome);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(892, 72);
-            this.panel1.TabIndex = 12;
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.Image = global::CapaVista.Properties.Resources.caja_de_entrega;
-            this.pictureBox8.Location = new System.Drawing.Point(193, 5);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox8.TabIndex = 32;
-            this.pictureBox8.TabStop = false;
-            // 
-            // lbltituloHome
-            // 
-            this.lbltituloHome.AutoSize = true;
-            this.lbltituloHome.Font = new System.Drawing.Font("Consolas", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltituloHome.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lbltituloHome.Location = new System.Drawing.Point(249, 18);
-            this.lbltituloHome.Name = "lbltituloHome";
-            this.lbltituloHome.Size = new System.Drawing.Size(431, 37);
-            this.lbltituloHome.TabIndex = 6;
-            this.lbltituloHome.Text = "Productos Bajo de Stock";
             // 
             // IDPR
             // 
@@ -332,9 +303,9 @@
             // FECHA
             // 
             this.FECHA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
-            dataGridViewCellStyle1.NullValue = null;
-            this.FECHA.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Format = "dd/MM/yyyy";
+            dataGridViewCellStyle13.NullValue = null;
+            this.FECHA.DefaultCellStyle = dataGridViewCellStyle13;
             this.FECHA.HeaderText = "Fecha";
             this.FECHA.Name = "FECHA";
             this.FECHA.ReadOnly = true;
@@ -363,17 +334,67 @@
             this.ESTADO.Name = "ESTADO";
             this.ESTADO.ReadOnly = true;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel1.Controls.Add(this.pictureBox8);
+            this.panel1.Controls.Add(this.lbltituloHome);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1169, 72);
+            this.panel1.TabIndex = 12;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = global::CapaVista.Properties.Resources.caja_de_entrega;
+            this.pictureBox8.Location = new System.Drawing.Point(193, 5);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox8.TabIndex = 32;
+            this.pictureBox8.TabStop = false;
+            // 
+            // lbltituloHome
+            // 
+            this.lbltituloHome.AutoSize = true;
+            this.lbltituloHome.Font = new System.Drawing.Font("Consolas", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbltituloHome.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbltituloHome.Location = new System.Drawing.Point(249, 18);
+            this.lbltituloHome.Name = "lbltituloHome";
+            this.lbltituloHome.Size = new System.Drawing.Size(431, 37);
+            this.lbltituloHome.TabIndex = 6;
+            this.lbltituloHome.Text = "Productos Bajo de Stock";
+            // 
+            // btnAtras
+            // 
+            this.btnAtras.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAtras.Location = new System.Drawing.Point(1019, 566);
+            this.btnAtras.Name = "btnAtras";
+            this.btnAtras.Size = new System.Drawing.Size(120, 40);
+            this.btnAtras.TabIndex = 26;
+            this.btnAtras.Text = "Atras";
+            this.btnAtras.UseVisualStyleBackColor = true;
+            this.btnAtras.Click += new System.EventHandler(this.button3_Click);
+            // 
             // FrmGestionPR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(892, 424);
+            this.ClientSize = new System.Drawing.Size(1169, 618);
+            this.Controls.Add(this.btnAtras);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button6);
             this.Name = "FrmGestionPR";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestion Pedidos";
             this.Load += new System.EventHandler(this.FrmGestionPR_Load);
+            this.Shown += new System.EventHandler(this.FrmGestionPR_Shown);
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
@@ -417,5 +438,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn USUARIOSOLICITANTE;
         private System.Windows.Forms.DataGridViewTextBoxColumn CANTIDADPRODUCTOS;
         private System.Windows.Forms.DataGridViewTextBoxColumn ESTADO;
+        private System.Windows.Forms.Button btnAtras;
     }
 }

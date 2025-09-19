@@ -20,7 +20,7 @@ namespace ProyectoPracticas
             {
                 if (ctrl is Label lbl)
                 {
-                    // 🔹 Solo modificar si el Label está en tamaño chico (ej. <= 12)
+                    // Solo modificar si el Label está en tamaño chico (ej. <= 12)
                     if (lbl.Font.Size <= 12)
                     {
                         lbl.Font = new Font("Segoe UI", 12, FontStyle.Regular);
@@ -39,33 +39,36 @@ namespace ProyectoPracticas
         {
             if (ctrl is TextBox txt)
             {
-                txt.Multiline = true; // 🔹 Para permitir centrar el texto
+                txt.Multiline = true;
                 txt.AutoSize = false;
                 txt.BorderStyle = BorderStyle.None;
                 txt.BackColor = Color.White;
                 txt.ForeColor = Color.Black;
                 txt.Font = new Font("Segoe UI", 12, FontStyle.Regular);
-                TextBoxHelper.SetPadding(txt, 25, 5); // 25px a la izquierda, 5px a la derecha
+                TextBoxHelper.SetPadding(txt, 15, 5);
 
-                // Esquinas redondeadas
-                txt.Region = new Region(RoundedRect(txt.ClientRectangle, txt.Height / 2));
-
+                //Esquinas redondeadas con borde
+                txt.Region = new Region(RoundedRect(txt.ClientRectangle, 12));
+                txt.BorderStyle = BorderStyle.None;
+                txt.BackColorChanged += (s, e) => txt.Invalidate();
+                txt.Resize += (s, e) => txt.Region = new Region(RoundedRect(txt.ClientRectangle, 12));
                 txt.Paint += (s, e) =>
                 {
-                    e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-                    using (SolidBrush backBrush = new SolidBrush(txt.BackColor))
-                    using (Pen borderPen = new Pen(Color.LightGray, 1.5f))
+                    e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                    var rect = txt.ClientRectangle;
+                    rect.Width -= 1;
+                    rect.Height -= 1;
+
+                    using (var path = RoundedRect(rect, txt.Height / 2))
+                    using (var backBrush = new SolidBrush(txt.BackColor))
+                    using (var borderPen = new Pen(Color.LightGray, 1.8f)) // Borde visible
                     {
-                        var rect = txt.ClientRectangle;
-                        rect.Width -= 1;
-                        rect.Height -= 1;
-                        var path = RoundedRect(rect, txt.Height / 2);
                         e.Graphics.FillPath(backBrush, path);
                         e.Graphics.DrawPath(borderPen, path);
                     }
                 };
 
-                // Placeholder
+                //Placeholder
                 if (!string.IsNullOrWhiteSpace(placeholder))
                 {
                     txt.Text = placeholder;
@@ -97,24 +100,26 @@ namespace ProyectoPracticas
                 cb.Font = new Font("Segoe UI", 10, FontStyle.Regular);
                 cb.DropDownStyle = ComboBoxStyle.DropDownList;
 
-                cb.Region = new Region(RoundedRect(cb.ClientRectangle, cb.Height / 2));
+                cb.Region = new Region(RoundedRect(cb.ClientRectangle, 6));
+                cb.Resize += (s, e) => cb.Region = new Region(RoundedRect(cb.ClientRectangle, 6));
 
                 cb.Paint += (s, e) =>
                 {
-                    e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-                    using (SolidBrush backBrush = new SolidBrush(cb.BackColor))
-                    using (Pen borderPen = new Pen(Color.LightGray, 1.5f))
+                    e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                    var rect = cb.ClientRectangle;
+                    rect.Width -= 1;
+                    rect.Height -= 1;
+
+                    using (var path = RoundedRect(rect, cb.Height / 2))
+                    using (var backBrush = new SolidBrush(cb.BackColor))
+                    using (var borderPen = new Pen(Color.LightGray, 1.8f))
                     {
-                        var rect = cb.ClientRectangle;
-                        rect.Width -= 1;
-                        rect.Height -= 1;
-                        var path = RoundedRect(rect, cb.Height / 2);
                         e.Graphics.FillPath(backBrush, path);
                         e.Graphics.DrawPath(borderPen, path);
                     }
                 };
 
-                // Placeholder visual
+                // 🔹 Placeholder
                 if (!string.IsNullOrWhiteSpace(placeholder))
                 {
                     cb.Items.Insert(0, placeholder);
@@ -123,14 +128,7 @@ namespace ProyectoPracticas
 
                     cb.SelectedIndexChanged += (s, e) =>
                     {
-                        if (cb.SelectedIndex == 0)
-                        {
-                            cb.ForeColor = Color.Gray;
-                        }
-                        else
-                        {
-                            cb.ForeColor = Color.Black;
-                        }
+                        cb.ForeColor = cb.SelectedIndex == 0 ? Color.Gray : Color.Black;
                     };
                 }
             }
@@ -271,26 +269,40 @@ namespace ProyectoPracticas
         //    HacerControlesTransparentes(form);
         //}
 
-        public static void AplicarEfectoHover(PictureBox pb, int tamañoOriginal = 40, int tamañoAgrandado = 47)
+        public static void AplicarEfectoHover(PictureBox pb, float factorAgrandado = 1.2f)
         {
-            // Cuando el mouse entra
+            // Guardamos la posición y tamaño original en el Tag solo una vez
+            var datosOriginales = new
+            {
+                Posicion = pb.Location,
+                Tamaño = pb.Size
+            };
+            pb.Tag = datosOriginales;
+
             pb.MouseEnter += (s, e) =>
             {
-                pb.Size = new Size(tamañoAgrandado, tamañoAgrandado);
-                // Opcional: mantener centrado
-                pb.Location = new Point(pb.Location.X - (tamañoAgrandado - tamañoOriginal) / 2,
-                                        pb.Location.Y - (tamañoAgrandado - tamañoOriginal) / 2);
+                var orig = (dynamic)pb.Tag;
+                int nuevoAncho = (int)(orig.Tamaño.Width * factorAgrandado);
+                int nuevoAlto = (int)(orig.Tamaño.Height * factorAgrandado);
+
+                pb.Size = new Size(nuevoAncho, nuevoAlto);
+
+                // Recentrar para que crezca desde el medio
+                pb.Location = new Point(
+                    orig.Posicion.X - (nuevoAncho - orig.Tamaño.Width) / 2,
+                    orig.Posicion.Y - (nuevoAlto - orig.Tamaño.Height) / 2
+                );
             };
 
-            // Cuando el mouse sale
             pb.MouseLeave += (s, e) =>
             {
-                pb.Size = new Size(tamañoOriginal, tamañoOriginal);
-                // Volver a la posición original
-                pb.Location = new Point(pb.Location.X + (tamañoAgrandado - tamañoOriginal) / 2,
-                                        pb.Location.Y + (tamañoAgrandado - tamañoOriginal) / 2);
+                var orig = (dynamic)pb.Tag;
+
+                pb.Size = orig.Tamaño;
+                pb.Location = orig.Posicion;
             };
         }
+
 
 
         //private static void HacerControlesTransparentes(Control parent)
@@ -359,41 +371,48 @@ namespace ProyectoPracticas
         {
             if (dgv == null) return;
 
-            // 🔹 Colores base
+            // Colores base
             dgv.BackgroundColor = Color.White;
             dgv.BorderStyle = BorderStyle.None;
             dgv.GridColor = Color.LightSteelBlue;
 
-            // 🔹 Filas
+            // Filas
             dgv.DefaultCellStyle.BackColor = Color.White;
             dgv.DefaultCellStyle.ForeColor = Color.Black;
             dgv.DefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Regular);
-            dgv.DefaultCellStyle.Padding = new Padding(4, 2, 4, 2); // aire interno
+            dgv.DefaultCellStyle.Padding = new Padding(4, 2, 4, 2);
             dgv.RowTemplate.Height = 28;
 
-            // 🔹 Filas alternas (zebra)
+            // Filas alternas
             dgv.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(248, 248, 248);
 
-            // 🔹 Selección
+            // Selección
             dgv.DefaultCellStyle.SelectionBackColor = Color.FromArgb(100, 140, 230);
             dgv.DefaultCellStyle.SelectionForeColor = Color.White;
 
-            // 🔹 Encabezados
+            // Encabezados
             dgv.EnableHeadersVisualStyles = false;
             dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(65, 110, 225);
             dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 12, FontStyle.Bold);
             dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgv.ColumnHeadersHeight = 35;
+            dgv.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.True; // ✅ permite salto de línea
+            dgv.ColumnHeadersHeight = 40; // un poquito más alto para que no corte el texto
+            dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 
-            // 🔹 Ajuste columnas automático
+            // Ajuste columnas automático
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            // 🔹 Bordes de celdas
+            // Evitar que se "desaparezcan" si está vacío
+            dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgv.AllowUserToAddRows = false; // oculta la fila vacía extra
+            dgv.RowHeadersVisible = false;  // saca la columna gris de la izquierda
+
+            // Bordes de celdas
             dgv.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
 
-            // 🔹 Estilo filas al pasar mouse (opcional)
+            // Estilo filas al pasar mouse
             dgv.RowPrePaint += (s, ev) =>
             {
                 if ((ev.State & DataGridViewElementStates.Selected) == 0)
@@ -403,8 +422,35 @@ namespace ProyectoPracticas
                     ), ev.RowBounds);
                 }
             };
+
+            // ✅ Si está vacío, mostrar mensaje en vez de que quede raro
+            dgv.Paint += (s, e) =>
+            {
+                if (dgv.Rows.Count == 0)
+                {
+                    TextRenderer.DrawText(
+                        e.Graphics,
+                        "No hay datos para mostrar",
+                        new Font("Segoe UI", 11, FontStyle.Italic),
+                        dgv.ClientRectangle,
+                        Color.Gray,
+                        TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter
+                    );
+                }
+            };
         }
 
+        public static void EstiloGroupBoxSoloTitulo(GroupBox gb, Font tituloFont, Font hijosFont)
+        {
+            // Cambiar el font del título
+            gb.Font = tituloFont;
+
+            // Restaurar los hijos con otra fuente
+            foreach (Control ctrl in gb.Controls)
+            {
+                ctrl.Font = hijosFont;
+            }
+        }
 
 
     }

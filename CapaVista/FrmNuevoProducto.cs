@@ -28,13 +28,6 @@ namespace CapaVista
             UI_Utilidad.EstiloLabels(this);
             UI_Utilidad.EstiloForm(this);
             UI_Utilidad.RedondearForm(this, 28);
-            UI_Utilidad.EstiloTextBox(txtCompra);
-            UI_Utilidad.EstiloTextBox(txtVenta);
-            UI_Utilidad.EstiloTextBox(txtMaximo);
-            UI_Utilidad.EstiloTextBox(txtActual);
-            UI_Utilidad.EstiloTextBox(txtMinimo);
-            UI_Utilidad.EstiloTextBox(txtCant1);
-            UI_Utilidad.EstiloTextBox(txtPor1);
             UI_Utilidad.EstiloBotonPrimarioDegradado(bntCargarImagen);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnSalir);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnGuardar);

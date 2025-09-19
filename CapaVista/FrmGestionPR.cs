@@ -1,9 +1,11 @@
-﻿using CapaEntities;
-using CapaLogica;
-using System;
+﻿using System;
 using System.Data;
+using System.Drawing;
 using System.Web;
 using System.Windows.Forms;
+using CapaEntities;
+using CapaLogica;
+using ProyectoPracticas;
 
 namespace CapaVista
 {
@@ -184,6 +186,43 @@ namespace CapaVista
         private void txtBuscador_TextChanged(object sender, EventArgs e)
         {
             Cargardgvdetalle();
+        }
+
+        private void FrmGestionPR_Shown(object sender, EventArgs e)
+        {
+            UI_Utilidad.EstiloForm(this);
+            UI_Utilidad.RedondearForm(this, 28);
+
+            UI_Utilidad.EstiloBotonPrimarioDegradado(button1);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(button2);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(button4);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(button5);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(button6);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnAtras);
+
+            UI_Utilidad.EstiloDataGridView(dataGridView2);
+            UI_Utilidad.EstiloDataGridView(dataGridView3);
+
+            //UI_Utilidad.EstiloGroupBoxSoloTitulo(groupBox1,
+            //    new Font("Segoe UI", 14, FontStyle.Bold),   // título
+            //    new Font("Segoe UI", 12, FontStyle.Regular) ); // hijos);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            FrmAdminHome home = new FrmAdminHome();
+            home.Show();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

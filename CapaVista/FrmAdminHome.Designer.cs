@@ -337,9 +337,9 @@
             this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(74, 67);
+            this.button4.Location = new System.Drawing.Point(84, 67);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(130, 41);
+            this.button4.Size = new System.Drawing.Size(120, 41);
             this.button4.TabIndex = 1;
             this.button4.Text = "Pagos";
             this.button4.UseVisualStyleBackColor = true;
@@ -398,7 +398,7 @@
             this.button1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(73, 67);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 35);
+            this.button1.Size = new System.Drawing.Size(120, 35);
             this.button1.TabIndex = 0;
             this.button1.Text = "Productos";
             this.button1.UseVisualStyleBackColor = true;
