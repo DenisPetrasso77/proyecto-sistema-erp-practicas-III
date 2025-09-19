@@ -5,7 +5,7 @@ namespace CapaDatos
 {
     public class CD_Conexion
     {
-        private string cadenaConexion = "Server=PC\\SQLEXPRESS;Database=DATOS;Integrated Security=True;";
+        private string cadenaConexion = "Server=localhost\\SQLEXPRESS;Database=DATOS;Integrated Security=True;";
         private SqlConnection conexion;
 
         public SqlConnection Abrir()

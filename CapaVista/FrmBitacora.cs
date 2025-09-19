@@ -114,6 +114,9 @@ namespace CapaVista
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
+            FrmAdminHome home = new FrmAdminHome();
+            home.Show();
+
         }
 
         private void FrmBitacora_Shown(object sender, EventArgs e)
@@ -135,6 +138,8 @@ namespace CapaVista
             UI_Utilidad.EstiloTextBox(txtUsuario);
             UI_Utilidad.EstiloTextBox(txtTabla);
             UI_Utilidad.EstiloTextBox(txtDescripcion);
+
+            UI_Utilidad.EstiloDataGridView(dataGridView1);
         }
     }
 }

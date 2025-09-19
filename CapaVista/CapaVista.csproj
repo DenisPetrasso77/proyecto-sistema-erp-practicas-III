@@ -96,6 +96,23 @@
     <Compile Include="FrmGestionProductos.Designer.cs">
       <DependentUpon>FrmGestionProductos.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPerfil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPerfil.Designer.cs">
+      <DependentUpon>FrmPerfil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSidebar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSidebar.Designer.cs">
+      <DependentUpon>FrmSidebar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="UI_Utilidad.cs" />
     <Compile Include="FrmDetalleRecepcion.cs">
       <SubType>Form</SubType>
@@ -271,6 +288,9 @@
     <EmbeddedResource Include="FrmGestionProductos.resx">
       <DependentUpon>FrmGestionProductos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmPerfil.resx">
+      <DependentUpon>FrmPerfil.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmRemito.resx">
       <DependentUpon>FrmRemito.cs</DependentUpon>
     </EmbeddedResource>
@@ -316,19 +336,17 @@
     <EmbeddedResource Include="FrmGestionPR.resx">
       <DependentUpon>FrmGestionPR.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmSidebar.resx">
+      <DependentUpon>FrmSidebar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GestionProveedores.resx">
       <DependentUpon>GestionProveedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -565,6 +583,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\OjoAbierto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\visibilidad.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ojo_Abierto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ojo_Cerrado.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

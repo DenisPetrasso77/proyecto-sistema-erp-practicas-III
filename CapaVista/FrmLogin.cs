@@ -1,8 +1,10 @@
-﻿using CapaEntities;
-using CapaLogica;
-using System;
+﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using CapaEntities;
+using CapaLogica;
+using ProyectoPracticas;
+using SidebarMenu;
 
 namespace CapaVista
 {
@@ -44,8 +46,8 @@ namespace CapaVista
                 {
                     metodos.Bitacora(Sesion.Usuario.IdUsuario, "Usuarios", $"Intento de Login Exitoso");
                     this.Hide();
-                    FrmAdminHome home = new FrmAdminHome();
-                    home.Show();
+                    FrmSidebar sideBar = new FrmSidebar();
+                    sideBar.Show();
                 }
                 else
                 {
@@ -115,22 +117,36 @@ namespace CapaVista
             if (txtContraseña.UseSystemPasswordChar)
             {
                 txtContraseña.UseSystemPasswordChar = false;
-                pictureBox4.Image= CapaVista.Properties.Resources.OjoAbierto;
+                UI_Utilidad.TextBoxHelper.SetPadding(txtContraseña, 25, 5);
+                pictureBox4.Image= CapaVista.Properties.Resources.Ojo_Abierto;
             }
             else
             {
                 txtContraseña.UseSystemPasswordChar = true;
-                pictureBox4.Image = CapaVista.Properties.Resources.OjoCerrado;
+                UI_Utilidad.TextBoxHelper.SetPadding(txtContraseña, 25, 5);
+                pictureBox4.Image = CapaVista.Properties.Resources.Ojo_Cerrado;
+                
             }
         }
 
         private void pbSalir_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void toolTip1_Popup(object sender, PopupEventArgs e)
         {
+        }
+
+        private void FrmLogin_Shown(object sender, EventArgs e)
+        {
+            this.ActiveControl = null;
+            UI_Utilidad.EstiloForm(this);
+            UI_Utilidad.RedondearForm(this, 28);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnIngresar);
+            UI_Utilidad.EstiloTextBox(txtUsuario, "Usuario");
+            UI_Utilidad.EstiloTextBox(txtContraseña, "Contraseña");
+            UI_Utilidad.AplicarEfectoHover(pbSalir);
         }
     }
 }

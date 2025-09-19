@@ -1,8 +1,9 @@
-﻿using CapaEntities;
-using CapaLogica;
-using System;
+﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using CapaEntities;
+using CapaLogica;
+using ProyectoPracticas;
 
 namespace CapaVista
 {
@@ -261,10 +262,14 @@ namespace CapaVista
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
+            FrmAdminHome home = new FrmAdminHome();
+            home.Show();
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+            this.Hide();
             FrmNuevoProducto frm = new FrmNuevoProducto();
             frm.ShowDialog();
 
@@ -337,6 +342,16 @@ namespace CapaVista
             {
                 txtBuscador.Text = "Buscador...";
             }
+        }
+
+        private void FrmGestionProductos_Shown(object sender, EventArgs e)
+        {
+            UI_Utilidad.EstiloForm(this);
+            UI_Utilidad.RedondearForm(this, 28);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnPedir);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnCerrar);
+            //UI_Utilidad.EstiloDataGridView(dataGridView1);
+
         }
     }
 }

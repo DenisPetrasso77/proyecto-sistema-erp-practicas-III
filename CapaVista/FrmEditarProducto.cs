@@ -1,6 +1,4 @@
-﻿using CapaEntities;
-using CapaLogica;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaEntities;
+using CapaLogica;
+using ProyectoPracticas;
 
 namespace CapaVista
 {
@@ -437,6 +438,12 @@ namespace CapaVista
                     pictureBox1.Image = Image.FromFile(rutaImagenTemporal);
                 }
             }
+        }
+
+        private void FrmEditarProducto_Shown(object sender, EventArgs e)
+        {
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnGuardar);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnSalir);
         }
     }
 }
