@@ -396,7 +396,9 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("@Apellido", usuarioNuevo.Apellido);
                     cmd.Parameters.AddWithValue("@Dni", usuarioNuevo.Dni);
                     cmd.Parameters.AddWithValue("@IdRol", usuarioNuevo.Rol);
-                    cmd.Parameters.AddWithValue("@dv", usuarioNuevo.dv);
+                    cmd.Parameters.AddWithValue("@Pregunta", usuarioNuevo.Pregunta);
+                    cmd.Parameters.AddWithValue("@Respuesta", usuarioNuevo.Respuesta);
+                    cmd.Parameters.AddWithValue("@Correo", usuarioNuevo.Correo);
                     cmd.ExecuteNonQuery();
                     return "Usuario Registrado con Exito";
                 }
@@ -1257,7 +1259,6 @@ namespace CapaDatos
             }
             return dt;
         }
-
         public DataTable TraerDetalleProductos(string idproducto)
         {
             DataTable dt = new DataTable();
@@ -1270,6 +1271,19 @@ namespace CapaDatos
             }
             return dt;
         }
+        public DataTable TraerPregunta(string dato)
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_TraerPregunta", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Dato", dato);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
 
 
         #endregion

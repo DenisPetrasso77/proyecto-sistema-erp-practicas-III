@@ -42,6 +42,10 @@ namespace CapaLogica
         { 
             return metodos.SeleccionarProductos();
         }
+        public DataTable TraerPregunta(string dato)
+        {
+            return metodos.TraerPregunta(dato);
+        }
         public string InsertarDevolucion(Devoluciones devoluciones)
         {
             return metodos.InsertarDevolucion(devoluciones);
@@ -232,7 +236,6 @@ namespace CapaLogica
         {
             return metodos.InsertarCate(nombre);
         }
-
         public string InsertarMarca(string nombre)
         {
             return metodos.InsertarMarca(nombre);

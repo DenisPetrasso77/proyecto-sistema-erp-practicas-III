@@ -27,7 +27,7 @@ namespace CapaVista
                 string usuario = fila["Usuario"].ToString().ToLower();
                 string estado = fila["Estado"].ToString();
                 string bloqueado = Convert.ToInt32(fila["Bloqueado"]) == 0 ? "No" : "Si";
-                if (string.IsNullOrWhiteSpace(texto) || txtBuscador.Text == "BUSCADOR...")
+                if (string.IsNullOrWhiteSpace(texto) || txtBuscador.Text == "Buscador de Usuarios")
                 {
                     dataGridView1.Rows.Add(fila["IdUsuario"], fila["Usuario"], fila["Nombre"], fila["Apellido"], fila["Dni"], fila["NombreRol"], bloqueado, fila["Estado"].ToString());
                 }
@@ -43,15 +43,9 @@ namespace CapaVista
             Cargarbuscador();
         }
 
-        private void pictureBox1_Click_1(object sender, EventArgs e)
-        {
-            new FrmRegistro().ShowDialog();
-            Cargarbuscador();
-        }
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            new FrmRegistro().ShowDialog();
+            new FrmAltaUsuario().ShowDialog();
             Cargarbuscador();
         }
 

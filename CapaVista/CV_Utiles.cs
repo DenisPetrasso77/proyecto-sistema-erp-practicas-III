@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Security.Cryptography;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -17,6 +19,7 @@ namespace CapaVista
             }
             return false;
         }
+        
         public static bool ComboboxVacios(params ComboBox[] campos)
         {
             foreach (ComboBox campo in campos)
