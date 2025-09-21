@@ -59,22 +59,29 @@ namespace CapaVista
         private void button2_Click(object sender, EventArgs e)
         {
             string respuesta = CV_Seguridad.HashearSHA256(txtRespuesta.Text.ToLower());
-            if (metodos.VerificarRespuesta(txtDato.Text, respuesta) != 0)
+            int resultado = metodos.VerificarRespuesta(txtDato.Text, respuesta);
+            switch(resultado)
             {
-                label4.Visible = true;
-                label5.Visible = true;
-                textBox1.Visible= true;
-                textBox2.Visible = true;
-                button3.Visible = true;
-                txtPregunta.Enabled = false;
-                txtRespuesta.Enabled = false;
-                button2.Enabled = false;
-                button2.TabStop= false;
-            }
-            else
-            {
-                MessageBox.Show("Respuesta incorrecta, intente nuevamente");
-                return;
+                case 1:
+                    label4.Visible = true;
+                    label5.Visible = true;
+                    textBox1.Visible = true;
+                    textBox2.Visible = true;
+                    button3.Visible = true;
+                    txtPregunta.Enabled = false;
+                    txtRespuesta.Enabled = false;
+                    button2.Enabled = false;
+                    button2.TabStop = false;
+                    break;
+                case 0:
+                    MessageBox.Show("Respuesta Incorrecta, intente nuevamente");
+                    break;
+                case -2:
+                    MessageBox.Show("Usuario Bloqueado, Contacte con Administracion");
+                    break;
+                case -1:
+                    MessageBox.Show("Usuario No Encontrado");
+                    break;
             }
         }
 
