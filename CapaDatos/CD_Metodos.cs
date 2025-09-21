@@ -1137,6 +1137,27 @@ namespace CapaDatos
             }
             return dt;
         }
+        public int VerificarRespuesta(string dato,string respuesta)
+        {
+            using (SqlCommand cmd = new SqlCommand("sp_VerificarPregunta", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Dato", dato);
+                cmd.Parameters.AddWithValue("@Respuesta", respuesta);
+                return Convert.ToInt32(cmd.ExecuteScalar());
+            }
+        }
+        public string CambiarContraseña(string dato, string respuesta)
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_ActualizarContraseña", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Dato", dato);
+                cmd.Parameters.AddWithValue("@Contraseña", respuesta);
+                return cmd.ExecuteScalar()?.ToString() ?? string.Empty;
+            } 
+        }
         public DataTable RecepcionOrdenes()
         {
             DataTable dt = new DataTable();

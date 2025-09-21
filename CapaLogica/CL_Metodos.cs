@@ -46,6 +46,14 @@ namespace CapaLogica
         {
             return metodos.TraerPregunta(dato);
         }
+        public int VerificarRespuesta(string dato, string respuesta)
+        { 
+            return metodos.VerificarRespuesta(dato, respuesta);
+        }
+        public string CambiarContraseña(string dato, string respuesta)
+        { 
+            return metodos.CambiarContraseña(dato, respuesta);
+        }
         public string InsertarDevolucion(Devoluciones devoluciones)
         {
             return metodos.InsertarDevolucion(devoluciones);

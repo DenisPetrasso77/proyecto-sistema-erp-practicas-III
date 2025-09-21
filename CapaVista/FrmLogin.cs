@@ -148,5 +148,16 @@ namespace CapaVista
             UI_Utilidad.EstiloTextBox(txtContraseña, "Contraseña");
             UI_Utilidad.AplicarEfectoHover(pbSalir);
         }
+
+        private void lblOlvidoContraseña_Click(object sender, EventArgs e)
+        {
+            FrmRecupero frmRecupero = new FrmRecupero();
+            frmRecupero.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(CV_Seguridad.HashearSHA256(txtUsuario.Text));
+        }
     }
 }
