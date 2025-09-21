@@ -42,6 +42,7 @@ namespace CapaVista
                 txtPregunta.Visible = true;
                 txtRespuesta.Visible = true;
                 button2.Visible = true;
+                button1.TabStop= false;
             }
             else
             {
@@ -68,6 +69,7 @@ namespace CapaVista
                 txtPregunta.Enabled = false;
                 txtRespuesta.Enabled = false;
                 button2.Enabled = false;
+                button2.TabStop= false;
             }
             else
             {
