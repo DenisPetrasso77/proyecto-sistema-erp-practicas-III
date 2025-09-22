@@ -66,6 +66,7 @@ namespace CapaVista
         private void FrmLogin_Load(object sender, EventArgs e)
         {
             CargarToolsTip();
+            txtUsuario.Focus();
             //if (!VerificarIntegridadUsuarios())
             //{
             //    MessageBox.Show("Error en la integridad de los datos, por favor contacte con soporte");

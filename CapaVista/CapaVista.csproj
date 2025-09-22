@@ -234,11 +234,11 @@
     <Compile Include="FrmNuevaMedida.Designer.cs">
       <DependentUpon>FrmNuevaMedida.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmAdminHome.cs">
+    <Compile Include="FrmHome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmAdminHome.Designer.cs">
-      <DependentUpon>FrmAdminHome.cs</DependentUpon>
+    <Compile Include="FrmHome.Designer.cs">
+      <DependentUpon>FrmHome.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
@@ -339,8 +339,8 @@
     <EmbeddedResource Include="FrmNuevaMedida.resx">
       <DependentUpon>FrmNuevaMedida.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmAdminHome.resx">
-      <DependentUpon>FrmAdminHome.cs</DependentUpon>
+    <EmbeddedResource Include="FrmHome.resx">
+      <DependentUpon>FrmHome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
@@ -468,7 +468,7 @@
     <None Include="Resources\bienvenido-de-nuevo.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\box %281%29.png" />
+    <None Include="Resources\Caja1.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\carrito-de-supermercado.png" />

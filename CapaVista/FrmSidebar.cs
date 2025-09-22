@@ -124,7 +124,7 @@ namespace SidebarMenu
         private void btnHome_Click(object sender, EventArgs e)
         {
             this.Close();
-            FrmAdminHome home = new FrmAdminHome();
+            FrmHome home = new FrmHome();
             home.Show();
         }
 
@@ -138,7 +138,7 @@ namespace SidebarMenu
         private void pbHome_Click(object sender, EventArgs e)
         {
             this.Close();
-            FrmAdminHome home = new FrmAdminHome();
+            FrmHome home = new FrmHome();
             home.Show();
         }
 

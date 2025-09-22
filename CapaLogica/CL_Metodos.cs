@@ -46,9 +46,18 @@ namespace CapaLogica
         {
             return metodos.TraerPregunta(dato);
         }
+        public DataTable SeleccionarDescuentos(string codigo)
+        { 
+            return metodos.SeleccionarDescuentos(codigo);
+        }
+
         public int VerificarRespuesta(string dato, string respuesta)
         { 
             return metodos.VerificarRespuesta(dato, respuesta);
+        }
+        public DataTable ProductosVenta()
+        { 
+            return metodos.ProductosVenta();
         }
         public string CambiarContraseña(string dato, string respuesta)
         { 
@@ -106,7 +115,10 @@ namespace CapaLogica
         {
             return metodos.RecepcionOrdenes();
         }
-
+        public DataTable ProductoSeleccionado(string codigo)
+        { 
+            return metodos.ProductoSeleccionado(codigo);
+        }
         public DataTable TraerDetalleOrdenesCompra(int id)
         {
             return metodos.TraerDetalleOrdenesCompra(id);

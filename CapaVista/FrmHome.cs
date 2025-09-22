@@ -10,14 +10,14 @@ using SidebarMenu;
 
 namespace CapaVista
 {
-    public partial class FrmAdminHome : Form
+    public partial class FrmHome : Form
     {
         CL_Metodos metodos = new CL_Metodos();
         DataTable productosCache = new DataTable();
         FrmCargarCategorias cate = new FrmCargarCategorias();
 
 
-        public FrmAdminHome()
+        public FrmHome()
         {
             InitializeComponent();
         }
@@ -123,6 +123,12 @@ namespace CapaVista
             this.Hide();
             FrmSidebar sideBar = new FrmSidebar();
             sideBar.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FrmVentas ventas = new FrmVentas();
+            ventas.ShowDialog();
         }
     }
 }

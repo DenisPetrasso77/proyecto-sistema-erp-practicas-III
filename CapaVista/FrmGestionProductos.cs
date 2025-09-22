@@ -1,9 +1,9 @@
-﻿using System;
-using System.Data;
-using System.Windows.Forms;
-using CapaEntities;
+﻿using CapaEntities;
 using CapaLogica;
 using ProyectoPracticas;
+using System;
+using System.Data;
+using System.Windows.Forms;
 
 namespace CapaVista
 {
@@ -18,7 +18,7 @@ namespace CapaVista
         {
             DataTable dt = metodos.SeleccionarProductos();
             dataGridView1.Rows.Clear();
-            string textoBuscado = txtBuscador.Text.Trim().ToLower();
+            string textoBuscado = txtBuscador.Text.Trim();
 
             foreach (DataRow fila in dt.Rows)
             {
@@ -32,9 +32,9 @@ namespace CapaVista
 
                 if (!string.IsNullOrEmpty(textoBuscado) && textoBuscado != "Buscador...")
                 {
-                    if (!(codigo.ToLower().Contains(textoBuscado) ||
-                          categoria.ToLower().Contains(textoBuscado) ||
-                          item.ToLower().Contains(textoBuscado)))
+                    if (!(codigo.ToLower().Contains(textoBuscado.ToLower()) ||
+                          categoria.ToLower().Contains(textoBuscado.ToLower()) ||
+                          item.ToLower().Contains(textoBuscado.ToLower())))
                     {
                         continue;
                     }
@@ -171,23 +171,17 @@ namespace CapaVista
 
         private void CargarProductosStockBajo()
         {
-            string codigo;
-            string descripcion;
-            int stockactual;
-            string formadecompra;
-            int sugerencia;
-            int calculoreferencia;
             DataTable stockproducmin = metodos.ProductosStockMin();
             dataGridView1.Rows.Clear();
 
             foreach (DataRow fila in stockproducmin.Rows)
             {
-                codigo = fila["CodigoProducto"].ToString().ToUpper(); ;
-                descripcion = $"{fila["Producto"]} {fila["Marca"]} {fila["Medida"]}".ToString().ToUpper();
-                stockactual = Convert.ToInt32(fila["StockActual"].ToString().ToUpper());
-                formadecompra = fila["Unidad"].ToString().ToUpper();
-                calculoreferencia = (Convert.ToInt32(fila["StockMaximo"]) - Convert.ToInt32(fila["StockActual"]));
-                sugerencia = calculoreferencia;
+                string codigo = fila["CodigoProducto"].ToString().ToUpper(); ;
+                string descripcion = $"{fila["Producto"]} {fila["Marca"]} {fila["Medida"]}".ToString().ToUpper();
+                int stockactual = Convert.ToInt32(fila["StockActual"].ToString().ToUpper());
+                string formadecompra = fila["Unidad"].ToString().ToUpper();
+                int calculoreferencia = (Convert.ToInt32(fila["StockMaximo"]) - Convert.ToInt32(fila["StockActual"]));
+                int sugerencia = calculoreferencia;
                 dataGridView1.Rows.Add(codigo, descripcion, $"{stockactual} {formadecompra}", $"{sugerencia} {formadecompra}");
             }
         }
@@ -262,7 +256,7 @@ namespace CapaVista
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
-            FrmAdminHome home = new FrmAdminHome();
+            FrmHome home = new FrmHome();
             home.Show();
 
         }

@@ -211,7 +211,7 @@ namespace CapaVista
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
-            FrmAdminHome home = new FrmAdminHome();
+            FrmHome home = new FrmHome();
             home.Show();
         }
 

@@ -1,14 +1,7 @@
 ﻿using CapaLogica;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using TheArtOfDevHtmlRenderer.Core;
 
 namespace CapaVista
 {
@@ -36,13 +29,12 @@ namespace CapaVista
             {
                 txtPregunta.Text = dt.Rows[0]["Pregunta"].ToString();
                 txtDato.Enabled = false;
-                button1.Enabled = true;
+                button1.Enabled = false;
                 label2.Visible = true;
                 label3.Visible= true;
                 txtPregunta.Visible = true;
                 txtRespuesta.Visible = true;
                 button2.Visible = true;
-                button1.TabStop= false;
             }
             else
             {
@@ -71,7 +63,6 @@ namespace CapaVista
                     txtPregunta.Enabled = false;
                     txtRespuesta.Enabled = false;
                     button2.Enabled = false;
-                    button2.TabStop = false;
                     break;
                 case 0:
                     MessageBox.Show("Respuesta Incorrecta, intente nuevamente");

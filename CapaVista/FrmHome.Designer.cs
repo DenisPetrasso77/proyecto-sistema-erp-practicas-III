@@ -1,6 +1,6 @@
 ﻿namespace CapaVista
 {
-    partial class FrmAdminHome
+    partial class FrmHome
     {
         /// <summary>
         /// Required designer variable.
@@ -60,6 +60,7 @@
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.lbltituloHome = new System.Windows.Forms.Label();
             this.btnAtras = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.pnlAlmacen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.pnlCompras.SuspendLayout();
@@ -445,11 +446,22 @@
             this.btnAtras.UseVisualStyleBackColor = true;
             this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
-            // FrmAdminHome
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(77, 589);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(164, 62);
+            this.button2.TabIndex = 25;
+            this.button2.Text = "Vender";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // FrmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1034, 713);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.btnAtras);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlAlmacen);
@@ -458,7 +470,7 @@
             this.Controls.Add(this.pnlProveedores);
             this.Controls.Add(this.pnlPagos);
             this.Controls.Add(this.pnlProductos);
-            this.Name = "FrmAdminHome";
+            this.Name = "FrmHome";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "INICIO";
             this.Shown += new System.EventHandler(this.FrmAdminHome_Shown);
@@ -514,5 +526,6 @@
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Label lbltituloHome;
         private System.Windows.Forms.Button btnAtras;
+        private System.Windows.Forms.Button button2;
     }
 }

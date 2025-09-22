@@ -111,7 +111,7 @@ namespace CapaVista
             else if (File.Exists(rutaImagenBmp))
                 pictureBox1.Image = Image.FromFile(rutaImagenBmp);
             else
-                pictureBox1.Image = null;
+                pictureBox1.Image = Properties.Resources.box;
         }
         private void FrmEditarProducto_Load(object sender, EventArgs e)
         {
@@ -407,23 +407,27 @@ namespace CapaVista
                 PrecioVenta = precioventa,
                 Descuentos = descuentos,
             };
-            string carpetaDestino = Path.Combine(Application.StartupPath, "Imagenes");
-            if (!Directory.Exists(carpetaDestino))
-                Directory.CreateDirectory(carpetaDestino);
-
-            string extension = Path.GetExtension(rutaImagenTemporal);
-            string destino = Path.Combine(carpetaDestino, txtCodigo.Text + extension);
-
-            if (File.Exists(destino))
+            if (!string.IsNullOrEmpty(rutaImagenTemporal))
             {
-                File.Delete(destino);
-            }
+                string carpetaDestino = Path.Combine(Application.StartupPath, "Imagenes", "Productos");
+                if (!Directory.Exists(carpetaDestino))
+                    Directory.CreateDirectory(carpetaDestino);
 
-            File.Copy(rutaImagenTemporal, destino, true);
+                string extension = Path.GetExtension(rutaImagenTemporal);
+                string destino = Path.Combine(carpetaDestino, txtCodigo.Text + extension);
+
+                if (File.Exists(destino))
+                {
+                    File.Delete(destino);
+                }
+
+                File.Copy(rutaImagenTemporal, destino, true);
+            }
+            
             string resultado = metodos.ActualizarProducto(productoNuevo);
             MessageBox.Show(resultado);
             CV_Utiles.LimpiarControles(this);
-            txtCodigo.Focus();
+            this.Close();
         }
 
         private void bntCargarImagen_Click(object sender, EventArgs e)
