@@ -1,10 +1,10 @@
-﻿using System;
-using System.Data;
-using System.Windows.Forms;
-using CapaEntities;
+﻿using CapaEntities;
 using CapaLogica;
 using ProyectoPracticas;
 using SidebarMenu;
+using System;
+using System.Data;
+using System.Windows.Forms;
 
 namespace CapaVista
 {
@@ -27,39 +27,24 @@ namespace CapaVista
                 MessageBox.Show("Los datos no pueden ser numericos");
                 return;
             }
-            Sesion.Usuario = metodos.DatosIngreso(txtUsuario.Text);
-
-            if (Sesion.Usuario == null)
+            var resultado = metodos.VerificarIngreso(txtUsuario.Text,CV_Seguridad.HashearSHA256(txtContraseña.Text.Trim()));
+            if (resultado != 1.ToString())
             {
-                MessageBox.Show("Datos Incorrectos");
+                MessageBox.Show(resultado);
                 return;
-            }
-            if (Sesion.Usuario.Bloqueado == "1")
-            {
-                metodos.Bitacora(Sesion.Usuario.IdUsuario, "Usuarios", "Intento de Login Con Usuario Bloqueado");
-                MessageBox.Show("Usuario Bloqueado, Contacte con Administracion");
-                return;
-            }
+            }                  
             try
             {
-                if (CV_Seguridad.VertificarHasheo(Sesion.Usuario.Contraseña, txtContraseña.Text))
-                {
-                    metodos.Bitacora(Sesion.Usuario.IdUsuario, "Usuarios", $"Intento de Login Exitoso");
-                    this.Hide();
-                    FrmSidebar sideBar = new FrmSidebar();
-                    sideBar.Show();
-                }
-                else
-                {
-                    metodos.Bitacora(Sesion.Usuario.IdUsuario, "Usuarios", $"Intento de Login Erroneo Clave Usada {txtContraseña.Text}");
-                    metodos.Intentos(Sesion.Usuario.Usuario);
-                    MessageBox.Show("Datos Incorrectos");
-                    return;
-                }
+                Sesion.Usuario = metodos.DatosIngreso(txtUsuario.Text);
+                metodos.Bitacora(Sesion.Usuario.IdUsuario, "Usuarios", $"Intento de Login Exitoso");
+                this.Hide();
+                FrmSidebar sideBar = new FrmSidebar();
+                sideBar.Show();
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Datos Incorrectos" + ex.Message);
+                MessageBox.Show("Error al intentar verificar los datos" + ex.Message);
             }
         }
 
@@ -154,11 +139,6 @@ namespace CapaVista
         {
             FrmRecupero frmRecupero = new FrmRecupero();
             frmRecupero.ShowDialog();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(CV_Seguridad.HashearSHA256(txtUsuario.Text));
         }
     }
 }

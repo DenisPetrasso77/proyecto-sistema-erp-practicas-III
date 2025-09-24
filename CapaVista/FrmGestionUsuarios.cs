@@ -7,11 +7,11 @@ using System.Windows.Forms;
 
 namespace CapaVista
 {
-    public partial class FrmAdmusuarios : Form
+    public partial class FrmGestionUsuarios : Form
     {
         CL_Metodos metodos = new CL_Metodos();
         DataTable UsuariosCache;
-        public FrmAdmusuarios()
+        public FrmGestionUsuarios()
         {
             InitializeComponent(); 
         }
@@ -90,8 +90,8 @@ namespace CapaVista
                 return;
             }
             int IdUsuario = Convert.ToInt32(dataGridView1.CurrentRow.Cells["IdUsuario"].Value.ToString());
-            FrmModUsuarios modUsuarios = new FrmModUsuarios(IdUsuario);
-            modUsuarios.Show();
+            FrmEditarUsuario editusuario = new FrmEditarUsuario(IdUsuario);
+            editusuario.Show();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

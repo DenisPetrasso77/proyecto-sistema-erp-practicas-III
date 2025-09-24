@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web;
 
 namespace CapaDatos
 {
@@ -101,7 +102,7 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
         }
-        public int ActualizarUsuario(string usuario, string nombre, string apellido, string dni, int rol, int bloqueado)
+        public int ActualizarUsuario(string usuario, string nombre, string apellido, string dni, int rol, int bloqueado,string correo)
         {
             try
             {
@@ -114,6 +115,7 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("Dni", dni);
                     cmd.Parameters.AddWithValue("Rol", rol);
                     cmd.Parameters.AddWithValue("Bloqueado", bloqueado);
+                    cmd.Parameters.AddWithValue("Correo", correo);
                     return cmd.ExecuteNonQuery();
                 }
             }
@@ -1089,6 +1091,18 @@ namespace CapaDatos
             }
             return dt;
         }
+        public DataTable SeleccionarDatosUsuario(int usuario)
+        { 
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarDatosUsuario", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Usuario", usuario);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
         public DataTable TraerDetalleOrdenesCompra(int id)
         {
             DataTable dt = new DataTable();
@@ -1339,9 +1353,40 @@ namespace CapaDatos
             }
             return dt;
         }
+        public DataTable SeleccionarClientes()
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarClientes", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public string RestablecerContraseña(int idusuario,string contraseña)
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_RestablecerContraseña", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Usuario", idusuario);
+                cmd.Parameters.AddWithValue("@Contraseña", contraseña);
+                return cmd.ExecuteScalar()?.ToString() ?? string.Empty;
+            }
+        }
 
-
-
+        public string VerificarIngreso(string usuario,string contraseña)
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_VerificarDatosIngreso", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Usuario", usuario);
+                cmd.Parameters.AddWithValue("@Contraseña", contraseña);
+                return cmd.ExecuteScalar()?.ToString() ?? string.Empty;
+            }
+        }
         #endregion
     }
 }

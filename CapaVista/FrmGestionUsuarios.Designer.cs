@@ -1,6 +1,6 @@
 ﻿namespace CapaVista
 {
-    partial class FrmAdmusuarios
+    partial class FrmGestionUsuarios
     {
         /// <summary>
         /// Required designer variable.

@@ -84,6 +84,12 @@
     <Compile Include="FrmEditarProducto.Designer.cs">
       <DependentUpon>FrmEditarProducto.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmEditarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEditarUsuario.Designer.cs">
+      <DependentUpon>FrmEditarUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmNuevoProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,11 +150,11 @@
     <Compile Include="FrmFactura.Designer.cs">
       <DependentUpon>FrmFactura.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmAdmusuarios.cs">
+    <Compile Include="FrmGestionUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmAdmusuarios.Designer.cs">
-      <DependentUpon>FrmAdmusuarios.cs</DependentUpon>
+    <Compile Include="FrmGestionUsuarios.Designer.cs">
+      <DependentUpon>FrmGestionUsuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmBitacora.cs">
       <SubType>Form</SubType>
@@ -273,6 +279,9 @@
     <EmbeddedResource Include="FrmEditarProducto.resx">
       <DependentUpon>FrmEditarProducto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmEditarUsuario.resx">
+      <DependentUpon>FrmEditarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmNuevoProducto.resx">
       <DependentUpon>FrmNuevoProducto.cs</DependentUpon>
     </EmbeddedResource>
@@ -282,8 +291,8 @@
     <EmbeddedResource Include="FrmFactura.resx">
       <DependentUpon>FrmFactura.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmAdmusuarios.resx">
-      <DependentUpon>FrmAdmusuarios.cs</DependentUpon>
+    <EmbeddedResource Include="FrmGestionUsuarios.resx">
+      <DependentUpon>FrmGestionUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmBitacora.resx">
       <DependentUpon>FrmBitacora.cs</DependentUpon>

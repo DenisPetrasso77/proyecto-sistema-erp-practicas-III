@@ -210,5 +210,21 @@ namespace CapaVista
                 AgregarProductoSeleccionado();
             }
         }
+        private void CargarClientes()
+        {
+            cmbCliente.Items.Clear();
+            DataTable clientes = metodos.SeleccionarClientes();
+            cmbCliente.Items.Add("1-Consumidor Final");
+            foreach (DataRow filas in clientes.Rows)
+            {
+                string fila = $"{filas["IdCliente"]}-{filas["Nombre"]} {filas["Apellido"]} ({filas["Dni"]})";
+                cmbCliente.Items.Add(fila);
+            }
+        }
+
+        private void FrmVentas_Load(object sender, EventArgs e)
+        {
+            CargarClientes();
+        }
     }
 }

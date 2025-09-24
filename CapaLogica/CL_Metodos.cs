@@ -50,7 +50,10 @@ namespace CapaLogica
         { 
             return metodos.SeleccionarDescuentos(codigo);
         }
-
+        public DataTable SeleccionarDatosUsuario(int usuario)
+        { 
+            return metodos.SeleccionarDatosUsuario(usuario);
+        }
         public int VerificarRespuesta(string dato, string respuesta)
         { 
             return metodos.VerificarRespuesta(dato, respuesta);
@@ -293,6 +296,18 @@ namespace CapaLogica
         public string InsertarPR(int idusuario, DataTable detallepr)
         {
             return metodos.InsertarPR(idusuario,detallepr);
+        }
+        public string RestablecerContraseña(int idusuario,string contraseña)
+        { 
+            return metodos.RestablecerContraseña(idusuario,contraseña);
+        }
+        public string VerificarIngreso(string usuario, string contraseña)
+        {
+            return metodos.VerificarIngreso(usuario, contraseña);
+        }
+        public DataTable SeleccionarClientes()
+        { 
+            return metodos.SeleccionarClientes();
         }
         #endregion
     }
