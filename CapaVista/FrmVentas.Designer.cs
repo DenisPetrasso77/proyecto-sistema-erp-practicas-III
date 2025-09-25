@@ -52,9 +52,7 @@
             this.txtBuscador = new System.Windows.Forms.TextBox();
             this.btnVenta = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtTotal = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtIva = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -138,7 +136,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::CapaVista.Properties.Resources.ChatGPT_Image_3_sept_2025__23_41_43;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 418);
+            this.pictureBox2.Location = new System.Drawing.Point(12, 418);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(195, 134);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -148,6 +146,8 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Codigo,
@@ -158,7 +158,9 @@
             this.Precio,
             this.Subtotal});
             this.dataGridView1.Location = new System.Drawing.Point(12, 65);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1003, 275);
             this.dataGridView1.TabIndex = 37;
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
@@ -294,58 +296,40 @@
             // 
             // btnVenta
             // 
-            this.btnVenta.Location = new System.Drawing.Point(866, 504);
+            this.btnVenta.Location = new System.Drawing.Point(859, 454);
             this.btnVenta.Name = "btnVenta";
-            this.btnVenta.Size = new System.Drawing.Size(149, 35);
+            this.btnVenta.Size = new System.Drawing.Size(162, 64);
             this.btnVenta.TabIndex = 45;
             this.btnVenta.Text = "VENDER";
             this.btnVenta.UseVisualStyleBackColor = true;
+            this.btnVenta.Click += new System.EventHandler(this.btnVenta_Click);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(824, 447);
+            this.label8.Location = new System.Drawing.Point(824, 429);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(36, 19);
             this.label8.TabIndex = 55;
             this.label8.Text = "IVA";
             // 
-            // label9
+            // txtIva
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(806, 479);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(54, 19);
-            this.label9.TabIndex = 57;
-            this.label9.Text = "Total";
-            // 
-            // txtTotal
-            // 
-            this.txtTotal.Location = new System.Drawing.Point(866, 472);
-            this.txtTotal.Multiline = true;
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(149, 26);
-            this.txtTotal.TabIndex = 56;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(866, 440);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(149, 26);
-            this.textBox1.TabIndex = 58;
+            this.txtIva.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIva.Location = new System.Drawing.Point(866, 422);
+            this.txtIva.Multiline = true;
+            this.txtIva.Name = "txtIva";
+            this.txtIva.Size = new System.Drawing.Size(149, 26);
+            this.txtIva.TabIndex = 58;
             // 
             // FrmVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1033, 554);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtIva);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btnVenta);
             this.Controls.Add(this.groupBox1);
@@ -387,11 +371,9 @@
         private System.Windows.Forms.Button btnVenta;
         private System.Windows.Forms.PictureBox pictureBox1;
         protected System.Windows.Forms.Label label8;
-        protected System.Windows.Forms.Label label9;
-        protected System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
-        protected System.Windows.Forms.TextBox textBox1;
+        protected System.Windows.Forms.TextBox txtIva;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Producto;

@@ -24,14 +24,14 @@ namespace CapaVista
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (metodos.ActualizarUsuario(textBox1.Text, textBox2.Text, textBox3.Text, textBox6.Text, Convert.ToInt32(comboBox2.Text), comboBox1.SelectedIndex) > 0)
-            {
-                MessageBox.Show("Usuario Actualizado");
-            }
-            else
-            {
-                MessageBox.Show("Error");
-            }
+            //if (metodos.ActualizarUsuario(textBox1.Text, textBox2.Text, textBox3.Text, textBox6.Text, Convert.ToInt32(comboBox2.Text), comboBox1.SelectedIndex) > 0)
+            //{
+            //    MessageBox.Show("Usuario Actualizado");
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Error");
+            //}
         }
         private void CargarDatos()
         {

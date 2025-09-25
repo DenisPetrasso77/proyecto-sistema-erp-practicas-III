@@ -142,7 +142,7 @@ namespace CapaVista
         private void listBox1_Click(object sender, EventArgs e)
         {
             AgregarProductoSeleccionado();
-            //Calculartotal();
+            Calculartotal();
         }
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -165,6 +165,7 @@ namespace CapaVista
                     decimal subtotal = (precio * cantidad) * (1 - (descuento / 100m));
                     row.Cells["Subtotal"].Value = subtotal.ToString("0.00");
                 }
+                Calculartotal();
             }
         }
 
@@ -225,6 +226,32 @@ namespace CapaVista
         private void FrmVentas_Load(object sender, EventArgs e)
         {
             CargarClientes();
+        }
+        private void Calculartotal()
+        {
+            decimal total = 0;
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (decimal.TryParse(row.Cells["Subtotal"].Value?.ToString(), out decimal subtotal))
+                {
+                    total += subtotal;
+                }
+            }
+            btnVenta.Text = $"Vender \n ${total:0.00}";
+            txtIva.Text = $"{total * 0.21m:0.00}";
+        }
+
+        private void btnVenta_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.Rows.Count == 0) { return; }
+            if (cmbCliente.SelectedItem == null)
+            {
+                MessageBox.Show("Seleccione un cliente para continuar.",
+                                "Cliente no seleccionado",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                return;
+            }
         }
     }
 }

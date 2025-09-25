@@ -247,9 +247,9 @@ namespace CapaLogica
         {
             return metodos.ActualizarDetallPR(iddetallepr, IdPR, CantidadNueva, Usuariomodificacion, Fechamodificacion);
         }
-        public int ActualizarUsuario(string usuario, string nombre, string apellido, string dni, int rol, int bloqueado)
+        public int ActualizarUsuario(string usuario, string nombre, string apellido, string dni, int rol, int bloqueado,string correo)
         {
-            return metodos.ActualizarUsuario(usuario, nombre, apellido, dni, rol, bloqueado);
+            return metodos.ActualizarUsuario(usuario, nombre, apellido, dni, rol, bloqueado,correo);
         }
         public string Bitacora(int usuario, string tabla, string descripcion)
         { 
