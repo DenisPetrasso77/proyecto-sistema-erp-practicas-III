@@ -771,7 +771,7 @@ namespace CapaDatos
             {
                 conexion.Cerrar();
             }
-        }
+        }       
         public string InsertarInformeRecepcion(InformesRecepcion informesRecepcion)
         {
             try
@@ -851,6 +851,89 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
         }
+        public string InsertarVentas(Ventas ventas)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_InsertarVentas", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@FormadePago", ventas.FormaPago);
+                    cmd.Parameters.AddWithValue("@IdUsuario", ventas.IdUsuario);
+                    cmd.Parameters.AddWithValue("@Fecha", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@Total", ventas.total);
+                    cmd.Parameters.AddWithValue("@IdCliente", ventas.cliente);
+                    cmd.Parameters.AddWithValue("@Comprobante", ventas.comprobante);
+                    DataTable detalle = new DataTable();
+
+                    detalle.Columns.Add("IdProducto", typeof(string));
+                    detalle.Columns.Add("Producto", typeof(string));
+                    detalle.Columns.Add("Cantidad", typeof(int));
+                    detalle.Columns.Add("Descuento", typeof(int));
+                    detalle.Columns.Add("Precio", typeof(decimal));
+
+                    foreach (var desc in ventas.Detalle)
+                    {
+
+                        detalle.Rows.Add(desc.Idproducto, desc.Producto, desc.Cantidad, desc.Descuento, desc.precio);
+                    }
+
+                    SqlParameter tvpParam = cmd.Parameters.AddWithValue("@Detalles", detalle);
+                    tvpParam.SqlDbType = SqlDbType.Structured;
+                    tvpParam.TypeName = "dbo.t_DetalleVentas";
+                    return cmd.ExecuteScalar()?.ToString() ?? string.Empty;
+                }
+            }
+            catch (SqlException ex)
+            {
+                return "Error:" + ex.Message;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+        public string InsertarCliente(Cliente cliente)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_InsertarCliente", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    DataTable detalle = new DataTable();
+
+                    detalle.Columns.Add("Nombre", typeof(string));
+                    detalle.Columns.Add("Apellido", typeof(string));
+                    detalle.Columns.Add("Dni", typeof(string));
+                    detalle.Columns.Add("Correo", typeof(string));
+                    detalle.Columns.Add("CodArea", typeof(int));
+                    detalle.Columns.Add("Telefono", typeof(string));
+                    detalle.Columns.Add("Calle", typeof(string));
+                    detalle.Columns.Add("Altura", typeof(int));
+                    detalle.Columns.Add("Provincia", typeof(int));
+                    detalle.Columns.Add("Localidad", typeof(int));
+                    detalle.Columns.Add("CodigoPostal", typeof(int));
+                    detalle.Columns.Add("Observaciones", typeof(string));
+                    detalle.Columns.Add("IdUsuario", typeof(int));
+
+                    detalle.Rows.Add(cliente.Nombre, cliente.Apellido, cliente.Dni, cliente.Correo, cliente.CodigoArea,cliente.Telefono,cliente.DireccionCalle,cliente.DireccionAltura,cliente.DireccionProvincia,cliente.DireccionLocalidad,cliente.DireccionCodigoPostal,cliente.Observaciones,cliente.IdUsuario);
+
+                    SqlParameter tvpParam = cmd.Parameters.AddWithValue("@Detalle", detalle);
+                    tvpParam.SqlDbType = SqlDbType.Structured;
+                    tvpParam.TypeName = "dbo.t_DetalleCliente";
+                    return cmd.ExecuteScalar()?.ToString() ?? string.Empty;
+                }
+            }
+            catch (SqlException ex)
+            {
+                return "Error:" + ex.Message;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
         public string InsertarOrdenesPago(OrdenesPago OrdenesPago)
         {
             try
@@ -909,6 +992,17 @@ namespace CapaDatos
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@ID", id);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable Provincias()
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarProvincias", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
             }
@@ -1074,6 +1168,17 @@ namespace CapaDatos
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@tabla", tabla);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable SeleccionarListadoClientes()
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarListadoClientes", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
             }
@@ -1329,6 +1434,18 @@ namespace CapaDatos
             }
             return dt;
         }
+        public DataTable SeleccionarClienteMod(int id)
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarClienteMod", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Id", id);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
         public DataTable ProductoSeleccionado(string codigo)
         {
             DataTable dt = new DataTable();
@@ -1364,6 +1481,19 @@ namespace CapaDatos
             }
             return dt;
         }
+        public DataTable SeleccionarCobros(DateTime? desde = null, DateTime? hasta = null)
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarCobros", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@desde", (object)desde ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@hasta", (object)hasta ?? DBNull.Value);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
         public string RestablecerContraseña(int idusuario,string contraseña)
         {
             DataTable dt = new DataTable();
@@ -1375,7 +1505,6 @@ namespace CapaDatos
                 return cmd.ExecuteScalar()?.ToString() ?? string.Empty;
             }
         }
-
         public string VerificarIngreso(string usuario,string contraseña)
         {
             DataTable dt = new DataTable();

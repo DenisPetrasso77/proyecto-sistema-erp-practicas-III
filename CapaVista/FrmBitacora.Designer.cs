@@ -94,7 +94,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(264, 614);
+            this.btnSalir.Location = new System.Drawing.Point(264, 536);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(120, 40);
             this.btnSalir.TabIndex = 18;
@@ -104,7 +104,7 @@
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(138, 614);
+            this.btnLimpiar.Location = new System.Drawing.Point(138, 536);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(120, 40);
             this.btnLimpiar.TabIndex = 17;
@@ -114,7 +114,7 @@
             // 
             // bntEliminar
             // 
-            this.bntEliminar.Location = new System.Drawing.Point(12, 614);
+            this.bntEliminar.Location = new System.Drawing.Point(12, 536);
             this.bntEliminar.Name = "bntEliminar";
             this.bntEliminar.Size = new System.Drawing.Size(120, 40);
             this.bntEliminar.TabIndex = 14;
@@ -131,7 +131,7 @@
             this.groupBox2.Controls.Add(this.txtUsuario);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(330, 156);
+            this.groupBox2.Location = new System.Drawing.Point(330, 78);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(464, 191);
             this.groupBox2.TabIndex = 16;
@@ -203,7 +203,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.dateTimePicker2);
             this.groupBox1.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 156);
+            this.groupBox1.Location = new System.Drawing.Point(12, 78);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(312, 191);
             this.groupBox1.TabIndex = 15;
@@ -268,7 +268,7 @@
             this.Usuario,
             this.Tabla,
             this.Descripcion});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 353);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 275);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(782, 244);
@@ -317,7 +317,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 811);
+            this.ClientSize = new System.Drawing.Size(834, 587);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnLimpiar);

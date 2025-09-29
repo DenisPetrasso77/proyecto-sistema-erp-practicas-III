@@ -1,8 +1,11 @@
-﻿using CapaLogica;
+﻿using CapaEntities;
+using CapaLogica;
 using ProyectoPracticas;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace CapaVista
 {
@@ -16,17 +19,16 @@ namespace CapaVista
         private void FrmVentas_Shown(object sender, EventArgs e)
         {
             UI_Utilidad.EstiloLabels(this);
-
             UI_Utilidad.EstiloForm(this);
             UI_Utilidad.RedondearForm(this, 28);
-
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnVenta);
-
             UI_Utilidad.EstiloDataGridView(dataGridView1);
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
+            FrmHome home = new FrmHome();
+            home.Show();
             this.Close();
         }
         private void Buscador()
@@ -41,10 +43,10 @@ namespace CapaVista
             }
             foreach (DataRow fila in cacheproductos.Rows)
             {
-                string idproducto = fila["IdProducto"].ToString().ToLower();
+                string idproducto = fila["IdProducto"].ToString();
                 string producto = $"{fila["TipoProducto"].ToString()} {fila["Marca"].ToString()} {fila["Medidas"].ToString()}".ToLower();
 
-                if (idproducto.Contains(texto) || producto.Contains(texto))
+                if (idproducto.ToLower().Contains(texto) || producto.Contains(texto))
                 {
                     listBox1.Visible = true;
                     listBox1.Items.Add($"{idproducto}-{producto}");
@@ -119,7 +121,7 @@ namespace CapaVista
                     }
                 }
 
-                string idproducto = fila["IdProducto"].ToString().ToLower();
+                string idproducto = fila["IdProducto"].ToString();
                 string producto = $"{fila["TipoProducto"].ToString()} {fila["Marca"].ToString()} {fila["Medidas"].ToString()}";
                 decimal preciounidad = Convert.ToDecimal(fila["Precio"]);
                 int cantidadInicial = 1;
@@ -237,7 +239,7 @@ namespace CapaVista
                     total += subtotal;
                 }
             }
-            btnVenta.Text = $"Vender \n ${total:0.00}";
+            txtSubTotal.Text = $"{total:0.00}";
             txtIva.Text = $"{total * 0.21m:0.00}";
         }
 
@@ -251,6 +253,66 @@ namespace CapaVista
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Warning);
                 return;
+            }
+            if (comboBox1.SelectedItem == null)
+            {
+                MessageBox.Show("Seleccione una forma de pago para continuar.",
+                                "Forma de Pago No Seleccionada",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                return;
+            }
+            var detalle = new List<(string Idproducto, string Producto, int Cantidad, int Descuento, decimal precio)>();
+
+            foreach (DataGridViewRow fila in dataGridView1.Rows)
+            {
+                detalle.Add
+                    ((
+                   fila.Cells["Codigo"].Value.ToString(),
+                   fila.Cells["Producto"].Value.ToString(),
+                   Convert.ToInt32(fila.Cells["Cantidad"].Value.ToString()),
+                   Convert.ToInt32(fila.Cells["Descuento"].Value.ToString()),
+                   Convert.ToDecimal(fila.Cells["Precio"].Value.ToString())
+                   ));
+            }
+
+            string FormaPago = comboBox1.SelectedItem.ToString();
+            int IdUsuario = Sesion.Usuario.IdUsuario;
+            DateTime Fecha = DateTime.Now;
+            decimal total = Convert.ToDecimal(txtSubTotal.Text);
+            int cliente = Convert.ToInt32(cmbCliente.SelectedItem.ToString().Split('-')[0]);
+
+            try
+            {
+                FrmComprobanteVenta comprobante = new FrmComprobanteVenta(detalle, FormaPago, Fecha, total, cliente);
+                comprobante.ShowDialog();
+                if (comprobante.Exito)
+                {
+                    CV_Utiles.LimpiarFormulario(this);
+                    dataGridView1.Rows.Clear();
+                    txtBuscador.Clear();
+                    txtBuscador.Focus();
+                }
+               
+            }
+            catch (Exception ex)
+            { 
+            MessageBox.Show("Ocurrió un error al procesar la venta. Inténtelo de nuevo.\n\nDetalles del error: " + ex.Message,
+                            "Error en la Venta",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+            }          
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.Rows.Count == 0) { return; }
+            if (dataGridView1.CurrentRow == null) { return; }
+            var resultado = MessageBox.Show("¿Eliminar Producto Seleccionado?", "Confirmar Cancelación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resultado == DialogResult.Yes)
+            {
+                    dataGridView1.Rows.RemoveAt(dataGridView1.CurrentRow.Index);
+                    Calculartotal();
             }
         }
     }

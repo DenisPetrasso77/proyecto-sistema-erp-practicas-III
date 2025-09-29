@@ -1,5 +1,4 @@
-﻿using CapaEntities;
-using CapaLogica;
+﻿using CapaLogica;
 using ProyectoPracticas;
 using System;
 using System.Data;
@@ -10,7 +9,6 @@ namespace CapaVista
     public partial class FrmGestionUsuarios : Form
     {
         CL_Metodos metodos = new CL_Metodos();
-        DataTable UsuariosCache;
         public FrmGestionUsuarios()
         {
             InitializeComponent(); 
@@ -18,7 +16,7 @@ namespace CapaVista
 
         private void Cargarbuscador()
         {
-            UsuariosCache = metodos.Usuarios();
+            DataTable UsuariosCache = metodos.Usuarios();
             string texto = txtBuscador.Text.Trim().ToLower();
             dataGridView1.Rows.Clear();
 
@@ -61,19 +59,22 @@ namespace CapaVista
                 MessageBox.Show("Por favor seleccione un usuario.");
                 return;
             }
-
-            try
+            string usuario = dataGridView1.CurrentRow.Cells["Usuario"].Value?.ToString();
+            DialogResult resultado = MessageBox.Show($"¿Está seguro que desea marcar como deshabilitado este usuario? {usuario}", "Confirmar deshabilitacion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (resultado == DialogResult.No)
             {
-                string usuario = dataGridView1.CurrentRow.Cells["Usuario"].Value?.ToString();
-
+                return;
+            }
+            try
+            {             
                 if (metodos.BorrarUsuario(usuario) == 1)
                 {
-                    MessageBox.Show($"Usuario: {usuario} borrado con éxito");
+                    MessageBox.Show($"Usuario: {usuario} deshabilitado con éxito");
                     dataGridView1.Rows.RemoveAt(dataGridView1.CurrentRow.Index);
                 }
                 else
                 {
-                    MessageBox.Show($"Error al borrar al usuario {usuario}");
+                    MessageBox.Show($"Error al deshabilitar al usuario {usuario}");
                 }
             }
             catch (Exception ex)

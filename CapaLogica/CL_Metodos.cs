@@ -50,6 +50,18 @@ namespace CapaLogica
         { 
             return metodos.SeleccionarDescuentos(codigo);
         }
+        public DataTable Provincias()
+        { 
+            return metodos.Provincias();
+        }
+        public DataTable SeleccionarClienteMod(int id)
+        { 
+            return metodos.SeleccionarClienteMod(id);
+        }
+        public string InsertarCliente(Cliente cliente)
+        { 
+            return metodos.InsertarCliente(cliente);
+        }
         public DataTable SeleccionarDatosUsuario(int usuario)
         { 
             return metodos.SeleccionarDatosUsuario(usuario);
@@ -69,6 +81,10 @@ namespace CapaLogica
         public string InsertarDevolucion(Devoluciones devoluciones)
         {
             return metodos.InsertarDevolucion(devoluciones);
+        }
+        public DataTable SeleccionarListadoClientes()
+        { 
+            return metodos.SeleccionarListadoClientes();
         }
         public DataTable TraerDetalleMercaderia(int recepcion)
         {
@@ -121,6 +137,14 @@ namespace CapaLogica
         public DataTable ProductoSeleccionado(string codigo)
         { 
             return metodos.ProductoSeleccionado(codigo);
+        }
+        public string InsertarVentas(Ventas ventas)
+        { 
+            return metodos.InsertarVentas(ventas);
+        }
+        public DataTable SeleccionarCobros(DateTime? desde = null, DateTime? hasta = null)
+        {
+            return metodos.SeleccionarCobros(desde, hasta);
         }
         public DataTable TraerDetalleOrdenesCompra(int id)
         {

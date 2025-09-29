@@ -1,11 +1,9 @@
-﻿using System;
-using System.Data;
-using System.Drawing;
-using System.Windows.Forms;
-using CapaEntities;
+﻿using CapaEntities;
 using CapaLogica;
 using ProyectoPracticas;
 using SidebarMenu;
+using System;
+using System.Windows.Forms;
 
 
 namespace CapaVista
@@ -13,10 +11,6 @@ namespace CapaVista
     public partial class FrmHome : Form
     {
         CL_Metodos metodos = new CL_Metodos();
-        DataTable productosCache = new DataTable();
-        FrmCargarCategorias cate = new FrmCargarCategorias();
-
-
         public FrmHome()
         {
             InitializeComponent();
@@ -25,55 +19,63 @@ namespace CapaVista
         private void btnGestion_Click(object sender, EventArgs e)
         {
             this.Hide();
-            new FrmGestionProductos().ShowDialog();
+            new FrmGestionProductos().Show();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Productos", "Accedio al Menu Gestion Productos");
         }
 
         private void btnGestionPagos_Click(object sender, EventArgs e)
         {
-            new FrmPagos().ShowDialog();
+            this.Hide();
+            new FrmPagos().Show();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Pagos", "Accedio al Menu Gestion Pagos");
         }
 
         private void btnReabastecer_Click(object sender, EventArgs e)
         {
-            new FrmGestionPR().ShowDialog();
+            this.Hide();
+            new FrmGestionPR().Show();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Pedidos Reaprovisionamiento", "Accedio al Menu Gestion Pedidos de Reaprovisionamiento");
         }
 
         private void btnCargarNuevo_Click(object sender, EventArgs e)
         {
-            new FrmGestionProveedores().ShowDialog();
+            this.Hide();
+            new FrmGestionProveedores().Show();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Proveedores", "Accedio al Menu Gestion Proveedores");
         }
 
         private void btncotizacion_Click(object sender, EventArgs e)
         {
-            new FrmGestionPedidoCotizaciones().ShowDialog();
+            this.Hide();
+            new FrmGestionPedidoCotizaciones().Show();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Cotizaciones", "Accedio al Menu Gestion Cotizaciones");
         }
 
         private void btnOrden_Click(object sender, EventArgs e)
         {
-            new FrmGestionOrdenCompra().ShowDialog();
+            this.Hide();
+            new FrmGestionOrdenCompra().Show();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Ordenes de Compra", "Accedio al Menu Gestion Ordenes de Compra");
         }
 
         private void btnRecepcion_Click(object sender, EventArgs e)
         {
-            new FrmGestionRecepcion().ShowDialog();
+            this.Hide();
+            new FrmGestionRecepcion().Show();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Recepcion Mercaderia", "Accedio al Menu Gestion Recepcion");
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            new GestionProveedores().ShowDialog();
+            this.Hide();
+            new GestionProveedores().Show();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Proveedores", "Accedio al Menu Modificar Proveedores");
         }
 
         private void btnGestionAdmin_Click(object sender, EventArgs e)
         {
-            new FrmGestionUsuarios().ShowDialog();
+            this.Hide();
+            new FrmGestionUsuarios().Show();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Usuarios", "Accedio al Menu Gestion Usuarios");
         }
 
@@ -81,7 +83,7 @@ namespace CapaVista
         {
             this.Hide();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Bitacora", "Accedio al Menu Gestion Bitacora");
-            new FrmBitacora().ShowDialog();
+            new FrmBitacora().Show();
         }
 
         private void FrmAdminHome_Shown(object sender, EventArgs e)
@@ -114,21 +116,42 @@ namespace CapaVista
             UI_Utilidad.EstiloBotonPrimarioDegradado(btncotizacion);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnOrden);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnRecepcion);
-            UI_Utilidad.EstiloBotonPrimarioDegradado(btnAtras);
+            //UI_Utilidad.EstiloBotonPrimarioDegradado(btnAtras);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(bntClientes);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnVentas);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnCobros);
+
+
             //UI_Utilidad.EstiloBotonPrimarioDegradado(btnSalir);
         }
-
-        private void btnAtras_Click(object sender, EventArgs e)
+        private void pictureBox11_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            FrmSidebar sideBar = new FrmSidebar();
-            sideBar.Show();
+            this.Close();
+            FrmSidebar frmSidebar = new FrmSidebar();
+            frmSidebar.Show();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnVentas_Click(object sender, EventArgs e)
         {
+            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Ventas", "Accedio al Menu de Ventas");
             FrmVentas ventas = new FrmVentas();
-            ventas.ShowDialog();
+            this.Hide();
+            ventas.Show();
+        }
+
+        private void btnCobros_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Cobros", "Accedio al Menu de Cobros");
+            FrmCobros cobros = new FrmCobros();
+            cobros.Show();
+        }
+
+        private void bntClientes_Click(object sender, EventArgs e)
+        {
+            FrmGestionClientes clientes = new FrmGestionClientes();
+            this.Hide();
+            clientes.Show();
         }
     }
 }

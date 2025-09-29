@@ -107,6 +107,7 @@ namespace CapaVista
             Cargarcbxmedidas();
             Cargarcbxmarcas();
             Cargarcbxventa();
+            cmbEstado.SelectedIndex = 0;
         }
 
         private void pictureBox5_Click(object sender, EventArgs e)
@@ -297,74 +298,89 @@ namespace CapaVista
                     return;
                 }
             }
+            try
+            {
+                string codigo = txtCodigo.Text.Trim();
+                int tipoproducto = Convert.ToInt32(cmbProducto.Text.Split('-')[0].Trim());
+                int marca = Convert.ToInt32(cmbMarcas.Text.Split('-')[0].Trim());
+                int medidas = Convert.ToInt32(cmbMedidas.Text.Split('-')[0].Trim());
+                int cate = Convert.ToInt32(cmbCategorias.Text.Split('-')[0].Trim());
+                string estado = cmbEstado.Text.Trim();
+                int? fventa = string.IsNullOrWhiteSpace(cmbVenta.Text) ? (int?)null : Convert.ToInt32(cmbVenta.Text.Split('-')[0].Trim());
+                decimal preciocompra = string.IsNullOrWhiteSpace(txtCompra.Text) ? (decimal)0 : Convert.ToDecimal(txtCompra.Text.Trim());
+                decimal precioventa = string.IsNullOrWhiteSpace(txtVenta.Text) ? (decimal)0 : Convert.ToDecimal(txtVenta.Text.Trim());
+                int stockactual = string.IsNullOrWhiteSpace(txtActual.Text) ? (int)0 : Convert.ToInt32(txtActual.Text.Trim());
+                int stockmax = string.IsNullOrWhiteSpace(txtMaximo.Text) ? (int)0 : Convert.ToInt32(txtMaximo.Text.Trim());
+                int stockmin = string.IsNullOrWhiteSpace(txtMinimo.Text) ? (int)0 : Convert.ToInt32(txtMinimo.Text.Trim());
+                int can1 = string.IsNullOrWhiteSpace(txtCant1.Text) ? 0 : Convert.ToInt32(txtCant1.Text.Trim());
+                int por1 = string.IsNullOrWhiteSpace(txtPor1.Text) ? 0 : Convert.ToInt32(txtPor1.Text.Trim());
+                int can2 = string.IsNullOrWhiteSpace(txtCant2.Text) ? 0 : Convert.ToInt32(txtCant2.Text.Trim());
+                int por2 = string.IsNullOrWhiteSpace(txtPor2.Text) ? 0 : Convert.ToInt32(txtPor2.Text.Trim());
+                int can3 = string.IsNullOrWhiteSpace(txtCant3.Text) ? 0 : Convert.ToInt32(txtCant3.Text.Trim());
+                int por3 = string.IsNullOrWhiteSpace(txtPor3.Text) ? 0 : Convert.ToInt32(txtPor3.Text.Trim());
+                int can4 = string.IsNullOrWhiteSpace(txtCant4.Text) ? 0 : Convert.ToInt32(txtCant4.Text.Trim());
+                int por4 = string.IsNullOrWhiteSpace(txtPor4.Text) ? 0 : Convert.ToInt32(txtPor4.Text.Trim());
+                DateTime fecha = DateTime.Now;
 
-
-            string codigo = txtCodigo.Text.Trim();
-            int tipoproducto = Convert.ToInt32(cmbProducto.Text.Split('-')[0].Trim());
-            int marca = Convert.ToInt32(cmbMarcas.Text.Split('-')[0].Trim());
-            int medidas = Convert.ToInt32(cmbMedidas.Text.Split('-')[0].Trim());
-            int cate = Convert.ToInt32(cmbCategorias.Text.Split('-')[0].Trim());
-            string estado = cmbEstado.Text.Trim();
-            int? fventa = string.IsNullOrWhiteSpace(cmbVenta.Text) ? (int?)null : Convert.ToInt32(cmbVenta.Text.Split('-')[0].Trim());
-            decimal preciocompra = string.IsNullOrWhiteSpace(txtCompra.Text) ? (decimal)0 : Convert.ToDecimal(txtCompra.Text.Trim());
-            decimal precioventa = string.IsNullOrWhiteSpace(txtVenta.Text) ? (decimal)0 : Convert.ToDecimal(txtVenta.Text.Trim());
-            int stockactual = string.IsNullOrWhiteSpace(txtActual.Text) ? (int)0 : Convert.ToInt32(txtActual.Text.Trim());
-            int stockmax = string.IsNullOrWhiteSpace(txtMaximo.Text) ? (int)0 : Convert.ToInt32(txtMaximo.Text.Trim());
-            int stockmin = string.IsNullOrWhiteSpace(txtMinimo.Text) ? (int)0 : Convert.ToInt32(txtMinimo.Text.Trim());
-            int can1 = string.IsNullOrWhiteSpace(txtCant1.Text) ? 0 : Convert.ToInt32(txtCant1.Text.Trim());
-            int por1 = string.IsNullOrWhiteSpace(txtPor1.Text) ? 0 : Convert.ToInt32(txtPor1.Text.Trim());
-            int can2 = string.IsNullOrWhiteSpace(txtCant2.Text) ? 0 : Convert.ToInt32(txtCant2.Text.Trim());
-            int por2 = string.IsNullOrWhiteSpace(txtPor2.Text) ? 0 : Convert.ToInt32(txtPor2.Text.Trim());
-            int can3 = string.IsNullOrWhiteSpace(txtCant3.Text) ? 0 : Convert.ToInt32(txtCant3.Text.Trim());
-            int por3 = string.IsNullOrWhiteSpace(txtPor3.Text) ? 0 : Convert.ToInt32(txtPor3.Text.Trim());
-            int can4 = string.IsNullOrWhiteSpace(txtCant4.Text) ? 0 : Convert.ToInt32(txtCant4.Text.Trim());
-            int por4 = string.IsNullOrWhiteSpace(txtPor4.Text) ? 0 : Convert.ToInt32(txtPor4.Text.Trim());
-            DateTime fecha = DateTime.Now;
-
-            var descuentos = new List<(int cantidadMinima, int porcentaje)>
+                var descuentos = new List<(int cantidadMinima, int porcentaje)>
                 {
                     (can1, por1),
                     (can2, por2),
                     (can3, por3),
                     (can4, por4)
                 }.Where(d => d.cantidadMinima > 0 && d.porcentaje > 0)
-            .OrderByDescending(d => d.cantidadMinima)
-            .ToList();
-            ProductoNuevo productoNuevo = new ProductoNuevo
-            {
-                CodigoProducto = codigo,
-                Nombre = tipoproducto,
-                IdCategoria = cate,
-                IdMarca = marca,
-                IdMedida = medidas,
-                IdUnidadVenta = fventa,
-                StockMin = stockmin,
-                StockMax = stockmax,
-                StockActual = stockactual,
-                Estado = estado,
-                FechaAlta = fecha,
-                IdUsuarioAlta = Sesion.Usuario.IdUsuario,
-                PrecioCompra = preciocompra,
-                PrecioVenta = precioventa,
-                Descuentos = descuentos,
-                DVH = CV_Seguridad.CalcularDVH(codigo + tipoproducto + cate + marca + medidas + fventa + estado + fecha + 1 + "Normal")
-            };
-            string carpetaDestino = Path.Combine(Application.StartupPath, "Imagenes");
-            if (!Directory.Exists(carpetaDestino))
-                Directory.CreateDirectory(carpetaDestino);
-
-            string extension = Path.GetExtension(rutaImagenTemporal);
-            string destino = Path.Combine(carpetaDestino, txtCodigo.Text + extension);
-
-            if (File.Exists(destino))
-            {
-                File.Delete(destino);
+                .OrderByDescending(d => d.cantidadMinima)
+                .ToList();
+                ProductoNuevo productoNuevo = new ProductoNuevo
+                {
+                    CodigoProducto = codigo,
+                    Nombre = tipoproducto,
+                    IdCategoria = cate,
+                    IdMarca = marca,
+                    IdMedida = medidas,
+                    IdUnidadVenta = fventa,
+                    StockMin = stockmin,
+                    StockMax = stockmax,
+                    StockActual = stockactual,
+                    Estado = estado,
+                    FechaAlta = fecha,
+                    IdUsuarioAlta = Sesion.Usuario.IdUsuario,
+                    PrecioCompra = preciocompra,
+                    PrecioVenta = precioventa,
+                    Descuentos = descuentos,
+                    DVH = CV_Seguridad.CalcularDVH(codigo + tipoproducto + cate + marca + medidas + fventa + estado + fecha + 1 + "Normal")
+                };
+                string resultado = metodos.InsertarProducto(productoNuevo);
+                MessageBox.Show(resultado);
+                
             }
+            catch
+            {
+                MessageBox.Show("Error al Guardar el producto","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
+            try
+            {
+                string carpetaDestino = Path.Combine(Application.StartupPath, "Imagenes", "Productos");
+                if (!Directory.Exists(carpetaDestino))
+                    Directory.CreateDirectory(carpetaDestino);
 
-            File.Copy(rutaImagenTemporal, destino, true);
-            string resultado = metodos.InsertarProducto(productoNuevo);
-            MessageBox.Show(resultado);
+                string extension = Path.GetExtension(rutaImagenTemporal);
+                string destino = Path.Combine(carpetaDestino, txtCodigo.Text + extension);
+
+                if (File.Exists(destino))
+                {
+                    File.Delete(destino);
+                }
+
+                File.Copy(rutaImagenTemporal, destino, true);
+            }
+            catch
+            {
+            MessageBox.Show("Error al guardar la imagen del producto","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
             CV_Utiles.LimpiarControles(this);
+            pictureBox1.Image = null;
             txtCodigo.Focus();
         }
 

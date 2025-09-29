@@ -10,11 +10,12 @@ namespace CapaVista
 {
     public partial class FrmLogin : Form
     {
-        CL_Metodos metodos = new CL_Metodos();
         public FrmLogin()
         {
             InitializeComponent();
         }
+        CL_Metodos metodos = new CL_Metodos();
+
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             if (CV_Utiles.TextboxVacios(txtUsuario, txtContraseña))
@@ -27,12 +28,12 @@ namespace CapaVista
                 MessageBox.Show("Los datos no pueden ser numericos");
                 return;
             }
-            var resultado = metodos.VerificarIngreso(txtUsuario.Text,CV_Seguridad.HashearSHA256(txtContraseña.Text.Trim()));
+            var resultado = metodos.VerificarIngreso(txtUsuario.Text, CV_Seguridad.HashearSHA256(txtContraseña.Text.Trim()));
             if (resultado != 1.ToString())
             {
                 MessageBox.Show(resultado);
                 return;
-            }                  
+            }
             try
             {
                 Sesion.Usuario = metodos.DatosIngreso(txtUsuario.Text);
@@ -104,24 +105,20 @@ namespace CapaVista
             {
                 txtContraseña.UseSystemPasswordChar = false;
                 UI_Utilidad.TextBoxHelper.SetPadding(txtContraseña, 25, 5);
-                pictureBox4.Image= CapaVista.Properties.Resources.Ojo_Abierto;
+                pictureBox4.Image = CapaVista.Properties.Resources.Ojo_Abierto;
             }
             else
             {
                 txtContraseña.UseSystemPasswordChar = true;
                 UI_Utilidad.TextBoxHelper.SetPadding(txtContraseña, 25, 5);
                 pictureBox4.Image = CapaVista.Properties.Resources.Ojo_Cerrado;
-                
+
             }
         }
 
         private void pbSalir_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void toolTip1_Popup(object sender, PopupEventArgs e)
-        {
         }
 
         private void FrmLogin_Shown(object sender, EventArgs e)

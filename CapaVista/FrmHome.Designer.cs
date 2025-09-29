@@ -57,10 +57,21 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.lbltituloHome = new System.Windows.Forms.Label();
-            this.btnAtras = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btnCobros = new System.Windows.Forms.Button();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.button16 = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.bntClientes = new System.Windows.Forms.Button();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.button12 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.button7 = new System.Windows.Forms.Button();
+            this.btnVentas = new System.Windows.Forms.Button();
             this.pnlAlmacen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.pnlCompras.SuspendLayout();
@@ -74,7 +85,14 @@
             this.pnlProductos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlAlmacen
@@ -83,7 +101,7 @@
             this.pnlAlmacen.Controls.Add(this.btnRecepcion);
             this.pnlAlmacen.Controls.Add(this.pictureBox6);
             this.pnlAlmacen.Controls.Add(this.button13);
-            this.pnlAlmacen.Location = new System.Drawing.Point(686, 372);
+            this.pnlAlmacen.Location = new System.Drawing.Point(684, 295);
             this.pnlAlmacen.Name = "pnlAlmacen";
             this.pnlAlmacen.Size = new System.Drawing.Size(280, 211);
             this.pnlAlmacen.TabIndex = 22;
@@ -130,7 +148,7 @@
             this.pnlCompras.Controls.Add(this.btnOrden);
             this.pnlCompras.Controls.Add(this.pictureBox5);
             this.pnlCompras.Controls.Add(this.button11);
-            this.pnlCompras.Location = new System.Drawing.Point(386, 372);
+            this.pnlCompras.Location = new System.Drawing.Point(384, 295);
             this.pnlCompras.Name = "pnlCompras";
             this.pnlCompras.Size = new System.Drawing.Size(280, 211);
             this.pnlCompras.TabIndex = 21;
@@ -189,7 +207,7 @@
             this.pnlUsuarios.Controls.Add(this.pictureBox4);
             this.pnlUsuarios.Controls.Add(this.btnGestionAdmin);
             this.pnlUsuarios.Controls.Add(this.button9);
-            this.pnlUsuarios.Location = new System.Drawing.Point(77, 372);
+            this.pnlUsuarios.Location = new System.Drawing.Point(75, 295);
             this.pnlUsuarios.Name = "pnlUsuarios";
             this.pnlUsuarios.Size = new System.Drawing.Size(280, 211);
             this.pnlUsuarios.TabIndex = 20;
@@ -247,7 +265,7 @@
             this.pnlProveedores.Controls.Add(this.pictureBox3);
             this.pnlProveedores.Controls.Add(this.btnCargarNuevo);
             this.pnlProveedores.Controls.Add(this.button5);
-            this.pnlProveedores.Location = new System.Drawing.Point(686, 132);
+            this.pnlProveedores.Location = new System.Drawing.Point(684, 78);
             this.pnlProveedores.Name = "pnlProveedores";
             this.pnlProveedores.Size = new System.Drawing.Size(280, 211);
             this.pnlProveedores.TabIndex = 19;
@@ -305,7 +323,7 @@
             this.pnlPagos.Controls.Add(this.btnGestionPagos);
             this.pnlPagos.Controls.Add(this.pictureBox2);
             this.pnlPagos.Controls.Add(this.button4);
-            this.pnlPagos.Location = new System.Drawing.Point(386, 132);
+            this.pnlPagos.Location = new System.Drawing.Point(384, 78);
             this.pnlPagos.Name = "pnlPagos";
             this.pnlPagos.Size = new System.Drawing.Size(280, 211);
             this.pnlPagos.TabIndex = 18;
@@ -352,7 +370,7 @@
             this.pnlProductos.Controls.Add(this.btnGestion);
             this.pnlProductos.Controls.Add(this.pictureBox1);
             this.pnlProductos.Controls.Add(this.button1);
-            this.pnlProductos.Location = new System.Drawing.Point(77, 132);
+            this.pnlProductos.Location = new System.Drawing.Point(75, 78);
             this.pnlProductos.Name = "pnlProductos";
             this.pnlProductos.Size = new System.Drawing.Size(280, 211);
             this.pnlProductos.TabIndex = 17;
@@ -407,6 +425,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel1.Controls.Add(this.pictureBox11);
             this.panel1.Controls.Add(this.pictureBox8);
             this.panel1.Controls.Add(this.lbltituloHome);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -414,6 +433,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1034, 72);
             this.panel1.TabIndex = 23;
+            // 
+            // pictureBox11
+            // 
+            this.pictureBox11.Image = global::CapaVista.Properties.Resources.volver__1_;
+            this.pictureBox11.Location = new System.Drawing.Point(922, 12);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox11.TabIndex = 33;
+            this.pictureBox11.TabStop = false;
+            this.pictureBox11.Click += new System.EventHandler(this.pictureBox11_Click);
             // 
             // pictureBox8
             // 
@@ -436,33 +466,152 @@
             this.lbltituloHome.TabIndex = 6;
             this.lbltituloHome.Text = "Panel Administrativo Papelera";
             // 
-            // btnAtras
+            // panel4
             // 
-            this.btnAtras.Location = new System.Drawing.Point(846, 623);
-            this.btnAtras.Name = "btnAtras";
-            this.btnAtras.Size = new System.Drawing.Size(120, 40);
-            this.btnAtras.TabIndex = 24;
-            this.btnAtras.Text = "Atras";
-            this.btnAtras.UseVisualStyleBackColor = true;
-            this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
+            this.panel4.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel4.Controls.Add(this.btnCobros);
+            this.panel4.Controls.Add(this.pictureBox10);
+            this.panel4.Controls.Add(this.button16);
+            this.panel4.Location = new System.Drawing.Point(684, 512);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(280, 200);
+            this.panel4.TabIndex = 31;
             // 
-            // button2
+            // btnCobros
             // 
-            this.button2.Location = new System.Drawing.Point(77, 589);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(164, 62);
-            this.button2.TabIndex = 25;
-            this.button2.Text = "Vender";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnCobros.Location = new System.Drawing.Point(74, 108);
+            this.btnCobros.Name = "btnCobros";
+            this.btnCobros.Size = new System.Drawing.Size(120, 35);
+            this.btnCobros.TabIndex = 5;
+            this.btnCobros.Text = "Ver";
+            this.btnCobros.UseVisualStyleBackColor = true;
+            this.btnCobros.Click += new System.EventHandler(this.btnCobros_Click);
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.BackColor = System.Drawing.SystemColors.Highlight;
+            this.pictureBox10.Image = global::CapaVista.Properties.Resources.trabajadores_por_cuenta_propia;
+            this.pictureBox10.Location = new System.Drawing.Point(106, 3);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(60, 60);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox10.TabIndex = 3;
+            this.pictureBox10.TabStop = false;
+            // 
+            // button16
+            // 
+            this.button16.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button16.FlatAppearance.BorderSize = 0;
+            this.button16.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button16.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button16.Location = new System.Drawing.Point(74, 67);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(120, 35);
+            this.button16.TabIndex = 0;
+            this.button16.Text = "Cobros";
+            this.button16.UseVisualStyleBackColor = true;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel3.Controls.Add(this.bntClientes);
+            this.panel3.Controls.Add(this.pictureBox9);
+            this.panel3.Controls.Add(this.button12);
+            this.panel3.Location = new System.Drawing.Point(384, 512);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(280, 200);
+            this.panel3.TabIndex = 30;
+            // 
+            // bntClientes
+            // 
+            this.bntClientes.Location = new System.Drawing.Point(84, 108);
+            this.bntClientes.Name = "bntClientes";
+            this.bntClientes.Size = new System.Drawing.Size(120, 35);
+            this.bntClientes.TabIndex = 4;
+            this.bntClientes.Text = "Gestion";
+            this.bntClientes.UseVisualStyleBackColor = true;
+            this.bntClientes.Click += new System.EventHandler(this.bntClientes_Click);
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.BackColor = System.Drawing.SystemColors.Highlight;
+            this.pictureBox9.Image = global::CapaVista.Properties.Resources.mercado;
+            this.pictureBox9.Location = new System.Drawing.Point(109, 3);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(60, 60);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox9.TabIndex = 3;
+            this.pictureBox9.TabStop = false;
+            // 
+            // button12
+            // 
+            this.button12.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button12.FlatAppearance.BorderSize = 0;
+            this.button12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button12.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button12.Location = new System.Drawing.Point(84, 67);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(120, 35);
+            this.button12.TabIndex = 0;
+            this.button12.Text = "Clientes";
+            this.button12.UseVisualStyleBackColor = true;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel2.Controls.Add(this.pictureBox7);
+            this.panel2.Controls.Add(this.button7);
+            this.panel2.Controls.Add(this.btnVentas);
+            this.panel2.Location = new System.Drawing.Point(73, 512);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(280, 200);
+            this.panel2.TabIndex = 29;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.BackColor = System.Drawing.SystemColors.Highlight;
+            this.pictureBox7.Image = global::CapaVista.Properties.Resources.ventas;
+            this.pictureBox7.Location = new System.Drawing.Point(107, 3);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(60, 60);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox7.TabIndex = 3;
+            this.pictureBox7.TabStop = false;
+            // 
+            // button7
+            // 
+            this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button7.FlatAppearance.BorderSize = 0;
+            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.Location = new System.Drawing.Point(73, 67);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(120, 35);
+            this.button7.TabIndex = 0;
+            this.button7.Text = "Ventas";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // btnVentas
+            // 
+            this.btnVentas.Location = new System.Drawing.Point(73, 108);
+            this.btnVentas.Name = "btnVentas";
+            this.btnVentas.Size = new System.Drawing.Size(120, 35);
+            this.btnVentas.TabIndex = 25;
+            this.btnVentas.Text = "Vender";
+            this.btnVentas.UseVisualStyleBackColor = true;
+            this.btnVentas.Click += new System.EventHandler(this.btnVentas_Click);
             // 
             // FrmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1034, 713);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.btnAtras);
+            this.ClientSize = new System.Drawing.Size(1034, 733);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlAlmacen);
             this.Controls.Add(this.pnlCompras);
@@ -488,7 +637,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -525,7 +681,18 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Label lbltituloHome;
-        private System.Windows.Forms.Button btnAtras;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button btnCobros;
+        private System.Windows.Forms.PictureBox pictureBox10;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button bntClientes;
+        private System.Windows.Forms.PictureBox pictureBox9;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnVentas;
+        private System.Windows.Forms.PictureBox pictureBox11;
     }
 }

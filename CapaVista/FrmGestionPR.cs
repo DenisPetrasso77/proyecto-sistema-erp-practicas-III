@@ -160,6 +160,11 @@ namespace CapaVista
 
         private void button1_Click(object sender, EventArgs e)
         {
+            DialogResult respuesta = MessageBox.Show("¿Desea Borra El Pedido Seleccionado?", "CONFIRMACION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (respuesta == DialogResult.No)
+            {
+                return;
+            }
             int idpr = Convert.ToInt32(dataGridView2.CurrentRow.Cells["IDPR"].Value);
             string resultado = metodos.BorrarPR(idpr);
             MessageBox.Show(resultado);

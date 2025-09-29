@@ -24,13 +24,10 @@ namespace CapaVista
             this.ActiveControl = null;
             UI_Utilidad.EstiloForm(this);
             UI_Utilidad.RedondearForm(this, 28);
-
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnGuardar);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnEditar);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnAtras);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnCambiarFoto);
-
-
             UI_Utilidad.HacerCircular(pbFoto);
         }
 

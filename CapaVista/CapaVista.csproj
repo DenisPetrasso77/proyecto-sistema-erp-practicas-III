@@ -71,12 +71,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmComprobanteVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmComprobanteVenta.Designer.cs">
+      <DependentUpon>FrmComprobanteVenta.cs</DependentUpon>
+    </Compile>
     <Compile Include="CV_Utiles.cs" />
     <Compile Include="FrmAltaUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmAltaUsuario.Designer.cs">
       <DependentUpon>FrmAltaUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCobros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCobros.Designer.cs">
+      <DependentUpon>FrmCobros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEditarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEditarCliente.Designer.cs">
+      <DependentUpon>FrmEditarCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmEditarProducto.cs">
       <SubType>Form</SubType>
@@ -89,6 +107,24 @@
     </Compile>
     <Compile Include="FrmEditarUsuario.Designer.cs">
       <DependentUpon>FrmEditarUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGestionClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGestionClientes.Designer.cs">
+      <DependentUpon>FrmGestionClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNuevoCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNuevoCliente.Designer.cs">
+      <DependentUpon>FrmNuevoCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmNuevoProducto.cs">
       <SubType>Form</SubType>
@@ -246,12 +282,6 @@
     <Compile Include="FrmHome.Designer.cs">
       <DependentUpon>FrmHome.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmLogin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmLogin.Designer.cs">
-      <DependentUpon>FrmLogin.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmPagos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -273,14 +303,32 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CV_Seguridad.cs" />
+    <EmbeddedResource Include="FrmComprobanteVenta.resx">
+      <DependentUpon>FrmComprobanteVenta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmAltaUsuario.resx">
       <DependentUpon>FrmAltaUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCobros.resx">
+      <DependentUpon>FrmCobros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEditarCliente.resx">
+      <DependentUpon>FrmEditarCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmEditarProducto.resx">
       <DependentUpon>FrmEditarProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmEditarUsuario.resx">
       <DependentUpon>FrmEditarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGestionClientes.resx">
+      <DependentUpon>FrmGestionClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNuevoCliente.resx">
+      <DependentUpon>FrmNuevoCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNuevoProducto.resx">
       <DependentUpon>FrmNuevoProducto.cs</DependentUpon>
@@ -351,9 +399,6 @@
     <EmbeddedResource Include="FrmHome.resx">
       <DependentUpon>FrmHome.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmLogin.resx">
-      <DependentUpon>FrmLogin.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmPagos.resx">
       <DependentUpon>FrmPagos.cs</DependentUpon>
     </EmbeddedResource>
@@ -408,9 +453,6 @@
     <None Include="Resources\Basic_Elements__28121_29-removebg-preview.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\1828926-removebg-preview.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Signo.png" />
   </ItemGroup>
   <ItemGroup>
@@ -421,12 +463,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\iconoform.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\10542477.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\acceso.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\anadir-nuevo-usuario.png" />
@@ -463,12 +499,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\warehouse.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\administracion.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\agregar-producto.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\almacen.png" />
@@ -532,18 +562,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\vaso.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\8462238.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\84622381.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\administrar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Alan_turing_header.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\caja-de-entrega.png" />
@@ -631,6 +649,60 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Imagen_Usuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1828926-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\8462238.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\10542477.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\84622381.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\acceso.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\administracion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\administrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\agregar-producto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Alan_turing_header.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\factura - 40x40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\factura 50x 50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\factura1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mercado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trabajadores-por-cuenta-propia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\volver %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cliente.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mensajero.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nueva-cuenta.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

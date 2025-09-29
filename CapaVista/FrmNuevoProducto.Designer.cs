@@ -146,7 +146,7 @@
             this.groupBox2.Controls.Add(this.pictureBox2);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(187, 78);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(487, 196);
@@ -158,7 +158,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(255, 142);
+            this.label14.Location = new System.Drawing.Point(255, 135);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(63, 19);
             this.label14.TabIndex = 25;
@@ -166,54 +166,56 @@
             // 
             // cmbEstado
             // 
-            this.cmbEstado.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEstado.FormattingEnabled = true;
             this.cmbEstado.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
             this.cmbEstado.Location = new System.Drawing.Point(259, 157);
             this.cmbEstado.Name = "cmbEstado";
-            this.cmbEstado.Size = new System.Drawing.Size(185, 33);
+            this.cmbEstado.Size = new System.Drawing.Size(185, 24);
             this.cmbEstado.TabIndex = 6;
             // 
             // cmbMedidas
             // 
-            this.cmbMedidas.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbMedidas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMedidas.FormattingEnabled = true;
-            this.cmbMedidas.Location = new System.Drawing.Point(16, 152);
+            this.cmbMedidas.Location = new System.Drawing.Point(15, 157);
             this.cmbMedidas.Name = "cmbMedidas";
-            this.cmbMedidas.Size = new System.Drawing.Size(185, 33);
+            this.cmbMedidas.Size = new System.Drawing.Size(185, 24);
             this.cmbMedidas.TabIndex = 5;
             // 
             // cmbMarcas
             // 
-            this.cmbMarcas.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbMarcas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMarcas.FormattingEnabled = true;
-            this.cmbMarcas.Location = new System.Drawing.Point(16, 98);
+            this.cmbMarcas.Location = new System.Drawing.Point(16, 106);
             this.cmbMarcas.Name = "cmbMarcas";
-            this.cmbMarcas.Size = new System.Drawing.Size(185, 33);
+            this.cmbMarcas.Size = new System.Drawing.Size(185, 24);
             this.cmbMarcas.TabIndex = 3;
             // 
             // cmbProducto
             // 
+            this.cmbProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProducto.FormattingEnabled = true;
-            this.cmbProducto.Location = new System.Drawing.Point(259, 41);
+            this.cmbProducto.Location = new System.Drawing.Point(259, 49);
             this.cmbProducto.Name = "cmbProducto";
-            this.cmbProducto.Size = new System.Drawing.Size(185, 38);
+            this.cmbProducto.Size = new System.Drawing.Size(185, 24);
             this.cmbProducto.TabIndex = 2;
             // 
             // cmbCategorias
             // 
-            this.cmbCategorias.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCategorias.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCategorias.FormattingEnabled = true;
-            this.cmbCategorias.Location = new System.Drawing.Point(260, 106);
+            this.cmbCategorias.Location = new System.Drawing.Point(259, 106);
             this.cmbCategorias.Name = "cmbCategorias";
-            this.cmbCategorias.Size = new System.Drawing.Size(185, 33);
+            this.cmbCategorias.Size = new System.Drawing.Size(185, 24);
             this.cmbCategorias.TabIndex = 4;
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Location = new System.Drawing.Point(16, 53);
+            this.txtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigo.Location = new System.Drawing.Point(15, 49);
             this.txtCodigo.Multiline = true;
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(185, 26);
@@ -222,7 +224,7 @@
             // pictureBox5
             // 
             this.pictureBox5.Image = global::CapaVista.Properties.Resources.editar;
-            this.pictureBox5.Location = new System.Drawing.Point(450, 49);
+            this.pictureBox5.Location = new System.Drawing.Point(450, 43);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(30, 30);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -234,7 +236,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(14, 31);
+            this.label1.Location = new System.Drawing.Point(13, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 19);
             this.label1.TabIndex = 7;
@@ -243,7 +245,7 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = global::CapaVista.Properties.Resources.editar;
-            this.pictureBox4.Location = new System.Drawing.Point(451, 114);
+            this.pictureBox4.Location = new System.Drawing.Point(450, 100);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(30, 30);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -255,7 +257,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(256, 19);
+            this.label2.Location = new System.Drawing.Point(256, 27);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(81, 19);
             this.label2.TabIndex = 8;
@@ -264,7 +266,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::CapaVista.Properties.Resources.editar;
-            this.pictureBox3.Location = new System.Drawing.Point(206, 160);
+            this.pictureBox3.Location = new System.Drawing.Point(206, 151);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(30, 30);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -276,7 +278,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(256, 84);
+            this.label3.Location = new System.Drawing.Point(255, 84);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 19);
             this.label3.TabIndex = 9;
@@ -285,7 +287,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(206, 106);
+            this.pictureBox2.Location = new System.Drawing.Point(206, 100);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(30, 30);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -297,7 +299,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 76);
+            this.label4.Location = new System.Drawing.Point(12, 84);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(54, 19);
             this.label4.TabIndex = 10;
@@ -348,6 +350,7 @@
             // 
             // txtMaximo
             // 
+            this.txtMaximo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaximo.Location = new System.Drawing.Point(458, 130);
             this.txtMaximo.Multiline = true;
             this.txtMaximo.Name = "txtMaximo";
@@ -359,7 +362,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(12, 31);
+            this.label13.Location = new System.Drawing.Point(12, 46);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(135, 19);
             this.label13.TabIndex = 25;
@@ -367,23 +370,26 @@
             // 
             // cmbVenta
             // 
-            this.cmbVenta.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbVenta.FormattingEnabled = true;
-            this.cmbVenta.Location = new System.Drawing.Point(12, 53);
+            this.cmbVenta.Location = new System.Drawing.Point(6, 68);
             this.cmbVenta.Name = "cmbVenta";
-            this.cmbVenta.Size = new System.Drawing.Size(185, 33);
+            this.cmbVenta.Size = new System.Drawing.Size(185, 24);
             this.cmbVenta.TabIndex = 7;
             // 
             // txtActual
             // 
+            this.txtActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtActual.Location = new System.Drawing.Point(9, 130);
             this.txtActual.Multiline = true;
             this.txtActual.Name = "txtActual";
             this.txtActual.Size = new System.Drawing.Size(185, 26);
             this.txtActual.TabIndex = 10;
+            this.txtActual.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VerificarCaracter);
             // 
             // txtVenta
             // 
+            this.txtVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtVenta.Location = new System.Drawing.Point(458, 66);
             this.txtVenta.Multiline = true;
             this.txtVenta.Name = "txtVenta";
@@ -396,7 +402,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(454, 31);
+            this.label7.Location = new System.Drawing.Point(454, 44);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(117, 19);
             this.label7.TabIndex = 13;
@@ -406,7 +412,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(218, 31);
+            this.label6.Location = new System.Drawing.Point(218, 44);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(126, 19);
             this.label6.TabIndex = 14;
@@ -424,6 +430,7 @@
             // 
             // txtCompra
             // 
+            this.txtCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCompra.Location = new System.Drawing.Point(219, 66);
             this.txtCompra.Multiline = true;
             this.txtCompra.Name = "txtCompra";
@@ -444,6 +451,7 @@
             // 
             // txtMinimo
             // 
+            this.txtMinimo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMinimo.Location = new System.Drawing.Point(219, 130);
             this.txtMinimo.Multiline = true;
             this.txtMinimo.Name = "txtMinimo";
@@ -474,11 +482,13 @@
             // 
             // txtPor1
             // 
+            this.txtPor1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPor1.Location = new System.Drawing.Point(141, 39);
             this.txtPor1.Multiline = true;
             this.txtPor1.Name = "txtPor1";
             this.txtPor1.Size = new System.Drawing.Size(95, 26);
             this.txtPor1.TabIndex = 14;
+            this.txtPor1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VerificarCaracter);
             // 
             // label11
             // 
@@ -492,11 +502,13 @@
             // 
             // txtCant1
             // 
+            this.txtCant1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCant1.Location = new System.Drawing.Point(6, 39);
             this.txtCant1.Multiline = true;
             this.txtCant1.Name = "txtCant1";
             this.txtCant1.Size = new System.Drawing.Size(115, 26);
             this.txtCant1.TabIndex = 13;
+            this.txtCant1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VerificarCaracter);
             // 
             // panel1
             // 
@@ -617,21 +629,25 @@
             // 
             // txtPor2
             // 
+            this.txtPor2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPor2.Location = new System.Drawing.Point(141, 71);
             this.txtPor2.Multiline = true;
             this.txtPor2.Name = "txtPor2";
             this.txtPor2.Size = new System.Drawing.Size(95, 26);
             this.txtPor2.TabIndex = 16;
             this.txtPor2.Visible = false;
+            this.txtPor2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VerificarCaracter);
             // 
             // txtCant2
             // 
+            this.txtCant2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCant2.Location = new System.Drawing.Point(6, 71);
             this.txtCant2.Multiline = true;
             this.txtCant2.Name = "txtCant2";
             this.txtCant2.Size = new System.Drawing.Size(115, 26);
             this.txtCant2.TabIndex = 15;
             this.txtCant2.Visible = false;
+            this.txtCant2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VerificarCaracter);
             // 
             // pictureBox10
             // 
@@ -647,39 +663,47 @@
             // 
             // txtPor3
             // 
+            this.txtPor3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPor3.Location = new System.Drawing.Point(141, 103);
             this.txtPor3.Multiline = true;
             this.txtPor3.Name = "txtPor3";
             this.txtPor3.Size = new System.Drawing.Size(95, 26);
             this.txtPor3.TabIndex = 18;
             this.txtPor3.Visible = false;
+            this.txtPor3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VerificarCaracter);
             // 
             // txtCant3
             // 
+            this.txtCant3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCant3.Location = new System.Drawing.Point(6, 103);
             this.txtCant3.Multiline = true;
             this.txtCant3.Name = "txtCant3";
             this.txtCant3.Size = new System.Drawing.Size(115, 26);
             this.txtCant3.TabIndex = 17;
             this.txtCant3.Visible = false;
+            this.txtCant3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VerificarCaracter);
             // 
             // txtPor4
             // 
+            this.txtPor4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPor4.Location = new System.Drawing.Point(141, 135);
             this.txtPor4.Multiline = true;
             this.txtPor4.Name = "txtPor4";
             this.txtPor4.Size = new System.Drawing.Size(95, 26);
             this.txtPor4.TabIndex = 20;
             this.txtPor4.Visible = false;
+            this.txtPor4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VerificarCaracter);
             // 
             // txtCant4
             // 
+            this.txtCant4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCant4.Location = new System.Drawing.Point(6, 135);
             this.txtCant4.Multiline = true;
             this.txtCant4.Name = "txtCant4";
             this.txtCant4.Size = new System.Drawing.Size(115, 26);
             this.txtCant4.TabIndex = 19;
             this.txtCant4.Visible = false;
+            this.txtCant4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VerificarCaracter);
             // 
             // pictureBox12
             // 

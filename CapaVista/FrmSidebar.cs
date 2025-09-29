@@ -1,12 +1,7 @@
-﻿using System;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Windows.Forms;
-using CapaEntities;
-using CapaLogica;
+﻿using CapaVista;
 using ProyectoPracticas;
-using CapaVista;
+using System;
+using System.Windows.Forms;
 
 namespace SidebarMenu
 {
@@ -144,9 +139,13 @@ namespace SidebarMenu
 
         private void pbSalir_Click(object sender, EventArgs e)
         {
-            this.Close();
-            FrmLogin login = new FrmLogin();
-            login.Show();
+            var resultado = MessageBox.Show("¿Está seguro que desea salir del sistema?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resultado == DialogResult.Yes)
+            {
+                this.Close();
+                FrmLogin login = new FrmLogin();
+                login.Show();
+            }          
         }
 
         private void pbPerfil_Click(object sender, EventArgs e)

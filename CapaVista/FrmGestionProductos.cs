@@ -263,10 +263,12 @@ namespace CapaVista
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            this.Hide();
             FrmNuevoProducto frm = new FrmNuevoProducto();
             frm.ShowDialog();
-
+            if (checkBox1.Checked)
+                CargarProductosStockBajo();
+            else
+                CargarProductos();
         }
 
         private void CargarToolsTip()
