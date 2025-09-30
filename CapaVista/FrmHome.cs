@@ -74,7 +74,7 @@ namespace CapaVista
 
         private void btnGestionAdmin_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
             new FrmGestionUsuarios().Show();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Usuarios", "Accedio al Menu Gestion Usuarios");
         }

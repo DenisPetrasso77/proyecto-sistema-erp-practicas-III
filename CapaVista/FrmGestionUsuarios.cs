@@ -98,6 +98,7 @@ namespace CapaVista
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
+            new FrmHome().Show();
         }
 
         private void FrmAdmusuarios_Shown(object sender, EventArgs e)

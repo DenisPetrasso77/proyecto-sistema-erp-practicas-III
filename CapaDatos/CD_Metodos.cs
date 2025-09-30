@@ -2,7 +2,6 @@
 using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Web;
 
 namespace CapaDatos
 {
@@ -918,6 +917,47 @@ namespace CapaDatos
                     detalle.Columns.Add("IdUsuario", typeof(int));
 
                     detalle.Rows.Add(cliente.Nombre, cliente.Apellido, cliente.Dni, cliente.Correo, cliente.CodigoArea,cliente.Telefono,cliente.DireccionCalle,cliente.DireccionAltura,cliente.DireccionProvincia,cliente.DireccionLocalidad,cliente.DireccionCodigoPostal,cliente.Observaciones,cliente.IdUsuario);
+
+                    SqlParameter tvpParam = cmd.Parameters.AddWithValue("@Detalle", detalle);
+                    tvpParam.SqlDbType = SqlDbType.Structured;
+                    tvpParam.TypeName = "dbo.t_DetalleCliente";
+                    return cmd.ExecuteScalar()?.ToString() ?? string.Empty;
+                }
+            }
+            catch (SqlException ex)
+            {
+                return "Error:" + ex.Message;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+        public string ModificarCliente(Cliente cliente)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("[sp_ActualizarCliente]", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    DataTable detalle = new DataTable();
+
+                    detalle.Columns.Add("Nombre", typeof(string));
+                    detalle.Columns.Add("Apellido", typeof(string));
+                    detalle.Columns.Add("Dni", typeof(string));
+                    detalle.Columns.Add("Correo", typeof(string));
+                    detalle.Columns.Add("CodArea", typeof(int));
+                    detalle.Columns.Add("Telefono", typeof(string));
+                    detalle.Columns.Add("Calle", typeof(string));
+                    detalle.Columns.Add("Altura", typeof(int));
+                    detalle.Columns.Add("Provincia", typeof(int));
+                    detalle.Columns.Add("Localidad", typeof(int));
+                    detalle.Columns.Add("CodigoPostal", typeof(int));
+                    detalle.Columns.Add("Observaciones", typeof(string));
+                    detalle.Columns.Add("IdUsuario", typeof(int));
+                    detalle.Columns.Add("IdCliente", typeof(int));
+
+                    detalle.Rows.Add(cliente.Nombre, cliente.Apellido, cliente.Dni, cliente.Correo, cliente.CodigoArea, cliente.Telefono, cliente.DireccionCalle, cliente.DireccionAltura, cliente.DireccionProvincia, cliente.DireccionLocalidad, cliente.DireccionCodigoPostal, cliente.Observaciones, cliente.IdUsuario,cliente.IdCliente);
 
                     SqlParameter tvpParam = cmd.Parameters.AddWithValue("@Detalle", detalle);
                     tvpParam.SqlDbType = SqlDbType.Structured;

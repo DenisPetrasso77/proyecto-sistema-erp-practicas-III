@@ -1,14 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using CapaVista;
 
 namespace ProyectoPracticas
 {
     public static class UI_Utilidad
     {
+        // ================================
+        //         ESTILOS BÁSICOS
+        // ================================
         public static void EstiloLabels(Form form)
         {
             AplicarEstiloLabelsRecursivo(form);
@@ -20,11 +26,10 @@ namespace ProyectoPracticas
             {
                 if (ctrl is Label lbl)
                 {
-                    // Solo modificar si el Label está en tamaño chico (ej. <= 12)
                     if (lbl.Font.Size <= 12)
                     {
                         lbl.Font = new Font("Segoe UI", 12, FontStyle.Regular);
-                        lbl.ForeColor = Color.Black; // opcional
+                        lbl.ForeColor = Color.Black;
                     }
                 }
 
@@ -47,11 +52,9 @@ namespace ProyectoPracticas
                 txt.Font = new Font("Segoe UI", 12, FontStyle.Regular);
                 TextBoxHelper.SetPadding(txt, 15, 5);
 
-                //Esquinas redondeadas con borde
                 txt.Region = new Region(RoundedRect(txt.ClientRectangle, 12));
-                txt.BorderStyle = BorderStyle.None;
-                txt.BackColorChanged += (s, e) => txt.Invalidate();
                 txt.Resize += (s, e) => txt.Region = new Region(RoundedRect(txt.ClientRectangle, 12));
+
                 txt.Paint += (s, e) =>
                 {
                     e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
@@ -61,14 +64,13 @@ namespace ProyectoPracticas
 
                     using (var path = RoundedRect(rect, txt.Height / 2))
                     using (var backBrush = new SolidBrush(txt.BackColor))
-                    using (var borderPen = new Pen(Color.LightGray, 1.8f)) // Borde visible
+                    using (var borderPen = new Pen(Color.LightGray, 1.8f))
                     {
                         e.Graphics.FillPath(backBrush, path);
                         e.Graphics.DrawPath(borderPen, path);
                     }
                 };
 
-                //Placeholder
                 if (!string.IsNullOrWhiteSpace(placeholder))
                 {
                     txt.Text = placeholder;
@@ -103,23 +105,6 @@ namespace ProyectoPracticas
                 cb.Region = new Region(RoundedRect(cb.ClientRectangle, 6));
                 cb.Resize += (s, e) => cb.Region = new Region(RoundedRect(cb.ClientRectangle, 6));
 
-                cb.Paint += (s, e) =>
-                {
-                    e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-                    var rect = cb.ClientRectangle;
-                    rect.Width -= 1;
-                    rect.Height -= 1;
-
-                    using (var path = RoundedRect(rect, cb.Height / 2))
-                    using (var backBrush = new SolidBrush(cb.BackColor))
-                    using (var borderPen = new Pen(Color.LightGray, 1.8f))
-                    {
-                        e.Graphics.FillPath(backBrush, path);
-                        e.Graphics.DrawPath(borderPen, path);
-                    }
-                };
-
-                // 🔹 Placeholder
                 if (!string.IsNullOrWhiteSpace(placeholder))
                 {
                     cb.Items.Insert(0, placeholder);
@@ -134,11 +119,10 @@ namespace ProyectoPracticas
             }
         }
 
-        // auxiliar para redondear
-        private static System.Drawing.Drawing2D.GraphicsPath RoundedRect(Rectangle bounds, int radius)
+        private static GraphicsPath RoundedRect(Rectangle bounds, int radius)
         {
             int d = radius * 2;
-            var path = new System.Drawing.Drawing2D.GraphicsPath();
+            var path = new GraphicsPath();
             path.AddArc(bounds.X, bounds.Y, d, d, 180, 90);
             path.AddArc(bounds.Right - d, bounds.Y, d, d, 270, 90);
             path.AddArc(bounds.Right - d, bounds.Bottom - d, d, d, 0, 90);
@@ -149,16 +133,11 @@ namespace ProyectoPracticas
 
         public static void EstiloForm(Form form, Color? backColor = null)
         {
-            // Fondo configurable (por defecto gris suave)
             form.BackColor = backColor ?? Color.FromArgb(230, 230, 230);
-
-            // Quitar bordes
             form.FormBorderStyle = FormBorderStyle.None;
 
-            // Activar propiedades protegidas mediante reflexión
             typeof(Control).GetProperty("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance)
                            .SetValue(form, true, null);
-
             typeof(Control).GetProperty("ResizeRedraw", BindingFlags.NonPublic | BindingFlags.Instance)
                            .SetValue(form, true, null);
         }
@@ -170,20 +149,12 @@ namespace ProyectoPracticas
             using (GraphicsPath path = new GraphicsPath())
             {
                 path.StartFigure();
-
-                // Esquina superior izquierda
                 path.AddArc(new Rectangle(0, 0, radio, radio), 180, 90);
                 path.AddLine(radio, 0, form.Width - radio, 0);
-
-                // Esquina superior derecha
                 path.AddArc(new Rectangle(form.Width - radio, 0, radio, radio), -90, 90);
                 path.AddLine(form.Width, radio, form.Width, form.Height - radio);
-
-                // Esquina inferior derecha
                 path.AddArc(new Rectangle(form.Width - radio, form.Height - radio, radio, radio), 0, 90);
                 path.AddLine(form.Width - radio, form.Height, radio, form.Height);
-
-                // Esquina inferior izquierda
                 path.AddArc(new Rectangle(0, form.Height - radio, radio, radio), 90, 90);
                 path.CloseFigure();
 
@@ -193,32 +164,12 @@ namespace ProyectoPracticas
 
         public static void EstiloBotonPrimarioDegradado(Button boton, int radio = 15)
         {
-            //  Configuración básica
             boton.FlatStyle = FlatStyle.Flat;
             boton.FlatAppearance.BorderSize = 0;
             boton.UseVisualStyleBackColor = false;
-            boton.BackColor = Color.FromArgb(100, 140, 230); // azul suave por defecto
-            boton.ForeColor = Color.WhiteSmoke;
             boton.Font = new Font("Segoe UI", 12, FontStyle.Bold);
 
-            //  Guardar color original para hover
-            boton.Tag = boton.BackColor; // guardamos el color normal
-            Color colorHover = Color.FromArgb(65, 110, 225); // azul más fuerte al pasar mouse
-
-            // Eventos hover
-            boton.MouseEnter += (s, e) =>
-            {
-                boton.BackColor = colorHover;
-                boton.Refresh();
-            };
-            boton.MouseLeave += (s, e) =>
-            {
-                boton.BackColor = (Color)boton.Tag;
-                boton.Refresh();
-            };
-
-
-           void Redondear()
+            void Redondear()
             {
                 int r = Math.Min(radio, Math.Min(boton.Width, boton.Height) / 2);
                 using (GraphicsPath path = new GraphicsPath())
@@ -232,51 +183,36 @@ namespace ProyectoPracticas
                 }
             }
 
-            Redondear(); // redondeo inicial
-            boton.Resize += (s, e) => Redondear(); // redondeo dinámico si cambia el tamaño
+            Redondear();
+            boton.Resize += (s, e) => Redondear();
+
+            // Ajustar colores según tema
+            if (CV_ConfigSistema.TemaActual == TipoTema.Estandar)
+            {
+                boton.BackColor = Color.FromArgb(100, 140, 230);
+                boton.ForeColor = Color.WhiteSmoke;
+
+                Color colorHover = Color.FromArgb(65, 110, 225);
+                boton.Tag = boton.BackColor;
+
+                boton.MouseEnter += (s, e) => { boton.BackColor = colorHover; };
+                boton.MouseLeave += (s, e) => { boton.BackColor = (Color)boton.Tag; };
+            }
+            else if (CV_ConfigSistema.TemaActual == TipoTema.Oscuro || CV_ConfigSistema.TemaActual == TipoTema.ContrasteAlto)
+            {
+                boton.BackColor = Color.Gray; // ahora de entrada gris
+                boton.ForeColor = CV_ConfigSistema.TemaActual == TipoTema.Oscuro ? Color.WhiteSmoke : Color.Yellow;
+
+                // hover fijo igual gris
+                boton.Tag = boton.BackColor;
+                boton.MouseEnter += (s, e) => { boton.BackColor = boton.BackColor; };
+                boton.MouseLeave += (s, e) => { boton.BackColor = boton.BackColor; };
+            }
         }
-
-        //public static void DibujarFondo(Form form)
-        //{
-        //    // 🔹 Activar DoubleBuffered con reflexión (evita parpadeos)
-        //    typeof(Form).InvokeMember("DoubleBuffered",
-        //        System.Reflection.BindingFlags.SetProperty |
-        //        System.Reflection.BindingFlags.Instance |
-        //        System.Reflection.BindingFlags.NonPublic,
-        //        null, form, new object[] { true });
-
-        //    // 🔹 Suscribimos al evento Paint
-        //    form.Paint += (s, e) =>
-        //    {
-        //        Graphics g = e.Graphics;
-        //        g.SmoothingMode = SmoothingMode.AntiAlias;
-
-        //        // Fondo degradado (podés cambiar colores o ángulo)
-        //        using (LinearGradientBrush brush = new LinearGradientBrush(
-        //            form.ClientRectangle,
-        //            Color.MediumPurple,
-        //            Color.DeepSkyBlue,
-        //            LinearGradientMode.ForwardDiagonal))
-        //        {
-        //            g.FillRectangle(brush, form.ClientRectangle);
-        //        }
-        //    };
-
-        //    // 🔹 Redibujar si el form cambia de tamaño
-        //    form.Resize += (s, e) => form.Invalidate();
-
-        //    // 🔹 Hacer controles transparentes (recursivo)
-        //    HacerControlesTransparentes(form);
-        //}
 
         public static void AplicarEfectoHover(PictureBox pb, float factorAgrandado = 1.2f)
         {
-            // Guardamos la posición y tamaño original en el Tag solo una vez
-            var datosOriginales = new
-            {
-                Posicion = pb.Location,
-                Tamaño = pb.Size
-            };
+            var datosOriginales = new { Posicion = pb.Location, Tamaño = pb.Size };
             pb.Tag = datosOriginales;
 
             pb.MouseEnter += (s, e) =>
@@ -286,8 +222,6 @@ namespace ProyectoPracticas
                 int nuevoAlto = (int)(orig.Tamaño.Height * factorAgrandado);
 
                 pb.Size = new Size(nuevoAncho, nuevoAlto);
-
-                // Recentrar para que crezca desde el medio
                 pb.Location = new Point(
                     orig.Posicion.X - (nuevoAncho - orig.Tamaño.Width) / 2,
                     orig.Posicion.Y - (nuevoAlto - orig.Tamaño.Height) / 2
@@ -297,39 +231,15 @@ namespace ProyectoPracticas
             pb.MouseLeave += (s, e) =>
             {
                 var orig = (dynamic)pb.Tag;
-
                 pb.Size = orig.Tamaño;
                 pb.Location = orig.Posicion;
             };
         }
 
-
-
-        //private static void HacerControlesTransparentes(Control parent)
-        //{
-        //    foreach (Control ctrl in parent.Controls)
-        //    {
-        //        // Los que pueden tapar el degradado
-        //        if (ctrl is Label || ctrl is PictureBox)
-        //        {
-        //            ctrl.BackColor = Color.Transparent;
-        //        }
-
-        //        // Si tiene hijos, aplicar recursivo
-        //        if (ctrl.HasChildren)
-        //        {
-        //            HacerControlesTransparentes(ctrl);
-        //        }
-        //    }
-        //}
-
         public static void HacerCircular(PictureBox pictureBox)
         {
-            // Crear un GraphicsPath que contenga un círculo
             GraphicsPath path = new GraphicsPath();
             path.AddEllipse(0, 0, pictureBox.Width, pictureBox.Height);
-
-            // Aplicar la región circular al PictureBox
             pictureBox.Region = new Region(path);
         }
 
@@ -348,71 +258,41 @@ namespace ProyectoPracticas
             }
         }
 
-        //public static void CambiarColorPaneles(Control parent)
-        //{
-        //    foreach (Control ctrl in parent.Controls)
-        //    {
-        //        if (ctrl is Panel)
-        //        {
-        //            ctrl.BackColor = Color.FromArgb(245, 245, 245); // gris claro
-        //        }
-
-        //        // Si tiene hijos, los recorro también
-        //        if (ctrl.HasChildren)
-        //        {
-        //            CambiarColorPaneles(ctrl);
-        //        }
-        //    }
-        //}
-
-
-
         public static void EstiloDataGridView(DataGridView dgv)
         {
             if (dgv == null) return;
 
-            // Colores base
             dgv.BackgroundColor = Color.White;
             dgv.BorderStyle = BorderStyle.None;
             dgv.GridColor = Color.LightSteelBlue;
 
-            // Filas
             dgv.DefaultCellStyle.BackColor = Color.White;
             dgv.DefaultCellStyle.ForeColor = Color.Black;
             dgv.DefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Regular);
             dgv.DefaultCellStyle.Padding = new Padding(4, 2, 4, 2);
             dgv.RowTemplate.Height = 28;
 
-            // Filas alternas
             dgv.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(248, 248, 248);
 
-            // Selección
             dgv.DefaultCellStyle.SelectionBackColor = Color.FromArgb(100, 140, 230);
             dgv.DefaultCellStyle.SelectionForeColor = Color.White;
 
-            // Encabezados
             dgv.EnableHeadersVisualStyles = false;
             dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(65, 110, 225);
             dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 12, FontStyle.Bold);
             dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgv.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.True; // ✅ permite salto de línea
-            dgv.ColumnHeadersHeight = 40; // un poquito más alto para que no corte el texto
+            dgv.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgv.ColumnHeadersHeight = 40;
             dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 
-            // Ajuste columnas automático
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            // Evitar que se "desaparezcan" si está vacío
             dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgv.AllowUserToAddRows = false; // oculta la fila vacía extra
-            dgv.RowHeadersVisible = false;  // saca la columna gris de la izquierda
-
-            // Bordes de celdas
+            dgv.AllowUserToAddRows = false;
+            dgv.RowHeadersVisible = false;
             dgv.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
 
-            // Estilo filas al pasar mouse
             dgv.RowPrePaint += (s, ev) =>
             {
                 if ((ev.State & DataGridViewElementStates.Selected) == 0)
@@ -423,7 +303,6 @@ namespace ProyectoPracticas
                 }
             };
 
-            // ✅ Si está vacío, mostrar mensaje en vez de que quede raro
             dgv.Paint += (s, e) =>
             {
                 if (dgv.Rows.Count == 0)
@@ -442,16 +321,207 @@ namespace ProyectoPracticas
 
         public static void EstiloGroupBoxSoloTitulo(GroupBox gb, Font tituloFont, Font hijosFont)
         {
-            // Cambiar el font del título
             gb.Font = tituloFont;
-
-            // Restaurar los hijos con otra fuente
             foreach (Control ctrl in gb.Controls)
             {
                 ctrl.Font = hijosFont;
             }
         }
 
+        // ================================
+        //             TEMAS
+        // ================================
 
+        private static Dictionary<Control, (Color Back, Color Fore)> ColoresOriginales
+        = new Dictionary<Control, (Color, Color)>();
+
+        public static void GuardarColoresOriginales(Control parent)
+        {
+            if (!ColoresOriginales.ContainsKey(parent))
+            {
+                ColoresOriginales[parent] = (parent.BackColor, parent.ForeColor);
+            }
+
+            foreach (Control ctrl in parent.Controls)
+            {
+                if (!ColoresOriginales.ContainsKey(ctrl))
+                {
+                    ColoresOriginales[ctrl] = (ctrl.BackColor, ctrl.ForeColor);
+                }
+
+                if (ctrl.HasChildren)
+                    GuardarColoresOriginales(ctrl);
+            }
+        }
+        public static void AplicarTema(TipoTema tema)
+        {
+            switch (tema)
+            {
+                case TipoTema.Estandar:
+                    // 🔹 En lugar de forzar blanco/negro, restauramos los originales
+                    CV_ConfigSistema.ColorPrincipal = Color.Empty; // marcador
+                    CV_ConfigSistema.ColorTexto = Color.Empty;
+                    break;
+
+                case TipoTema.Oscuro:
+                    CV_ConfigSistema.ColorPrincipal = Color.FromArgb(45, 45, 48);
+                    CV_ConfigSistema.ColorTexto = Color.WhiteSmoke;
+                    break;
+
+                case TipoTema.ContrasteAlto:
+                    CV_ConfigSistema.ColorPrincipal = Color.Black;
+                    CV_ConfigSistema.ColorTexto = Color.Yellow;
+                    break;
+            }
+
+            CV_ConfigSistema.TemaActual = tema;
+        }
+
+        public static void AplicarTemaAControles(Control parent)
+        {
+            foreach (Control ctrl in parent.Controls)
+            {
+                if (CV_ConfigSistema.TemaActual == TipoTema.Estandar)
+                {
+                    if (ColoresOriginales.ContainsKey(ctrl))
+                    {
+                        ctrl.BackColor = ColoresOriginales[ctrl].Back;
+                        ctrl.ForeColor = ColoresOriginales[ctrl].Fore;
+                    }
+                }
+                else
+                {
+                    if (ctrl is Panel)
+                    {
+                        ctrl.BackColor = Color.Gray;
+                        ctrl.ForeColor = CV_ConfigSistema.ColorTexto;
+                    }
+                    else if (ctrl is Button)
+                    {
+                        EstiloBotonPrimarioDegradado((Button)ctrl);
+                    }
+                    else if (ctrl is PictureBox pb)
+                    {
+                        pb.BackColor = Color.Transparent;
+                        pb.SizeMode = PictureBoxSizeMode.Zoom;
+
+                        // Excluir algunos por nombre
+                        //if (ConfigSistema.TemaActual != TipoTema.Estandar && pb.Image != null &&
+                        //    pb.Name != "pictureBox1" && pb.Name != "lbltituloHome")
+                        //{
+                        //    pb.Image = ConvertirImagenAGris(pb.Image);
+                        //}
+                    }
+                    else if (ctrl is DataGridView dgv)
+                    {
+                        if (CV_ConfigSistema.TemaActual != TipoTema.Estandar)
+                        {
+                            // Fondo de toda la grilla
+                            dgv.BackgroundColor = Color.Gray;
+                            dgv.DefaultCellStyle.BackColor = Color.Gray;
+                            dgv.DefaultCellStyle.ForeColor = Color.White;
+                            dgv.DefaultCellStyle.SelectionBackColor = Color.DarkGray;
+                            dgv.DefaultCellStyle.SelectionForeColor = Color.White;
+
+                            // Cabeceras
+                            dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
+                            dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                            dgv.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.Black;
+                            dgv.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.White;
+
+                            // Opcional: filas alternadas
+                            dgv.AlternatingRowsDefaultCellStyle.BackColor = Color.DimGray;
+                            dgv.AlternatingRowsDefaultCellStyle.ForeColor = Color.White;
+
+                            // Quitar borde de selección si querés más limpio
+                            dgv.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+                            dgv.RowHeadersVisible = false;
+                            dgv.EnableHeadersVisualStyles = false; // muy importante para que tome los colores personalizados
+                        }
+
+                        else
+                        {
+                            // Si querés volver al tema estándar, podés resetear colores
+                            dgv.BackgroundColor = SystemColors.Window;
+                            dgv.DefaultCellStyle.BackColor = SystemColors.Window;
+                            dgv.DefaultCellStyle.ForeColor = SystemColors.ControlText;
+                            dgv.ColumnHeadersDefaultCellStyle.BackColor = SystemColors.Control;
+                            dgv.ColumnHeadersDefaultCellStyle.ForeColor = SystemColors.ControlText;
+                            dgv.EnableHeadersVisualStyles = true;
+                        }
+                    }
+                    else if (ctrl is Label lbl)
+                    {
+                        if (CV_ConfigSistema.TemaActual != TipoTema.Estandar)
+                        {
+                            lbl.BackColor = lbl.Parent?.BackColor ?? CV_ConfigSistema.ColorPrincipal;
+                            lbl.ForeColor = Color.LightGray; // O ConfigSistema.ColorTexto
+                        }
+                        else
+                        {
+                            lbl.BackColor = SystemColors.Control;
+                            lbl.ForeColor = SystemColors.ControlText;
+                        }
+                    }
+
+                    else
+                    {
+                        ctrl.BackColor = CV_ConfigSistema.ColorPrincipal;
+                        ctrl.ForeColor = CV_ConfigSistema.ColorTexto;
+                    }
+
+                }
+
+                // Recursividad para todos los hijos, incluyendo paneles dentro de paneles
+                if (ctrl.HasChildren)
+                    AplicarTemaAControles(ctrl);
+            }
+
+            // Asegurarse de que el form principal también tenga color de fondo del tema
+            if (parent is Form)
+            {
+                if (CV_ConfigSistema.TemaActual != TipoTema.Estandar)
+                {
+                    parent.BackColor = CV_ConfigSistema.ColorPrincipal;
+                    parent.ForeColor = CV_ConfigSistema.ColorTexto;
+                }
+            }
+        }
+        public static void AplicarTemaATodosLosForms()
+        {
+            foreach (Form form in Application.OpenForms)
+            {
+                AplicarTemaAControles(form);
+            }
+        }
+
+        // ================================
+        //             Fuentes
+        // ================================
+
+        public static void AplicarFuenteAControles(Control parent)
+        {
+            foreach (Control ctrl in parent.Controls)
+            {
+                if (ctrl.Tag?.ToString() == "noCambiarFuente")
+                    continue; // lo salteamos
+
+                if (ctrl is Button || ctrl is Label || ctrl is GroupBox)
+                {
+                    ctrl.Font = CV_ConfigSistema.GetFuente();
+                }
+
+                if (ctrl.HasChildren)
+                    AplicarFuenteAControles(ctrl);
+            }
+        }
+
+        public static void AplicarFuenteATodosLosForms()
+        {
+            foreach (Form form in Application.OpenForms)
+            {
+                AplicarFuenteAControles(form);
+            }
+        }
     }
 }

@@ -2,6 +2,8 @@
 using ProyectoPracticas;
 using System;
 using System.Data;
+using System.IO;
+using System.Text;
 using System.Windows.Forms;
 
 namespace CapaVista
@@ -140,6 +142,57 @@ namespace CapaVista
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "CSV (*.csv)|*.csv";
+            sfd.FileName = "Exportacion.csv";
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                ExportarDataGridViewCSV(dataGridView1, sfd.FileName);
+            }
+        }
+        public void ExportarDataGridViewCSV(DataGridView dgv, string rutaArchivo)
+        {
+            try
+            {
+                StringBuilder sb = new StringBuilder();
+
+                for (int i = 0; i < dgv.Columns.Count; i++)
+                {
+                    sb.Append(dgv.Columns[i].HeaderText);
+                    if (i < dgv.Columns.Count - 1)
+                        sb.Append(";");
+                }
+                sb.AppendLine();
+
+                foreach (DataGridViewRow fila in dgv.Rows)
+                {
+                    if (!fila.IsNewRow) 
+                    {
+                        for (int i = 0; i < dgv.Columns.Count; i++)
+                        {
+                            sb.Append(fila.Cells[i].Value?.ToString());
+                            if (i < dgv.Columns.Count - 1)
+                                sb.Append(";");
+                        }
+                        sb.AppendLine();
+                    }
+                }
+
+                File.WriteAllText(rutaArchivo, sb.ToString(), Encoding.UTF8);
+
+                MessageBox.Show("Datos exportados correctamente a " + rutaArchivo,
+                    "Exportación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al exportar: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

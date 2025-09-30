@@ -58,6 +58,11 @@ namespace CapaLogica
         { 
             return metodos.SeleccionarClienteMod(id);
         }
+        public string ModificarCliente(Cliente cliente)
+        {
+            return metodos.ModificarCliente(cliente);
+        }
+
         public string InsertarCliente(Cliente cliente)
         { 
             return metodos.InsertarCliente(cliente);
