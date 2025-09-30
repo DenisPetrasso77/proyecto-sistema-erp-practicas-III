@@ -164,6 +164,13 @@ namespace SidebarMenu
         {
             SidebarTimer.Start();
         }
+
+        private void btnConfig_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            FrmConfig config = new FrmConfig();
+            config.Show();
+        }
     }
     
 }

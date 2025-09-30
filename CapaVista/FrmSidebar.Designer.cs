@@ -173,6 +173,7 @@
             this.btnConfig.TabIndex = 2;
             this.btnConfig.Text = "Configuración";
             this.btnConfig.UseVisualStyleBackColor = true;
+            this.btnConfig.Click += new System.EventHandler(this.btnConfig_Click);
             // 
             // btnHome
             // 
