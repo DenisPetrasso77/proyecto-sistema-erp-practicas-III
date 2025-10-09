@@ -10,6 +10,43 @@ namespace CapaLogica
         CD_Metodos metodos = new CD_Metodos();
 
         #region METODOS
+        public string InsertarPermisoUsuario(int idusuario, Permisos permisos)
+        { 
+            return metodos.InsertarPermisoUsuario(idusuario, permisos);
+        }
+        public string InsertarPermisoRol(int idrol, Permisos permisos)
+        { 
+            return metodos.InsertarPermisoRol(idrol, permisos);
+        }
+        public string EliminarRol(int rol)
+        { 
+            return metodos.EliminarRol(rol);
+        }
+        public DataTable SeleccionaPermisosUsuario(int idusuario)
+        {
+            return metodos.SeleccionaPermisosUsuario(idusuario);
+        }
+        public string InsertarRol(string rol)
+        {
+            return metodos.InsertarRol(rol);
+        }
+        public DataTable SeleccionaPermisos(int idrol)
+        { 
+            return metodos.SeleccionaPermisos(idrol);
+        }
+        public int EliminarIdRol(int idrol)
+        {
+            return metodos.EliminarIdRol(idrol);
+        }
+        public int ObtenerIdPermiso(string permiso)
+        {
+            return metodos.ObtenerIdPermiso(permiso);
+        }
+        public string InsertarRolPermiso(int idrol, int idpermiso)
+        {
+            return metodos.InsertarRolPermiso(idrol,idpermiso);
+        }
+
         public int Intentos(string usuario)
         { 
             return metodos.Intentos(usuario);
@@ -61,6 +98,10 @@ namespace CapaLogica
         public string ModificarCliente(Cliente cliente)
         {
             return metodos.ModificarCliente(cliente);
+        }
+        public DataTable Proveedores(int id)
+        { 
+            return metodos.Proveedores(id);
         }
 
         public string InsertarCliente(Cliente cliente)

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.pnlAlmacen = new System.Windows.Forms.Panel();
+            this.btnReabastecer = new System.Windows.Forms.Button();
             this.btnRecepcion = new System.Windows.Forms.Button();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.button13 = new System.Windows.Forms.Button();
@@ -38,12 +39,12 @@
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.button11 = new System.Windows.Forms.Button();
             this.pnlUsuarios = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.btnBitacora = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.btnGestionAdmin = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.pnlProveedores = new System.Windows.Forms.Panel();
-            this.btnModificar = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnCargarNuevo = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -52,7 +53,6 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button4 = new System.Windows.Forms.Button();
             this.pnlProductos = new System.Windows.Forms.Panel();
-            this.btnReabastecer = new System.Windows.Forms.Button();
             this.btnGestion = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -60,18 +60,19 @@
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.lbltituloHome = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.pnlCobros = new System.Windows.Forms.Panel();
             this.btnCobros = new System.Windows.Forms.Button();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.button16 = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.pnlClientes = new System.Windows.Forms.Panel();
             this.bntClientes = new System.Windows.Forms.Button();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.button12 = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlVentas = new System.Windows.Forms.Panel();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.button7 = new System.Windows.Forms.Button();
             this.btnVentas = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlAlmacen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.pnlCompras.SuspendLayout();
@@ -87,24 +88,38 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            this.panel4.SuspendLayout();
+            this.pnlCobros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
-            this.panel3.SuspendLayout();
+            this.pnlClientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            this.panel2.SuspendLayout();
+            this.pnlVentas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlAlmacen
             // 
             this.pnlAlmacen.BackColor = System.Drawing.SystemColors.Highlight;
+            this.pnlAlmacen.Controls.Add(this.btnReabastecer);
             this.pnlAlmacen.Controls.Add(this.btnRecepcion);
             this.pnlAlmacen.Controls.Add(this.pictureBox6);
             this.pnlAlmacen.Controls.Add(this.button13);
-            this.pnlAlmacen.Location = new System.Drawing.Point(684, 295);
+            this.pnlAlmacen.Location = new System.Drawing.Point(645, 235);
             this.pnlAlmacen.Name = "pnlAlmacen";
             this.pnlAlmacen.Size = new System.Drawing.Size(280, 211);
             this.pnlAlmacen.TabIndex = 22;
+            this.pnlAlmacen.Visible = false;
+            // 
+            // btnReabastecer
+            // 
+            this.btnReabastecer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReabastecer.Location = new System.Drawing.Point(74, 157);
+            this.btnReabastecer.Name = "btnReabastecer";
+            this.btnReabastecer.Size = new System.Drawing.Size(120, 40);
+            this.btnReabastecer.TabIndex = 17;
+            this.btnReabastecer.Text = "Reabastecer";
+            this.btnReabastecer.UseVisualStyleBackColor = true;
+            this.btnReabastecer.Click += new System.EventHandler(this.btnReabastecer_Click);
             // 
             // btnRecepcion
             // 
@@ -148,10 +163,11 @@
             this.pnlCompras.Controls.Add(this.btnOrden);
             this.pnlCompras.Controls.Add(this.pictureBox5);
             this.pnlCompras.Controls.Add(this.button11);
-            this.pnlCompras.Location = new System.Drawing.Point(384, 295);
+            this.pnlCompras.Location = new System.Drawing.Point(359, 235);
             this.pnlCompras.Name = "pnlCompras";
             this.pnlCompras.Size = new System.Drawing.Size(280, 211);
             this.pnlCompras.TabIndex = 21;
+            this.pnlCompras.Visible = false;
             // 
             // btncotizacion
             // 
@@ -203,19 +219,32 @@
             // pnlUsuarios
             // 
             this.pnlUsuarios.BackColor = System.Drawing.SystemColors.Highlight;
+            this.pnlUsuarios.Controls.Add(this.button2);
             this.pnlUsuarios.Controls.Add(this.btnBitacora);
             this.pnlUsuarios.Controls.Add(this.pictureBox4);
             this.pnlUsuarios.Controls.Add(this.btnGestionAdmin);
             this.pnlUsuarios.Controls.Add(this.button9);
-            this.pnlUsuarios.Location = new System.Drawing.Point(75, 295);
+            this.pnlUsuarios.Location = new System.Drawing.Point(73, 235);
             this.pnlUsuarios.Name = "pnlUsuarios";
             this.pnlUsuarios.Size = new System.Drawing.Size(280, 211);
             this.pnlUsuarios.TabIndex = 20;
+            this.pnlUsuarios.Visible = false;
+            // 
+            // button2
+            // 
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.Location = new System.Drawing.Point(140, 114);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(113, 40);
+            this.button2.TabIndex = 20;
+            this.button2.Text = "Roles/Permisos";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnBitacora
             // 
             this.btnBitacora.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBitacora.Location = new System.Drawing.Point(73, 157);
+            this.btnBitacora.Location = new System.Drawing.Point(14, 157);
             this.btnBitacora.Name = "btnBitacora";
             this.btnBitacora.Size = new System.Drawing.Size(120, 40);
             this.btnBitacora.TabIndex = 19;
@@ -236,7 +265,7 @@
             // btnGestionAdmin
             // 
             this.btnGestionAdmin.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGestionAdmin.Location = new System.Drawing.Point(73, 114);
+            this.btnGestionAdmin.Location = new System.Drawing.Point(14, 114);
             this.btnGestionAdmin.Name = "btnGestionAdmin";
             this.btnGestionAdmin.Size = new System.Drawing.Size(120, 40);
             this.btnGestionAdmin.TabIndex = 18;
@@ -261,25 +290,14 @@
             // pnlProveedores
             // 
             this.pnlProveedores.BackColor = System.Drawing.SystemColors.Highlight;
-            this.pnlProveedores.Controls.Add(this.btnModificar);
             this.pnlProveedores.Controls.Add(this.pictureBox3);
             this.pnlProveedores.Controls.Add(this.btnCargarNuevo);
             this.pnlProveedores.Controls.Add(this.button5);
-            this.pnlProveedores.Location = new System.Drawing.Point(684, 78);
+            this.pnlProveedores.Location = new System.Drawing.Point(645, 18);
             this.pnlProveedores.Name = "pnlProveedores";
             this.pnlProveedores.Size = new System.Drawing.Size(280, 211);
             this.pnlProveedores.TabIndex = 19;
-            // 
-            // btnModificar
-            // 
-            this.btnModificar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnModificar.Location = new System.Drawing.Point(74, 155);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(120, 40);
-            this.btnModificar.TabIndex = 19;
-            this.btnModificar.Text = "Modificar";
-            this.btnModificar.UseVisualStyleBackColor = true;
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            this.pnlProveedores.Visible = false;
             // 
             // pictureBox3
             // 
@@ -299,7 +317,7 @@
             this.btnCargarNuevo.Name = "btnCargarNuevo";
             this.btnCargarNuevo.Size = new System.Drawing.Size(120, 40);
             this.btnCargarNuevo.TabIndex = 18;
-            this.btnCargarNuevo.Text = "Cargar";
+            this.btnCargarNuevo.Text = "Gestion";
             this.btnCargarNuevo.UseVisualStyleBackColor = true;
             this.btnCargarNuevo.Click += new System.EventHandler(this.btnCargarNuevo_Click);
             // 
@@ -323,10 +341,11 @@
             this.pnlPagos.Controls.Add(this.btnGestionPagos);
             this.pnlPagos.Controls.Add(this.pictureBox2);
             this.pnlPagos.Controls.Add(this.button4);
-            this.pnlPagos.Location = new System.Drawing.Point(384, 78);
+            this.pnlPagos.Location = new System.Drawing.Point(359, 18);
             this.pnlPagos.Name = "pnlPagos";
             this.pnlPagos.Size = new System.Drawing.Size(280, 211);
             this.pnlPagos.TabIndex = 18;
+            this.pnlPagos.Visible = false;
             // 
             // btnGestionPagos
             // 
@@ -366,25 +385,14 @@
             // pnlProductos
             // 
             this.pnlProductos.BackColor = System.Drawing.SystemColors.Highlight;
-            this.pnlProductos.Controls.Add(this.btnReabastecer);
             this.pnlProductos.Controls.Add(this.btnGestion);
             this.pnlProductos.Controls.Add(this.pictureBox1);
             this.pnlProductos.Controls.Add(this.button1);
-            this.pnlProductos.Location = new System.Drawing.Point(75, 78);
+            this.pnlProductos.Location = new System.Drawing.Point(73, 18);
             this.pnlProductos.Name = "pnlProductos";
             this.pnlProductos.Size = new System.Drawing.Size(280, 211);
             this.pnlProductos.TabIndex = 17;
-            // 
-            // btnReabastecer
-            // 
-            this.btnReabastecer.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnReabastecer.Location = new System.Drawing.Point(73, 155);
-            this.btnReabastecer.Name = "btnReabastecer";
-            this.btnReabastecer.Size = new System.Drawing.Size(120, 40);
-            this.btnReabastecer.TabIndex = 17;
-            this.btnReabastecer.Text = "Reabastecer";
-            this.btnReabastecer.UseVisualStyleBackColor = true;
-            this.btnReabastecer.Click += new System.EventHandler(this.btnReabastecer_Click);
+            this.pnlProductos.Visible = false;
             // 
             // btnGestion
             // 
@@ -464,18 +472,20 @@
             this.lbltituloHome.Name = "lbltituloHome";
             this.lbltituloHome.Size = new System.Drawing.Size(539, 37);
             this.lbltituloHome.TabIndex = 6;
+            this.lbltituloHome.Tag = "noCambiarFuente";
             this.lbltituloHome.Text = "Panel Administrativo Papelera";
             // 
-            // panel4
+            // pnlCobros
             // 
-            this.panel4.BackColor = System.Drawing.SystemColors.Highlight;
-            this.panel4.Controls.Add(this.btnCobros);
-            this.panel4.Controls.Add(this.pictureBox10);
-            this.panel4.Controls.Add(this.button16);
-            this.panel4.Location = new System.Drawing.Point(684, 512);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(280, 200);
-            this.panel4.TabIndex = 31;
+            this.pnlCobros.BackColor = System.Drawing.SystemColors.Highlight;
+            this.pnlCobros.Controls.Add(this.btnCobros);
+            this.pnlCobros.Controls.Add(this.pictureBox10);
+            this.pnlCobros.Controls.Add(this.button16);
+            this.pnlCobros.Location = new System.Drawing.Point(645, 452);
+            this.pnlCobros.Name = "pnlCobros";
+            this.pnlCobros.Size = new System.Drawing.Size(280, 200);
+            this.pnlCobros.TabIndex = 31;
+            this.pnlCobros.Visible = false;
             // 
             // btnCobros
             // 
@@ -512,16 +522,17 @@
             this.button16.Text = "Cobros";
             this.button16.UseVisualStyleBackColor = true;
             // 
-            // panel3
+            // pnlClientes
             // 
-            this.panel3.BackColor = System.Drawing.SystemColors.Highlight;
-            this.panel3.Controls.Add(this.bntClientes);
-            this.panel3.Controls.Add(this.pictureBox9);
-            this.panel3.Controls.Add(this.button12);
-            this.panel3.Location = new System.Drawing.Point(384, 512);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(280, 200);
-            this.panel3.TabIndex = 30;
+            this.pnlClientes.BackColor = System.Drawing.SystemColors.Highlight;
+            this.pnlClientes.Controls.Add(this.bntClientes);
+            this.pnlClientes.Controls.Add(this.pictureBox9);
+            this.pnlClientes.Controls.Add(this.button12);
+            this.pnlClientes.Location = new System.Drawing.Point(359, 452);
+            this.pnlClientes.Name = "pnlClientes";
+            this.pnlClientes.Size = new System.Drawing.Size(280, 200);
+            this.pnlClientes.TabIndex = 30;
+            this.pnlClientes.Visible = false;
             // 
             // bntClientes
             // 
@@ -558,16 +569,17 @@
             this.button12.Text = "Clientes";
             this.button12.UseVisualStyleBackColor = true;
             // 
-            // panel2
+            // pnlVentas
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.Highlight;
-            this.panel2.Controls.Add(this.pictureBox7);
-            this.panel2.Controls.Add(this.button7);
-            this.panel2.Controls.Add(this.btnVentas);
-            this.panel2.Location = new System.Drawing.Point(73, 512);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(280, 200);
-            this.panel2.TabIndex = 29;
+            this.pnlVentas.BackColor = System.Drawing.SystemColors.Highlight;
+            this.pnlVentas.Controls.Add(this.pictureBox7);
+            this.pnlVentas.Controls.Add(this.button7);
+            this.pnlVentas.Controls.Add(this.btnVentas);
+            this.pnlVentas.Location = new System.Drawing.Point(73, 452);
+            this.pnlVentas.Name = "pnlVentas";
+            this.pnlVentas.Size = new System.Drawing.Size(280, 200);
+            this.pnlVentas.TabIndex = 29;
+            this.pnlVentas.Visible = false;
             // 
             // pictureBox7
             // 
@@ -604,24 +616,35 @@
             this.btnVentas.UseVisualStyleBackColor = true;
             this.btnVentas.Click += new System.EventHandler(this.btnVentas_Click);
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.pnlProductos);
+            this.flowLayoutPanel1.Controls.Add(this.pnlPagos);
+            this.flowLayoutPanel1.Controls.Add(this.pnlProveedores);
+            this.flowLayoutPanel1.Controls.Add(this.pnlUsuarios);
+            this.flowLayoutPanel1.Controls.Add(this.pnlCompras);
+            this.flowLayoutPanel1.Controls.Add(this.pnlAlmacen);
+            this.flowLayoutPanel1.Controls.Add(this.pnlVentas);
+            this.flowLayoutPanel1.Controls.Add(this.pnlClientes);
+            this.flowLayoutPanel1.Controls.Add(this.pnlCobros);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 72);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(70, 15, 50, 50);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1031, 661);
+            this.flowLayoutPanel1.TabIndex = 21;
+            // 
             // FrmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1034, 733);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.pnlAlmacen);
-            this.Controls.Add(this.pnlCompras);
-            this.Controls.Add(this.pnlUsuarios);
-            this.Controls.Add(this.pnlProveedores);
-            this.Controls.Add(this.pnlPagos);
-            this.Controls.Add(this.pnlProductos);
             this.Name = "FrmHome";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "INICIO";
+            this.Load += new System.EventHandler(this.FrmHome_Load);
             this.Shown += new System.EventHandler(this.FrmAdminHome_Shown);
             this.pnlAlmacen.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
@@ -639,12 +662,13 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            this.panel4.ResumeLayout(false);
+            this.pnlCobros.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
-            this.panel3.ResumeLayout(false);
+            this.pnlClientes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            this.panel2.ResumeLayout(false);
+            this.pnlVentas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -665,9 +689,7 @@
         private System.Windows.Forms.Button btnGestionAdmin;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Panel pnlProveedores;
-        private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Button btnCargarNuevo;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Panel pnlPagos;
         private System.Windows.Forms.Button btnGestionPagos;
@@ -681,18 +703,21 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Label lbltituloHome;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel pnlCobros;
         private System.Windows.Forms.Button btnCobros;
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel pnlClientes;
         private System.Windows.Forms.Button bntClientes;
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnlVentas;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button btnVentas;
         private System.Windows.Forms.PictureBox pictureBox11;
+        private System.Windows.Forms.Button btnCargarNuevo;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Button button2;
     }
 }

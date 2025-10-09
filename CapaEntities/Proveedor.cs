@@ -4,7 +4,8 @@ namespace CapaEntities
 {
     public class Proveedor
     {
-            public string NombreComercial { get; set; }
+        public int idProveedor { get; set; }
+        public string NombreComercial { get; set; }
             public string RazonSocial { get; set; }
             public string TipoIdentificacion { get; set; }
             public string NumeroDeIdentificacion { get; set; }

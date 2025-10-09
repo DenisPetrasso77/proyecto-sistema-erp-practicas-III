@@ -315,5 +315,12 @@ namespace CapaVista
                     Calculartotal();
             }
         }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            FrmNuevoCliente nuevoCliente = new FrmNuevoCliente();
+            nuevoCliente.ShowDialog();
+            CargarClientes();
+        }
     }
 }

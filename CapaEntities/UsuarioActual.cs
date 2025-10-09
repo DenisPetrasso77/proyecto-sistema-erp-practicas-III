@@ -14,6 +14,8 @@ namespace CapaEntities
         public  string Bloqueado { get; set; }
         public  string Rol { get; set; }
         public  int dni { get; set; }
-        public  List<string> Permisos { get; set; } = new List<string>();
+        public  List<string> PermisosRol { get; set; } = new List<string>();
+        public List<string> PermisosUsuario { get; set; } = new List<string>();
+
     }
 }

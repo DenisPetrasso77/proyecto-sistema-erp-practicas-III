@@ -72,6 +72,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CV_ConfigSistema.cs" />
+    <Compile Include="FrmActualizarPregunta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmActualizarPregunta.Designer.cs">
+      <DependentUpon>FrmActualizarPregunta.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmComprobanteVenta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +109,12 @@
     <Compile Include="FrmEditarCliente.Designer.cs">
       <DependentUpon>FrmEditarCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmEditarProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEditarProveedor.Designer.cs">
+      <DependentUpon>FrmEditarProveedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmEditarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +132,12 @@
     </Compile>
     <Compile Include="FrmGestionClientes.Designer.cs">
       <DependentUpon>FrmGestionClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGestionRoles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGestionRoles.Designer.cs">
+      <DependentUpon>FrmGestionRoles.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
@@ -151,11 +169,35 @@
     <Compile Include="FrmGestionProductos.Designer.cs">
       <DependentUpon>FrmGestionProductos.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmNuevoProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNuevoProveedor.Designer.cs">
+      <DependentUpon>FrmNuevoProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNuevoRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNuevoRol.Designer.cs">
+      <DependentUpon>FrmNuevoRol.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPerfil.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmPerfil.Designer.cs">
       <DependentUpon>FrmPerfil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGestionProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGestionProveedores.Designer.cs">
+      <DependentUpon>FrmGestionProveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPermisosRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPermisosRol.Designer.cs">
+      <DependentUpon>FrmPermisosRol.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmRecupero.cs">
       <SubType>Form</SubType>
@@ -247,23 +289,11 @@
     <Compile Include="FrmCargarTipoProducto.Designer.cs">
       <DependentUpon>FrmCargarTipoProducto.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmGestionProveedores.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmGestionProveedores.Designer.cs">
-      <DependentUpon>FrmGestionProveedores.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmGestionRecepcion.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmGestionRecepcion.Designer.cs">
       <DependentUpon>FrmGestionRecepcion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmModUsuarios.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmModUsuarios.Designer.cs">
-      <DependentUpon>FrmModUsuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmNuevaCate.cs">
       <SubType>Form</SubType>
@@ -301,12 +331,6 @@
     <Compile Include="FrmGestionPR.Designer.cs">
       <DependentUpon>FrmGestionPR.cs</DependentUpon>
     </Compile>
-    <Compile Include="GestionProveedores.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GestionProveedores.Designer.cs">
-      <DependentUpon>GestionProveedores.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CV_Seguridad.cs" />
@@ -325,6 +349,9 @@
     <EmbeddedResource Include="FrmEditarCliente.resx">
       <DependentUpon>FrmEditarCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmEditarProveedor.resx">
+      <DependentUpon>FrmEditarProveedor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmEditarProducto.resx">
       <DependentUpon>FrmEditarProducto.cs</DependentUpon>
     </EmbeddedResource>
@@ -333,6 +360,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmGestionClientes.resx">
       <DependentUpon>FrmGestionClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGestionRoles.resx">
+      <DependentUpon>FrmGestionRoles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
@@ -370,8 +400,20 @@
     <EmbeddedResource Include="FrmGestionProductos.resx">
       <DependentUpon>FrmGestionProductos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmNuevoProveedor.resx">
+      <DependentUpon>FrmNuevoProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNuevoRol.resx">
+      <DependentUpon>FrmNuevoRol.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmPerfil.resx">
       <DependentUpon>FrmPerfil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGestionProveedores.resx">
+      <DependentUpon>FrmGestionProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPermisosRol.resx">
+      <DependentUpon>FrmPermisosRol.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmRecupero.resx">
       <DependentUpon>FrmRecupero.cs</DependentUpon>
@@ -388,14 +430,8 @@
     <EmbeddedResource Include="FrmCargarTipoProducto.resx">
       <DependentUpon>FrmCargarTipoProducto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmGestionProveedores.resx">
-      <DependentUpon>FrmGestionProveedores.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmGestionRecepcion.resx">
       <DependentUpon>FrmGestionRecepcion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmModUsuarios.resx">
-      <DependentUpon>FrmModUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNuevaCate.resx">
       <DependentUpon>FrmNuevaCate.cs</DependentUpon>
@@ -420,9 +456,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmVentas.resx">
       <DependentUpon>FrmVentas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GestionProveedores.resx">
-      <DependentUpon>GestionProveedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

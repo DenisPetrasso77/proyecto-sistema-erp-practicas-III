@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace CapaDatos
 {
@@ -10,6 +11,200 @@ namespace CapaDatos
         CD_Conexion conexion = new CD_Conexion();
         #region METODOS
 
+        public string InsertarPermisoRol(int idrol, Permisos permisos)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_InsertarPermisoRol", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@IdRol", idrol);
+
+                    DataTable detalle = new DataTable();
+                    detalle.Columns.Add("IdPermiso", typeof(int));
+
+                    foreach (int desc in permisos.Detalle)
+                    {
+
+                        detalle.Rows.Add(desc);
+                    }
+
+                    SqlParameter tvpParam = cmd.Parameters.AddWithValue("@Detalle", detalle);
+                    tvpParam.SqlDbType = SqlDbType.Structured;
+                    tvpParam.TypeName = "dbo.t_DetallePermisosRol";
+                    return cmd.ExecuteScalar()?.ToString() ?? string.Empty;
+                }
+            }
+            catch (SqlException ex)
+            {
+                return "Error:" + ex.Message;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+        public string InsertarPermisoUsuario(int idusuario, Permisos permisos)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_InsertarPermisoUsuario", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@IdUsuario", idusuario);
+
+                    DataTable detalle = new DataTable();
+                    detalle.Columns.Add("IdPermiso", typeof(int));
+
+                    foreach (int desc in permisos.Detalle)
+                    {
+
+                        detalle.Rows.Add(desc);
+                    }
+
+                    SqlParameter tvpParam = cmd.Parameters.AddWithValue("@Detalle", detalle);
+                    tvpParam.SqlDbType = SqlDbType.Structured;
+                    tvpParam.TypeName = "dbo.t_DetallePermisosUsuario";
+                    return cmd.ExecuteScalar()?.ToString() ?? string.Empty;
+                }
+            }
+            catch (SqlException ex)
+            {
+                return "Error:" + ex.Message;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+        public string EliminarRol(int rol)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_EliminarRol", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IdRol", rol);
+                    return cmd.ExecuteScalar().ToString();
+                }
+            }
+            catch (SqlException ex)
+            {
+                return "Error:" + ex.Message;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+        public string InsertarRol(string rol)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_InsertarRol", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Rol", rol);
+                    return cmd.ExecuteNonQuery().ToString();
+                }
+            }
+            catch (SqlException ex)
+            {
+                return "Error:" + ex.Message;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+        public DataTable SeleccionaPermisos(int idrol)
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarPermisosRol", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@IdRol", idrol);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable SeleccionaPermisosUsuario(int idusuario)
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("[sp_SeleccionarPermisosUsuario]", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@IdUsuario", idusuario);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
+        public string InsertarRolPermiso(int idrol,int idpermiso)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_InsertarRolPermiso", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Idrol", idrol);
+                    cmd.Parameters.AddWithValue("@IdPermiso", idpermiso);
+                    return cmd.ExecuteNonQuery().ToString();
+                }
+            }
+            catch (SqlException ex)
+            {
+                return "Error:" + ex.Message;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+        public int EliminarIdRol(int idrol)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_EliminarIdRol", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Idrol", idrol);
+                    return cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException)
+            {
+                return 0;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+        public int ObtenerIdPermiso(string permiso)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_ObtenerIdPermiso", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Permiso", permiso);
+                    return Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
         public string Bitacora(int usuario,string tabla,string descripcion)
         {
             try
@@ -1082,6 +1277,18 @@ namespace CapaDatos
             }
             return dt;
         }
+        public DataTable Proveedores(int id)
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarProveedoresMod", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Id", id);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
         public DataTable PRpedidos()
         {
             DataTable dt = new DataTable();
@@ -1155,20 +1362,21 @@ namespace CapaDatos
             }
             return dt;
         }
-        public UsuarioActual DatosIngreso(string Usuario)
+        public UsuarioActual DatosIngreso(string usuario)
         {
             DataTable dt = new DataTable();
+
             using (SqlCommand cmd = new SqlCommand("sp_Datosingreso", conexion.Abrir()))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Usuario", Usuario);
+                cmd.Parameters.AddWithValue("@Usuario", usuario);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
             }
 
             if (dt.Rows.Count > 0)
             {
-                var UsuarioActual  = new UsuarioActual
+                var usuarioActual = new UsuarioActual
                 {
                     IdUsuario = Convert.ToInt32(dt.Rows[0]["IdUsuario"]),
                     Usuario = dt.Rows[0]["Usuario"].ToString(),
@@ -1177,26 +1385,30 @@ namespace CapaDatos
                     Apellido = dt.Rows[0]["Apellido"].ToString(),
                     Intentos = dt.Rows[0]["Intentos"].ToString(),
                     Bloqueado = dt.Rows[0]["Bloqueado"].ToString(),
-                    Rol = dt.Rows[0]["NombreRol"].ToString(),
+                    Rol = dt.Rows[0]["NombreRol"]== DBNull.Value ? "" : dt.Rows[0]["NombreRol"].ToString(),
                     dni = Convert.ToInt32(dt.Rows[0]["Dni"])
                 };
-                int idRol = Convert.ToInt32(dt.Rows[0]["IdRol"]);
-                using (SqlCommand cmdPermisos = new SqlCommand(@"SELECT p.NombrePermiso 
-                                                         FROM RolPermisos rp 
-                                                         JOIN Permisos p ON p.IdPermiso = rp.IdPermiso 
-                                                         WHERE rp.IdRol = @IdRol", conexion.Abrir()))
+
+                string permisosRolStr = dt.Rows[0]["PermisosRol"]?.ToString() ?? "";
+                if (!string.IsNullOrEmpty(permisosRolStr))
                 {
-                    cmdPermisos.Parameters.AddWithValue("@IdRol", idRol);
-                    using (SqlDataReader reader = cmdPermisos.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            UsuarioActual.Permisos.Add(reader["NombrePermiso"].ToString());
-                        }
-                    }
+                    usuarioActual.PermisosRol = permisosRolStr
+                        .Split(',')
+                        .Select(p => p.Trim())
+                        .ToList();
                 }
-                Sesion.Usuario = UsuarioActual;
-                return UsuarioActual;
+
+                string permisosUsuarioStr = dt.Rows[0]["PermisosIndividuales"]?.ToString() ?? "";
+                if (!string.IsNullOrEmpty(permisosUsuarioStr))
+                {
+                    usuarioActual.PermisosUsuario = permisosUsuarioStr
+                        .Split(',')
+                        .Select(p => p.Trim())
+                        .ToList();
+                }
+
+                Sesion.Usuario = usuarioActual;
+                return usuarioActual;
             }
 
             return null;

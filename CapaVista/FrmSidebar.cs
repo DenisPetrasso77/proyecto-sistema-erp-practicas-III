@@ -171,6 +171,13 @@ namespace SidebarMenu
             FrmConfig config = new FrmConfig();
             config.Show();
         }
+
+        private void pbConfig_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            FrmConfig  config  = new FrmConfig();
+            config.Show();
+        }
     }
     
 }

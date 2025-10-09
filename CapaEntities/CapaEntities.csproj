@@ -49,6 +49,7 @@
     <Compile Include="OrdenesPago.cs" />
     <Compile Include="PedidoCotizacion.cs" />
     <Compile Include="PedidodeReaprovionamiento.cs" />
+    <Compile Include="Permisos.cs" />
     <Compile Include="ProductoNuevo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proveedor.cs" />

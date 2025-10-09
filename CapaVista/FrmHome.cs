@@ -64,14 +64,6 @@ namespace CapaVista
             new FrmGestionRecepcion().Show();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Recepcion Mercaderia", "Accedio al Menu Gestion Recepcion");
         }
-
-        private void btnModificar_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            new GestionProveedores().Show();
-            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Proveedores", "Accedio al Menu Modificar Proveedores");
-        }
-
         private void btnGestionAdmin_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -99,30 +91,25 @@ namespace CapaVista
             UI_Utilidad.EstiloForm(this);
             UI_Utilidad.RedondearForm(this, 28);
 
-            //UI_Utilidad.RedondearControl(pnlProductos, 28);
-            //UI_Utilidad.RedondearControl(pnlPagos, 28);
-            //UI_Utilidad.RedondearControl(pnlProveedores, 28);
-            //UI_Utilidad.RedondearControl(pnlUsuarios, 28);
-            //UI_Utilidad.RedondearControl(pnlCompras, 28);
-            //UI_Utilidad.RedondearControl(pnlAlmacen, 28);
 
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnGestion);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnReabastecer);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnGestionPagos);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnCargarNuevo);
-            UI_Utilidad.EstiloBotonPrimarioDegradado(btnModificar);
+            //UI_Utilidad.EstiloBotonPrimarioDegradado(btnModificar);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnBitacora);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnGestionAdmin);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btncotizacion);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnOrden);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnRecepcion);
-            //UI_Utilidad.EstiloBotonPrimarioDegradado(btnAtras);
             UI_Utilidad.EstiloBotonPrimarioDegradado(bntClientes);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnVentas);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnCobros);
 
+            UI_Utilidad.AplicarTemaAControles(this);
+            UI_Utilidad.GuardarColoresOriginales(this);
+            UI_Utilidad.AplicarFuenteATodosLosForms();
 
-            //UI_Utilidad.EstiloBotonPrimarioDegradado(btnSalir);
         }
         private void pictureBox11_Click(object sender, EventArgs e)
         {
@@ -152,6 +139,44 @@ namespace CapaVista
             FrmGestionClientes clientes = new FrmGestionClientes();
             this.Hide();
             clientes.Show();
+        }
+
+        private void FrmHome_Load(object sender, EventArgs e)
+        {
+            if (Sesion.Usuario.Rol == "Encargado Almacen" && Sesion.Usuario.PermisosRol.Contains("Ver"))
+            {
+                pnlProductos.Visible = true;
+                pnlProveedores.Visible = true;
+                pnlAlmacen.Visible = true;
+            }
+            if (Sesion.Usuario.Rol == "Encargado Ventas" && Sesion.Usuario.PermisosRol.Contains("Ver"))
+            {
+                pnlVentas.Visible = true;
+                pnlClientes.Visible = true;
+            }
+            if (Sesion.Usuario.Rol == "Encargado Pagos" && Sesion.Usuario.PermisosRol.Contains("Ver"))
+            {
+                pnlPagos.Visible = true;
+            }
+            if (Sesion.Usuario.Rol == "Administrador")
+            {
+                pnlUsuarios.Visible = true;
+                pnlCompras.Visible = true;
+                pnlProductos.Visible = true;
+                pnlProveedores.Visible = true;
+                pnlAlmacen.Visible = true;
+                pnlVentas.Visible = true;
+                pnlClientes.Visible = true;
+                pnlPagos.Visible = true;
+                pnlCobros.Visible = true;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FrmGestionRoles roles = new FrmGestionRoles();
+            roles.ShowDialog();
+            metodos.Bitacora(Sesion.Usuario.IdUsuario, "Roles", "Accedio al Menu Gestion Roles");
         }
     }
 }

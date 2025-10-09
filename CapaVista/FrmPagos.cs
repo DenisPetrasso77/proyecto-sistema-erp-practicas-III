@@ -164,6 +164,8 @@ namespace CapaVista
         private void btnAtras_Click(object sender, EventArgs e)
         {
             this.Close();
+            FrmHome frm = new FrmHome();
+            frm.Show();
         }
 
         private void FrmPagos_Load(object sender, EventArgs e)

@@ -137,5 +137,13 @@ namespace CapaVista
             FrmRecupero frmRecupero = new FrmRecupero();
             frmRecupero.ShowDialog();
         }
+
+        private void txtContraseña_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            { 
+                btnIngresar.PerformClick();
+            }
+        }
     }
 }

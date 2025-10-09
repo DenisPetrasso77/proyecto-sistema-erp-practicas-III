@@ -1,26 +1,58 @@
-﻿using CapaEntities;
-using CapaLogica;
+﻿using CapaLogica;
 using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 namespace CapaVista
 {
     public partial class FrmEditarUsuario : Form
     {
-        private int usuario;
+        int idusuario;
         CL_Metodos metodos = new CL_Metodos();
         private string rutaImagenTemporal = string.Empty;
-        public FrmEditarUsuario(int usuario)
+        public FrmEditarUsuario(int idusuario)
         {
             InitializeComponent();
-            this.usuario = usuario;
+            this.idusuario = idusuario;
+        }
+        private void CargarPermisos()
+        {
+            string[] permisosiniciales = { "Ver", "Crear", "Editar", "Insertar", "Eliminar" };
+
+            foreach (string permiso in permisosiniciales)
+            {
+                int filaIndex = dataGridView1.Rows.Add();
+                dataGridView1.Rows[filaIndex].Cells["Permisos"].Value = permiso;
+            }
+            DataTable usuario = metodos.Usuarios(idusuario);
+            foreach (DataRow fila in usuario.Rows)
+            {               
+                string permisosStr = fila["Permisos"].ToString();
+                string[] permisos = permisosStr.Split(',');
+                var permisosLimpios = permisos.Select(p => p.Trim()).ToList();
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (row.IsNewRow) continue;
+
+                    string permisoActual = row.Cells["Permisos"].Value?.ToString();
+                    if (permisosLimpios.Contains(permisoActual))
+                    {
+                        row.Cells["Autorizado"].Value = "1- Si";
+                    }
+                    else
+                    {
+                        row.Cells["Autorizado"].Value = "2- No";
+                    }
+                }
+            }
+            dataGridView1.Columns["Autorizado"].ReadOnly = false;
         }
         private void CargarDatos()
         {
-            DataTable datos = metodos.SeleccionarDatosUsuario(usuario);
+            DataTable datos = metodos.SeleccionarDatosUsuario(idusuario);
             foreach (DataRow row in datos.Rows)
             {
                 string nombre = row["Nombre"].ToString();
@@ -45,15 +77,22 @@ namespace CapaVista
 
         private void FrmEditarUsuario_Load(object sender, EventArgs e)
         {
+            CargarRoles();
+            CargarPreguntas();
             CargarDatos();
+            CargarPermisos();
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show($"¿Está seguro de que desea restablecer la contraseña a {txtUsuario.Text}?", "Confirmar Restablecimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.No)
+                return;
             string contraseña = CV_Seguridad.HashearSHA256("ingreso123");
             try
             { 
-                string resultado = metodos.RestablecerContraseña(usuario,contraseña);
+                string resultado = metodos.RestablecerContraseña(idusuario, contraseña);
                 MessageBox.Show(resultado);
             }
             catch(Exception ex)
@@ -96,8 +135,37 @@ namespace CapaVista
             }
 
             File.Copy(rutaImagenTemporal, destino, true);
-
-            //me falta terminar la actualizacion jajajaja
+            int idrol = Convert.ToInt32(cmbRol.Text.Split('-')[0]);
+            metodos.EliminarIdRol(Convert.ToInt32(idrol));
+            foreach (DataGridViewRow fila in dataGridView1.Rows)
+            {
+                if (fila.IsNewRow) continue;
+                if (fila.Cells["Autorizado"].Value?.ToString() == "1- Si")
+                {
+                    int idPermiso = metodos.ObtenerIdPermiso(fila.Cells["Permisos"].Value.ToString());
+                    metodos.InsertarRolPermiso(idrol, idPermiso);
+                }
+            }
+        }
+        private void CargarRoles()
+        {
+            DataTable cacheroles = metodos.TraerTodo("Roles");
+            cmbRol.Items.Clear();
+            foreach (DataRow fila in cacheroles.Rows)
+            {
+                string rol = $"{fila["IdRol"].ToString()} - {fila["NombreRol"].ToString()}";
+                cmbRol.Items.Add(rol);
+            }
+        }
+        private void CargarPreguntas()
+        {
+            DataTable cachepregunta = metodos.TraerTodo("PreguntasSeguridad");
+            cmbPregunta.Items.Clear();
+            foreach (DataRow fila in cachepregunta.Rows)
+            {
+                string rol = $"{fila["IdPregunta"].ToString()} - {fila["Pregunta"].ToString()}";
+                cmbPregunta.Items.Add(rol);
+            }
         }
     }
 }

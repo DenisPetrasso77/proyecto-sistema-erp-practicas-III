@@ -36,8 +36,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtRol = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtEstado = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnAtras = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
@@ -45,6 +43,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btnCambiarFoto = new System.Windows.Forms.Button();
             this.pbFoto = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
             this.SuspendLayout();
@@ -52,15 +55,15 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(312, 156);
+            this.label1.Location = new System.Drawing.Point(176, 84);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 32);
+            this.label1.Size = new System.Drawing.Size(94, 32);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Nombre";
+            this.label1.Text = "Nombre:";
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(415, 156);
+            this.txtNombre.Location = new System.Drawing.Point(266, 84);
             this.txtNombre.Multiline = true;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.ReadOnly = true;
@@ -69,7 +72,7 @@
             // 
             // txtpellido
             // 
-            this.txtpellido.Location = new System.Drawing.Point(415, 210);
+            this.txtpellido.Location = new System.Drawing.Point(486, 84);
             this.txtpellido.Multiline = true;
             this.txtpellido.Name = "txtpellido";
             this.txtpellido.ReadOnly = true;
@@ -79,33 +82,33 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(312, 215);
+            this.label2.Location = new System.Drawing.Point(396, 81);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 33);
+            this.label2.Size = new System.Drawing.Size(94, 28);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Apellido";
+            this.label2.Text = "Apellido:";
             // 
             // txtMail
             // 
-            this.txtMail.Location = new System.Drawing.Point(415, 270);
+            this.txtMail.Location = new System.Drawing.Point(266, 164);
             this.txtMail.Multiline = true;
             this.txtMail.Name = "txtMail";
             this.txtMail.ReadOnly = true;
-            this.txtMail.Size = new System.Drawing.Size(120, 25);
+            this.txtMail.Size = new System.Drawing.Size(340, 25);
             this.txtMail.TabIndex = 6;
             // 
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(312, 275);
+            this.label3.Location = new System.Drawing.Point(177, 169);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 20);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Mail";
+            this.label3.Text = "Correo:";
             // 
             // txtRol
             // 
-            this.txtRol.Location = new System.Drawing.Point(415, 325);
+            this.txtRol.Location = new System.Drawing.Point(486, 122);
             this.txtRol.Multiline = true;
             this.txtRol.Name = "txtRol";
             this.txtRol.ReadOnly = true;
@@ -115,33 +118,15 @@
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(312, 330);
+            this.label4.Location = new System.Drawing.Point(396, 122);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 20);
+            this.label4.Size = new System.Drawing.Size(48, 25);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Rol";
-            // 
-            // txtEstado
-            // 
-            this.txtEstado.Location = new System.Drawing.Point(415, 380);
-            this.txtEstado.Multiline = true;
-            this.txtEstado.Name = "txtEstado";
-            this.txtEstado.ReadOnly = true;
-            this.txtEstado.Size = new System.Drawing.Size(120, 25);
-            this.txtEstado.TabIndex = 10;
-            // 
-            // label5
-            // 
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(312, 383);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(83, 20);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Estado";
+            this.label4.Text = "Rol:";
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(131, 539);
+            this.btnGuardar.Location = new System.Drawing.Point(136, 289);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.btnGuardar.Size = new System.Drawing.Size(120, 40);
@@ -151,7 +136,7 @@
             // 
             // btnAtras
             // 
-            this.btnAtras.Location = new System.Drawing.Point(396, 539);
+            this.btnAtras.Location = new System.Drawing.Point(401, 289);
             this.btnAtras.Name = "btnAtras";
             this.btnAtras.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.btnAtras.Size = new System.Drawing.Size(120, 40);
@@ -162,7 +147,7 @@
             // 
             // btnEditar
             // 
-            this.btnEditar.Location = new System.Drawing.Point(266, 539);
+            this.btnEditar.Location = new System.Drawing.Point(271, 289);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.btnEditar.Size = new System.Drawing.Size(120, 40);
@@ -192,10 +177,10 @@
             // 
             // btnCambiarFoto
             // 
-            this.btnCambiarFoto.Location = new System.Drawing.Point(91, 378);
+            this.btnCambiarFoto.Location = new System.Drawing.Point(12, 254);
             this.btnCambiarFoto.Name = "btnCambiarFoto";
             this.btnCambiarFoto.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.btnCambiarFoto.Size = new System.Drawing.Size(120, 40);
+            this.btnCambiarFoto.Size = new System.Drawing.Size(153, 28);
             this.btnCambiarFoto.TabIndex = 16;
             this.btnCambiarFoto.Text = "Cambiar Imagen";
             this.btnCambiarFoto.UseVisualStyleBackColor = true;
@@ -203,27 +188,75 @@
             // pbFoto
             // 
             this.pbFoto.Image = global::CapaVista.Properties.Resources.Alan_turing_header;
-            this.pbFoto.Location = new System.Drawing.Point(51, 156);
+            this.pbFoto.Location = new System.Drawing.Point(12, 84);
             this.pbFoto.Name = "pbFoto";
-            this.pbFoto.Size = new System.Drawing.Size(200, 200);
+            this.pbFoto.Size = new System.Drawing.Size(153, 164);
             this.pbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbFoto.TabIndex = 0;
             this.pbFoto.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(176, 127);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(61, 20);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Dni:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(266, 122);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(120, 25);
+            this.textBox1.TabIndex = 18;
+            // 
+            // label7
+            // 
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(177, 203);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(226, 26);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "Pregunta de Seguridad:";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(410, 203);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(196, 26);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "Cambiar Pregunta";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(182, 235);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(340, 25);
+            this.textBox2.TabIndex = 21;
             // 
             // FrmPerfil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(618, 612);
+            this.ClientSize = new System.Drawing.Size(618, 336);
             this.ControlBox = false;
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnCambiarFoto);
             this.Controls.Add(this.pbFoto);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnAtras);
             this.Controls.Add(this.btnGuardar);
-            this.Controls.Add(this.txtEstado);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.txtRol);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtMail);
@@ -237,7 +270,7 @@
             this.MinimizeBox = false;
             this.Name = "FrmPerfil";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmPerfil";
+            this.Text = "Mi Perfil";
             this.Shown += new System.EventHandler(this.FrmPerfil_Shown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -256,8 +289,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtRol;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtEstado;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnAtras;
         private System.Windows.Forms.Button btnEditar;
@@ -265,5 +296,10 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnCambiarFoto;
         private System.Windows.Forms.PictureBox pbFoto;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

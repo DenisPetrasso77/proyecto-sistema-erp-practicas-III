@@ -58,12 +58,16 @@
             this.pbFoto = new System.Windows.Forms.PictureBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Permisos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Autorizado = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -78,7 +82,7 @@
             // 
             // txtCorreo
             // 
-            this.txtCorreo.Location = new System.Drawing.Point(510, 301);
+            this.txtCorreo.Location = new System.Drawing.Point(498, 334);
             this.txtCorreo.Multiline = true;
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(233, 26);
@@ -88,7 +92,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(433, 308);
+            this.label11.Location = new System.Drawing.Point(421, 341);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(72, 19);
             this.label11.TabIndex = 51;
@@ -156,7 +160,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(11, 301);
+            this.label9.Location = new System.Drawing.Point(8, 336);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(54, 19);
             this.label9.TabIndex = 44;
@@ -173,9 +177,9 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(494, 98);
+            this.groupBox2.Location = new System.Drawing.Point(430, 98);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(249, 165);
+            this.groupBox2.Size = new System.Drawing.Size(313, 165);
             this.groupBox2.TabIndex = 49;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos De Usuario";
@@ -219,7 +223,7 @@
             this.cmbRol.FormattingEnabled = true;
             this.cmbRol.Location = new System.Drawing.Point(108, 98);
             this.cmbRol.Name = "cmbRol";
-            this.cmbRol.Size = new System.Drawing.Size(129, 28);
+            this.cmbRol.Size = new System.Drawing.Size(159, 28);
             this.cmbRol.TabIndex = 13;
             // 
             // txtUsuario
@@ -270,7 +274,7 @@
             "¿Nombre de su mascosta de la infancia?",
             "¿Apellido de su Ex?",
             "¿Paseo por la Zona Roja de Constitución?"});
-            this.cmbPregunta.Location = new System.Drawing.Point(107, 297);
+            this.cmbPregunta.Location = new System.Drawing.Point(104, 332);
             this.cmbPregunta.Name = "cmbPregunta";
             this.cmbPregunta.Size = new System.Drawing.Size(307, 28);
             this.cmbPregunta.TabIndex = 42;
@@ -286,7 +290,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(189, 86);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(299, 177);
+            this.groupBox1.Size = new System.Drawing.Size(241, 177);
             this.groupBox1.TabIndex = 47;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Personales";
@@ -304,7 +308,7 @@
             this.txtNombre.Location = new System.Drawing.Point(108, 49);
             this.txtNombre.Multiline = true;
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(185, 26);
+            this.txtNombre.Size = new System.Drawing.Size(127, 26);
             this.txtNombre.TabIndex = 5;
             // 
             // label3
@@ -322,7 +326,7 @@
             this.txtApellido.Location = new System.Drawing.Point(108, 99);
             this.txtApellido.Multiline = true;
             this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(185, 26);
+            this.txtApellido.Size = new System.Drawing.Size(127, 26);
             this.txtApellido.TabIndex = 7;
             // 
             // label4
@@ -349,7 +353,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(194, 267);
+            this.label8.Location = new System.Drawing.Point(8, 301);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(220, 22);
             this.label8.TabIndex = 40;
@@ -367,9 +371,9 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(415, 333);
+            this.btnCancelar.Location = new System.Drawing.Point(437, 502);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(145, 35);
+            this.btnCancelar.Size = new System.Drawing.Size(114, 35);
             this.btnCancelar.TabIndex = 43;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -377,19 +381,51 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(242, 333);
+            this.btnAceptar.Location = new System.Drawing.Point(264, 502);
             this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(145, 35);
+            this.btnAceptar.Size = new System.Drawing.Size(114, 35);
             this.btnAceptar.TabIndex = 41;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Permisos,
+            this.Autorizado});
+            this.dataGridView1.Location = new System.Drawing.Point(12, 366);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(183, 171);
+            this.dataGridView1.TabIndex = 54;
+            // 
+            // Permisos
+            // 
+            this.Permisos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Permisos.HeaderText = "Permisos";
+            this.Permisos.Name = "Permisos";
+            this.Permisos.Width = 74;
+            // 
+            // Autorizado
+            // 
+            this.Autorizado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Autorizado.HeaderText = "Autorizado";
+            this.Autorizado.Items.AddRange(new object[] {
+            "1- Si",
+            "2- No"});
+            this.Autorizado.Name = "Autorizado";
+            this.Autorizado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Autorizado.Width = 63;
+            // 
             // FrmEditarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(752, 374);
+            this.ClientSize = new System.Drawing.Size(752, 543);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtCorreo);
             this.Controls.Add(this.label11);
@@ -415,6 +451,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -452,5 +489,8 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Permisos;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Autorizado;
     }
 }

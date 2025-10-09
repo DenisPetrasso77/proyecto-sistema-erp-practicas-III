@@ -121,6 +121,7 @@
             this.pbConfig.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbConfig.TabIndex = 7;
             this.pbConfig.TabStop = false;
+            this.pbConfig.Click += new System.EventHandler(this.pbConfig_Click);
             // 
             // pbHome
             // 
