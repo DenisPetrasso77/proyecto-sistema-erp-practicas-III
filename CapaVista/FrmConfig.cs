@@ -86,5 +86,11 @@ namespace CapaVista
 
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnAtras);
         }
+
+        private void FrmConfig_Load(object sender, EventArgs e)
+        {
+
+
+        }
     }
 }

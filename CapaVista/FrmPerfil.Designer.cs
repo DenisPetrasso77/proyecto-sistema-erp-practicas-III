@@ -30,7 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.txtpellido = new System.Windows.Forms.TextBox();
+            this.txtApellido = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtMail = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -38,7 +38,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnAtras = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.btnCambiarFoto = new System.Windows.Forms.Button();
@@ -63,6 +62,7 @@
             // 
             // txtNombre
             // 
+            this.txtNombre.Enabled = false;
             this.txtNombre.Location = new System.Drawing.Point(266, 84);
             this.txtNombre.Multiline = true;
             this.txtNombre.Name = "txtNombre";
@@ -70,14 +70,15 @@
             this.txtNombre.Size = new System.Drawing.Size(120, 25);
             this.txtNombre.TabIndex = 2;
             // 
-            // txtpellido
+            // txtApellido
             // 
-            this.txtpellido.Location = new System.Drawing.Point(486, 84);
-            this.txtpellido.Multiline = true;
-            this.txtpellido.Name = "txtpellido";
-            this.txtpellido.ReadOnly = true;
-            this.txtpellido.Size = new System.Drawing.Size(120, 25);
-            this.txtpellido.TabIndex = 4;
+            this.txtApellido.Enabled = false;
+            this.txtApellido.Location = new System.Drawing.Point(486, 84);
+            this.txtApellido.Multiline = true;
+            this.txtApellido.Name = "txtApellido";
+            this.txtApellido.ReadOnly = true;
+            this.txtApellido.Size = new System.Drawing.Size(120, 25);
+            this.txtApellido.TabIndex = 4;
             // 
             // label2
             // 
@@ -90,6 +91,7 @@
             // 
             // txtMail
             // 
+            this.txtMail.Enabled = false;
             this.txtMail.Location = new System.Drawing.Point(266, 164);
             this.txtMail.Multiline = true;
             this.txtMail.Name = "txtMail";
@@ -108,6 +110,7 @@
             // 
             // txtRol
             // 
+            this.txtRol.Enabled = false;
             this.txtRol.Location = new System.Drawing.Point(486, 122);
             this.txtRol.Multiline = true;
             this.txtRol.Name = "txtRol";
@@ -126,13 +129,14 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(136, 289);
+            this.btnGuardar.Location = new System.Drawing.Point(181, 289);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.btnGuardar.Size = new System.Drawing.Size(120, 40);
             this.btnGuardar.TabIndex = 11;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnAtras
             // 
@@ -144,16 +148,6 @@
             this.btnAtras.Text = "Atras";
             this.btnAtras.UseVisualStyleBackColor = true;
             this.btnAtras.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Location = new System.Drawing.Point(271, 289);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.btnEditar.Size = new System.Drawing.Size(120, 40);
-            this.btnEditar.TabIndex = 13;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -184,10 +178,11 @@
             this.btnCambiarFoto.TabIndex = 16;
             this.btnCambiarFoto.Text = "Cambiar Imagen";
             this.btnCambiarFoto.UseVisualStyleBackColor = true;
+            this.btnCambiarFoto.Click += new System.EventHandler(this.btnCambiarFoto_Click);
             // 
             // pbFoto
             // 
-            this.pbFoto.Image = global::CapaVista.Properties.Resources.Alan_turing_header;
+            this.pbFoto.Image = global::CapaVista.Properties.Resources.usuario1;
             this.pbFoto.Location = new System.Drawing.Point(12, 84);
             this.pbFoto.Name = "pbFoto";
             this.pbFoto.Size = new System.Drawing.Size(153, 164);
@@ -206,6 +201,7 @@
             // 
             // textBox1
             // 
+            this.textBox1.Enabled = false;
             this.textBox1.Location = new System.Drawing.Point(266, 122);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
@@ -230,9 +226,11 @@
             this.button1.TabIndex = 20;
             this.button1.Text = "Cambiar Pregunta";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox2
             // 
+            this.textBox2.Enabled = false;
             this.textBox2.Location = new System.Drawing.Point(182, 235);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
@@ -254,14 +252,13 @@
             this.Controls.Add(this.btnCambiarFoto);
             this.Controls.Add(this.pbFoto);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnAtras);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.txtRol);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtMail);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtpellido);
+            this.Controls.Add(this.txtApellido);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.label1);
@@ -271,6 +268,7 @@
             this.Name = "FrmPerfil";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mi Perfil";
+            this.Load += new System.EventHandler(this.FrmPerfil_Load);
             this.Shown += new System.EventHandler(this.FrmPerfil_Shown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -283,7 +281,7 @@
         #endregion
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.TextBox txtpellido;
+        private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtMail;
         private System.Windows.Forms.Label label3;
@@ -291,7 +289,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnAtras;
-        private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnCambiarFoto;

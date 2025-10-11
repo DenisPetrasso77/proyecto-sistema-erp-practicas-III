@@ -10,6 +10,10 @@ namespace CapaLogica
         CD_Metodos metodos = new CD_Metodos();
 
         #region METODOS
+        public DataTable SeleccionaDatosPerfil(int idusuario)
+        {
+        return metodos.SeleccionaDatosPerfil(idusuario);
+        }
         public string InsertarPermisoUsuario(int idusuario, Permisos permisos)
         { 
             return metodos.InsertarPermisoUsuario(idusuario, permisos);
@@ -281,6 +285,11 @@ namespace CapaLogica
         { 
             return metodos.Localidades(id);
         }
+        public string ActualizarPregunta(int idpregunta, string respuesta)
+        {
+            return metodos.ActualizarPregunta(idpregunta,respuesta);
+        }
+
         public int CodigoPostal(int id)
         {
             return metodos.CodigoPostal(id);

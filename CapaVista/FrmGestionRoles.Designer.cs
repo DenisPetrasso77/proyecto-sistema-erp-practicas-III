@@ -41,13 +41,13 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.IdPermiso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Permiso1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Autorizado1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.button3 = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.button4 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.IdPermiso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Permiso1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Autorizado1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -59,6 +59,7 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(6, 31);
             this.comboBox1.Name = "comboBox1";
@@ -201,6 +202,25 @@
             this.dataGridView2.Size = new System.Drawing.Size(253, 203);
             this.dataGridView2.TabIndex = 13;
             // 
+            // IdPermiso
+            // 
+            this.IdPermiso.HeaderText = "IdPermiso";
+            this.IdPermiso.Name = "IdPermiso";
+            this.IdPermiso.Visible = false;
+            // 
+            // Permiso1
+            // 
+            this.Permiso1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Permiso1.HeaderText = "Permiso";
+            this.Permiso1.Name = "Permiso1";
+            // 
+            // Autorizado1
+            // 
+            this.Autorizado1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Autorizado1.HeaderText = "Autorizado";
+            this.Autorizado1.Name = "Autorizado1";
+            this.Autorizado1.Width = 63;
+            // 
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(153, 268);
@@ -212,7 +232,7 @@
             // 
             // comboBox2
             // 
-            this.comboBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(5, 32);
             this.comboBox2.Name = "comboBox2";
@@ -239,25 +259,6 @@
             this.label2.Size = new System.Drawing.Size(211, 25);
             this.label2.TabIndex = 10;
             this.label2.Text = "Seleccionar Usuario:";
-            // 
-            // IdPermiso
-            // 
-            this.IdPermiso.HeaderText = "IdPermiso";
-            this.IdPermiso.Name = "IdPermiso";
-            this.IdPermiso.Visible = false;
-            // 
-            // Permiso1
-            // 
-            this.Permiso1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Permiso1.HeaderText = "Permiso";
-            this.Permiso1.Name = "Permiso1";
-            // 
-            // Autorizado1
-            // 
-            this.Autorizado1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Autorizado1.HeaderText = "Autorizado";
-            this.Autorizado1.Name = "Autorizado1";
-            this.Autorizado1.Width = 63;
             // 
             // FrmGestionRoles
             // 

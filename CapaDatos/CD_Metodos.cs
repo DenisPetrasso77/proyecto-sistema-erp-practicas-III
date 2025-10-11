@@ -45,6 +45,28 @@ namespace CapaDatos
                 conexion.Cerrar();
             }
         }
+        public string ActualizarPregunta(int idpregunta,string respuesta)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_ActualizarPreguntaSeguridad", conexion.Abrir()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IdUsuario", Sesion.Usuario.IdUsuario);
+                    cmd.Parameters.AddWithValue("@IdPregunta", idpregunta);
+                    cmd.Parameters.AddWithValue("@Respuesta", respuesta);                 
+                    return cmd.ExecuteScalar()?.ToString() ?? string.Empty;
+                }
+            }
+            catch (SqlException ex)
+            {
+                return "Error:" + ex.Message;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
         public string InsertarPermisoUsuario(int idusuario, Permisos permisos)
         {
             try
@@ -134,7 +156,7 @@ namespace CapaDatos
         public DataTable SeleccionaPermisosUsuario(int idusuario)
         {
             DataTable dt = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("[sp_SeleccionarPermisosUsuario]", conexion.Abrir()))
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarPermisosUsuario", conexion.Abrir()))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@IdUsuario", idusuario);
@@ -143,7 +165,18 @@ namespace CapaDatos
             }
             return dt;
         }
-
+        public DataTable SeleccionaDatosPerfil(int idusuario)
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarDatosPerfil", conexion.Abrir()))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@IdUsuario", idusuario);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
         public string InsertarRolPermiso(int idrol,int idpermiso)
         {
             try
