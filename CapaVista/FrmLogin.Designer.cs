@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
-            this.label1 = new System.Windows.Forms.Label();
+            this.login = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.lblOlvidoContraseña = new System.Windows.Forms.Label();
             this.btnIngresar = new System.Windows.Forms.Button();
@@ -42,6 +42,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.cmbLenguaje = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSalir)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -49,22 +50,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // login
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Consolas", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(169, 237);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 32);
-            this.label1.TabIndex = 32;
-            this.label1.Text = "Login";
+            this.login.AutoSize = true;
+            this.login.Font = new System.Drawing.Font("Consolas", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.login.Location = new System.Drawing.Point(169, 237);
+            this.login.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.login.Name = "login";
+            this.login.Size = new System.Drawing.Size(89, 32);
+            this.login.TabIndex = 32;
+            this.login.Text = "Login";
             // 
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Consolas", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(38, 33);
+            this.lblTitulo.Location = new System.Drawing.Point(46, 45);
             this.lblTitulo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(344, 32);
@@ -173,14 +174,32 @@
             this.pictureBox1.TabIndex = 29;
             this.pictureBox1.TabStop = false;
             // 
+            // cmbLenguaje
+            // 
+            this.cmbLenguaje.FormattingEnabled = true;
+            this.cmbLenguaje.Items.AddRange(new object[] {
+            "Aleman",
+            "Español",
+            "Frances",
+            "Ingles",
+            "Italiano",
+            "Portugues",
+            "Turco"});
+            this.cmbLenguaje.Location = new System.Drawing.Point(292, 9);
+            this.cmbLenguaje.Name = "cmbLenguaje";
+            this.cmbLenguaje.Size = new System.Drawing.Size(121, 21);
+            this.cmbLenguaje.TabIndex = 35;
+            this.cmbLenguaje.SelectedIndexChanged += new System.EventHandler(this.cmbLenguaje_SelectedIndexChanged);
+            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(424, 507);
+            this.Controls.Add(this.cmbLenguaje);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pbSalir);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.login);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
@@ -208,7 +227,7 @@
 
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pbSalir;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label login;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -218,5 +237,6 @@
         private System.Windows.Forms.TextBox txtContraseña;
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ComboBox cmbLenguaje;
     }
 }

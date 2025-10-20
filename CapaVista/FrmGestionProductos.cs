@@ -168,7 +168,6 @@ namespace CapaVista
             dataGridView1.Columns.Add(CantidadPedir);
             dataGridView1.Columns.Add(Pedir);
         }
-
         private void CargarProductosStockBajo()
         {
             DataTable stockproducmin = metodos.ProductosStockMin();

@@ -3,23 +3,22 @@ using System.Data.SqlClient;
 
 namespace CapaDatos
 {
-    public class CD_Conexion
+    public abstract class CD_Conexion
     {
-        private string cadenaConexion = "Server=localhost\\SQLEXPRESS;Database=DATOS;Integrated Security=True;";
+        private readonly string cadenaConexion = "Server=localhost\\SQLEXPRESS;Database=DATOS;Integrated Security=True;";
         private SqlConnection conexion;
 
-        public SqlConnection Abrir()
+        protected SqlConnection AbrirConexion()
         {
             if (conexion == null)
                 conexion = new SqlConnection(cadenaConexion);
 
             if (conexion.State != ConnectionState.Open)
-                conexion.Open();
-
+                conexion.Open();  
             return conexion;
         }
 
-        public void Cerrar()
+        protected void CerrarConexion()
         {
             if (conexion != null && conexion.State != ConnectionState.Closed)
             {

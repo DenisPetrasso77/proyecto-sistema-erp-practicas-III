@@ -32,30 +32,24 @@
             this.btnReabastecer = new System.Windows.Forms.Button();
             this.btnRecepcion = new System.Windows.Forms.Button();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.button13 = new System.Windows.Forms.Button();
             this.pnlCompras = new System.Windows.Forms.Panel();
-            this.btncotizacion = new System.Windows.Forms.Button();
+            this.btnCotizacion = new System.Windows.Forms.Button();
             this.btnOrden = new System.Windows.Forms.Button();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.button11 = new System.Windows.Forms.Button();
             this.pnlUsuarios = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnRolesPermisos = new System.Windows.Forms.Button();
             this.btnBitacora = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.btnGestionAdmin = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
             this.pnlProveedores = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.btnCargarNuevo = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnGestionProveedores = new System.Windows.Forms.Button();
             this.pnlPagos = new System.Windows.Forms.Panel();
             this.btnGestionPagos = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.button4 = new System.Windows.Forms.Button();
             this.pnlProductos = new System.Windows.Forms.Panel();
-            this.btnGestion = new System.Windows.Forms.Button();
+            this.btnGestionProductos = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
@@ -63,16 +57,22 @@
             this.pnlCobros = new System.Windows.Forms.Panel();
             this.btnCobros = new System.Windows.Forms.Button();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.button16 = new System.Windows.Forms.Button();
             this.pnlClientes = new System.Windows.Forms.Panel();
-            this.bntClientes = new System.Windows.Forms.Button();
+            this.btnClientes = new System.Windows.Forms.Button();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.button12 = new System.Windows.Forms.Button();
             this.pnlVentas = new System.Windows.Forms.Panel();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.button7 = new System.Windows.Forms.Button();
             this.btnVentas = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblProductos = new System.Windows.Forms.Label();
+            this.lblPagos = new System.Windows.Forms.Label();
+            this.lblProveedores = new System.Windows.Forms.Label();
+            this.lblAdministracion = new System.Windows.Forms.Label();
+            this.lblCompras = new System.Windows.Forms.Label();
+            this.lblAlmacen = new System.Windows.Forms.Label();
+            this.lblVentas = new System.Windows.Forms.Label();
+            this.lblClientes = new System.Windows.Forms.Label();
+            this.lblCobros = new System.Windows.Forms.Label();
             this.pnlAlmacen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.pnlCompras.SuspendLayout();
@@ -100,10 +100,10 @@
             // pnlAlmacen
             // 
             this.pnlAlmacen.BackColor = System.Drawing.SystemColors.Highlight;
+            this.pnlAlmacen.Controls.Add(this.lblAlmacen);
             this.pnlAlmacen.Controls.Add(this.btnReabastecer);
             this.pnlAlmacen.Controls.Add(this.btnRecepcion);
             this.pnlAlmacen.Controls.Add(this.pictureBox6);
-            this.pnlAlmacen.Controls.Add(this.button13);
             this.pnlAlmacen.Location = new System.Drawing.Point(645, 235);
             this.pnlAlmacen.Name = "pnlAlmacen";
             this.pnlAlmacen.Size = new System.Drawing.Size(280, 211);
@@ -135,50 +135,36 @@
             // pictureBox6
             // 
             this.pictureBox6.Image = global::CapaVista.Properties.Resources.almacen;
-            this.pictureBox6.Location = new System.Drawing.Point(110, 13);
+            this.pictureBox6.Location = new System.Drawing.Point(101, 13);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(60, 60);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox6.TabIndex = 6;
             this.pictureBox6.TabStop = false;
             // 
-            // button13
-            // 
-            this.button13.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button13.FlatAppearance.BorderSize = 0;
-            this.button13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.Location = new System.Drawing.Point(74, 73);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(120, 40);
-            this.button13.TabIndex = 5;
-            this.button13.Text = "Almacen";
-            this.button13.UseVisualStyleBackColor = true;
-            // 
             // pnlCompras
             // 
             this.pnlCompras.BackColor = System.Drawing.SystemColors.Highlight;
-            this.pnlCompras.Controls.Add(this.btncotizacion);
+            this.pnlCompras.Controls.Add(this.lblCompras);
+            this.pnlCompras.Controls.Add(this.btnCotizacion);
             this.pnlCompras.Controls.Add(this.btnOrden);
             this.pnlCompras.Controls.Add(this.pictureBox5);
-            this.pnlCompras.Controls.Add(this.button11);
             this.pnlCompras.Location = new System.Drawing.Point(359, 235);
             this.pnlCompras.Name = "pnlCompras";
             this.pnlCompras.Size = new System.Drawing.Size(280, 211);
             this.pnlCompras.TabIndex = 21;
             this.pnlCompras.Visible = false;
             // 
-            // btncotizacion
+            // btnCotizacion
             // 
-            this.btncotizacion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btncotizacion.Location = new System.Drawing.Point(84, 114);
-            this.btncotizacion.Name = "btncotizacion";
-            this.btncotizacion.Size = new System.Drawing.Size(120, 40);
-            this.btncotizacion.TabIndex = 19;
-            this.btncotizacion.Text = "Cotizacion";
-            this.btncotizacion.UseVisualStyleBackColor = true;
-            this.btncotizacion.Click += new System.EventHandler(this.btncotizacion_Click);
+            this.btnCotizacion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCotizacion.Location = new System.Drawing.Point(84, 114);
+            this.btnCotizacion.Name = "btnCotizacion";
+            this.btnCotizacion.Size = new System.Drawing.Size(120, 40);
+            this.btnCotizacion.TabIndex = 19;
+            this.btnCotizacion.Text = "Cotizacion";
+            this.btnCotizacion.UseVisualStyleBackColor = true;
+            this.btnCotizacion.Click += new System.EventHandler(this.btncotizacion_Click);
             // 
             // btnOrden
             // 
@@ -202,44 +188,30 @@
             this.pictureBox5.TabIndex = 5;
             this.pictureBox5.TabStop = false;
             // 
-            // button11
-            // 
-            this.button11.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button11.FlatAppearance.BorderSize = 0;
-            this.button11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.Location = new System.Drawing.Point(84, 73);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(120, 40);
-            this.button11.TabIndex = 4;
-            this.button11.Text = "Compras";
-            this.button11.UseVisualStyleBackColor = true;
-            // 
             // pnlUsuarios
             // 
             this.pnlUsuarios.BackColor = System.Drawing.SystemColors.Highlight;
-            this.pnlUsuarios.Controls.Add(this.button2);
+            this.pnlUsuarios.Controls.Add(this.lblAdministracion);
+            this.pnlUsuarios.Controls.Add(this.btnRolesPermisos);
             this.pnlUsuarios.Controls.Add(this.btnBitacora);
             this.pnlUsuarios.Controls.Add(this.pictureBox4);
             this.pnlUsuarios.Controls.Add(this.btnGestionAdmin);
-            this.pnlUsuarios.Controls.Add(this.button9);
             this.pnlUsuarios.Location = new System.Drawing.Point(73, 235);
             this.pnlUsuarios.Name = "pnlUsuarios";
             this.pnlUsuarios.Size = new System.Drawing.Size(280, 211);
             this.pnlUsuarios.TabIndex = 20;
             this.pnlUsuarios.Visible = false;
             // 
-            // button2
+            // btnRolesPermisos
             // 
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.Location = new System.Drawing.Point(140, 114);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(113, 40);
-            this.button2.TabIndex = 20;
-            this.button2.Text = "Roles/Permisos";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnRolesPermisos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRolesPermisos.Location = new System.Drawing.Point(140, 114);
+            this.btnRolesPermisos.Name = "btnRolesPermisos";
+            this.btnRolesPermisos.Size = new System.Drawing.Size(113, 40);
+            this.btnRolesPermisos.TabIndex = 20;
+            this.btnRolesPermisos.Text = "Roles/Permisos";
+            this.btnRolesPermisos.UseVisualStyleBackColor = true;
+            this.btnRolesPermisos.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnBitacora
             // 
@@ -273,26 +245,12 @@
             this.btnGestionAdmin.UseVisualStyleBackColor = true;
             this.btnGestionAdmin.Click += new System.EventHandler(this.btnGestionAdmin_Click);
             // 
-            // button9
-            // 
-            this.button9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button9.FlatAppearance.BorderSize = 0;
-            this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(46, 78);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(172, 35);
-            this.button9.TabIndex = 3;
-            this.button9.Text = "Administración";
-            this.button9.UseVisualStyleBackColor = true;
-            // 
             // pnlProveedores
             // 
             this.pnlProveedores.BackColor = System.Drawing.SystemColors.Highlight;
+            this.pnlProveedores.Controls.Add(this.lblProveedores);
             this.pnlProveedores.Controls.Add(this.pictureBox3);
-            this.pnlProveedores.Controls.Add(this.btnCargarNuevo);
-            this.pnlProveedores.Controls.Add(this.button5);
+            this.pnlProveedores.Controls.Add(this.btnGestionProveedores);
             this.pnlProveedores.Location = new System.Drawing.Point(645, 18);
             this.pnlProveedores.Name = "pnlProveedores";
             this.pnlProveedores.Size = new System.Drawing.Size(280, 211);
@@ -309,38 +267,24 @@
             this.pictureBox3.TabIndex = 5;
             this.pictureBox3.TabStop = false;
             // 
-            // btnCargarNuevo
+            // btnGestionProveedores
             // 
-            this.btnCargarNuevo.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.btnCargarNuevo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCargarNuevo.Location = new System.Drawing.Point(74, 108);
-            this.btnCargarNuevo.Name = "btnCargarNuevo";
-            this.btnCargarNuevo.Size = new System.Drawing.Size(120, 40);
-            this.btnCargarNuevo.TabIndex = 18;
-            this.btnCargarNuevo.Text = "Gestion";
-            this.btnCargarNuevo.UseVisualStyleBackColor = true;
-            this.btnCargarNuevo.Click += new System.EventHandler(this.btnCargarNuevo_Click);
-            // 
-            // button5
-            // 
-            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(57, 67);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(158, 35);
-            this.button5.TabIndex = 2;
-            this.button5.Text = "Proveedores";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnGestionProveedores.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.btnGestionProveedores.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGestionProveedores.Location = new System.Drawing.Point(74, 108);
+            this.btnGestionProveedores.Name = "btnGestionProveedores";
+            this.btnGestionProveedores.Size = new System.Drawing.Size(120, 40);
+            this.btnGestionProveedores.TabIndex = 18;
+            this.btnGestionProveedores.Text = "Gestion";
+            this.btnGestionProveedores.UseVisualStyleBackColor = true;
+            this.btnGestionProveedores.Click += new System.EventHandler(this.btnCargarNuevo_Click);
             // 
             // pnlPagos
             // 
             this.pnlPagos.BackColor = System.Drawing.SystemColors.Highlight;
+            this.pnlPagos.Controls.Add(this.lblPagos);
             this.pnlPagos.Controls.Add(this.btnGestionPagos);
             this.pnlPagos.Controls.Add(this.pictureBox2);
-            this.pnlPagos.Controls.Add(this.button4);
             this.pnlPagos.Location = new System.Drawing.Point(359, 18);
             this.pnlPagos.Name = "pnlPagos";
             this.pnlPagos.Size = new System.Drawing.Size(280, 211);
@@ -368,67 +312,39 @@
             this.pictureBox2.TabIndex = 4;
             this.pictureBox2.TabStop = false;
             // 
-            // button4
-            // 
-            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(84, 67);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(120, 41);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "Pagos";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
             // pnlProductos
             // 
             this.pnlProductos.BackColor = System.Drawing.SystemColors.Highlight;
-            this.pnlProductos.Controls.Add(this.btnGestion);
+            this.pnlProductos.Controls.Add(this.lblProductos);
+            this.pnlProductos.Controls.Add(this.btnGestionProductos);
             this.pnlProductos.Controls.Add(this.pictureBox1);
-            this.pnlProductos.Controls.Add(this.button1);
             this.pnlProductos.Location = new System.Drawing.Point(73, 18);
             this.pnlProductos.Name = "pnlProductos";
             this.pnlProductos.Size = new System.Drawing.Size(280, 211);
             this.pnlProductos.TabIndex = 17;
             this.pnlProductos.Visible = false;
             // 
-            // btnGestion
+            // btnGestionProductos
             // 
-            this.btnGestion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGestion.Location = new System.Drawing.Point(73, 108);
-            this.btnGestion.Name = "btnGestion";
-            this.btnGestion.Size = new System.Drawing.Size(120, 40);
-            this.btnGestion.TabIndex = 16;
-            this.btnGestion.Text = "Gestión";
-            this.btnGestion.UseVisualStyleBackColor = true;
-            this.btnGestion.Click += new System.EventHandler(this.btnGestion_Click);
+            this.btnGestionProductos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGestionProductos.Location = new System.Drawing.Point(73, 108);
+            this.btnGestionProductos.Name = "btnGestionProductos";
+            this.btnGestionProductos.Size = new System.Drawing.Size(120, 40);
+            this.btnGestionProductos.TabIndex = 16;
+            this.btnGestionProductos.Text = "Gestión";
+            this.btnGestionProductos.UseVisualStyleBackColor = true;
+            this.btnGestionProductos.Click += new System.EventHandler(this.btnGestion_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.Highlight;
             this.pictureBox1.Image = global::CapaVista.Properties.Resources.agregar_producto;
-            this.pictureBox1.Location = new System.Drawing.Point(107, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(107, 13);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(60, 60);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
-            // 
-            // button1
-            // 
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(73, 67);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 35);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Productos";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -478,9 +394,9 @@
             // pnlCobros
             // 
             this.pnlCobros.BackColor = System.Drawing.SystemColors.Highlight;
+            this.pnlCobros.Controls.Add(this.lblCobros);
             this.pnlCobros.Controls.Add(this.btnCobros);
             this.pnlCobros.Controls.Add(this.pictureBox10);
-            this.pnlCobros.Controls.Add(this.button16);
             this.pnlCobros.Location = new System.Drawing.Point(645, 452);
             this.pnlCobros.Name = "pnlCobros";
             this.pnlCobros.Size = new System.Drawing.Size(280, 200);
@@ -508,41 +424,27 @@
             this.pictureBox10.TabIndex = 3;
             this.pictureBox10.TabStop = false;
             // 
-            // button16
-            // 
-            this.button16.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button16.FlatAppearance.BorderSize = 0;
-            this.button16.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button16.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button16.Location = new System.Drawing.Point(74, 67);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(120, 35);
-            this.button16.TabIndex = 0;
-            this.button16.Text = "Cobros";
-            this.button16.UseVisualStyleBackColor = true;
-            // 
             // pnlClientes
             // 
             this.pnlClientes.BackColor = System.Drawing.SystemColors.Highlight;
-            this.pnlClientes.Controls.Add(this.bntClientes);
+            this.pnlClientes.Controls.Add(this.lblClientes);
+            this.pnlClientes.Controls.Add(this.btnClientes);
             this.pnlClientes.Controls.Add(this.pictureBox9);
-            this.pnlClientes.Controls.Add(this.button12);
             this.pnlClientes.Location = new System.Drawing.Point(359, 452);
             this.pnlClientes.Name = "pnlClientes";
             this.pnlClientes.Size = new System.Drawing.Size(280, 200);
             this.pnlClientes.TabIndex = 30;
             this.pnlClientes.Visible = false;
             // 
-            // bntClientes
+            // btnClientes
             // 
-            this.bntClientes.Location = new System.Drawing.Point(84, 108);
-            this.bntClientes.Name = "bntClientes";
-            this.bntClientes.Size = new System.Drawing.Size(120, 35);
-            this.bntClientes.TabIndex = 4;
-            this.bntClientes.Text = "Gestion";
-            this.bntClientes.UseVisualStyleBackColor = true;
-            this.bntClientes.Click += new System.EventHandler(this.bntClientes_Click);
+            this.btnClientes.Location = new System.Drawing.Point(84, 108);
+            this.btnClientes.Name = "btnClientes";
+            this.btnClientes.Size = new System.Drawing.Size(120, 35);
+            this.btnClientes.TabIndex = 4;
+            this.btnClientes.Text = "Gestion";
+            this.btnClientes.UseVisualStyleBackColor = true;
+            this.btnClientes.Click += new System.EventHandler(this.bntClientes_Click);
             // 
             // pictureBox9
             // 
@@ -555,25 +457,11 @@
             this.pictureBox9.TabIndex = 3;
             this.pictureBox9.TabStop = false;
             // 
-            // button12
-            // 
-            this.button12.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button12.FlatAppearance.BorderSize = 0;
-            this.button12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button12.Location = new System.Drawing.Point(84, 67);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(120, 35);
-            this.button12.TabIndex = 0;
-            this.button12.Text = "Clientes";
-            this.button12.UseVisualStyleBackColor = true;
-            // 
             // pnlVentas
             // 
             this.pnlVentas.BackColor = System.Drawing.SystemColors.Highlight;
+            this.pnlVentas.Controls.Add(this.lblVentas);
             this.pnlVentas.Controls.Add(this.pictureBox7);
-            this.pnlVentas.Controls.Add(this.button7);
             this.pnlVentas.Controls.Add(this.btnVentas);
             this.pnlVentas.Location = new System.Drawing.Point(73, 452);
             this.pnlVentas.Name = "pnlVentas";
@@ -591,20 +479,6 @@
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox7.TabIndex = 3;
             this.pictureBox7.TabStop = false;
-            // 
-            // button7
-            // 
-            this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(73, 67);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(120, 35);
-            this.button7.TabIndex = 0;
-            this.button7.Text = "Ventas";
-            this.button7.UseVisualStyleBackColor = true;
             // 
             // btnVentas
             // 
@@ -634,6 +508,96 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1031, 661);
             this.flowLayoutPanel1.TabIndex = 21;
             // 
+            // lblProductos
+            // 
+            this.lblProductos.AutoSize = true;
+            this.lblProductos.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProductos.Location = new System.Drawing.Point(89, 78);
+            this.lblProductos.Name = "lblProductos";
+            this.lblProductos.Size = new System.Drawing.Size(104, 25);
+            this.lblProductos.TabIndex = 17;
+            this.lblProductos.Text = "Productos";
+            // 
+            // lblPagos
+            // 
+            this.lblPagos.AutoSize = true;
+            this.lblPagos.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPagos.Location = new System.Drawing.Point(103, 80);
+            this.lblPagos.Name = "lblPagos";
+            this.lblPagos.Size = new System.Drawing.Size(66, 25);
+            this.lblPagos.TabIndex = 18;
+            this.lblPagos.Text = "Pagos";
+            // 
+            // lblProveedores
+            // 
+            this.lblProveedores.AutoSize = true;
+            this.lblProveedores.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProveedores.Location = new System.Drawing.Point(70, 80);
+            this.lblProveedores.Name = "lblProveedores";
+            this.lblProveedores.Size = new System.Drawing.Size(124, 25);
+            this.lblProveedores.TabIndex = 19;
+            this.lblProveedores.Text = "Proveedores";
+            // 
+            // lblAdministracion
+            // 
+            this.lblAdministracion.AutoSize = true;
+            this.lblAdministracion.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdministracion.Location = new System.Drawing.Point(68, 86);
+            this.lblAdministracion.Name = "lblAdministracion";
+            this.lblAdministracion.Size = new System.Drawing.Size(147, 25);
+            this.lblAdministracion.TabIndex = 21;
+            this.lblAdministracion.Text = "Administracion";
+            // 
+            // lblCompras
+            // 
+            this.lblCompras.AutoSize = true;
+            this.lblCompras.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCompras.Location = new System.Drawing.Point(93, 86);
+            this.lblCompras.Name = "lblCompras";
+            this.lblCompras.Size = new System.Drawing.Size(91, 25);
+            this.lblCompras.TabIndex = 21;
+            this.lblCompras.Text = "Compras";
+            // 
+            // lblAlmacen
+            // 
+            this.lblAlmacen.AutoSize = true;
+            this.lblAlmacen.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAlmacen.Location = new System.Drawing.Point(89, 86);
+            this.lblAlmacen.Name = "lblAlmacen";
+            this.lblAlmacen.Size = new System.Drawing.Size(88, 25);
+            this.lblAlmacen.TabIndex = 21;
+            this.lblAlmacen.Text = "Almacen";
+            // 
+            // lblVentas
+            // 
+            this.lblVentas.AutoSize = true;
+            this.lblVentas.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVentas.Location = new System.Drawing.Point(102, 80);
+            this.lblVentas.Name = "lblVentas";
+            this.lblVentas.Size = new System.Drawing.Size(71, 25);
+            this.lblVentas.TabIndex = 26;
+            this.lblVentas.Text = "Ventas";
+            // 
+            // lblClientes
+            // 
+            this.lblClientes.AutoSize = true;
+            this.lblClientes.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClientes.Location = new System.Drawing.Point(103, 80);
+            this.lblClientes.Name = "lblClientes";
+            this.lblClientes.Size = new System.Drawing.Size(81, 25);
+            this.lblClientes.TabIndex = 18;
+            this.lblClientes.Text = "Clientes";
+            // 
+            // lblCobros
+            // 
+            this.lblCobros.AutoSize = true;
+            this.lblCobros.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCobros.Location = new System.Drawing.Point(101, 80);
+            this.lblCobros.Name = "lblCobros";
+            this.lblCobros.Size = new System.Drawing.Size(76, 25);
+            this.lblCobros.TabIndex = 18;
+            this.lblCobros.Text = "Cobros";
+            // 
             // FrmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -647,26 +611,35 @@
             this.Load += new System.EventHandler(this.FrmHome_Load);
             this.Shown += new System.EventHandler(this.FrmAdminHome_Shown);
             this.pnlAlmacen.ResumeLayout(false);
+            this.pnlAlmacen.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.pnlCompras.ResumeLayout(false);
+            this.pnlCompras.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.pnlUsuarios.ResumeLayout(false);
+            this.pnlUsuarios.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.pnlProveedores.ResumeLayout(false);
+            this.pnlProveedores.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.pnlPagos.ResumeLayout(false);
+            this.pnlPagos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.pnlProductos.ResumeLayout(false);
+            this.pnlProductos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.pnlCobros.ResumeLayout(false);
+            this.pnlCobros.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             this.pnlClientes.ResumeLayout(false);
+            this.pnlClientes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.pnlVentas.ResumeLayout(false);
+            this.pnlVentas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -677,47 +650,47 @@
         private System.Windows.Forms.Panel pnlAlmacen;
         private System.Windows.Forms.Button btnRecepcion;
         private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Panel pnlCompras;
-        private System.Windows.Forms.Button btncotizacion;
+        private System.Windows.Forms.Button btnCotizacion;
         private System.Windows.Forms.Button btnOrden;
         private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Panel pnlUsuarios;
         private System.Windows.Forms.Button btnBitacora;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Button btnGestionAdmin;
-        private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Panel pnlProveedores;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Panel pnlPagos;
         private System.Windows.Forms.Button btnGestionPagos;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Panel pnlProductos;
         private System.Windows.Forms.Button btnReabastecer;
-        private System.Windows.Forms.Button btnGestion;
+        private System.Windows.Forms.Button btnGestionProductos;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Label lbltituloHome;
         private System.Windows.Forms.Panel pnlCobros;
         private System.Windows.Forms.Button btnCobros;
         private System.Windows.Forms.PictureBox pictureBox10;
-        private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Panel pnlClientes;
-        private System.Windows.Forms.Button bntClientes;
+        private System.Windows.Forms.Button btnClientes;
         private System.Windows.Forms.PictureBox pictureBox9;
-        private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Panel pnlVentas;
         private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button btnVentas;
         private System.Windows.Forms.PictureBox pictureBox11;
-        private System.Windows.Forms.Button btnCargarNuevo;
+        private System.Windows.Forms.Button btnGestionProveedores;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnRolesPermisos;
+        private System.Windows.Forms.Label lblProductos;
+        private System.Windows.Forms.Label lblProveedores;
+        private System.Windows.Forms.Label lblPagos;
+        private System.Windows.Forms.Label lblAlmacen;
+        private System.Windows.Forms.Label lblCompras;
+        private System.Windows.Forms.Label lblAdministracion;
+        private System.Windows.Forms.Label lblCobros;
+        private System.Windows.Forms.Label lblClientes;
+        private System.Windows.Forms.Label lblVentas;
     }
 }

@@ -29,12 +29,12 @@ namespace CapaVista
             {
                 txtPregunta.Text = dt.Rows[0]["Pregunta"].ToString();
                 txtDato.Enabled = false;
-                button1.Enabled = false;
-                label2.Visible = true;
-                label3.Visible= true;
+                btnComprobar.Enabled = false;
+                lblPregunta.Visible = true;
+                lblRespuesta.Visible= true;
                 txtPregunta.Visible = true;
                 txtRespuesta.Visible = true;
-                button2.Visible = true;
+                btnValidar.Visible = true;
             }
             else
             {
@@ -55,14 +55,14 @@ namespace CapaVista
             switch(resultado)
             {
                 case 1:
-                    label4.Visible = true;
-                    label5.Visible = true;
+                    lblRecuperoContraseña2.Visible = true;
+                    lblRecuperoContraseña.Visible = true;
                     textBox1.Visible = true;
                     textBox2.Visible = true;
-                    button3.Visible = true;
+                    btnActualizar.Visible = true;
                     txtPregunta.Enabled = false;
                     txtRespuesta.Enabled = false;
-                    button2.Enabled = false;
+                    btnValidar.Enabled = false;
                     break;
                 case 0:
                     MessageBox.Show("Respuesta Incorrecta, intente nuevamente");
@@ -96,7 +96,7 @@ namespace CapaVista
             string nuevaContraseña = CV_Seguridad.Hasheo(textBox1.Text);
             try
             {
-                MessageBox.Show(metodos.CambiarContraseña(txtDato.Text, nuevaContraseña));
+                MessageBox.Show(metodos.CambiarContraseña(txtDato.Text, nuevaContraseña,CV_Seguridad.ObtenerPalabra()));
                 this.Close();
             }
             catch (Exception ex)
@@ -104,6 +104,12 @@ namespace CapaVista
                 MessageBox.Show("Error al cambiar la contraseña: " + ex.Message);
                 return;
             }
+        }
+
+        private void FrmRecupero_Load(object sender, EventArgs e)
+        {
+            this.Text=Traductor.TraducirTexto("frmRecupero");
+            Traductor.TraducirFormulario(this);
         }
     }
 }

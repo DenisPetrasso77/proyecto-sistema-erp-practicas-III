@@ -137,7 +137,7 @@ namespace CapaVista
         private void Cargarcbxcategorias()
         {
             cmbCategorias.Items.Clear();
-            DataTable CacheCategorias = metodos.TraerTodo("CategoriasProductos");
+            DataTable CacheCategorias = metodos.CategoriaProductos();
             foreach (DataRow filas in CacheCategorias.Rows)
             {
                 if (filas["Estado"].ToString().Trim() != "Inactivo")
@@ -150,7 +150,7 @@ namespace CapaVista
         private void Cargarcbxtpoproducto()
         {
             cmbProducto.Items.Clear();
-            DataTable CacheTipoProducto = metodos.TraerTodo("TipoProductos");
+            DataTable CacheTipoProducto = metodos.TipoProductos();
             foreach (DataRow filas in CacheTipoProducto.Rows)
             {
                 string fila = $"{filas["IdTipoProducto"]} - {filas["TipoProducto"]}";
@@ -160,7 +160,7 @@ namespace CapaVista
         private void Cargarcbxmedidas()
         {
             cmbMedidas.Items.Clear();
-            DataTable CacheMedidas = metodos.TraerTodo("Medidas");
+            DataTable CacheMedidas = metodos.MedidasProductos();
             foreach (DataRow filas in CacheMedidas.Rows)
             {
                 string fila = $"{filas["Idmedidas"]} - {filas["Medida"]}";
@@ -170,7 +170,7 @@ namespace CapaVista
         private void Cargarcbxmarcas()
         {
             cmbMarcas.Items.Clear();
-            DataTable CacheMarcas = metodos.TraerTodo("Marca");
+            DataTable CacheMarcas = metodos.MarcasProductos();
             foreach (DataRow filas in CacheMarcas.Rows)
             {
                 string fila = $"{filas["Idmarca"]} - {filas["Marca"]}";
@@ -180,7 +180,7 @@ namespace CapaVista
         private void Cargarcbxventa()
         {
             cmbVenta.Items.Clear();
-            DataTable CacheFVentas = metodos.TraerTodo("UnidadReferencia");
+            DataTable CacheFVentas = metodos.UnidadProductos();
             foreach (DataRow filas in CacheFVentas.Rows)
             {
                 string fila = $"{filas["idUnidad"]} - {filas["Unidad"]}";

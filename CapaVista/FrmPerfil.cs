@@ -39,6 +39,10 @@ namespace CapaVista
 
         private void FrmPerfil_Load(object sender, EventArgs e)
         {
+            if (Sesion.Usuario.PrimerIngreso != 0)
+            {
+                button2.PerformClick();
+            }
             CargarDatos();
         }
         private void CargarDatos()
@@ -118,6 +122,12 @@ namespace CapaVista
             FrmActualizarPregunta actualizarPregunta = new FrmActualizarPregunta();
             actualizarPregunta.ShowDialog();
             CargarDatos();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            FrmActualizarContraseña actualizarContraseña = new FrmActualizarContraseña();
+            actualizarContraseña.ShowDialog();
         }
     }
 }

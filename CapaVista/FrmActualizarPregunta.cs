@@ -27,7 +27,7 @@ namespace CapaVista
         }
         private void CargarPreguntas()
         { 
-            DataTable dt = metodos.TraerTodo("PreguntasSeguridad");
+            DataTable dt = metodos.SeleccionarPreguntas();
             foreach (DataRow row in dt.Rows)
             {
                 string dato = $"{row["IdPregunta"].ToString()} - {row["Pregunta"].ToString()}";

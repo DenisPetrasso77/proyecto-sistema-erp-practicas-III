@@ -1,8 +1,9 @@
-﻿using CapaVista;
+﻿using CapaEntities;
+using CapaVista;
 using ProyectoPracticas;
 using System;
 using System.Windows.Forms;
-
+using System.Linq;
 namespace SidebarMenu
 {
     public partial class FrmSidebar : Form
@@ -142,6 +143,7 @@ namespace SidebarMenu
             var resultado = MessageBox.Show("¿Está seguro que desea salir del sistema?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
             {
+                Sesion.Usuario=null;
                 this.Close();
                 FrmLogin login = new FrmLogin();
                 login.Show();
@@ -150,9 +152,10 @@ namespace SidebarMenu
 
         private void pbPerfil_Click(object sender, EventArgs e)
         {
-            this.Close(); 
+            this.Hide(); 
             FrmPerfil perfil = new FrmPerfil();
             perfil.ShowDialog();
+            this.Show();
         }
 
         private void sidebar_Paint(object sender, PaintEventArgs e)
@@ -167,9 +170,18 @@ namespace SidebarMenu
 
         private void btnConfig_Click(object sender, EventArgs e)
         {
-            this.Close();
-            FrmConfig config = new FrmConfig();
-            config.Show();
+            if (Sesion.Usuario.Rol == "Administrador" || Sesion.Usuario.PermisosUsuario.Any(p =>
+            p == "Editar_Configuracion"
+            ))
+            {
+                this.Close();
+                FrmConfig config = new FrmConfig();
+                config.Show();
+            }
+            else
+            {
+                MessageBox.Show("No tiene permisos para acceder a esta sección.", "Acceso Denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void pbConfig_Click(object sender, EventArgs e)
@@ -177,6 +189,10 @@ namespace SidebarMenu
             this.Close();
             FrmConfig  config  = new FrmConfig();
             config.Show();
+        }
+
+        private void FrmSidebar_Load(object sender, EventArgs e)
+        { 
         }
     }
     

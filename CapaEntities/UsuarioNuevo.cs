@@ -1,4 +1,6 @@
-﻿namespace CapaEntities
+﻿using System.Web;
+
+namespace CapaEntities
 {
     public class UsuarioNuevo
     {
@@ -12,6 +14,7 @@
         public int Pregunta { get; set; }
         public string Respuesta { get; set; }
         public string Correo { get; set; }
+        public string PalabraSecreta { get; set; } = "PAPELERAGAUCHITO";
 
     }
 }

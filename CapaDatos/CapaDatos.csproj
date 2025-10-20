@@ -41,8 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CD_Administracion.cs" />
+    <Compile Include="CD_Clientes.cs" />
     <Compile Include="CD_Conexion.cs" />
     <Compile Include="CD_Metodos.cs" />
+    <Compile Include="CD_Productos.cs" />
+    <Compile Include="CD_Proveedores.cs" />
+    <Compile Include="CD_Reabastecimiento.cs" />
+    <Compile Include="CD_Usuarios.cs" />
+    <Compile Include="CD_Ventas.cs" />
     <Compile Include="DatosDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

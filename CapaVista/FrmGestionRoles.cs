@@ -23,7 +23,7 @@ namespace CapaVista
         private void CargarPermisos()
         {
             if (comboBox1.SelectedItem == null) return;
-            DataTable cachePermisos = metodos.TraerTodo("Permisos");
+            DataTable cachePermisos = metodos.SeleccionarPermisos();
             DataTable cachePermisosRol = metodos.SeleccionaPermisos(Convert.ToInt32(comboBox1.Text.Split('-')[0]));
 
             dataGridView1.Rows.Clear();
@@ -36,13 +36,13 @@ namespace CapaVista
                 bool autorizadoRol = cachePermisosRol.AsEnumerable().Any(r => r.Field<int>("IdPermiso") == idPermiso);
 
                 dataGridView1.Rows.Add(
-                    nombrePermiso, autorizadoRol
+                   idPermiso, nombrePermiso, autorizadoRol
                 );
             }
         }
         private void CargarRoles()
         {
-            DataTable roles = metodos.TraerTodo("Roles");
+            DataTable roles = metodos.SeleccionarRoles();
             comboBox1.Items.Clear();
 
             foreach (DataRow r in roles.Rows)
@@ -55,7 +55,16 @@ namespace CapaVista
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (comboBox1.Text == "1 - Administrador")
+            {
+                CargarPermisos();
+                dataGridView1.Columns["Permiso"].ReadOnly = true;
+                dataGridView1.Columns["Autorizado"].ReadOnly = true;
+                return;
+            }
             CargarPermisos();
+            dataGridView1.Columns["Permiso"].ReadOnly = false;
+            dataGridView1.Columns["Autorizado"].ReadOnly = false;
         }
 
         private void FrmGestionRoles_Load(object sender, EventArgs e)
@@ -102,7 +111,7 @@ namespace CapaVista
                     bool autorizado = Convert.ToBoolean(row.Cells["Autorizado"].Value);
                     if (autorizado)
                     {
-                        int idPermiso = metodos.ObtenerIdPermiso(row.Cells["Permiso"].Value.ToString());
+                        int idPermiso = Convert.ToInt32(row.Cells["IdPermisoRol"].Value.ToString());
                         permisosRol.Detalle.Add(idPermiso);
                     }
                 }
@@ -135,7 +144,7 @@ namespace CapaVista
         private void CargarPermisosUsuarios()
         {
             if (comboBox2.SelectedItem == null) return;
-            DataTable cachePermisos = metodos.TraerTodo("Permisos");
+            DataTable cachePermisos = metodos.SeleccionarPermisos();
             DataTable cachePermisosRol = metodos.SeleccionaPermisosUsuario(Convert.ToInt32(comboBox2.Text.Split('-')[0]));
 
             dataGridView2.Rows.Clear();

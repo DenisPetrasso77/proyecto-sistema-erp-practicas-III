@@ -47,6 +47,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
             this.SuspendLayout();
@@ -129,7 +131,7 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(181, 289);
+            this.btnGuardar.Location = new System.Drawing.Point(181, 342);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.btnGuardar.Size = new System.Drawing.Size(120, 40);
@@ -140,7 +142,7 @@
             // 
             // btnAtras
             // 
-            this.btnAtras.Location = new System.Drawing.Point(401, 289);
+            this.btnAtras.Location = new System.Drawing.Point(401, 342);
             this.btnAtras.Name = "btnAtras";
             this.btnAtras.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.btnAtras.Size = new System.Drawing.Size(120, 40);
@@ -212,7 +214,7 @@
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(177, 203);
+            this.label7.Location = new System.Drawing.Point(177, 256);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(226, 26);
             this.label7.TabIndex = 19;
@@ -220,7 +222,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(410, 203);
+            this.button1.Location = new System.Drawing.Point(410, 256);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(196, 26);
             this.button1.TabIndex = 20;
@@ -231,19 +233,40 @@
             // textBox2
             // 
             this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(182, 235);
+            this.textBox2.Location = new System.Drawing.Point(182, 288);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(340, 25);
             this.textBox2.TabIndex = 21;
             // 
+            // label8
+            // 
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(177, 211);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(134, 20);
+            this.label8.TabIndex = 22;
+            this.label8.Text = "Contraseña:";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(410, 211);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(196, 26);
+            this.button2.TabIndex = 23;
+            this.button2.Text = "Cambiar Contraseña";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
             // FrmPerfil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(618, 336);
+            this.ClientSize = new System.Drawing.Size(618, 417);
             this.ControlBox = false;
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label7);
@@ -298,5 +321,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button button2;
     }
 }

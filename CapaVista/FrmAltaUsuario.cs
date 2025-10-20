@@ -58,7 +58,7 @@ namespace CapaVista
         }
         private void CargarRoles()
         {
-            DataTable cacheroles = metodos.TraerTodo("Roles");
+            DataTable cacheroles = metodos.SeleccionarRoles();
             cmbRol.Items.Clear();
             foreach (DataRow fila in cacheroles.Rows)
             {
@@ -68,7 +68,7 @@ namespace CapaVista
         }
         private void CargarPreguntas()
         {
-            DataTable cachepregunta = metodos.TraerTodo("PreguntasSeguridad");
+            DataTable cachepregunta = metodos.SeleccionarPreguntas();
             cmbPregunta.Items.Clear();
             foreach (DataRow fila in cachepregunta.Rows)
             {

@@ -1,4 +1,5 @@
-﻿using ProyectoPracticas;
+﻿using CapaLogica;
+using ProyectoPracticas;
 using SidebarMenu;
 using System;
 using System.Collections.Generic;
@@ -12,8 +13,10 @@ using System.Windows.Forms;
 
 namespace CapaVista
 {
+
     public partial class FrmConfig : Form
     {
+        CL_Metodos metodos = new CL_Metodos();
         public FrmConfig()
         {
             InitializeComponent();
@@ -91,6 +94,46 @@ namespace CapaVista
         {
 
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string decision = MessageBox.Show("¿Está seguro que desea restablecer los dígitos verificadores de la base de datos? Esta acción puede tardar varios minutos.", "Confirmar restablecimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Warning).ToString();
+            if (decision != "Yes")
+            { 
+                return;
+            }
+            string respuesta = metodos.ArreglarDV(CV_Seguridad.ObtenerPalabra());
+            MessageBox.Show(respuesta);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (comboBox1.SelectedIndex)
+            {
+                case 0:
+                    Traductor.Idioma = "de";
+                    break;
+                case 1:
+                    Traductor.Idioma = "es";
+                    break;
+                case 2:
+                    Traductor.Idioma = "fr";
+                    break;
+                case 3:
+                    Traductor.Idioma = "en";
+                    break;
+                case 4:
+                    Traductor.Idioma = "it";
+                    break;
+                case 5:
+                    Traductor.Idioma = "pt";
+                    break;
+                case 6:
+                    Traductor.Idioma = "tr";
+                    break;
+            }
+            Traductor.TraducirFormulario(this);
         }
     }
 }

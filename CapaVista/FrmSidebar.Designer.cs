@@ -277,6 +277,7 @@
             this.Name = "FrmSidebar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sidebar";
+            this.Load += new System.EventHandler(this.FrmSidebar_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.sidebar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbAcerca)).EndInit();

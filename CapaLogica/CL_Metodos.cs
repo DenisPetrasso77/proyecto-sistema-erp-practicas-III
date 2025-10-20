@@ -8,137 +8,152 @@ namespace CapaLogica
     public class CL_Metodos
     {
         CD_Metodos metodos = new CD_Metodos();
+        CD_Productos productos = new CD_Productos();
+        CD_Proveedores proveedores = new CD_Proveedores();
+        CD_Usuarios usuarios = new CD_Usuarios();
+        CD_Administracion administracion = new CD_Administracion();
+        CD_Ventas ventas = new CD_Ventas();
+        CD_Clientes clientes = new CD_Clientes();
+        CD_Reabastecimiento reabastecimiento = new CD_Reabastecimiento();
 
         #region METODOS
         public DataTable SeleccionaDatosPerfil(int idusuario)
         {
-        return metodos.SeleccionaDatosPerfil(idusuario);
+        return usuarios.SeleccionaDatosPerfil(idusuario);
+        }
+        public string ArreglarDV(string palabra)
+        { 
+            return administracion.ArreglarDV(palabra);
         }
         public string InsertarPermisoUsuario(int idusuario, Permisos permisos)
         { 
-            return metodos.InsertarPermisoUsuario(idusuario, permisos);
+            return usuarios.InsertarPermisoUsuario(idusuario, permisos);
         }
         public string InsertarPermisoRol(int idrol, Permisos permisos)
         { 
-            return metodos.InsertarPermisoRol(idrol, permisos);
+            return usuarios.InsertarPermisoRol(idrol, permisos);
+        }
+        public int VerificarIntegridad(string palabra)
+        { 
+            return administracion.VerificarIntegridad(palabra);
         }
         public string EliminarRol(int rol)
         { 
-            return metodos.EliminarRol(rol);
+            return administracion.EliminarRol(rol);
         }
         public DataTable SeleccionaPermisosUsuario(int idusuario)
         {
-            return metodos.SeleccionaPermisosUsuario(idusuario);
+            return usuarios.SeleccionaPermisosUsuario(idusuario);
         }
         public string InsertarRol(string rol)
         {
-            return metodos.InsertarRol(rol);
+            return administracion.InsertarRol(rol);
         }
         public DataTable SeleccionaPermisos(int idrol)
         { 
-            return metodos.SeleccionaPermisos(idrol);
+            return usuarios.SeleccionaPermisos(idrol);
         }
         public int EliminarIdRol(int idrol)
         {
-            return metodos.EliminarIdRol(idrol);
+            return usuarios.EliminarIdRol(idrol);
         }
         public int ObtenerIdPermiso(string permiso)
         {
-            return metodos.ObtenerIdPermiso(permiso);
+            return usuarios.ObtenerIdPermiso(permiso);
         }
         public string InsertarRolPermiso(int idrol, int idpermiso)
         {
-            return metodos.InsertarRolPermiso(idrol,idpermiso);
+            return usuarios.InsertarRolPermiso(idrol,idpermiso);
         }
 
         public int Intentos(string usuario)
         { 
-            return metodos.Intentos(usuario);
+            return usuarios.Intentos(usuario);
         }
         public int InsertarFacturas(int recepcion, int puesto, int factura, int tipo, string cuit, string razonsocial, decimal total)
         {  
-            return metodos.InsertarFacturas(recepcion, puesto, factura, tipo, cuit, razonsocial, total);
+            return reabastecimiento.InsertarFacturas(recepcion, puesto, factura, tipo, cuit, razonsocial, total);
         }
         public int InsertarComprobantePago(int idorden, string transaccion)
         { 
-            return metodos.InsertarComprobantePago(idorden, transaccion);
+            return reabastecimiento.InsertarComprobantePago(idorden, transaccion);
         }
         public string InsertarComprobanteNotaCredito(int recepcion, int puesto, int notacredito, int tipo, string cuit, string razonsocial, decimal total)
         { 
-            return metodos.InsertarComprobanteNotaCredito(recepcion, puesto, notacredito, tipo, cuit, razonsocial, total);
+            return reabastecimiento.InsertarComprobanteNotaCredito(recepcion, puesto, notacredito, tipo, cuit, razonsocial, total);
         }
         public DataTable SeleccionarPagosCompletados()
         { 
-            return metodos.SeleccionarPagosCompletados();
+            return reabastecimiento.SeleccionarPagosCompletados();
         }
         public string InsertarOrdenesPago(OrdenesPago OrdenesPago)
         { 
-            return metodos.InsertarOrdenesPago(OrdenesPago);
+            return reabastecimiento.InsertarOrdenesPago(OrdenesPago);
         }
         public DataTable TraerDetalleProductos(string idproducto)
         { 
-            return metodos.TraerDetalleProductos(idproducto);
+            return productos.TraerDetalleProductos(idproducto);
         }
         public DataTable SeleccionarProductos()
         { 
-            return metodos.SeleccionarProductos();
+            return productos.SeleccionarProductos();
         }
         public DataTable TraerPregunta(string dato)
         {
-            return metodos.TraerPregunta(dato);
+            return usuarios.TraerPregunta(dato);
         }
         public DataTable SeleccionarDescuentos(string codigo)
         { 
-            return metodos.SeleccionarDescuentos(codigo);
+            return productos.SeleccionarDescuentos(codigo);
         }
         public DataTable Provincias()
         { 
-            return metodos.Provincias();
+            return metodos.SeleccionarProvincias();
         }
         public DataTable SeleccionarClienteMod(int id)
         { 
-            return metodos.SeleccionarClienteMod(id);
+            return clientes.SeleccionarClienteMod(id);
         }
         public string ModificarCliente(Cliente cliente)
         {
-            return metodos.ModificarCliente(cliente);
+            return clientes.ModificarCliente(cliente);
         }
         public DataTable Proveedores(int id)
         { 
-            return metodos.Proveedores(id);
+            return proveedores.Proveedores(id);
         }
 
         public string InsertarCliente(Cliente cliente)
         { 
-            return metodos.InsertarCliente(cliente);
+            return clientes.InsertarCliente(cliente);
         }
         public DataTable SeleccionarDatosUsuario(int usuario)
         { 
-            return metodos.SeleccionarDatosUsuario(usuario);
+            return usuarios.SeleccionarDatosUsuario(usuario);
         }
         public int VerificarRespuesta(string dato, string respuesta)
         { 
-            return metodos.VerificarRespuesta(dato, respuesta);
+            return usuarios.VerificarRespuesta(dato, respuesta);
         }
         public DataTable ProductosVenta()
         { 
-            return metodos.ProductosVenta();
+            return ventas.ProductosVenta();
         }
-        public string CambiarContraseña(string dato, string respuesta)
+        public string CambiarContraseña(string dato, string respuesta,string palabra)
         { 
-            return metodos.CambiarContraseña(dato, respuesta);
+            return usuarios.CambiarContraseña(dato, respuesta,palabra);
         }
         public string InsertarDevolucion(Devoluciones devoluciones)
         {
-            return metodos.InsertarDevolucion(devoluciones);
+            return reabastecimiento.InsertarDevolucion(devoluciones);
         }
         public DataTable SeleccionarListadoClientes()
         { 
-            return metodos.SeleccionarListadoClientes();
+            return clientes.SeleccionarListadoClientes();
         }
         public DataTable TraerDetalleMercaderia(int recepcion)
         {
-            return metodos.TraerDetalleMercaderia(recepcion);
+            return reabastecimiento.TraerDetalleMercaderia(recepcion);
         }
         public DataTable TraerTipoFacturas()
         { 
@@ -146,140 +161,140 @@ namespace CapaLogica
         }
         public DataTable TraerDatosProveedorFactura(string proveedor)
         { 
-            return metodos.TraerDatosProveedorFactura(proveedor);
+            return reabastecimiento.TraerDatosProveedorFactura(proveedor);
         }
         public DataTable TraerPagosPendientesDocumentacion()
         { 
-            return metodos.TraerPagosPendientesDocumentacion();
+            return reabastecimiento.TraerPagosPendientesDocumentacion();
         }
         public DataTable SeleccionarPagosPendientes()
         { 
-            return metodos.SeleccionarPagosPendientes();
+            return reabastecimiento.SeleccionarPagosPendientes();
         }
         public DataTable TraerDevoluciones()
         { 
-            return metodos.TraerDevoluciones();
+            return reabastecimiento.TraerDevoluciones();
         }
         public DataTable TraerDetalleDevoluciones(int id)
         {
-            return metodos.TraerDetalleDevoluciones(id);
+            return reabastecimiento.TraerDetalleDevoluciones(id);
         }
         public int ActualizarDetalleCotizaciones(int idsolicitud, string idproducto, string proveedor, decimal precio)
         {
-            return metodos.ActualizarDetalleCotizaciones(idsolicitud, idproducto, proveedor, precio);
+            return reabastecimiento.ActualizarDetalleCotizaciones(idsolicitud, idproducto, proveedor, precio);
         }
         public string InsertarInformeRecepcion(InformesRecepcion informesRecepcion)
         {
-            return metodos.InsertarInformeRecepcion(informesRecepcion);
+            return reabastecimiento.InsertarInformeRecepcion(informesRecepcion);
         }
         public DataTable TraerBitacora()
         { 
-            return metodos.TraerBitacora();
+            return administracion.TraerBitacora();
         }
         public DataTable RecepcionPedidos(int id)
         {
-            return metodos.RecepcionPedidos(id);
+            return reabastecimiento.RecepcionPedidos(id);
         }
         public DataTable RecepcionOrdenes()
         {
-            return metodos.RecepcionOrdenes();
+            return reabastecimiento.RecepcionOrdenes();
         }
         public DataTable ProductoSeleccionado(string codigo)
         { 
-            return metodos.ProductoSeleccionado(codigo);
+            return productos.ProductoSeleccionado(codigo);
         }
         public string InsertarVentas(Ventas ventas)
         { 
-            return metodos.InsertarVentas(ventas);
+            return this.ventas.InsertarVentas(ventas);
         }
         public DataTable SeleccionarCobros(DateTime? desde = null, DateTime? hasta = null)
         {
-            return metodos.SeleccionarCobros(desde, hasta);
+            return reabastecimiento.SeleccionarCobros(desde, hasta);
         }
         public DataTable TraerDetalleOrdenesCompra(int id)
         {
-            return metodos.TraerDetalleOrdenesCompra(id);
+            return reabastecimiento.TraerDetalleOrdenesCompra(id);
         }
         public DataTable TraerPresupuestos(int id)
         {
-            return metodos.TraerPresupuestos(id);
+            return reabastecimiento.TraerPresupuestos(id);
         }
         public DataTable TraerOrdenesdeCompra()
         {
-            return metodos.TraerOrdenesdeCompra();
+            return reabastecimiento.TraerOrdenesdeCompra();
         }
         public string InsertarOrdendeCompra(OrdendeCompra ordendeCompra)
         {
-            return metodos.InsertarOrdendeCompra(ordendeCompra);
+            return reabastecimiento.InsertarOrdendeCompra(ordendeCompra);
         }
 
         public DataTable TraerSolicitudesCotizaciones()
         {
-            return metodos.TraerSolicitudesCotizaciones();
+            return reabastecimiento.TraerSolicitudesCotizaciones();
         }
         public int BorrarDetalleBitacora(int id)
         {
-            return metodos.BorrarDetalleBitacora(id);
+            return administracion.BorrarDetalleBitacora(id);
         }
         public int BorrarBitacora()
         { 
-            return metodos.BorrarBitacora();
+            return administracion.BorrarBitacora();
         }
         public UsuarioActual DatosIngreso(string Usuario)
         {
-            return metodos.DatosIngreso(Usuario);
+            return usuarios.DatosLogin(Usuario);
         }
         public DataTable DetalleCotizaciones(int id)
         {
-            return metodos.DetalleCotizaciones(id);
+            return reabastecimiento.DetalleCotizaciones(id);
         }
         public DataTable ProveedoresCotizacion(int id)
         {
-            return metodos.ProveedoresCotizacion(id);
+            return reabastecimiento.ProveedoresCotizacion(id);
         }
         public DataTable SolcitudesCotizacion()
         { 
-            return metodos.SolcitudesCotizacion();
+            return reabastecimiento.SolcitudesCotizacion();
         }
         public string BorrarPR(int id)
         { 
-            return metodos.BorrarPR(id);
+            return reabastecimiento.BorrarPR(id);
         }
         public DataTable Proveedores(int? id = null)
         { 
-            return metodos.Proveedores(id);
+            return proveedores.Proveedores(id);
         }
         public DataTable Usuarios(int? idusuario = null)
         {
-            return metodos.Usuarios(idusuario);
+            return usuarios.Usuarios(idusuario);
         }
         public string ActualizarMarca(int id, string nombre, string estado)
         {
-            return metodos.ActualizarMarca(id,nombre,estado);
+            return productos.ActualizarMarca(id,nombre,estado);
         }
         public string ActualizarMedidas(int id, string nombre, string estado)
         {
-            return metodos.ActualizarMedidas(id, nombre, estado);
+            return productos.ActualizarMedidas(id, nombre, estado);
         }
         public string InsertarMedidas(string nombre)
         { 
-            return metodos.InsertarMedidas(nombre);
+            return productos.InsertarMedidas(nombre);
         }
         public string InsertarSolicitudCotizacion(PedidoCotizacion pedidoCotizacion, DataTable detalle)
         {
-            return metodos.InsertarSolicitudCotizacion(pedidoCotizacion,detalle);
+            return reabastecimiento.InsertarSolicitudCotizacion(pedidoCotizacion,detalle);
         }
         public string InsertarProveedor(Proveedor proveedor)
         {
-            return metodos.InsertarProveedor(proveedor);
+            return proveedores.InsertarProveedor(proveedor);
         }
         public DataTable Proveedores()
         {
-            return metodos.Proveedores();
+            return proveedores.Proveedores();
         }
         public DataTable SolicitudCotizaciones()
         {
-            return metodos.SolicitudCotizacion();
+            return reabastecimiento.SolicitudCotizacion();
         }
         public DataTable Localidades(int id)
         { 
@@ -287,7 +302,7 @@ namespace CapaLogica
         }
         public string ActualizarPregunta(int idpregunta, string respuesta)
         {
-            return metodos.ActualizarPregunta(idpregunta,respuesta);
+            return usuarios.ActualizarPregunta(idpregunta,respuesta);
         }
 
         public int CodigoPostal(int id)
@@ -296,97 +311,126 @@ namespace CapaLogica
         }
         public DataTable ProductosStockMin()
         {
-            return metodos.ProductosStockMin();
+            return productos.ProductosStockMin();
         }
-        public DataTable TipoProductos(string tabla)
-        {
-            return metodos.TipoProductos(tabla);
+        public DataTable SeleccionarMotivosDevolucion()
+        { 
+            return metodos.SeleccionarMotivosDevolucion();
         }
         public DataTable DetallePR(int idpr)
         { 
-            return metodos.DetallePR(idpr);
+            return reabastecimiento.DetallePR(idpr);
         }
-        public DataTable TraerTodo(string tabla)
+        public DataTable SeleccionarPermisos()
         {
-            return metodos.TraerTodo(tabla);
+            return usuarios.SeleccionaPermisos();
+        }
+        public DataTable SeleccionarRoles()
+        {
+            return usuarios.SeleccionarRoles();
+        }
+        public DataTable SeleccionarPreguntas()
+        {
+            return usuarios.SeleccionarPreguntas();
+        }
+        public DataTable SeleccionarProvincias()
+        {
+            return metodos.SeleccionarProvincias();
+        }
+
+        public DataTable CategoriaProductos()
+        {
+            return productos.CategoriasProductos();
+        }
+        public DataTable TipoProductos()
+        {
+            return productos.TipoProductos();
+        }
+        public DataTable MedidasProductos()
+        {
+            return productos.MedidasProductos();
+        }
+        public DataTable MarcasProductos()
+        {
+            return productos.MarcasProductos();
+        }
+        public DataTable UnidadProductos()
+        {
+            return productos.UnidadProductos();
         }
         public DataTable PRpedidos()
         { 
-            return metodos.PRpedidos();
+            return reabastecimiento.PRpedidos();
         }
         public string ActualizarTipoProducto(int id, string nombre, string estado)
         {
-            return metodos.ActualizarTipoProducto(id,nombre, estado);
+            return productos.ActualizarTipoProducto(id,nombre, estado);
         }
         public int BorrardetallePR(int iddetallepr)
         {
-            return metodos.BorrardetallePR(iddetallepr);
+            return reabastecimiento.BorrardetallePR(iddetallepr);
         }
         public int ActualizarDetallPR(int iddetallepr, int IdPR, int CantidadNueva, int Usuariomodificacion, DateTime Fechamodificacion)
         {
-            return metodos.ActualizarDetallPR(iddetallepr, IdPR, CantidadNueva, Usuariomodificacion, Fechamodificacion);
+            return reabastecimiento.ActualizarDetallPR(iddetallepr, IdPR, CantidadNueva, Usuariomodificacion, Fechamodificacion);
         }
         public int ActualizarUsuario(string usuario, string nombre, string apellido, string dni, int rol, int bloqueado,string correo)
         {
-            return metodos.ActualizarUsuario(usuario, nombre, apellido, dni, rol, bloqueado,correo);
+            return usuarios.ActualizarUsuario(usuario, nombre, apellido, dni, rol, bloqueado,correo);
         }
         public string Bitacora(int usuario, string tabla, string descripcion)
         { 
-            return metodos.Bitacora(usuario, tabla, descripcion);
+            return administracion.Bitacora(usuario, tabla, descripcion);
         }
         public string InsertarCate(string nombre)
         {
-            return metodos.InsertarCate(nombre);
+            return productos.InsertarCate(nombre);
         }
         public string InsertarMarca(string nombre)
         {
-            return metodos.InsertarMarca(nombre);
+            return productos.InsertarMarca(nombre);
         }
         public string ActualizarCate(int id,string nombre,string estado)
         {
-            return metodos.ActualizarCate(id,nombre, estado);
+            return productos.ActualizarCategoria(id,nombre, estado);
         }
         public string InsertarProducto(ProductoNuevo productoNuevo)
         {
-            return metodos.InsertarProducto(productoNuevo);
+            return productos.InsertarProducto(productoNuevo);
         }
         public string ActualizarProducto(ProductoNuevo producto)
         { 
-            return metodos.ActualizarProducto(producto);
+            return productos.ActualizarProducto(producto);
         }
 
         public string Registro(UsuarioNuevo usuarioNuevo)
         {
-            return metodos.Registro(usuarioNuevo);
+            return usuarios.Registro(usuarioNuevo);
         }
 
         public int StatusBloq(string Usuario)
         { 
-            return metodos.StatusBloq(Usuario);
-        }
-        public int InsertarVentas(decimal total)
-        {
-            return metodos.InsertarVentas(total);
+            return administracion.StatusBloq(Usuario);
         }
         public int BorrarUsuario(string usuario)
         {
-            return metodos.BorrarUsuario(usuario);
+            return administracion.BorrarUsuario(usuario);
         }
         public string InsertarPR(int idusuario, DataTable detallepr)
         {
-            return metodos.InsertarPR(idusuario,detallepr);
+            return productos.InsertarPR(idusuario,detallepr);
         }
         public string RestablecerContraseña(int idusuario,string contraseña)
         { 
-            return metodos.RestablecerContraseña(idusuario,contraseña);
+            return usuarios.RestablecerContraseña(idusuario,contraseña);
         }
         public string VerificarIngreso(string usuario, string contraseña)
         {
-            return metodos.VerificarIngreso(usuario, contraseña);
+            return administracion.VerificarIngreso(usuario, contraseña);
         }
         public DataTable SeleccionarClientes()
         { 
-            return metodos.SeleccionarClientes();
+            return clientes.SeleccionarClientes();
         }
         #endregion
     }

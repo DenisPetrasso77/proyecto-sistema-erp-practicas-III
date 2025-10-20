@@ -16,6 +16,7 @@ namespace CapaEntities
         public  int dni { get; set; }
         public  List<string> PermisosRol { get; set; } = new List<string>();
         public List<string> PermisosUsuario { get; set; } = new List<string>();
+        public int PrimerIngreso { get; set; }
 
     }
 }

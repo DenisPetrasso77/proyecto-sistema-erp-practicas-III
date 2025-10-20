@@ -31,8 +31,6 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Permiso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Autorizado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -48,6 +46,9 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.button4 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.IdPermisoRol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Permiso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Autorizado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -83,25 +84,13 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdPermisoRol,
             this.Permiso,
             this.Autorizado});
             this.dataGridView1.Location = new System.Drawing.Point(6, 58);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(253, 203);
             this.dataGridView1.TabIndex = 6;
-            // 
-            // Permiso
-            // 
-            this.Permiso.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Permiso.HeaderText = "Permiso";
-            this.Permiso.Name = "Permiso";
-            // 
-            // Autorizado
-            // 
-            this.Autorizado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Autorizado.HeaderText = "Autorizado";
-            this.Autorizado.Name = "Autorizado";
-            this.Autorizado.Width = 63;
             // 
             // pictureBox2
             // 
@@ -260,6 +249,25 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "Seleccionar Usuario:";
             // 
+            // IdPermisoRol
+            // 
+            this.IdPermisoRol.HeaderText = "IdPermisoRol";
+            this.IdPermisoRol.Name = "IdPermisoRol";
+            this.IdPermisoRol.Visible = false;
+            // 
+            // Permiso
+            // 
+            this.Permiso.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Permiso.HeaderText = "Permiso";
+            this.Permiso.Name = "Permiso";
+            // 
+            // Autorizado
+            // 
+            this.Autorizado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Autorizado.HeaderText = "Autorizado";
+            this.Autorizado.Name = "Autorizado";
+            this.Autorizado.Width = 63;
+            // 
             // FrmGestionRoles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -290,8 +298,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Permiso;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Autorizado;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TabControl tabControl1;
@@ -305,5 +311,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IdPermiso;
         private System.Windows.Forms.DataGridViewTextBoxColumn Permiso1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Autorizado1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdPermisoRol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Permiso;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Autorizado;
     }
 }

@@ -11,6 +11,10 @@ namespace CapaVista
             return BCrypt.Net.BCrypt.HashPassword(password, BCrypt.Net.BCrypt.GenerateSalt());
         }
 
+        public static string ObtenerPalabra()
+        {
+            return "PAPELERAGAUCHITO";
+        }
         public static bool VertificarHasheo(string storedHash, string inputPassword)
         {
             return BCrypt.Net.BCrypt.Verify(inputPassword, storedHash);

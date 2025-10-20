@@ -3,6 +3,7 @@ using CapaLogica;
 using ProyectoPracticas;
 using SidebarMenu;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 
@@ -92,17 +93,17 @@ namespace CapaVista
             UI_Utilidad.RedondearForm(this, 28);
 
 
-            UI_Utilidad.EstiloBotonPrimarioDegradado(btnGestion);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnGestionProductos);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnReabastecer);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnGestionPagos);
-            UI_Utilidad.EstiloBotonPrimarioDegradado(btnCargarNuevo);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnGestionProveedores);
             //UI_Utilidad.EstiloBotonPrimarioDegradado(btnModificar);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnBitacora);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnGestionAdmin);
-            UI_Utilidad.EstiloBotonPrimarioDegradado(btncotizacion);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnCotizacion);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnOrden);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnRecepcion);
-            UI_Utilidad.EstiloBotonPrimarioDegradado(bntClientes);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnClientes);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnVentas);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnCobros);
 
@@ -143,33 +144,48 @@ namespace CapaVista
 
         private void FrmHome_Load(object sender, EventArgs e)
         {
-            if (Sesion.Usuario.Rol == "Encargado Almacen" && Sesion.Usuario.PermisosRol.Contains("Ver"))
-            {
+            if ((Sesion.Usuario.Rol == "Encargado Almacen" && Sesion.Usuario.PermisosRol.Contains("Ver_Productos")) || Sesion.Usuario.PermisosUsuario.Contains("Ver_Productos"))
+            { 
                 pnlProductos.Visible = true;
-                pnlProveedores.Visible = true;
-                pnlAlmacen.Visible = true;
             }
-            if (Sesion.Usuario.Rol == "Encargado Ventas" && Sesion.Usuario.PermisosRol.Contains("Ver"))
-            {
-                pnlVentas.Visible = true;
-                pnlClientes.Visible = true;
-            }
-            if (Sesion.Usuario.Rol == "Encargado Pagos" && Sesion.Usuario.PermisosRol.Contains("Ver"))
+            if ((Sesion.Usuario.Rol == "Encargado Pagos" && Sesion.Usuario.PermisosRol.Contains("Ver_Pagos")) || Sesion.Usuario.PermisosUsuario.Contains("Ver_Pagos"))
             {
                 pnlPagos.Visible = true;
             }
-            if (Sesion.Usuario.Rol == "Administrador")
+            if ((Sesion.Usuario.Rol == "Encargado Almacen" && Sesion.Usuario.PermisosRol.Contains("Ver_Proveedores")) || Sesion.Usuario.PermisosUsuario.Contains("Ver_Proveedores"))
+            {
+                pnlProveedores.Visible = true;
+            }
+            if ((Sesion.Usuario.Rol == "Encargado Almacen" && Sesion.Usuario.PermisosRol.Contains("Ver_Proveedores")) || Sesion.Usuario.PermisosUsuario.Contains("Ver_Proveedores"))
+            {
+                pnlProveedores.Visible = true;
+            }
+            if (Sesion.Usuario.PermisosUsuario.Contains("Ver_Configuracion"))
             {
                 pnlUsuarios.Visible = true;
+            }
+            if ((Sesion.Usuario.Rol == "Encargado Almacen" && Sesion.Usuario.PermisosRol.Contains("Ver_Compras")) || Sesion.Usuario.PermisosUsuario.Contains("Ver_Compras"))
+            {
                 pnlCompras.Visible = true;
-                pnlProductos.Visible = true;
-                pnlProveedores.Visible = true;
+            }
+            if ((Sesion.Usuario.Rol == "Encargado Almacen" && Sesion.Usuario.PermisosRol.Contains("Ver_Almacen")) || Sesion.Usuario.PermisosUsuario.Contains("Ver_Almacen"))
+            {
                 pnlAlmacen.Visible = true;
+            }
+            if ((Sesion.Usuario.Rol == "Encargado Ventas" && Sesion.Usuario.PermisosRol.Contains("Ver_Ventas")) || Sesion.Usuario.PermisosUsuario.Contains("Ver_Ventas"))
+            {
                 pnlVentas.Visible = true;
-                pnlClientes.Visible = true;
-                pnlPagos.Visible = true;
+            }            
+            if ((Sesion.Usuario.Rol == "Encargado Cobros" && Sesion.Usuario.PermisosRol.Contains("Ver_Cobros")) || Sesion.Usuario.PermisosUsuario.Contains("Ver_Cobros"))
+            {
                 pnlCobros.Visible = true;
             }
+            if  (Sesion.Usuario.PermisosUsuario.Contains("Ver_Clientes"))
+            {
+                pnlClientes.Visible = true;
+            }
+
+            Traductor.TraducirFormulario(this);
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -33,7 +33,7 @@ namespace CapaVista
         }
         private void Cargarcategorias()
         {
-            cachecategorias = metodos.TraerTodo("CategoriasProductos");
+            cachecategorias = metodos.CategoriaProductos();
             string texto = textBox1.Text.Trim().ToLower();
             dataGridView1.Rows.Clear();
 

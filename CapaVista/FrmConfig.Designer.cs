@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             this.grbIdioma = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.rdbIngles = new System.Windows.Forms.RadioButton();
-            this.rdbEspañol = new System.Windows.Forms.RadioButton();
             this.lblIdioma = new System.Windows.Forms.Label();
             this.grbFuente = new System.Windows.Forms.GroupBox();
             this.rdbGrande = new System.Windows.Forms.RadioButton();
@@ -53,6 +50,9 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pbHome = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.grbIdioma.SuspendLayout();
             this.grbFuente.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -62,61 +62,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHome)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // grbIdioma
             // 
-            this.grbIdioma.Controls.Add(this.radioButton1);
-            this.grbIdioma.Controls.Add(this.rdbIngles);
-            this.grbIdioma.Controls.Add(this.rdbEspañol);
-            this.grbIdioma.Location = new System.Drawing.Point(266, 497);
+            this.grbIdioma.Controls.Add(this.comboBox1);
+            this.grbIdioma.Location = new System.Drawing.Point(47, 469);
             this.grbIdioma.Name = "grbIdioma";
-            this.grbIdioma.Size = new System.Drawing.Size(255, 203);
+            this.grbIdioma.Size = new System.Drawing.Size(140, 122);
             this.grbIdioma.TabIndex = 50;
             this.grbIdioma.TabStop = false;
             this.grbIdioma.Text = "Seleccione un Idioma";
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(18, 137);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(73, 24);
-            this.radioButton1.TabIndex = 12;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Chino";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // rdbIngles
-            // 
-            this.rdbIngles.AutoSize = true;
-            this.rdbIngles.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbIngles.Location = new System.Drawing.Point(18, 82);
-            this.rdbIngles.Name = "rdbIngles";
-            this.rdbIngles.Size = new System.Drawing.Size(76, 24);
-            this.rdbIngles.TabIndex = 11;
-            this.rdbIngles.TabStop = true;
-            this.rdbIngles.Text = "Ingles";
-            this.rdbIngles.UseVisualStyleBackColor = true;
-            // 
-            // rdbEspañol
-            // 
-            this.rdbEspañol.AutoSize = true;
-            this.rdbEspañol.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbEspañol.Location = new System.Drawing.Point(18, 32);
-            this.rdbEspañol.Name = "rdbEspañol";
-            this.rdbEspañol.Size = new System.Drawing.Size(92, 24);
-            this.rdbEspañol.TabIndex = 10;
-            this.rdbEspañol.TabStop = true;
-            this.rdbEspañol.Text = "Español";
-            this.rdbEspañol.UseVisualStyleBackColor = true;
             // 
             // lblIdioma
             // 
             this.lblIdioma.AutoSize = true;
             this.lblIdioma.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIdioma.Location = new System.Drawing.Point(312, 454);
+            this.lblIdioma.Location = new System.Drawing.Point(93, 426);
             this.lblIdioma.Name = "lblIdioma";
             this.lblIdioma.Size = new System.Drawing.Size(70, 22);
             this.lblIdioma.TabIndex = 48;
@@ -325,7 +288,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::CapaVista.Properties.Resources.translate;
-            this.pictureBox2.Location = new System.Drawing.Point(266, 451);
+            this.pictureBox2.Location = new System.Drawing.Point(47, 423);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(40, 40);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -350,11 +313,50 @@
             this.pbHome.TabIndex = 46;
             this.pbHome.TabStop = false;
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(37, 33);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(122, 34);
+            this.button1.TabIndex = 51;
+            this.button1.Text = "Calcular";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Location = new System.Drawing.Point(413, 475);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(200, 100);
+            this.groupBox1.TabIndex = 52;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Integridad Base de Datos";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Aleman",
+            "Español",
+            "Frances",
+            "Ingles",
+            "Italiano",
+            "Portugues",
+            "Turco"});
+            this.comboBox1.Location = new System.Drawing.Point(6, 19);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 0;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // FrmConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(797, 713);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grbIdioma);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.lblIdioma);
@@ -373,7 +375,6 @@
             this.Load += new System.EventHandler(this.FrmConfig_Load);
             this.Shown += new System.EventHandler(this.FrmConfig_Shown);
             this.grbIdioma.ResumeLayout(false);
-            this.grbIdioma.PerformLayout();
             this.grbFuente.ResumeLayout(false);
             this.grbFuente.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -385,6 +386,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHome)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -393,9 +395,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox grbIdioma;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton rdbIngles;
-        private System.Windows.Forms.RadioButton rdbEspañol;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label lblIdioma;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -417,5 +416,8 @@
         private System.Windows.Forms.RadioButton rdbEstandar;
         private System.Windows.Forms.Button btnAtras;
         private System.Windows.Forms.Label lblColores;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

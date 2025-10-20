@@ -4,28 +4,29 @@ using ProyectoPracticas;
 using SidebarMenu;
 using System;
 using System.Data;
+using System.IO;
 using System.Windows.Forms;
 
 namespace CapaVista
 {
     public partial class FrmLogin : Form
     {
+        CL_Metodos metodos = new CL_Metodos();
         public FrmLogin()
         {
             InitializeComponent();
         }
-        CL_Metodos metodos = new CL_Metodos();
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             if (CV_Utiles.TextboxVacios(txtUsuario, txtContraseña))
             {
-                MessageBox.Show("Por favor complete los datos de ingreso");
+                MessageBox.Show(Traductor.TraducirTexto("msgCompleteDatos"));
                 return;
             }
             if (CV_Utiles.CamposNumericos(txtUsuario, txtContraseña))
             {
-                MessageBox.Show("Los datos no pueden ser numericos");
+                MessageBox.Show(Traductor.TraducirTexto("msgNoNumericos"));
                 return;
             }
             var resultado = metodos.VerificarIngreso(txtUsuario.Text, CV_Seguridad.HashearSHA256(txtContraseña.Text.Trim()));
@@ -37,66 +38,87 @@ namespace CapaVista
             try
             {
                 Sesion.Usuario = metodos.DatosIngreso(txtUsuario.Text);
-                metodos.Bitacora(Sesion.Usuario.IdUsuario, "Usuarios", $"Intento de Login Exitoso");
-                this.Hide();
-                FrmSidebar sideBar = new FrmSidebar();
-                sideBar.Show();
+                int resultadodv = VerificarIntegridadUsuarios();
+                if (resultadodv != 0)
+                    if (Sesion.Usuario.Rol != "Administrador")
+                    {
+                        MessageBox.Show(
+                            Traductor.TraducirTexto("msgRestablecerDV"),
+                            Traductor.TraducirTexto("msgAtencion"),
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning
+                        );
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show(
+                            Traductor.TraducirTexto("msgRestablecerDV"),
+                            Traductor.TraducirTexto("msgAtencion"),
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning
+                        );
 
+                        metodos.Bitacora(Sesion.Usuario.IdUsuario, "Usuarios", "Intento de Login Exitoso");
+
+                        this.Hide();
+                        FrmSidebar sideBar = new FrmSidebar();
+                        sideBar.Show();
+                        return;
+                    }
+                if (resultadodv == 0)
+                {
+                    if (Sesion.Usuario.PrimerIngreso != 0)
+                    {
+                        MessageBox.Show(Traductor.TraducirTexto("msgActualizarContrasena"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        FrmActualizarContraseña frmActualizar = new FrmActualizarContraseña();
+                        this.Hide();
+                        frmActualizar.ShowDialog();
+                        Sesion.Usuario = metodos.DatosIngreso(txtUsuario.Text);
+                        this.Show();
+
+                    }
+                    else
+                    {
+                        this.Hide();
+                        FrmSidebar sideBar = new FrmSidebar();
+                        sideBar.Show();
+                    }
+                    metodos.Bitacora(Sesion.Usuario.IdUsuario, "Usuarios", "Intento de Login Exitoso");                  
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al intentar verificar los datos" + ex.Message);
+                MessageBox.Show(Traductor.TraducirTexto("msgErrorVerificar") + ex.Message);
             }
         }
 
         private void FrmLogin_Load(object sender, EventArgs e)
-        {
+        {           
+            string ruta = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"Lenguajes","Idiomas.json");
+            Traductor.CargarJson(ruta);
+            Traductor.Idioma = "es";
+            Traductor.TraducirFormulario(this);
             CargarToolsTip();
             txtUsuario.Focus();
-            //if (!VerificarIntegridadUsuarios())
-            //{
-            //    MessageBox.Show("Error en la integridad de los datos, por favor contacte con soporte");
-            //    this.Close();
-            //}
+            cmbLenguaje.SelectedIndex = 1;
         }
         private void CargarToolsTip()
         {
-            toolTip1.SetToolTip(txtUsuario, "INGRESE SU USUARIO");
-            toolTip1.SetToolTip(txtContraseña, "INGRESE SU CONTRASEÑA");
-            toolTip1.SetToolTip(btnIngresar, "INGRESAR");
-            toolTip1.SetToolTip(pbSalir, "CERRAR EL SISTEMA");
+            toolTip1.SetToolTip(txtUsuario, Traductor.TraducirTexto("lblUsuario"));
+            toolTip1.SetToolTip(txtContraseña, Traductor.TraducirTexto("lblContraseña"));
+            toolTip1.SetToolTip(btnIngresar, Traductor.TraducirTexto("lblIngresar"));
+            toolTip1.SetToolTip(pbSalir, Traductor.TraducirTexto("lblSalir"));
 
             toolTip1.AutoPopDelay = 5000;   // tiempo visible (ms)
             toolTip1.InitialDelay = 500;    // retraso antes de aparecer (ms)
             toolTip1.ReshowDelay = 200;     // tiempo entre tooltips (ms)
             toolTip1.ShowAlways = true;     // mostrar aunque el form no tenga foco
         }
-        public bool VerificarIntegridadUsuarios()
+        public int VerificarIntegridadUsuarios()
         {
-            DataTable usuarios = metodos.Usuarios();
-
-            foreach (DataRow fila in usuarios.Rows)
-            {
-                int DVoriginal = Convert.ToInt32(fila["dv"]);
-
-                string cadena = fila["Usuario"].ToString()
-                                + fila["Contraseña"].ToString()
-                                + fila["Estado"].ToString()
-                                + fila["Nombre"].ToString()
-                                + fila["Apellido"].ToString()
-                                + fila["Intentos"].ToString()
-                                + fila["Bloqueado"].ToString()
-                                + fila["Idrol"].ToString()
-                                + fila["Dni"].ToString();
-
-                int recalculadoDV = CV_Seguridad.CalcularDVH(cadena);
-                if (DVoriginal != recalculadoDV)
-                {
-                    metodos.Bitacora(Convert.ToInt32(fila["IdUsuario"].ToString()), "Usuarios", $"DV esperado: {fila["dv"].ToString()} DV Obtenido {recalculadoDV}");
-                    return false;
-                }
-            }
-            return true;
+            int resultado = metodos.VerificarIntegridad(CV_Seguridad.ObtenerPalabra());
+            return resultado;
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
@@ -144,6 +166,36 @@ namespace CapaVista
             { 
                 btnIngresar.PerformClick();
             }
+        }
+
+        private void cmbLenguaje_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbLenguaje.SelectedIndex) 
+            {
+                case 0:
+                    Traductor.Idioma = "de";
+                    break;
+                case 1:
+                    Traductor.Idioma = "es";
+                    break;
+                case 2:
+                    Traductor.Idioma = "fr";
+                    break;
+                case 3:
+                    Traductor.Idioma = "en";
+                    break;
+                case 4:
+                    Traductor.Idioma = "it";
+                    break;
+                case 5:
+                    Traductor.Idioma = "pt";
+                    break;
+                case 6:
+                    Traductor.Idioma = "tr";
+                    break;
+            }
+            Traductor.TraducirFormulario(this);
+            CargarToolsTip();
         }
     }
 }

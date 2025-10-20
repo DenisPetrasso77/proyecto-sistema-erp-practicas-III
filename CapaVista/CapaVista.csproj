@@ -42,6 +42,9 @@
     <Reference Include="Konscious.Security.Cryptography.Blake2, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Konscious.Security.Cryptography.Blake2.1.1.1\lib\net46\Konscious.Security.Cryptography.Blake2.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
@@ -72,6 +75,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CV_ConfigSistema.cs" />
+    <Compile Include="FrmActualizarContraseña.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmActualizarContraseña.Designer.cs">
+      <DependentUpon>FrmActualizarContraseña.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmActualizarPregunta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -216,6 +225,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="CV_Traduccion.cs" />
     <Compile Include="UI_Utilidad.cs" />
     <Compile Include="FrmDetalleRecepcion.cs">
       <SubType>Form</SubType>
@@ -328,6 +338,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CV_Seguridad.cs" />
+    <EmbeddedResource Include="FrmActualizarContraseña.resx">
+      <DependentUpon>FrmActualizarContraseña.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmActualizarPregunta.resx">
       <DependentUpon>FrmActualizarPregunta.cs</DependentUpon>
     </EmbeddedResource>

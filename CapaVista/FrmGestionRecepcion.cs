@@ -189,7 +189,7 @@ namespace CapaVista
 
         private void CargarMotivosDevolucion()
         {
-            DataTable motivos = metodos.TraerTodo("MotivosDevolucion");
+            DataTable motivos = metodos.SeleccionarMotivosDevolucion();
             var comboCol = (DataGridViewComboBoxColumn)dataGridView1.Columns["Motivo"];
             comboCol.DataSource = motivos;
             comboCol.DisplayMember = "Descripcion";
@@ -231,7 +231,6 @@ namespace CapaVista
                 fila.Cells["Diferencia"].Value = restante;
             }
 
-            // HABILITAR MOTIVOS
             if (dataGridView1.Columns[e.ColumnIndex].Name == "Diferencia")
             {
                 int cantidad = 0;

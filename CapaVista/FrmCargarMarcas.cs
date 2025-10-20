@@ -16,7 +16,7 @@ namespace CapaVista
         }
         private void Cargarmarcas()
         {
-            DataTable cachemarcas = metodos.TraerTodo("Marca");
+            DataTable cachemarcas = metodos.MarcasProductos();
             string texto = textBox1.Text.Trim().ToLower();
             dataGridView1.Rows.Clear();
 
