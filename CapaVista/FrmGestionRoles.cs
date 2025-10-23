@@ -2,13 +2,8 @@
 using CapaLogica;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CapaVista
@@ -75,6 +70,11 @@ namespace CapaVista
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Crear_Configuracion"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             FrmNuevoRol nuevoRol = new FrmNuevoRol();
             nuevoRol.ShowDialog();
             CargarRoles();
@@ -82,8 +82,18 @@ namespace CapaVista
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Eliminar_Configuracion"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             string rol = comboBox1.Text.ToString();
             if (rol == null) return;
+            if (rol == "1 - Administrador")
+            {
+                MessageBox.Show("No se puede eliminar el rol de Administrador.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             DialogResult result = MessageBox.Show($"¿Está seguro que desea eliminar el rol seleccionado?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)
             {
@@ -96,6 +106,11 @@ namespace CapaVista
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Editar_Configuracion"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             try
             {
                 int idrol = Convert.ToInt32(comboBox1.Text.Split('-')[0]);
@@ -169,6 +184,11 @@ namespace CapaVista
 
         private void button4_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Editar_Configuracion"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             try
             {
                 int idusuario = Convert.ToInt32(comboBox2.Text.Split('-')[0]);

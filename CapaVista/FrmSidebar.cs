@@ -140,7 +140,7 @@ namespace SidebarMenu
 
         private void pbSalir_Click(object sender, EventArgs e)
         {
-            var resultado = MessageBox.Show("¿Está seguro que desea salir del sistema?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var resultado = MessageBox.Show(Traductor.TraducirTexto("msgDeseaSalir"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
             {
                 Sesion.Usuario=null;
@@ -170,9 +170,7 @@ namespace SidebarMenu
 
         private void btnConfig_Click(object sender, EventArgs e)
         {
-            if (Sesion.Usuario.Rol == "Administrador" || Sesion.Usuario.PermisosUsuario.Any(p =>
-            p == "Editar_Configuracion"
-            ))
+            if (CV_Utiles.TienePermiso("Editar_Configuracion"))
             {
                 this.Close();
                 FrmConfig config = new FrmConfig();
@@ -180,19 +178,34 @@ namespace SidebarMenu
             }
             else
             {
-                MessageBox.Show("No tiene permisos para acceder a esta sección.", "Acceso Denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
         private void pbConfig_Click(object sender, EventArgs e)
         {
-            this.Close();
-            FrmConfig  config  = new FrmConfig();
-            config.Show();
+            if (CV_Utiles.TienePermiso("Editar_Configuracion"))
+            {
+                this.Close();
+                FrmConfig config = new FrmConfig();
+                config.Show();
+            }
+            else
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
         }
 
         private void FrmSidebar_Load(object sender, EventArgs e)
-        { 
+        {
+            btnHome.Text = Traductor.TraducirTexto("btnHome");
+            btnConfig.Text = Traductor.TraducirTexto("btnConfig");
+            btnAyuda.Text = Traductor.TraducirTexto("btnAyuda");
+            btnAcerca.Text = Traductor.TraducirTexto("btnAcerca");
+            btnSalir.Text = Traductor.TraducirTexto("btnSalir");
+            lblTituloHome.Text = Traductor.TraducirTexto("lblTituloHome");
+            this.Text = Traductor.TraducirTexto("frmSidebar");
         }
     }
     

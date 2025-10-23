@@ -222,6 +222,11 @@ namespace CapaVista
         }
         private void button2_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Editar_Compras"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             dataGridView3.ReadOnly = false;
             dataGridView2.ReadOnly = true;
             button1.Enabled = true;
@@ -305,6 +310,11 @@ namespace CapaVista
 
         private void button4_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Editar_Compras"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             button4.Enabled = false;
             button5.Enabled = true;
             button6.Enabled =true;

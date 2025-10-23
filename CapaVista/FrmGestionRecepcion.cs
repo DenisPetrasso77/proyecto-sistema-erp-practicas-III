@@ -26,6 +26,11 @@ namespace CapaVista
 
         private void button2_Click(object sender, System.EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Editar_Compras"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             facturaremito.ShowDialog();
             puestoventa = int.TryParse(facturaremito.PuestoNumero, out int tmppv) ? tmppv : 0;
             numeroremito=int.TryParse(facturaremito.NumeroRemito, out int tmpnr) ? tmpnr : 0;
@@ -242,6 +247,11 @@ namespace CapaVista
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Editar_Compras"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (puestoventa == 0 || numeroremito == 0 || cuitremito == null || razonsocial == null)
             {
                 MessageBox.Show("Por favor ingrese los datos del remito");
@@ -336,7 +346,11 @@ namespace CapaVista
 
         private void button6_Click(object sender, EventArgs e)
         {
-            
+            if (!CV_Utiles.TienePermiso("Editar_Compras"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             var detalle = new List<(int IdRecepcion, string IdProducto, int Cantidad, string Estado, int IdUsuario)>();
                 int idrecepcion = Convert.ToInt32(label9.Text.Split('-')[1].ToString());
                 foreach (DataGridViewRow fila in dataGridView2.Rows)

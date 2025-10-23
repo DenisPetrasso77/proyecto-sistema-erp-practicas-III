@@ -36,7 +36,6 @@
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.button18 = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -58,16 +57,12 @@
             this.pbFoto = new System.Windows.Forms.PictureBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Permisos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Autorizado = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -82,7 +77,7 @@
             // 
             // txtCorreo
             // 
-            this.txtCorreo.Location = new System.Drawing.Point(498, 334);
+            this.txtCorreo.Location = new System.Drawing.Point(409, 326);
             this.txtCorreo.Multiline = true;
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(233, 26);
@@ -92,7 +87,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(421, 341);
+            this.label11.Location = new System.Drawing.Point(332, 333);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(72, 19);
             this.label11.TabIndex = 51;
@@ -156,16 +151,6 @@
             this.button18.Text = "Salir";
             this.button18.UseVisualStyleBackColor = true;
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(8, 336);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(54, 19);
-            this.label9.TabIndex = 44;
-            this.label9.Text = "Elija";
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.button2);
@@ -211,11 +196,11 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(12, 140);
+            this.label10.Location = new System.Drawing.Point(6, 136);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(72, 19);
+            this.label10.Size = new System.Drawing.Size(99, 19);
             this.label10.TabIndex = 14;
-            this.label10.Text = "Estado:";
+            this.label10.Text = "Bloqueado:";
             // 
             // cmbRol
             // 
@@ -268,7 +253,7 @@
             // 
             // cmbPregunta
             // 
-            this.cmbPregunta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPregunta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.cmbPregunta.Enabled = false;
             this.cmbPregunta.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPregunta.FormattingEnabled = true;
@@ -276,7 +261,7 @@
             "¿Nombre de su mascosta de la infancia?",
             "¿Apellido de su Ex?",
             "¿Paseo por la Zona Roja de Constitución?"});
-            this.cmbPregunta.Location = new System.Drawing.Point(104, 332);
+            this.cmbPregunta.Location = new System.Drawing.Point(12, 326);
             this.cmbPregunta.Name = "cmbPregunta";
             this.cmbPregunta.Size = new System.Drawing.Size(307, 28);
             this.cmbPregunta.TabIndex = 42;
@@ -357,9 +342,9 @@
             this.label8.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(8, 301);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(220, 22);
+            this.label8.Size = new System.Drawing.Size(230, 22);
             this.label8.TabIndex = 40;
-            this.label8.Text = "Pregunta de Seguridad";
+            this.label8.Text = "Pregunta de Seguridad:";
             // 
             // pbFoto
             // 
@@ -373,7 +358,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(437, 502);
+            this.btnCancelar.Location = new System.Drawing.Point(425, 368);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(114, 35);
             this.btnCancelar.TabIndex = 43;
@@ -383,7 +368,7 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(264, 502);
+            this.btnAceptar.Location = new System.Drawing.Point(252, 368);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(114, 35);
             this.btnAceptar.TabIndex = 41;
@@ -391,48 +376,15 @@
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Permisos,
-            this.Autorizado});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 366);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(183, 171);
-            this.dataGridView1.TabIndex = 54;
-            // 
-            // Permisos
-            // 
-            this.Permisos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Permisos.HeaderText = "Permisos";
-            this.Permisos.Name = "Permisos";
-            this.Permisos.Width = 74;
-            // 
-            // Autorizado
-            // 
-            this.Autorizado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Autorizado.HeaderText = "Autorizado";
-            this.Autorizado.Items.AddRange(new object[] {
-            "1- Si",
-            "2- No"});
-            this.Autorizado.Name = "Autorizado";
-            this.Autorizado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Autorizado.Width = 63;
-            // 
             // FrmEditarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(752, 543);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(752, 419);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtCorreo);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.cmbPregunta);
             this.Controls.Add(this.groupBox1);
@@ -453,7 +405,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -469,7 +420,6 @@
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button18;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox cmbRol;
         private System.Windows.Forms.TextBox txtUsuario;
@@ -491,8 +441,5 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Permisos;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Autorizado;
     }
 }

@@ -9,6 +9,7 @@ namespace CapaVista
     public partial class FrmNuevoProveedor : Form
     {
         CL_Metodos metodos = new CL_Metodos();
+        bool _limpiando;
         public FrmNuevoProveedor()
         {
             InitializeComponent();
@@ -42,6 +43,8 @@ namespace CapaVista
 
         private void cmbProvincia_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (_limpiando) { return; }
+
             if (cmbProvincia.Text != null)
             {
                 int idprovincia = Convert.ToInt32(cmbProvincia.Text.Split('-')[0].Trim());
@@ -57,6 +60,7 @@ namespace CapaVista
 
         private void cmbLocalidad_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (_limpiando) { return; }
 
             if (cmbLocalidad.Text != null)
             {
@@ -84,44 +88,54 @@ namespace CapaVista
                 MessageBox.Show("Formato de Mail Incorrecto");
                 return;
             }
-            string comercial = txtComercial.Text.TrimStart().TrimEnd();
-            string razonsocial = txtRazonSocial.Text.TrimStart().TrimEnd();
-            string cuit = txtCUIT.Text.TrimStart().TrimEnd();
-            string correo = txtCorreo.Text.TrimStart().TrimEnd();
-            int CodigoArea = Convert.ToInt32(txtCodArea.Text);
-            int Telefono = Convert.ToInt32(txtTelefono.Text);
-            string calle = txtCalle.Text.TrimStart().TrimEnd();
-            int numero = Convert.ToInt32(txtNumero.Text.Trim());
-            int provincia = Convert.ToInt32(cmbProvincia.Text.Split('-')[0].Trim());
-            int localidad = Convert.ToInt32(cmbLocalidad.Text.Split('-')[0].Trim());
-            int codpostal = Convert.ToInt32(txtCodPostal.Text);
-            string observaciones = txtObservaciones.Text;
-            Proveedor proveedor = new Proveedor
-            {
-                NombreComercial = comercial,
-                RazonSocial = razonsocial,
-                NumeroDeIdentificacion = cuit,
-                Correo = correo,
-                CodigoArea = CodigoArea,
-                Telefono = Telefono,
-                DireccionCalle = calle,
-                DireccionAltura = numero,
-                DireccionProvincia = provincia,
-                DireccionLocalidad = localidad,
-                DireccionCodigoPostal = codpostal,
-                Observaciones = observaciones,
-                IdUsuarioAlta = Sesion.Usuario.IdUsuario,
-            };
             try
             {
+                string comercial = txtComercial.Text.TrimStart().TrimEnd();
+                string razonsocial = txtRazonSocial.Text.TrimStart().TrimEnd();
+                string cuit = txtCUIT.Text.TrimStart().TrimEnd();
+                string correo = txtCorreo.Text.TrimStart().TrimEnd();
+                int CodigoArea = Convert.ToInt32(txtCodArea.Text);
+                int Telefono = Convert.ToInt32(txtTelefono.Text);
+                string calle = txtCalle.Text.TrimStart().TrimEnd();
+                int numero = Convert.ToInt32(txtNumero.Text.Trim());
+                int provincia = Convert.ToInt32(cmbProvincia.Text.Split('-')[0].Trim());
+                int localidad = Convert.ToInt32(cmbLocalidad.Text.Split('-')[0].Trim());
+                int codpostal = Convert.ToInt32(txtCodPostal.Text);
+                string observaciones = txtObservaciones.Text;
+                Proveedor proveedor = new Proveedor
+                {
+                    NombreComercial = comercial,
+                    RazonSocial = razonsocial,
+                    NumeroDeIdentificacion = cuit,
+                    Correo = correo,
+                    CodigoArea = CodigoArea,
+                    Telefono = Telefono,
+                    DireccionCalle = calle,
+                    DireccionAltura = numero,
+                    DireccionProvincia = provincia,
+                    DireccionLocalidad = localidad,
+                    DireccionCodigoPostal = codpostal,
+                    Observaciones = observaciones,
+                    IdUsuarioAlta = Sesion.Usuario.IdUsuario,
+                };
+
                 string resultado = metodos.InsertarProveedor(proveedor);
                 MessageBox.Show(resultado);
+                _limpiando = true;
                 CV_Utiles.LimpiarFormulario(this);
+                _limpiando = false;
+
             }
+
             catch (Exception ex)
             {
                 MessageBox.Show("Error al guardar proveedor: " + ex.Message);
             }
+        }
+
+        private void txtNumero_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

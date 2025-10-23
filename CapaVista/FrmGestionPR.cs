@@ -100,6 +100,11 @@ namespace CapaVista
         }
         private void button4_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Editar_Compras"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             int iddetallepr;
             int cantpedida;
             int idpr = Convert.ToInt32(dataGridView2.CurrentRow.Cells["IDPR"].Value);
@@ -118,6 +123,11 @@ namespace CapaVista
         }
         private void button5_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Eliminar_Compras"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (dataGridView3.Rows.Count == 1)
             {
                 MessageBox.Show($"Para eliminar el pedido toque el boton: {"Borrar Pedido"}");
@@ -160,6 +170,11 @@ namespace CapaVista
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Eliminar_Compras"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             DialogResult respuesta = MessageBox.Show("¿Desea Borra El Pedido Seleccionado?", "CONFIRMACION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (respuesta == DialogResult.No)
             {

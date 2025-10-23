@@ -245,6 +245,11 @@ namespace CapaVista
 
         private void btnVenta_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Crear_Ventas"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (dataGridView1.Rows.Count == 0) { return; }
             if (cmbCliente.SelectedItem == null)
             {
@@ -318,6 +323,11 @@ namespace CapaVista
 
         private void pictureBox6_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Crear_Clientes"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             FrmNuevoCliente nuevoCliente = new FrmNuevoCliente();
             nuevoCliente.ShowDialog();
             CargarClientes();

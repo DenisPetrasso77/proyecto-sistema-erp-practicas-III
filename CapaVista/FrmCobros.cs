@@ -88,5 +88,10 @@ namespace CapaVista
             pictureBox3.Focus();
             CargarCobros();
         }
+
+        private void btnDetalle_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

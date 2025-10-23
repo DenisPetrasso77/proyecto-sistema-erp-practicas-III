@@ -20,7 +20,6 @@ namespace CapaEntities
         public decimal PrecioCompra { get; set; }
         public decimal PrecioVenta { get; set; }
         public List<(int CantidadMinima, int Porcentaje)> Descuentos { get; set; }
-        public int DVH { get; set; }
 
     }
 }

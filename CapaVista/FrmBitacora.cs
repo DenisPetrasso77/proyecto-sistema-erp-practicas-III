@@ -73,6 +73,11 @@ namespace CapaVista
 
         private void bntEliminar_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Editar_Configuracion"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             var valor = dataGridView1.CurrentRow;
             if (valor == null)
             {
@@ -97,6 +102,11 @@ namespace CapaVista
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Eliminar_Configuracion"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             DialogResult resultado = MessageBox.Show("¿Desea Eliminar el Registro Completo?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
             {
@@ -146,6 +156,11 @@ namespace CapaVista
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Editar_Configuracion"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "CSV (*.csv)|*.csv";
             sfd.FileName = "Exportacion.csv";

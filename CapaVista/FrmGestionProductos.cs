@@ -3,6 +3,7 @@ using CapaLogica;
 using ProyectoPracticas;
 using System;
 using System.Data;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace CapaVista
@@ -30,7 +31,7 @@ namespace CapaVista
                 string item = $"{producto} {marca} {medida}";
 
 
-                if (!string.IsNullOrEmpty(textoBuscado) && textoBuscado != "Buscador...")
+                if (!string.IsNullOrEmpty(textoBuscado) && textoBuscado != Traductor.TraducirTexto("txtBuscador"))
                 {
                     if (!(codigo.ToLower().Contains(textoBuscado.ToLower()) ||
                           categoria.ToLower().Contains(textoBuscado.ToLower()) ||
@@ -54,55 +55,56 @@ namespace CapaVista
             CrearColumnasProductos();
             CargarProductos();
             CargarToolsTip();
+            Traductor.TraducirFormulario(this);
         }
         private void CrearColumnasProductos()
         {
             dataGridView1.Columns.Clear();
             DataGridViewTextBoxColumn columnaCodigo = new DataGridViewTextBoxColumn();
             columnaCodigo.Name = "Codigo";                  
-            columnaCodigo.HeaderText = "Código";   
+            columnaCodigo.HeaderText = Traductor.TraducirTexto("lblCodigo");   
             columnaCodigo.Width = 65;                     
             columnaCodigo.ReadOnly = true;                  
             columnaCodigo.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             DataGridViewTextBoxColumn columnaProducto = new DataGridViewTextBoxColumn();
             columnaProducto.Name = "Producto";
-            columnaProducto.HeaderText = "Producto";
+            columnaProducto.HeaderText = Traductor.TraducirTexto("gbxProductos");
             columnaProducto.Width = 75;
             columnaProducto.ReadOnly = true;
             columnaProducto.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             DataGridViewTextBoxColumn columnaCategoria = new DataGridViewTextBoxColumn();
             columnaCategoria.Name = "Categoria";
-            columnaCategoria.HeaderText = "Categoria";
+            columnaCategoria.HeaderText = Traductor.TraducirTexto("lblCategoria");
             columnaCategoria.Width = 77;
             columnaCategoria.ReadOnly = true;
             columnaCategoria.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             DataGridViewTextBoxColumn columnaCantActual = new DataGridViewTextBoxColumn();
             columnaCantActual.Name = "CantidadActual";
-            columnaCantActual.HeaderText = "Cant. Actual";
+            columnaCantActual.HeaderText = Traductor.TraducirTexto("dgvCantidadActual");
             columnaCantActual.Width = 90;
             columnaCantActual.ReadOnly = true;
             columnaCantActual.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             DataGridViewTextBoxColumn columnaCantMinima = new DataGridViewTextBoxColumn();
             columnaCantMinima.Name = "CantidadMinima";
-            columnaCantMinima.HeaderText = "Cant. Minima";
+            columnaCantMinima.HeaderText = Traductor.TraducirTexto("dgvCantidadMin");
             columnaCantMinima.Width = 93;
             columnaCantMinima.ReadOnly = true;
             columnaCantMinima.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             DataGridViewTextBoxColumn Descuentos = new DataGridViewTextBoxColumn();
             Descuentos.Name = "Descuentos";
-            Descuentos.HeaderText = "Descuentos";
+            Descuentos.HeaderText = Traductor.TraducirTexto("dgvDescuentos");
             Descuentos.Width = 89;
             Descuentos.ReadOnly = true;
             Descuentos.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             DataGridViewTextBoxColumn Venta = new DataGridViewTextBoxColumn();
             Venta.Name = "PrecioVenta";
-            Venta.HeaderText = "Venta($)";
+            Venta.HeaderText = Traductor.TraducirTexto("dgvPrecio");
             Venta.Width = 72;
             Venta.ReadOnly = true;
             Venta.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -121,42 +123,42 @@ namespace CapaVista
             dataGridView1.Columns.Clear();
             DataGridViewTextBoxColumn columnaCodigo = new DataGridViewTextBoxColumn();
             columnaCodigo.Name = "Codigo";
-            columnaCodigo.HeaderText = "Código";
+            columnaCodigo.HeaderText = Traductor.TraducirTexto("lblCodigo");
             columnaCodigo.Width = 65;
             columnaCodigo.ReadOnly = true;
             columnaCodigo.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             DataGridViewTextBoxColumn columnaProducto = new DataGridViewTextBoxColumn();
             columnaProducto.Name = "Producto";
-            columnaProducto.HeaderText = "Producto";
+            columnaProducto.HeaderText = Traductor.TraducirTexto("gbxProductos");
             columnaProducto.Width = 415;
             columnaProducto.ReadOnly = true;
             columnaProducto.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             DataGridViewTextBoxColumn columnaCantActual = new DataGridViewTextBoxColumn();
             columnaCantActual.Name = "CantidadActual";
-            columnaCantActual.HeaderText = "Cant. Actual";
+            columnaCantActual.HeaderText = Traductor.TraducirTexto("dgvCantidadActual");
             columnaCantActual.Width = 86;
             columnaCantActual.ReadOnly = true;
             columnaCantActual.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             DataGridViewTextBoxColumn columnaSugerencia = new DataGridViewTextBoxColumn();
             columnaSugerencia.Name = "Sugerencia";
-            columnaSugerencia.HeaderText = "Sugerencia";
+            columnaSugerencia.HeaderText = Traductor.TraducirTexto("dgvSugerencia");
             columnaSugerencia.Width = 96;
             columnaSugerencia.ReadOnly = true;
             columnaSugerencia.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             DataGridViewTextBoxColumn CantidadPedir = new DataGridViewTextBoxColumn();
             CantidadPedir.Name = "CantidadPedir";
-            CantidadPedir.HeaderText = "Cantidad a Pedir";
+            CantidadPedir.HeaderText = Traductor.TraducirTexto("dgvCantAPedir");
             CantidadPedir.Width = 79;
             CantidadPedir.ReadOnly = false;
             CantidadPedir.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             DataGridViewCheckBoxColumn Pedir = new DataGridViewCheckBoxColumn();
             Pedir.Name = "Pedir";
-            Pedir.HeaderText = "Pedir";
+            Pedir.HeaderText = Traductor.TraducirTexto("dgvPedir");
             Pedir.Width = 69;
             Pedir.ReadOnly = false;
             Pedir.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -172,9 +174,23 @@ namespace CapaVista
         {
             DataTable stockproducmin = metodos.ProductosStockMin();
             dataGridView1.Rows.Clear();
+            string textoBuscado = txtBuscador.Text.Trim();
 
             foreach (DataRow fila in stockproducmin.Rows)
             {
+                string codigo1 = fila["CodigoProducto"].ToString();
+                    string producto = fila["Producto"].ToString();
+                string marca = fila["Marca"].ToString();
+                string medida = fila["Medida"].ToString();
+                string item = $"{producto} {marca} {medida}";
+                if (!string.IsNullOrEmpty(textoBuscado) && textoBuscado != Traductor.TraducirTexto("txtBuscador"))
+                {
+                    if (!(codigo1.ToLower().Contains(textoBuscado.ToLower()) ||
+                          item.ToLower().Contains(textoBuscado.ToLower())))
+                    {
+                        continue;
+                    }
+                }
                 string codigo = fila["CodigoProducto"].ToString().ToUpper(); ;
                 string descripcion = $"{fila["Producto"]} {fila["Marca"]} {fila["Medida"]}".ToString().ToUpper();
                 int stockactual = Convert.ToInt32(fila["StockActual"].ToString().ToUpper());
@@ -187,7 +203,7 @@ namespace CapaVista
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox1.Checked)
+            if (ckbStockBajo.Checked)
             {
                 CrearColumnasProductosStockBajo();
                 CargarProductosStockBajo();
@@ -205,44 +221,52 @@ namespace CapaVista
 
         private void btnPedir_Click(object sender, EventArgs e)
         {
-            DataTable detalle = new DataTable();
-            detalle.Columns.Add("IdProducto", typeof(string));
-            detalle.Columns.Add("CantidadPedida", typeof(int));
-            detalle.Columns.Add("StockAlPedir", typeof(int));
-            detalle.Columns.Add("UnidadVenta", typeof(string));
+            if (CV_Utiles.TienePermiso("Crear_Compras"))
+            {
+                DataTable detalle = new DataTable();
+                detalle.Columns.Add("IdProducto", typeof(string));
+                detalle.Columns.Add("CantidadPedida", typeof(int));
+                detalle.Columns.Add("StockAlPedir", typeof(int));
+                detalle.Columns.Add("UnidadVenta", typeof(string));
 
-            foreach (DataGridViewRow fila in dataGridView1.Rows)
-            {
-                if (fila.Cells["Pedir"].Value != null && fila.Cells["CantidadPedir"].Value == null)
+                foreach (DataGridViewRow fila in dataGridView1.Rows)
                 {
-                    MessageBox.Show("Por favor ingrese la cantidad a pedir");
-                    return;
-                }
-                if (fila.Cells["Pedir"].Value != null && Convert.ToBoolean(fila.Cells["Pedir"].Value))
-                {
-                    detalle.Rows.Add(
-                        fila.Cells["Codigo"].Value.ToString(),
-                        Convert.ToInt32(fila.Cells["CantidadPedir"].Value.ToString().Split(' ')[0]),
-                        Convert.ToInt32(fila.Cells["CantidadActual"].Value.ToString().Split(' ')[0]),
-                        fila.Cells["CantidadActual"].Value.ToString().Split(' ')[1]
-                    );
-                }
+                    if (fila.Cells["Pedir"].Value != null && fila.Cells["CantidadPedir"].Value == null)
+                    {
+                        MessageBox.Show("Por favor ingrese la cantidad a pedir");
+                        return;
+                    }
+                    if (fila.Cells["Pedir"].Value != null && Convert.ToBoolean(fila.Cells["Pedir"].Value))
+                    {
+                        detalle.Rows.Add(
+                            fila.Cells["Codigo"].Value.ToString(),
+                            Convert.ToInt32(fila.Cells["CantidadPedir"].Value.ToString().Split(' ')[0]),
+                            Convert.ToInt32(fila.Cells["CantidadActual"].Value.ToString().Split(' ')[0]),
+                            fila.Cells["CantidadActual"].Value.ToString().Split(' ')[1]
+                        );
+                    }
 
+                }
+                try
+                {
+                    MessageBox.Show(metodos.InsertarPR(Sesion.Usuario.IdUsuario, detalle));
+                    CargarProductosStockBajo();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            try
+            else
             {
-                MessageBox.Show(metodos.InsertarPR(Sesion.Usuario.IdUsuario, detalle));
-                CargarProductosStockBajo();
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            if (checkBox1.Checked)
+            if (ckbStockBajo.Checked)
             {
                 CargarProductosStockBajo();
             }
@@ -262,12 +286,19 @@ namespace CapaVista
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            FrmNuevoProducto frm = new FrmNuevoProducto();
-            frm.ShowDialog();
-            if (checkBox1.Checked)
-                CargarProductosStockBajo();
+            if (CV_Utiles.TienePermiso("Crear_Productos"))
+            {
+                FrmNuevoProducto frm = new FrmNuevoProducto();
+                frm.ShowDialog();
+                if (ckbStockBajo.Checked)
+                    CargarProductosStockBajo();
+                else
+                    CargarProductos();
+            }
             else
-                CargarProductos();
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void CargarToolsTip()
@@ -286,14 +317,18 @@ namespace CapaVista
         {
             if (dataGridView1.CurrentRow == null)
             {
-                MessageBox.Show("Debe seleccionar un producto.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(Traductor.TraducirTexto("msgNoProducto"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
+            if (!CV_Utiles.TienePermiso("Editar_Productos"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             string idproducto = dataGridView1.CurrentRow.Cells[0].Value.ToString();
             FrmEditarProducto frm = new FrmEditarProducto(idproducto);
             frm.ShowDialog();
-            if (checkBox1.Checked)
+            if (ckbStockBajo.Checked)
                 CargarProductosStockBajo();
             else
                 CargarProductos();
@@ -304,7 +339,7 @@ namespace CapaVista
             string idproducto = dataGridView1.CurrentRow.Cells[0].Value.ToString();
             FrmEditarProducto frm = new FrmEditarProducto(idproducto);
             frm.ShowDialog();
-            if (checkBox1.Checked)
+            if (ckbStockBajo.Checked)
                 CargarProductosStockBajo();
             else
                 CargarProductos();
@@ -317,7 +352,7 @@ namespace CapaVista
 
         private void txtBuscador_TextChanged(object sender, EventArgs e)
         {
-            if (checkBox1.Checked)
+            if (ckbStockBajo.Checked)
                 CargarProductosStockBajo();
             else
                 CargarProductos();
@@ -325,7 +360,7 @@ namespace CapaVista
 
         private void txtBuscador_Enter(object sender, EventArgs e)
         {
-            if (txtBuscador.Text == "Buscador...")
+            if (txtBuscador.Text == Traductor.TraducirTexto("txtBuscador"))
             {
                 txtBuscador.Text = string.Empty;
             }
@@ -335,7 +370,7 @@ namespace CapaVista
         {
             if (string.IsNullOrWhiteSpace(txtBuscador.Text))
             {
-                txtBuscador.Text = "Buscador...";
+                txtBuscador.Text = Traductor.TraducirTexto("txtBuscador");
             }
         }
 
@@ -344,7 +379,7 @@ namespace CapaVista
             UI_Utilidad.EstiloForm(this);
             UI_Utilidad.RedondearForm(this, 28);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnPedir);
-            UI_Utilidad.EstiloBotonPrimarioDegradado(btnCerrar);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnCerrarProductos);
             UI_Utilidad.AplicarEfectoHover(pictureBox1);
             UI_Utilidad.AplicarEfectoHover(pictureBox2);
             //UI_Utilidad.EstiloDataGridView(dataGridView1);

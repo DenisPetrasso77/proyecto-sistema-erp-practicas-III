@@ -39,7 +39,7 @@ namespace CapaVista
                     cmbMedidas.Text = fila["Medidas"].ToString();
                     cmbEstado.Text = fila["Estado"].ToString();
 
-                    if (fila["FormaVenta"] != DBNull.Value)
+                    if (fila["FormaVenta"].ToString() != " - ")
                     {
                         checkBox1.Checked = true;
                         cmbVenta.Text = fila["FormaVenta"].ToString();
@@ -163,8 +163,12 @@ namespace CapaVista
             DataTable CacheMedidas = metodos.MedidasProductos();
             foreach (DataRow filas in CacheMedidas.Rows)
             {
-                string fila = $"{filas["Idmedidas"]} - {filas["Medida"]}";
-                cmbMedidas.Items.Add(fila);
+                if (filas["Estado"].ToString().Trim() != "Inactivo")
+                {
+                    string fila = $"{filas["Idmedidas"]} - {filas["Medida"]}";
+                    cmbMedidas.Items.Add(fila);
+                }
+                    
             }
         }
         private void Cargarcbxmarcas()
@@ -173,8 +177,12 @@ namespace CapaVista
             DataTable CacheMarcas = metodos.MarcasProductos();
             foreach (DataRow filas in CacheMarcas.Rows)
             {
-                string fila = $"{filas["Idmarca"]} - {filas["Marca"]}";
-                cmbMarcas.Items.Add(fila);
+                if (filas["Estado"].ToString().Trim() != "Inactivo")
+                {
+                    string fila = $"{filas["Idmarca"]} - {filas["Marca"]}";
+                    cmbMarcas.Items.Add(fila);
+                }
+                    
             }
         }
         private void Cargarcbxventa()
@@ -183,8 +191,12 @@ namespace CapaVista
             DataTable CacheFVentas = metodos.UnidadProductos();
             foreach (DataRow filas in CacheFVentas.Rows)
             {
-                string fila = $"{filas["idUnidad"]} - {filas["Unidad"]}";
-                cmbVenta.Items.Add(fila);
+                if (filas["Estado"].ToString().Trim() != "Inactivo")
+                {
+                    string fila = $"{filas["idUnidad"]} - {filas["Unidad"]}";
+                    cmbVenta.Items.Add(fila);
+                }
+                    
             }
         }
 
@@ -256,7 +268,7 @@ namespace CapaVista
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            //new FrmGestionMedidas().ShowDialog();
+            new FrmCargarMedidas().ShowDialog();
             Cargarcbxmedidas();
         }
 

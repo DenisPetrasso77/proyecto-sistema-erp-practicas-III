@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaEntities;
+using System;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -8,6 +9,11 @@ namespace CapaVista
 {
     public class CV_Utiles
     {
+        public static bool TienePermiso(string permiso)
+        {
+            return Sesion.Usuario.PermisosUsuario.Contains(permiso) || (Sesion.Usuario.PermisosRol.Contains(permiso));
+        }
+
         public static bool TextboxVacios(params TextBox[] campos)
         {
             foreach (TextBox campo in campos)

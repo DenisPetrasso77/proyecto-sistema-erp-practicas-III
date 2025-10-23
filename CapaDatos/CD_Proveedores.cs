@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CapaDatos
 {
-    public class CD_Proveedores:CD_Conexion
+    public class CD_Proveedores : CD_Conexion
     {
         public DataTable Proveedores(int? id = null)
         {
@@ -65,6 +65,42 @@ namespace CapaDatos
 
                     cmd.ExecuteNonQuery();
                     return "Proveedor guardado correctamente.";
+                }
+            }
+            catch (SqlException ex)
+            {
+                return "Error:" + ex.Message;
+            }
+            finally
+            {
+                CerrarConexion();
+            }
+        }
+        public string ActualizarProveedor(Proveedor proveedor)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_ActualizarProveedor", AbrirConexion()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IdProveedor", proveedor.idProveedor);
+                    cmd.Parameters.AddWithValue("@NombreComercial", (object)proveedor.NombreComercial ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@RazonSocial", proveedor.RazonSocial);
+                    cmd.Parameters.AddWithValue("@TipoIdentificacion", proveedor.TipoIdentificacion);
+                    cmd.Parameters.AddWithValue("@NumeroDeIdentificacion", proveedor.NumeroDeIdentificacion);
+                    cmd.Parameters.AddWithValue("@Correo", (object)proveedor.Correo ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@CodigoArea", (object)proveedor.CodigoArea ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Telefono", (object)proveedor.Telefono ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@DireccionCalle", (object)proveedor.DireccionCalle ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@DireccionAltura", (object)proveedor.DireccionAltura ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@DireccionProvincia", (object)proveedor.DireccionProvincia ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@DireccionLocalidad", (object)proveedor.DireccionLocalidad ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@DireccionCodigoPostal", (object)proveedor.DireccionCodigoPostal ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Observaciones", (object)proveedor.Observaciones ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("Estado", (object)proveedor.Estado ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@IdUsuarioUltModificacion", proveedor.IdUsuarioUltModificacion);
+                    string resultado = cmd.ExecuteScalar().ToString();
+                    return resultado;
                 }
             }
             catch (SqlException ex)

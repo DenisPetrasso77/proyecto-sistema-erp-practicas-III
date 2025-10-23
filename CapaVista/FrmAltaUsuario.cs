@@ -12,7 +12,6 @@ namespace CapaVista
     {
         CL_Metodos metodos = new CL_Metodos();
         private string rutaImagenTemporal = null;
-
         public FrmAltaUsuario()
         {
             InitializeComponent();
@@ -26,19 +25,23 @@ namespace CapaVista
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            string carpetaDestino = Path.Combine(Application.StartupPath, "Imagenes","Usuarios");
-            if (!Directory.Exists(carpetaDestino))
-                Directory.CreateDirectory(carpetaDestino);
-
-            string extension = Path.GetExtension(rutaImagenTemporal);
-            string destino = Path.Combine(carpetaDestino, txtUsuario.Text + extension);
-
-            if (File.Exists(destino))
+            if (CV_Utiles.TextboxVacios(txtUsuario, txtContraseña, txtNombre, txtApellido, txtDNI, txtRespuesta, txtCorreo) ||
+                CV_Utiles.ComboboxVacios(cmbRol,  cmbPregunta))
             {
-                File.Delete(destino);
+                MessageBox.Show("Por favor complete todos los campos");
+                return;
+            }
+            if (!CV_Utiles.CampoMail(txtCorreo.Text))
+            {
+                MessageBox.Show("Por favor ingrese un correo valido");
+                return;
+            }
+            if (CV_Utiles.CamposNumericos(txtNombre, txtApellido,txtUsuario,txtContraseña,txtCorreo,txtRespuesta))
+            {
+                MessageBox.Show("Los Datos NO Pueden ser Numericos");
+                return;
             }
 
-            File.Copy(rutaImagenTemporal, destino, true);
             UsuarioNuevo usuarioNuevo = new UsuarioNuevo()
             {
                 Usuario = txtUsuario.Text.Trim(),
@@ -54,6 +57,23 @@ namespace CapaVista
 
             string resultado = metodos.Registro(usuarioNuevo);
             MessageBox.Show(resultado);
+            if (!string.IsNullOrEmpty(rutaImagenTemporal))
+            {
+                string carpetaDestino = Path.Combine(Application.StartupPath, "Imagenes", "Usuarios");
+                if (!Directory.Exists(carpetaDestino))
+                    Directory.CreateDirectory(carpetaDestino);
+
+                string extension = Path.GetExtension(rutaImagenTemporal);
+                string destino = Path.Combine(carpetaDestino, txtUsuario.Text + extension);
+
+                if (File.Exists(destino))
+                {
+                    File.Delete(destino);
+                }
+
+                File.Copy(rutaImagenTemporal, destino, true);
+
+            }
             CV_Utiles.LimpiarFormulario(this);
         }
         private void CargarRoles()
@@ -88,6 +108,13 @@ namespace CapaVista
                     rutaImagenTemporal = ofd.FileName;
                     pbFoto.Image = Image.FromFile(rutaImagenTemporal);
                 }
+            }
+        }
+        private void VerificarCaracter(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
             }
         }
     }

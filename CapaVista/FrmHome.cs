@@ -19,6 +19,11 @@ namespace CapaVista
 
         private void btnGestion_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Ver_Productos"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             this.Hide();
             new FrmGestionProductos().Show();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Productos", "Accedio al Menu Gestion Productos");
@@ -26,6 +31,11 @@ namespace CapaVista
 
         private void btnGestionPagos_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Ver_Pagos"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             this.Hide();
             new FrmPagos().Show();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Pagos", "Accedio al Menu Gestion Pagos");
@@ -33,6 +43,11 @@ namespace CapaVista
 
         private void btnReabastecer_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Ver_Compras"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             this.Hide();
             new FrmGestionPR().Show();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Pedidos Reaprovisionamiento", "Accedio al Menu Gestion Pedidos de Reaprovisionamiento");
@@ -40,6 +55,11 @@ namespace CapaVista
 
         private void btnCargarNuevo_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Ver_Proveedores"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             this.Hide();
             new FrmGestionProveedores().Show();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Proveedores", "Accedio al Menu Gestion Proveedores");
@@ -47,6 +67,11 @@ namespace CapaVista
 
         private void btncotizacion_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Ver_Compras"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             this.Hide();
             new FrmGestionPedidoCotizaciones().Show();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Cotizaciones", "Accedio al Menu Gestion Cotizaciones");
@@ -54,6 +79,11 @@ namespace CapaVista
 
         private void btnOrden_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Ver_Compras"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             this.Hide();
             new FrmGestionOrdenCompra().Show();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Ordenes de Compra", "Accedio al Menu Gestion Ordenes de Compra");
@@ -61,12 +91,22 @@ namespace CapaVista
 
         private void btnRecepcion_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Ver_Almacen"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             this.Hide();
             new FrmGestionRecepcion().Show();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Recepcion Mercaderia", "Accedio al Menu Gestion Recepcion");
         }
         private void btnGestionAdmin_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Ver_Configuracion"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             this.Close();
             new FrmGestionUsuarios().Show();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Usuarios", "Accedio al Menu Gestion Usuarios");
@@ -74,6 +114,11 @@ namespace CapaVista
 
         private void btnBitacora_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Ver_Bitacora"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             this.Hide();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Bitacora", "Accedio al Menu Gestion Bitacora");
             new FrmBitacora().Show();
@@ -121,6 +166,11 @@ namespace CapaVista
 
         private void btnVentas_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Ver_Ventas"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Ventas", "Accedio al Menu de Ventas");
             FrmVentas ventas = new FrmVentas();
             this.Hide();
@@ -129,6 +179,11 @@ namespace CapaVista
 
         private void btnCobros_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Ver_Cobros"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             this.Close();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Cobros", "Accedio al Menu de Cobros");
             FrmCobros cobros = new FrmCobros();
@@ -137,6 +192,11 @@ namespace CapaVista
 
         private void bntClientes_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Ver_Clientes"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             FrmGestionClientes clientes = new FrmGestionClientes();
             this.Hide();
             clientes.Show();
@@ -144,52 +204,52 @@ namespace CapaVista
 
         private void FrmHome_Load(object sender, EventArgs e)
         {
-            if ((Sesion.Usuario.Rol == "Encargado Almacen" && Sesion.Usuario.PermisosRol.Contains("Ver_Productos")) || Sesion.Usuario.PermisosUsuario.Contains("Ver_Productos"))
+            if (CV_Utiles.TienePermiso("Ver_Productos"))
             { 
                 pnlProductos.Visible = true;
             }
-            if ((Sesion.Usuario.Rol == "Encargado Pagos" && Sesion.Usuario.PermisosRol.Contains("Ver_Pagos")) || Sesion.Usuario.PermisosUsuario.Contains("Ver_Pagos"))
+            if (CV_Utiles.TienePermiso("Ver_Pagos"))
             {
                 pnlPagos.Visible = true;
             }
-            if ((Sesion.Usuario.Rol == "Encargado Almacen" && Sesion.Usuario.PermisosRol.Contains("Ver_Proveedores")) || Sesion.Usuario.PermisosUsuario.Contains("Ver_Proveedores"))
+            if (CV_Utiles.TienePermiso("Ver_Proveedores"))
             {
                 pnlProveedores.Visible = true;
             }
-            if ((Sesion.Usuario.Rol == "Encargado Almacen" && Sesion.Usuario.PermisosRol.Contains("Ver_Proveedores")) || Sesion.Usuario.PermisosUsuario.Contains("Ver_Proveedores"))
-            {
-                pnlProveedores.Visible = true;
-            }
-            if (Sesion.Usuario.PermisosUsuario.Contains("Ver_Configuracion"))
+            if (CV_Utiles.TienePermiso("Ver_Configuracion"))
             {
                 pnlUsuarios.Visible = true;
             }
-            if ((Sesion.Usuario.Rol == "Encargado Almacen" && Sesion.Usuario.PermisosRol.Contains("Ver_Compras")) || Sesion.Usuario.PermisosUsuario.Contains("Ver_Compras"))
+            if (CV_Utiles.TienePermiso("Ver_Compras"))
             {
                 pnlCompras.Visible = true;
             }
-            if ((Sesion.Usuario.Rol == "Encargado Almacen" && Sesion.Usuario.PermisosRol.Contains("Ver_Almacen")) || Sesion.Usuario.PermisosUsuario.Contains("Ver_Almacen"))
+            if (CV_Utiles.TienePermiso("Ver_Almacen"))
             {
                 pnlAlmacen.Visible = true;
             }
-            if ((Sesion.Usuario.Rol == "Encargado Ventas" && Sesion.Usuario.PermisosRol.Contains("Ver_Ventas")) || Sesion.Usuario.PermisosUsuario.Contains("Ver_Ventas"))
+            if (CV_Utiles.TienePermiso("Ver_Ventas"))
             {
                 pnlVentas.Visible = true;
             }            
-            if ((Sesion.Usuario.Rol == "Encargado Cobros" && Sesion.Usuario.PermisosRol.Contains("Ver_Cobros")) || Sesion.Usuario.PermisosUsuario.Contains("Ver_Cobros"))
+            if (CV_Utiles.TienePermiso("Ver_Cobros"))
             {
                 pnlCobros.Visible = true;
             }
-            if  (Sesion.Usuario.PermisosUsuario.Contains("Ver_Clientes"))
+            if  (CV_Utiles.TienePermiso("Ver_Clientes"))
             {
                 pnlClientes.Visible = true;
             }
-
             Traductor.TraducirFormulario(this);
         }
-
+        
         private void button2_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Ver_Configuracion"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             FrmGestionRoles roles = new FrmGestionRoles();
             roles.ShowDialog();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Roles", "Accedio al Menu Gestion Roles");

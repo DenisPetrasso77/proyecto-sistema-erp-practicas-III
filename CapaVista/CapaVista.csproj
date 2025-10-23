@@ -87,6 +87,12 @@
     <Compile Include="FrmActualizarPregunta.Designer.cs">
       <DependentUpon>FrmActualizarPregunta.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCargarMedidas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCargarMedidas.Designer.cs">
+      <DependentUpon>FrmCargarMedidas.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmComprobanteVenta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -343,6 +349,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmActualizarPregunta.resx">
       <DependentUpon>FrmActualizarPregunta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCargarMedidas.resx">
+      <DependentUpon>FrmCargarMedidas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmComprobanteVenta.resx">
       <DependentUpon>FrmComprobanteVenta.cs</DependentUpon>

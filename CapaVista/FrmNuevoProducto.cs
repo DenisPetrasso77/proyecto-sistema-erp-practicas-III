@@ -7,7 +7,6 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Windows.Forms;
 
 namespace CapaVista
@@ -36,15 +35,15 @@ namespace CapaVista
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox1.Checked)
+            if (ckbPreciosStock.Checked)
             { 
-                groupBox1.Enabled = true;
-                checkBox2.Enabled = true;
+                gbxPreciosStock.Enabled = true;
+                ckbDescuentos.Enabled = true;
             }
             else
             {
-                checkBox2.Enabled = false;
-                groupBox1.Enabled = !groupBox1.Enabled;
+                ckbDescuentos.Enabled = false;
+                gbxPreciosStock.Enabled = !gbxPreciosStock.Enabled;
             }
         }
 
@@ -67,8 +66,12 @@ namespace CapaVista
             DataTable CacheTipoProducto = metodos.TipoProductos();
             foreach (DataRow filas in CacheTipoProducto.Rows)
             {
-                string fila = $"{filas["IdTipoProducto"]} - {filas["TipoProducto"]}";
-                cmbProducto.Items.Add(fila);
+                if (filas["Estado"].ToString().Trim() != "Inactivo")
+                {
+                    string fila = $"{filas["IdTipoProducto"]} - {filas["TipoProducto"]}";
+                    cmbProducto.Items.Add(fila);
+                }
+                    
             }
         }
         private void Cargarcbxmedidas()
@@ -77,8 +80,12 @@ namespace CapaVista
             DataTable CacheMedidas = metodos.MedidasProductos();
             foreach (DataRow filas in CacheMedidas.Rows)
             {
-                string fila = $"{filas["Idmedidas"]} - {filas["Medida"]}";
-                cmbMedidas.Items.Add(fila);
+                if (filas["Estado"].ToString().Trim() != "Inactivo")
+                {
+                    string fila = $"{filas["Idmedidas"]} - {filas["Medida"]}";
+                    cmbMedidas.Items.Add(fila);
+                }
+                    
             }
         }
         private void Cargarcbxmarcas()
@@ -87,8 +94,12 @@ namespace CapaVista
             DataTable CacheMarcas = metodos.MarcasProductos();
             foreach (DataRow filas in CacheMarcas.Rows)
             {
-                string fila = $"{filas["Idmarca"]} - {filas["Marca"]}";
-                cmbMarcas.Items.Add(fila);
+                if (filas["Estado"].ToString().Trim() != "Inactivo")
+                {
+                    string fila = $"{filas["Idmarca"]} - {filas["Marca"]}";
+                    cmbMarcas.Items.Add(fila);
+                }
+                    
             }
         }
         private void Cargarcbxventa()
@@ -97,8 +108,12 @@ namespace CapaVista
             DataTable CacheFVentas = metodos.UnidadProductos();
             foreach (DataRow filas in CacheFVentas.Rows)
             {
-                string fila = $"{filas["idUnidad"]} - {filas["Unidad"]}";
-                cmbVenta.Items.Add(fila);
+                if (filas["Estado"].ToString().Trim() != "Inactivo")
+                {
+                    string fila = $"{filas["idUnidad"]} - {filas["Unidad"]}";
+                    cmbVenta.Items.Add(fila);
+                }
+                    
             }
         }
         private void FrmNuevoProducto_Load(object sender, EventArgs e)
@@ -109,6 +124,7 @@ namespace CapaVista
             Cargarcbxmarcas();
             Cargarcbxventa();
             cmbEstado.SelectedIndex = 0;
+            Traductor.TraducirFormulario(this);
         }
 
         private void pictureBox5_Click(object sender, EventArgs e)
@@ -131,7 +147,7 @@ namespace CapaVista
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            //new FrmGestionMedidas().ShowDialog();
+            new FrmCargarMedidas().ShowDialog();
             Cargarcbxmedidas();
         }
         private void VerificarCaracter(object sender, KeyPressEventArgs e)
@@ -153,7 +169,7 @@ namespace CapaVista
             }
             else
             {
-                MessageBox.Show("Ingrese un valor numerico valido");
+                MessageBox.Show(Traductor.TraducirTexto("msgNoNumericos"));
             }
         }
 
@@ -170,9 +186,9 @@ namespace CapaVista
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-            groupBox3.Enabled = checkBox2.Checked;
+            gbxDescuentos.Enabled = ckbDescuentos.Checked;
 
-            if (groupBox3.Enabled)
+            if (gbxDescuentos.Enabled)
             {
                 txtCant1.Text = string.Empty;
                 txtPor1.Text = string.Empty;
@@ -275,32 +291,32 @@ namespace CapaVista
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (!checkBox1.Checked)
+            if (!ckbPreciosStock.Checked)
             {
                 if (CV_Utiles.TextboxVacios(txtCodigo) && CV_Utiles.ComboboxVacios(cmbProducto, cmbMarcas, cmbCategorias, cmbMedidas, cmbEstado))
                 {
-                    MessageBox.Show("Por favor complete los datos del producto");
+                    MessageBox.Show(Traductor.TraducirTexto("msgDatosIncompletos"));
                     return;
                 }
             }
-            if (!checkBox2.Checked)
+            if (ckbDescuentos.Checked)
             {
                 if (CV_Utiles.TextboxVacios(txtMaximo, txtCompra, txtVenta, txtActual, txtMinimo) && CV_Utiles.ComboboxVacios(cmbVenta))
                 {
-                    MessageBox.Show("Por favor complete el stock y el precio del producto");
+                    MessageBox.Show(Traductor.TraducirTexto("msgDatosIncompletos"));
                     return;
                 }
             }
-            else if (checkBox2.Checked)
+            else if (ckbDescuentos.Checked)
             {
                 if (CV_Utiles.TextboxVacios(txtCant1, txtPor1))
                 {
-                    MessageBox.Show("Por favor coloque al menos 1 descuento");
+                    MessageBox.Show(Traductor.TraducirTexto("msgDescuentos"));
                     return;
                 }
                 if (txtCant1.Text == txtCant2.Text || txtCant1.Text == txtCant3.Text || txtCant1.Text == txtCant4.Text || txtCant2.Text == txtCant3.Text || txtCant2.Text == txtCant4.Text || txtCant3.Text == txtCant4.Text)
                 {
-                    MessageBox.Show("Los valores  de los descuentos no pueden repetirse.");
+                    MessageBox.Show(Traductor.TraducirTexto("msgDescuentosRepetidos"));
                     return;    
                 }
             }
@@ -353,8 +369,7 @@ namespace CapaVista
                     IdUsuarioAlta = Sesion.Usuario.IdUsuario,
                     PrecioCompra = preciocompra,
                     PrecioVenta = precioventa,
-                    Descuentos = descuentos,
-                    DVH = CV_Seguridad.CalcularDVH(codigo + tipoproducto + cate + marca + medidas + fventa + estado + fecha + 1 + "Normal")
+                    Descuentos = descuentos
                 };
                 string resultado = metodos.InsertarProducto(productoNuevo);
                 MessageBox.Show(resultado);
@@ -362,28 +377,31 @@ namespace CapaVista
             }
             catch
             {
-                MessageBox.Show("Error al Guardar el producto","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show(Traductor.TraducirTexto("1006"),"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return;
             }
             try
             {
-                string carpetaDestino = Path.Combine(Application.StartupPath, "Imagenes", "Productos");
-                if (!Directory.Exists(carpetaDestino))
-                    Directory.CreateDirectory(carpetaDestino);
-
-                string extension = Path.GetExtension(rutaImagenTemporal);
-                string destino = Path.Combine(carpetaDestino, txtCodigo.Text + extension);
-
-                if (File.Exists(destino))
+                if (!string.IsNullOrEmpty(rutaImagenTemporal))
                 {
-                    File.Delete(destino);
-                }
+                    string carpetaDestino = Path.Combine(Application.StartupPath, "Imagenes", "Productos");
+                    if (!Directory.Exists(carpetaDestino))
+                        Directory.CreateDirectory(carpetaDestino);
+                    
+                    string extension = Path.GetExtension(rutaImagenTemporal);
+                    string destino = Path.Combine(carpetaDestino, txtCodigo.Text + extension);
 
-                File.Copy(rutaImagenTemporal, destino, true);
+                    if (File.Exists(destino))
+                    {
+                        File.Delete(destino);
+                    }
+
+                    File.Copy(rutaImagenTemporal, destino, true);
+                }              
             }
             catch
             {
-            MessageBox.Show("Error al guardar la imagen del producto","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            MessageBox.Show(Traductor.TraducirTexto("1007"),"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
             CV_Utiles.LimpiarControles(this);
             pictureBox1.Image = null;
@@ -407,6 +425,11 @@ namespace CapaVista
                     pictureBox1.Image = Image.FromFile(rutaImagenTemporal);
                 }
             }
+        }
+
+        private void txtCompra_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

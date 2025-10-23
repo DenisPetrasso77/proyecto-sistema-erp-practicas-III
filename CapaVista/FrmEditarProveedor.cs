@@ -10,6 +10,8 @@ namespace CapaVista
     {
         int id;
         CL_Metodos metodos = new CL_Metodos();
+        bool _limpiando;
+
         public FrmEditarProveedor(int proveedor)
         {
             InitializeComponent();
@@ -19,7 +21,7 @@ namespace CapaVista
         {
             DataTable datos = metodos.Proveedores(id);
             foreach (DataRow row in datos.Rows)
-            {
+            {             
                 txtComercial.Text = row["NombreComercial"].ToString();
                 txtRazonSocial.Text = row["RazonSocial"].ToString();
                 txtCUIT.Text = row["CUIT"].ToString();
@@ -68,6 +70,7 @@ namespace CapaVista
             string observaciones = txtObservaciones.Text;
             Proveedor proveedor = new Proveedor
             {
+                idProveedor = this.id,
                 NombreComercial = comercial,
                 RazonSocial = razonsocial,
                 NumeroDeIdentificacion = cuit,
@@ -80,13 +83,20 @@ namespace CapaVista
                 DireccionLocalidad = localidad,
                 DireccionCodigoPostal = codpostal,
                 Observaciones = observaciones,
-                IdUsuarioAlta = Sesion.Usuario.IdUsuario,
+                IdUsuarioUltModificacion = Sesion.Usuario.IdUsuario,
+                Estado = comboBox1.Text
             };
             try
             {
-                string resultado = metodos.InsertarProveedor(proveedor);
+                string resultado = metodos.ActualizarProveedor(proveedor);
                 MessageBox.Show(resultado);
+                if (resultado.Contains("Error"))
+                {
+                    return;
+                }
+                _limpiando = true;
                 CV_Utiles.LimpiarFormulario(this);
+                _limpiando = false;
             }
             catch (Exception ex)
             {
@@ -116,6 +126,7 @@ namespace CapaVista
 
         private void cmbProvincia_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (_limpiando) { return; }
             if (cmbProvincia.Text != null)
             {
                 int idprovincia = Convert.ToInt32(cmbProvincia.Text.Split('-')[0].Trim());
@@ -131,6 +142,7 @@ namespace CapaVista
 
         private void cmbLocalidad_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (_limpiando) { return; }
             if (cmbLocalidad.Text != null)
             {
                 int idlocalidad = Convert.ToInt32(cmbLocalidad.Text.Split('-')[0].Trim());

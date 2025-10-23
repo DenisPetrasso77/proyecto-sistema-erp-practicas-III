@@ -1,4 +1,5 @@
-﻿using CapaLogica;
+﻿using CapaEntities;
+using CapaLogica;
 using ProyectoPracticas;
 using System;
 using System.Data;
@@ -16,23 +17,45 @@ namespace CapaVista
 
         private void Cargarbuscador()
         {
-            DataTable UsuariosCache = metodos.Usuarios();
-            string texto = txtBuscador.Text.Trim().ToLower();
-            dataGridView1.Rows.Clear();
-
-            foreach (DataRow fila in UsuariosCache.Rows)
+            try
             {
-                string usuario = fila["Usuario"].ToString().ToLower();
-                string estado = fila["Estado"].ToString();
-                string bloqueado = Convert.ToInt32(fila["Bloqueado"]) == 0 ? "No" : "Si";
-                if (string.IsNullOrWhiteSpace(texto) || txtBuscador.Text == "Buscador de Usuarios")
+                DataTable UsuariosCache = metodos.Usuarios();
+                string texto = txtBuscador.Text.Trim().ToLower();
+                bool incluirInactivos = checkBox1.Checked;
+
+                dataGridView1.Rows.Clear();
+
+                foreach (DataRow fila in UsuariosCache.Rows)
                 {
-                    dataGridView1.Rows.Add(fila["IdUsuario"], fila["Usuario"], fila["Nombre"], fila["Apellido"], fila["Dni"], fila["NombreRol"], bloqueado, fila["Estado"].ToString());
+                    string estado = fila["Estado"].ToString();
+                    string usuario = fila["Usuario"].ToString().ToLower();
+                    string bloqueado = Convert.ToInt32(fila["Bloqueado"]) == 0 ? "No" : "Sí";
+
+                    if (!incluirInactivos && estado == "Inactivo")
+                        continue;
+
+                    bool coincideBusqueda = string.IsNullOrWhiteSpace(texto) ||
+                                            txtBuscador.Text == "Buscador de Usuarios" ||
+                                            usuario.Contains(texto);
+
+                    if (coincideBusqueda)
+                    {
+                        dataGridView1.Rows.Add(
+                            fila["IdUsuario"],
+                            fila["Usuario"],
+                            fila["Nombre"],
+                            fila["Apellido"],
+                            fila["Dni"],
+                            fila["NombreRol"],
+                            bloqueado,
+                            estado
+                        );
+                    }
                 }
-                else if (usuario.Contains(texto))
-                {
-                    dataGridView1.Rows.Add(fila["IdUsuario"], fila["Usuario"], fila["Nombre"], fila["Apellido"], fila["Dni"], fila["NombreRol"], bloqueado, fila["Estado"].ToString());
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar usuarios: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -43,6 +66,11 @@ namespace CapaVista
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Crear_Usuarios"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             new FrmAltaUsuario().ShowDialog();
             Cargarbuscador();
         }
@@ -54,11 +82,23 @@ namespace CapaVista
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Eliminar_Usuarios"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (dataGridView1.CurrentRow == null)
             {
                 MessageBox.Show("Por favor seleccione un usuario.");
                 return;
             }
+            if (Convert.ToInt32(dataGridView1.CurrentRow.Cells["IdUsuario"].Value.ToString()) == 1)
+            {
+                MessageBox.Show("No Se Puede Deshablitar El Usuario Administrador");
+                metodos.Bitacora(Sesion.Usuario.IdUsuario,"Usuarios","Intento Eliminar El Usuario Administrador");
+                return;
+            }
+
             string usuario = dataGridView1.CurrentRow.Cells["Usuario"].Value?.ToString();
             DialogResult resultado = MessageBox.Show($"¿Está seguro que desea marcar como deshabilitado este usuario? {usuario}", "Confirmar deshabilitacion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (resultado == DialogResult.No)
@@ -70,6 +110,7 @@ namespace CapaVista
                 if (metodos.BorrarUsuario(usuario) == 1)
                 {
                     MessageBox.Show($"Usuario: {usuario} deshabilitado con éxito");
+                    metodos.Bitacora(Sesion.Usuario.IdUsuario, "Usuarios", $"Deshabilito el Usuario {usuario}");
                     dataGridView1.Rows.RemoveAt(dataGridView1.CurrentRow.Index);
                 }
                 else
@@ -86,6 +127,11 @@ namespace CapaVista
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Editar_Usuarios"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (dataGridView1.CurrentRow == null)
             {
                 return;
@@ -109,6 +155,27 @@ namespace CapaVista
             UI_Utilidad.EstiloTextBox(txtBuscador, "Buscador de Usuarios");
 
 
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            Cargarbuscador();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (!CV_Utiles.TienePermiso("Editar_Usuarios"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (dataGridView1.CurrentRow == null)
+            {
+                return;
+            }
+            int IdUsuario = Convert.ToInt32(dataGridView1.CurrentRow.Cells["IdUsuario"].Value.ToString());
+            FrmEditarUsuario editusuario = new FrmEditarUsuario(IdUsuario);
+            editusuario.Show();
         }
     }
 }

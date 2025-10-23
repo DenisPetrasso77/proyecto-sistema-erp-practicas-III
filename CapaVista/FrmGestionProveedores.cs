@@ -68,6 +68,11 @@ namespace CapaVista
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Crear_Proveedores"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             FrmNuevoProveedor proveedor = new FrmNuevoProveedor();
             proveedor.ShowDialog();
             Cargarbuscador();
@@ -75,6 +80,11 @@ namespace CapaVista
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Editar_Proveedores"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             FrmEditarProveedor editar = new FrmEditarProveedor(Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value));
             editar.ShowDialog();
             Cargarbuscador();

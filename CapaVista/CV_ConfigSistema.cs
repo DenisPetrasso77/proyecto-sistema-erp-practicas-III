@@ -1,8 +1,4 @@
-﻿using System;
-using System.Drawing;
-using System.Globalization;
-using System.Threading;
-using System.Windows.Forms;
+﻿using System.Drawing;
 
 namespace CapaVista
 {
@@ -27,7 +23,6 @@ namespace CapaVista
         public static Color ColorTexto { get; set; } = Color.Black;
         public static TipoTema TemaActual { get; set; } = TipoTema.Estandar;
         public static TamañoFuente TamañoFuenteActual { get; set; } = TamañoFuente.Mediano;
-        public static string IdiomaActual { get; set; } = "es"; // "es" o "en"
 
         public static Font GetFuente()
         {

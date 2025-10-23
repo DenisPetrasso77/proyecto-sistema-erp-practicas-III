@@ -43,9 +43,9 @@
             this.btnHome = new System.Windows.Forms.Button();
             this.btnMenu = new System.Windows.Forms.Button();
             this.SidebarTimer = new System.Windows.Forms.Timer(this.components);
-            this.lbltituloHome = new System.Windows.Forms.Label();
+            this.lblTituloHome = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblPerfil = new System.Windows.Forms.Label();
             this.pbPerfil = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.sidebar.SuspendLayout();
@@ -183,7 +183,7 @@
             this.btnHome.Name = "btnHome";
             this.btnHome.Size = new System.Drawing.Size(120, 40);
             this.btnHome.TabIndex = 1;
-            this.btnHome.Text = "hola";
+            this.btnHome.Text = "Inicio";
             this.btnHome.UseVisualStyleBackColor = true;
             this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
@@ -208,39 +208,39 @@
             this.SidebarTimer.Interval = 10;
             this.SidebarTimer.Tick += new System.EventHandler(this.SidebarTimer_Tick_1);
             // 
-            // lbltituloHome
+            // lblTituloHome
             // 
-            this.lbltituloHome.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lblTituloHome.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbltituloHome.AutoSize = true;
-            this.lbltituloHome.Font = new System.Drawing.Font("Consolas", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltituloHome.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lbltituloHome.Location = new System.Drawing.Point(400, 32);
-            this.lbltituloHome.Name = "lbltituloHome";
-            this.lbltituloHome.Size = new System.Drawing.Size(215, 37);
-            this.lbltituloHome.TabIndex = 6;
-            this.lbltituloHome.Text = "Bienvenidos";
+            this.lblTituloHome.AutoSize = true;
+            this.lblTituloHome.Font = new System.Drawing.Font("Consolas", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloHome.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblTituloHome.Location = new System.Drawing.Point(400, 32);
+            this.lblTituloHome.Name = "lblTituloHome";
+            this.lblTituloHome.Size = new System.Drawing.Size(215, 37);
+            this.lblTituloHome.TabIndex = 6;
+            this.lblTituloHome.Text = "Bienvenidos";
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
-            this.panel1.Controls.Add(this.lbltituloHome);
+            this.panel1.Controls.Add(this.lblTituloHome);
             this.panel1.Location = new System.Drawing.Point(0, 484);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1014, 100);
             this.panel1.TabIndex = 7;
             // 
-            // label1
+            // lblPerfil
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label1.Location = new System.Drawing.Point(945, 55);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 21);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Perfil";
+            this.lblPerfil.AutoSize = true;
+            this.lblPerfil.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPerfil.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.lblPerfil.Location = new System.Drawing.Point(945, 55);
+            this.lblPerfil.Name = "lblPerfil";
+            this.lblPerfil.Size = new System.Drawing.Size(51, 21);
+            this.lblPerfil.TabIndex = 10;
+            this.lblPerfil.Text = "Perfil";
             // 
             // pbPerfil
             // 
@@ -269,7 +269,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1010, 581);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblPerfil);
             this.Controls.Add(this.pbPerfil);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
@@ -303,7 +303,7 @@
         private System.Windows.Forms.Button btnConfig;
         private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.Timer SidebarTimer;
-        private System.Windows.Forms.Label lbltituloHome;
+        private System.Windows.Forms.Label lblTituloHome;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnSalir;
@@ -313,6 +313,6 @@
         private System.Windows.Forms.PictureBox pbAcerca;
         private System.Windows.Forms.PictureBox pbAyuda;
         private System.Windows.Forms.PictureBox pbPerfil;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblPerfil;
     }
 }

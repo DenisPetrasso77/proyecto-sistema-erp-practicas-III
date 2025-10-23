@@ -70,6 +70,11 @@ namespace CapaVista
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Crear_Clientes"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             FrmNuevoCliente frm = new FrmNuevoCliente();
             frm.ShowDialog();
             CargarClientes();
@@ -77,6 +82,11 @@ namespace CapaVista
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Editar_Clientes"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             FrmEditarCliente frm = new FrmEditarCliente(Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value));
             frm.ShowDialog();
             CargarClientes();

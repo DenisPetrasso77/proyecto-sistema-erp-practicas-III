@@ -187,6 +187,11 @@ namespace CapaVista
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Editar_Compras"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             dataGridView1.ReadOnly = true;
             dataGridView2.Columns["Cotizacion"].ReadOnly = false;
             dataGridView2.Columns["Enviar"].ReadOnly = false;

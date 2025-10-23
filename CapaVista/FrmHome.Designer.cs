@@ -29,25 +29,31 @@
         private void InitializeComponent()
         {
             this.pnlAlmacen = new System.Windows.Forms.Panel();
+            this.lblAlmacen = new System.Windows.Forms.Label();
             this.btnReabastecer = new System.Windows.Forms.Button();
             this.btnRecepcion = new System.Windows.Forms.Button();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pnlCompras = new System.Windows.Forms.Panel();
+            this.lblCompras = new System.Windows.Forms.Label();
             this.btnCotizacion = new System.Windows.Forms.Button();
             this.btnOrden = new System.Windows.Forms.Button();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pnlUsuarios = new System.Windows.Forms.Panel();
+            this.lblAdministracion = new System.Windows.Forms.Label();
             this.btnRolesPermisos = new System.Windows.Forms.Button();
             this.btnBitacora = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.btnGestionAdmin = new System.Windows.Forms.Button();
             this.pnlProveedores = new System.Windows.Forms.Panel();
+            this.lblProveedores = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnGestionProveedores = new System.Windows.Forms.Button();
             this.pnlPagos = new System.Windows.Forms.Panel();
+            this.lblPagos = new System.Windows.Forms.Label();
             this.btnGestionPagos = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pnlProductos = new System.Windows.Forms.Panel();
+            this.lblProductos = new System.Windows.Forms.Label();
             this.btnGestionProductos = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -55,24 +61,18 @@
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.lbltituloHome = new System.Windows.Forms.Label();
             this.pnlCobros = new System.Windows.Forms.Panel();
+            this.lblCobros = new System.Windows.Forms.Label();
             this.btnCobros = new System.Windows.Forms.Button();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.pnlClientes = new System.Windows.Forms.Panel();
+            this.lblClientes = new System.Windows.Forms.Label();
             this.btnClientes = new System.Windows.Forms.Button();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pnlVentas = new System.Windows.Forms.Panel();
+            this.lblVentas = new System.Windows.Forms.Label();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.btnVentas = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.lblProductos = new System.Windows.Forms.Label();
-            this.lblPagos = new System.Windows.Forms.Label();
-            this.lblProveedores = new System.Windows.Forms.Label();
-            this.lblAdministracion = new System.Windows.Forms.Label();
-            this.lblCompras = new System.Windows.Forms.Label();
-            this.lblAlmacen = new System.Windows.Forms.Label();
-            this.lblVentas = new System.Windows.Forms.Label();
-            this.lblClientes = new System.Windows.Forms.Label();
-            this.lblCobros = new System.Windows.Forms.Label();
             this.pnlAlmacen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.pnlCompras.SuspendLayout();
@@ -109,6 +109,16 @@
             this.pnlAlmacen.Size = new System.Drawing.Size(280, 211);
             this.pnlAlmacen.TabIndex = 22;
             this.pnlAlmacen.Visible = false;
+            // 
+            // lblAlmacen
+            // 
+            this.lblAlmacen.AutoSize = true;
+            this.lblAlmacen.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAlmacen.Location = new System.Drawing.Point(89, 86);
+            this.lblAlmacen.Name = "lblAlmacen";
+            this.lblAlmacen.Size = new System.Drawing.Size(88, 25);
+            this.lblAlmacen.TabIndex = 21;
+            this.lblAlmacen.Text = "Almacen";
             // 
             // btnReabastecer
             // 
@@ -154,6 +164,16 @@
             this.pnlCompras.Size = new System.Drawing.Size(280, 211);
             this.pnlCompras.TabIndex = 21;
             this.pnlCompras.Visible = false;
+            // 
+            // lblCompras
+            // 
+            this.lblCompras.AutoSize = true;
+            this.lblCompras.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCompras.Location = new System.Drawing.Point(93, 86);
+            this.lblCompras.Name = "lblCompras";
+            this.lblCompras.Size = new System.Drawing.Size(91, 25);
+            this.lblCompras.TabIndex = 21;
+            this.lblCompras.Text = "Compras";
             // 
             // btnCotizacion
             // 
@@ -202,6 +222,16 @@
             this.pnlUsuarios.TabIndex = 20;
             this.pnlUsuarios.Visible = false;
             // 
+            // lblAdministracion
+            // 
+            this.lblAdministracion.AutoSize = true;
+            this.lblAdministracion.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdministracion.Location = new System.Drawing.Point(68, 86);
+            this.lblAdministracion.Name = "lblAdministracion";
+            this.lblAdministracion.Size = new System.Drawing.Size(147, 25);
+            this.lblAdministracion.TabIndex = 21;
+            this.lblAdministracion.Text = "Administracion";
+            // 
             // btnRolesPermisos
             // 
             this.btnRolesPermisos.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -241,7 +271,7 @@
             this.btnGestionAdmin.Name = "btnGestionAdmin";
             this.btnGestionAdmin.Size = new System.Drawing.Size(120, 40);
             this.btnGestionAdmin.TabIndex = 18;
-            this.btnGestionAdmin.Text = "Gestión";
+            this.btnGestionAdmin.Text = "Gestión Usuarios";
             this.btnGestionAdmin.UseVisualStyleBackColor = true;
             this.btnGestionAdmin.Click += new System.EventHandler(this.btnGestionAdmin_Click);
             // 
@@ -256,6 +286,16 @@
             this.pnlProveedores.Size = new System.Drawing.Size(280, 211);
             this.pnlProveedores.TabIndex = 19;
             this.pnlProveedores.Visible = false;
+            // 
+            // lblProveedores
+            // 
+            this.lblProveedores.AutoSize = true;
+            this.lblProveedores.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProveedores.Location = new System.Drawing.Point(70, 80);
+            this.lblProveedores.Name = "lblProveedores";
+            this.lblProveedores.Size = new System.Drawing.Size(124, 25);
+            this.lblProveedores.TabIndex = 19;
+            this.lblProveedores.Text = "Proveedores";
             // 
             // pictureBox3
             // 
@@ -291,6 +331,16 @@
             this.pnlPagos.TabIndex = 18;
             this.pnlPagos.Visible = false;
             // 
+            // lblPagos
+            // 
+            this.lblPagos.AutoSize = true;
+            this.lblPagos.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPagos.Location = new System.Drawing.Point(103, 80);
+            this.lblPagos.Name = "lblPagos";
+            this.lblPagos.Size = new System.Drawing.Size(66, 25);
+            this.lblPagos.TabIndex = 18;
+            this.lblPagos.Text = "Pagos";
+            // 
             // btnGestionPagos
             // 
             this.btnGestionPagos.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -323,6 +373,16 @@
             this.pnlProductos.Size = new System.Drawing.Size(280, 211);
             this.pnlProductos.TabIndex = 17;
             this.pnlProductos.Visible = false;
+            // 
+            // lblProductos
+            // 
+            this.lblProductos.AutoSize = true;
+            this.lblProductos.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProductos.Location = new System.Drawing.Point(89, 78);
+            this.lblProductos.Name = "lblProductos";
+            this.lblProductos.Size = new System.Drawing.Size(104, 25);
+            this.lblProductos.TabIndex = 17;
+            this.lblProductos.Text = "Productos";
             // 
             // btnGestionProductos
             // 
@@ -403,6 +463,16 @@
             this.pnlCobros.TabIndex = 31;
             this.pnlCobros.Visible = false;
             // 
+            // lblCobros
+            // 
+            this.lblCobros.AutoSize = true;
+            this.lblCobros.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCobros.Location = new System.Drawing.Point(101, 80);
+            this.lblCobros.Name = "lblCobros";
+            this.lblCobros.Size = new System.Drawing.Size(76, 25);
+            this.lblCobros.TabIndex = 18;
+            this.lblCobros.Text = "Cobros";
+            // 
             // btnCobros
             // 
             this.btnCobros.Location = new System.Drawing.Point(74, 108);
@@ -436,6 +506,16 @@
             this.pnlClientes.TabIndex = 30;
             this.pnlClientes.Visible = false;
             // 
+            // lblClientes
+            // 
+            this.lblClientes.AutoSize = true;
+            this.lblClientes.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClientes.Location = new System.Drawing.Point(103, 80);
+            this.lblClientes.Name = "lblClientes";
+            this.lblClientes.Size = new System.Drawing.Size(81, 25);
+            this.lblClientes.TabIndex = 18;
+            this.lblClientes.Text = "Clientes";
+            // 
             // btnClientes
             // 
             this.btnClientes.Location = new System.Drawing.Point(84, 108);
@@ -468,6 +548,16 @@
             this.pnlVentas.Size = new System.Drawing.Size(280, 200);
             this.pnlVentas.TabIndex = 29;
             this.pnlVentas.Visible = false;
+            // 
+            // lblVentas
+            // 
+            this.lblVentas.AutoSize = true;
+            this.lblVentas.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVentas.Location = new System.Drawing.Point(102, 80);
+            this.lblVentas.Name = "lblVentas";
+            this.lblVentas.Size = new System.Drawing.Size(71, 25);
+            this.lblVentas.TabIndex = 26;
+            this.lblVentas.Text = "Ventas";
             // 
             // pictureBox7
             // 
@@ -507,96 +597,6 @@
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(70, 15, 50, 50);
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1031, 661);
             this.flowLayoutPanel1.TabIndex = 21;
-            // 
-            // lblProductos
-            // 
-            this.lblProductos.AutoSize = true;
-            this.lblProductos.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductos.Location = new System.Drawing.Point(89, 78);
-            this.lblProductos.Name = "lblProductos";
-            this.lblProductos.Size = new System.Drawing.Size(104, 25);
-            this.lblProductos.TabIndex = 17;
-            this.lblProductos.Text = "Productos";
-            // 
-            // lblPagos
-            // 
-            this.lblPagos.AutoSize = true;
-            this.lblPagos.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPagos.Location = new System.Drawing.Point(103, 80);
-            this.lblPagos.Name = "lblPagos";
-            this.lblPagos.Size = new System.Drawing.Size(66, 25);
-            this.lblPagos.TabIndex = 18;
-            this.lblPagos.Text = "Pagos";
-            // 
-            // lblProveedores
-            // 
-            this.lblProveedores.AutoSize = true;
-            this.lblProveedores.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProveedores.Location = new System.Drawing.Point(70, 80);
-            this.lblProveedores.Name = "lblProveedores";
-            this.lblProveedores.Size = new System.Drawing.Size(124, 25);
-            this.lblProveedores.TabIndex = 19;
-            this.lblProveedores.Text = "Proveedores";
-            // 
-            // lblAdministracion
-            // 
-            this.lblAdministracion.AutoSize = true;
-            this.lblAdministracion.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdministracion.Location = new System.Drawing.Point(68, 86);
-            this.lblAdministracion.Name = "lblAdministracion";
-            this.lblAdministracion.Size = new System.Drawing.Size(147, 25);
-            this.lblAdministracion.TabIndex = 21;
-            this.lblAdministracion.Text = "Administracion";
-            // 
-            // lblCompras
-            // 
-            this.lblCompras.AutoSize = true;
-            this.lblCompras.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCompras.Location = new System.Drawing.Point(93, 86);
-            this.lblCompras.Name = "lblCompras";
-            this.lblCompras.Size = new System.Drawing.Size(91, 25);
-            this.lblCompras.TabIndex = 21;
-            this.lblCompras.Text = "Compras";
-            // 
-            // lblAlmacen
-            // 
-            this.lblAlmacen.AutoSize = true;
-            this.lblAlmacen.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAlmacen.Location = new System.Drawing.Point(89, 86);
-            this.lblAlmacen.Name = "lblAlmacen";
-            this.lblAlmacen.Size = new System.Drawing.Size(88, 25);
-            this.lblAlmacen.TabIndex = 21;
-            this.lblAlmacen.Text = "Almacen";
-            // 
-            // lblVentas
-            // 
-            this.lblVentas.AutoSize = true;
-            this.lblVentas.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVentas.Location = new System.Drawing.Point(102, 80);
-            this.lblVentas.Name = "lblVentas";
-            this.lblVentas.Size = new System.Drawing.Size(71, 25);
-            this.lblVentas.TabIndex = 26;
-            this.lblVentas.Text = "Ventas";
-            // 
-            // lblClientes
-            // 
-            this.lblClientes.AutoSize = true;
-            this.lblClientes.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClientes.Location = new System.Drawing.Point(103, 80);
-            this.lblClientes.Name = "lblClientes";
-            this.lblClientes.Size = new System.Drawing.Size(81, 25);
-            this.lblClientes.TabIndex = 18;
-            this.lblClientes.Text = "Clientes";
-            // 
-            // lblCobros
-            // 
-            this.lblCobros.AutoSize = true;
-            this.lblCobros.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCobros.Location = new System.Drawing.Point(101, 80);
-            this.lblCobros.Name = "lblCobros";
-            this.lblCobros.Size = new System.Drawing.Size(76, 25);
-            this.lblCobros.TabIndex = 18;
-            this.lblCobros.Text = "Cobros";
             // 
             // FrmHome
             // 

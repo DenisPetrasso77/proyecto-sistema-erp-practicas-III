@@ -32,7 +32,9 @@ namespace CapaVista
             var resultado = metodos.VerificarIngreso(txtUsuario.Text, CV_Seguridad.HashearSHA256(txtContraseña.Text.Trim()));
             if (resultado != 1.ToString())
             {
-                MessageBox.Show(resultado);
+                MessageBox.Show(Traductor.TraducirTexto(resultado),Traductor.TraducirTexto("msgAtencion"),
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning);
                 return;
             }
             try

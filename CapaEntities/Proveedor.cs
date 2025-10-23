@@ -20,5 +20,6 @@ namespace CapaEntities
             public string Observaciones { get; set; }
             public int IdUsuarioAlta { get; set; }
             public int? IdUsuarioUltModificacion { get; set; }
-        }
+        public string Estado { get; set; }
+    }
 }

@@ -85,6 +85,11 @@ namespace CapaVista
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Crear_Pagos"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             foreach (DataGridViewRow fila in dataGridView2.Rows)
             {
                 if (Convert.ToBoolean(fila.Cells["Pagar"].Value) && fila.Cells["FormaPago"].Value == null)
@@ -150,6 +155,11 @@ namespace CapaVista
 
         private void btnAgregarFactura_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Editar_Pagos"))
+                {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (dataGridView1.CurrentRow.Cells[4].Value.ToString() != "CARGAR")
             {
                 MessageBox.Show("Ya tiene una factura cargada");
@@ -177,6 +187,11 @@ namespace CapaVista
 
         private void btnAgregarNotaCredito_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Editar_Pagos"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (dataGridView1.CurrentRow.Cells[5].Value.ToString() == "NO TIENE")
             {
                 MessageBox.Show("No es necesario cargar una nota de credito");
@@ -203,6 +218,11 @@ namespace CapaVista
 
         private void button5_Click(object sender, EventArgs e)
         {
+            if (!CV_Utiles.TienePermiso("Editar_Pagos"))
+            {
+                MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             FrmComprobante frm = new FrmComprobante(Convert.ToInt32(dataGridView3.CurrentRow.Cells[1].Value.ToString()));
             frm.ShowDialog();
             CargarPagosCompletados();

@@ -21,6 +21,10 @@ namespace CapaLogica
         {
         return usuarios.SeleccionaDatosPerfil(idusuario);
         }
+        public string ActualizarProveedor(Proveedor proveedor)
+        { 
+            return proveedores.ActualizarProveedor(proveedor);
+        }
         public string ArreglarDV(string palabra)
         { 
             return administracion.ArreglarDV(palabra);
@@ -374,9 +378,9 @@ namespace CapaLogica
         {
             return reabastecimiento.ActualizarDetallPR(iddetallepr, IdPR, CantidadNueva, Usuariomodificacion, Fechamodificacion);
         }
-        public int ActualizarUsuario(string usuario, string nombre, string apellido, string dni, int rol, int bloqueado,string correo)
+        public string ActualizarUsuario(int idusuario, string usuario, string nombre, string apellido, string dni, int bloqueado, int rol, string correo,string palabra)
         {
-            return usuarios.ActualizarUsuario(usuario, nombre, apellido, dni, rol, bloqueado,correo);
+            return usuarios.ActualizarUsuario(idusuario,usuario, nombre, apellido, dni,bloqueado, rol,correo,palabra);
         }
         public string Bitacora(int usuario, string tabla, string descripcion)
         { 

@@ -35,19 +35,19 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.lbltituloHome = new System.Windows.Forms.Label();
+            this.lblTituloHomeProductos = new System.Windows.Forms.Label();
             this.button18 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.ckbStockBajo = new System.Windows.Forms.CheckBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnCerrar = new System.Windows.Forms.Button();
+            this.btnCerrarProductos = new System.Windows.Forms.Button();
             this.txtBuscador = new System.Windows.Forms.TextBox();
             this.btnPedir = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblAgregarProducto = new System.Windows.Forms.Label();
+            this.lblEditarProducto = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
@@ -62,7 +62,7 @@
             this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
             this.panel1.Controls.Add(this.pictureBox8);
             this.panel1.Controls.Add(this.pictureBox7);
-            this.panel1.Controls.Add(this.lbltituloHome);
+            this.panel1.Controls.Add(this.lblTituloHomeProductos);
             this.panel1.Controls.Add(this.button18);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -91,16 +91,16 @@
             this.pictureBox7.TabIndex = 15;
             this.pictureBox7.TabStop = false;
             // 
-            // lbltituloHome
+            // lblTituloHomeProductos
             // 
-            this.lbltituloHome.AutoSize = true;
-            this.lbltituloHome.Font = new System.Drawing.Font("Consolas", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltituloHome.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lbltituloHome.Location = new System.Drawing.Point(402, 24);
-            this.lbltituloHome.Name = "lbltituloHome";
-            this.lbltituloHome.Size = new System.Drawing.Size(179, 37);
-            this.lbltituloHome.TabIndex = 6;
-            this.lbltituloHome.Text = "Productos";
+            this.lblTituloHomeProductos.AutoSize = true;
+            this.lblTituloHomeProductos.Font = new System.Drawing.Font("Consolas", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloHomeProductos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblTituloHomeProductos.Location = new System.Drawing.Point(402, 24);
+            this.lblTituloHomeProductos.Name = "lblTituloHomeProductos";
+            this.lblTituloHomeProductos.Size = new System.Drawing.Size(179, 37);
+            this.lblTituloHomeProductos.TabIndex = 6;
+            this.lblTituloHomeProductos.Text = "Productos";
             // 
             // button18
             // 
@@ -116,17 +116,17 @@
             this.button18.Text = "Salir";
             this.button18.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // ckbStockBajo
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(618, 137);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(159, 25);
-            this.checkBox1.TabIndex = 27;
-            this.checkBox1.Text = "Mostrar Stock Bajo";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.ckbStockBajo.AutoSize = true;
+            this.ckbStockBajo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ckbStockBajo.Location = new System.Drawing.Point(618, 137);
+            this.ckbStockBajo.Name = "ckbStockBajo";
+            this.ckbStockBajo.Size = new System.Drawing.Size(159, 25);
+            this.ckbStockBajo.TabIndex = 27;
+            this.ckbStockBajo.Text = "Mostrar Stock Bajo";
+            this.ckbStockBajo.UseVisualStyleBackColor = true;
+            this.ckbStockBajo.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // dataGridView1
             // 
@@ -152,17 +152,17 @@
             this.dataGridView1.TabIndex = 24;
             this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
             // 
-            // btnCerrar
+            // btnCerrarProductos
             // 
-            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCerrar.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrar.Location = new System.Drawing.Point(772, 468);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(120, 40);
-            this.btnCerrar.TabIndex = 23;
-            this.btnCerrar.Text = "Atras";
-            this.btnCerrar.UseVisualStyleBackColor = true;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            this.btnCerrarProductos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCerrarProductos.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrarProductos.Location = new System.Drawing.Point(772, 468);
+            this.btnCerrarProductos.Name = "btnCerrarProductos";
+            this.btnCerrarProductos.Size = new System.Drawing.Size(120, 40);
+            this.btnCerrarProductos.TabIndex = 23;
+            this.btnCerrarProductos.Text = "Atras";
+            this.btnCerrarProductos.UseVisualStyleBackColor = true;
+            this.btnCerrarProductos.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // txtBuscador
             // 
@@ -229,41 +229,41 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // label1
+            // lblAgregarProducto
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(795, 225);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(129, 16);
-            this.label1.TabIndex = 32;
-            this.label1.Text = "Agregar Producto";
+            this.lblAgregarProducto.AutoSize = true;
+            this.lblAgregarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAgregarProducto.Location = new System.Drawing.Point(795, 225);
+            this.lblAgregarProducto.Name = "lblAgregarProducto";
+            this.lblAgregarProducto.Size = new System.Drawing.Size(129, 16);
+            this.lblAgregarProducto.TabIndex = 32;
+            this.lblAgregarProducto.Text = "Agregar Producto";
             // 
-            // label2
+            // lblEditarProducto
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(795, 388);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(114, 16);
-            this.label2.TabIndex = 33;
-            this.label2.Text = "Editar Producto";
+            this.lblEditarProducto.AutoSize = true;
+            this.lblEditarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEditarProducto.Location = new System.Drawing.Point(795, 388);
+            this.lblEditarProducto.Name = "lblEditarProducto";
+            this.lblEditarProducto.Size = new System.Drawing.Size(114, 16);
+            this.lblEditarProducto.TabIndex = 33;
+            this.lblEditarProducto.Text = "Editar Producto";
             // 
             // FrmGestionProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(963, 520);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblEditarProducto);
+            this.Controls.Add(this.lblAgregarProducto);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.btnPedir);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.ckbStockBajo);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.btnCerrar);
+            this.Controls.Add(this.btnCerrarProductos);
             this.Controls.Add(this.txtBuscador);
             this.Name = "FrmGestionProductos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -287,18 +287,18 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.Label lbltituloHome;
+        private System.Windows.Forms.Label lblTituloHomeProductos;
         private System.Windows.Forms.Button button18;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox ckbStockBajo;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button btnCerrar;
+        private System.Windows.Forms.Button btnCerrarProductos;
         private System.Windows.Forms.TextBox txtBuscador;
         private System.Windows.Forms.Button btnPedir;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblAgregarProducto;
+        private System.Windows.Forms.Label lblEditarProducto;
     }
 }

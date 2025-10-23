@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNuevoProducto));
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label14 = new System.Windows.Forms.Label();
+            this.gbxProductos = new System.Windows.Forms.GroupBox();
+            this.lblEstado = new System.Windows.Forms.Label();
             this.cmbEstado = new System.Windows.Forms.ComboBox();
             this.cmbMedidas = new System.Windows.Forms.ComboBox();
             this.cmbMarcas = new System.Windows.Forms.ComboBox();
@@ -40,31 +40,31 @@
             this.cmbCategorias = new System.Windows.Forms.ComboBox();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblCodigo = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblProducto = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblCategoria = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label15 = new System.Windows.Forms.Label();
+            this.lblMarca = new System.Windows.Forms.Label();
+            this.lblMedidas = new System.Windows.Forms.Label();
+            this.gbxPreciosStock = new System.Windows.Forms.GroupBox();
+            this.lblStockMax = new System.Windows.Forms.Label();
             this.txtMaximo = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
+            this.lblFormaVenta = new System.Windows.Forms.Label();
             this.cmbVenta = new System.Windows.Forms.ComboBox();
             this.txtActual = new System.Windows.Forms.TextBox();
             this.txtVenta = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lblPrecioVenta = new System.Windows.Forms.Label();
+            this.lblPrecioCompra = new System.Windows.Forms.Label();
+            this.lblStockActual = new System.Windows.Forms.Label();
             this.txtCompra = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.lblStockMin = new System.Windows.Forms.Label();
             this.txtMinimo = new System.Windows.Forms.TextBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.label12 = new System.Windows.Forms.Label();
+            this.lblPorcentaje = new System.Windows.Forms.Label();
             this.txtPor1 = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.lblDescMin = new System.Windows.Forms.Label();
             this.txtCant1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
@@ -73,8 +73,8 @@
             this.button18 = new System.Windows.Forms.Button();
             this.bntCargarImagen = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.ckbPreciosStock = new System.Windows.Forms.CheckBox();
+            this.ckbDescuentos = new System.Windows.Forms.CheckBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.txtPor2 = new System.Windows.Forms.TextBox();
             this.txtCant2 = new System.Windows.Forms.TextBox();
@@ -86,13 +86,13 @@
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox2.SuspendLayout();
+            this.gbxDescuentos = new System.Windows.Forms.GroupBox();
+            this.gbxProductos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.gbxPreciosStock.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
@@ -103,7 +103,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
-            this.groupBox3.SuspendLayout();
+            this.gbxDescuentos.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSalir
@@ -128,41 +128,41 @@
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // groupBox2
+            // gbxProductos
             // 
-            this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.cmbEstado);
-            this.groupBox2.Controls.Add(this.cmbMedidas);
-            this.groupBox2.Controls.Add(this.cmbMarcas);
-            this.groupBox2.Controls.Add(this.cmbProducto);
-            this.groupBox2.Controls.Add(this.cmbCategorias);
-            this.groupBox2.Controls.Add(this.txtCodigo);
-            this.groupBox2.Controls.Add(this.pictureBox5);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.pictureBox4);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.pictureBox3);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.pictureBox2);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(187, 78);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(487, 196);
-            this.groupBox2.TabIndex = 35;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Producto";
+            this.gbxProductos.Controls.Add(this.lblEstado);
+            this.gbxProductos.Controls.Add(this.cmbEstado);
+            this.gbxProductos.Controls.Add(this.cmbMedidas);
+            this.gbxProductos.Controls.Add(this.cmbMarcas);
+            this.gbxProductos.Controls.Add(this.cmbProducto);
+            this.gbxProductos.Controls.Add(this.cmbCategorias);
+            this.gbxProductos.Controls.Add(this.txtCodigo);
+            this.gbxProductos.Controls.Add(this.pictureBox5);
+            this.gbxProductos.Controls.Add(this.lblCodigo);
+            this.gbxProductos.Controls.Add(this.pictureBox4);
+            this.gbxProductos.Controls.Add(this.lblProducto);
+            this.gbxProductos.Controls.Add(this.pictureBox3);
+            this.gbxProductos.Controls.Add(this.lblCategoria);
+            this.gbxProductos.Controls.Add(this.pictureBox2);
+            this.gbxProductos.Controls.Add(this.lblMarca);
+            this.gbxProductos.Controls.Add(this.lblMedidas);
+            this.gbxProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxProductos.Location = new System.Drawing.Point(187, 78);
+            this.gbxProductos.Name = "gbxProductos";
+            this.gbxProductos.Size = new System.Drawing.Size(487, 196);
+            this.gbxProductos.TabIndex = 35;
+            this.gbxProductos.TabStop = false;
+            this.gbxProductos.Text = "Producto";
             // 
-            // label14
+            // lblEstado
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(255, 135);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(63, 19);
-            this.label14.TabIndex = 25;
-            this.label14.Text = "Estado";
+            this.lblEstado.AutoSize = true;
+            this.lblEstado.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstado.Location = new System.Drawing.Point(255, 135);
+            this.lblEstado.Name = "lblEstado";
+            this.lblEstado.Size = new System.Drawing.Size(63, 19);
+            this.lblEstado.TabIndex = 25;
+            this.lblEstado.Text = "Estado";
             // 
             // cmbEstado
             // 
@@ -237,15 +237,15 @@
             this.pictureBox5.TabStop = false;
             this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
             // 
-            // label1
+            // lblCodigo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 19);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Código";
+            this.lblCodigo.AutoSize = true;
+            this.lblCodigo.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodigo.Location = new System.Drawing.Point(13, 27);
+            this.lblCodigo.Name = "lblCodigo";
+            this.lblCodigo.Size = new System.Drawing.Size(63, 19);
+            this.lblCodigo.TabIndex = 7;
+            this.lblCodigo.Text = "Código";
             // 
             // pictureBox4
             // 
@@ -258,15 +258,15 @@
             this.pictureBox4.TabStop = false;
             this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
-            // label2
+            // lblProducto
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(256, 27);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 19);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Producto";
+            this.lblProducto.AutoSize = true;
+            this.lblProducto.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProducto.Location = new System.Drawing.Point(256, 27);
+            this.lblProducto.Name = "lblProducto";
+            this.lblProducto.Size = new System.Drawing.Size(81, 19);
+            this.lblProducto.TabIndex = 8;
+            this.lblProducto.Text = "Producto";
             // 
             // pictureBox3
             // 
@@ -279,15 +279,15 @@
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
-            // label3
+            // lblCategoria
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(255, 84);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(90, 19);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Categoría";
+            this.lblCategoria.AutoSize = true;
+            this.lblCategoria.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCategoria.Location = new System.Drawing.Point(255, 84);
+            this.lblCategoria.Name = "lblCategoria";
+            this.lblCategoria.Size = new System.Drawing.Size(90, 19);
+            this.lblCategoria.TabIndex = 9;
+            this.lblCategoria.Text = "Categoría";
             // 
             // pictureBox2
             // 
@@ -300,58 +300,58 @@
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
-            // label4
+            // lblMarca
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 84);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 19);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Marca";
+            this.lblMarca.AutoSize = true;
+            this.lblMarca.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMarca.Location = new System.Drawing.Point(12, 84);
+            this.lblMarca.Name = "lblMarca";
+            this.lblMarca.Size = new System.Drawing.Size(54, 19);
+            this.lblMarca.TabIndex = 10;
+            this.lblMarca.Text = "Marca";
             // 
-            // label5
+            // lblMedidas
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(11, 135);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 19);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "Medidas";
+            this.lblMedidas.AutoSize = true;
+            this.lblMedidas.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMedidas.Location = new System.Drawing.Point(11, 135);
+            this.lblMedidas.Name = "lblMedidas";
+            this.lblMedidas.Size = new System.Drawing.Size(72, 19);
+            this.lblMedidas.TabIndex = 14;
+            this.lblMedidas.Text = "Medidas";
             // 
-            // groupBox1
+            // gbxPreciosStock
             // 
-            this.groupBox1.Controls.Add(this.label15);
-            this.groupBox1.Controls.Add(this.txtMaximo);
-            this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.cmbVenta);
-            this.groupBox1.Controls.Add(this.txtActual);
-            this.groupBox1.Controls.Add(this.txtVenta);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.txtCompra);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.txtMinimo);
-            this.groupBox1.Enabled = false;
-            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(0, 306);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(674, 162);
-            this.groupBox1.TabIndex = 34;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Precio y Stock";
+            this.gbxPreciosStock.Controls.Add(this.lblStockMax);
+            this.gbxPreciosStock.Controls.Add(this.txtMaximo);
+            this.gbxPreciosStock.Controls.Add(this.lblFormaVenta);
+            this.gbxPreciosStock.Controls.Add(this.cmbVenta);
+            this.gbxPreciosStock.Controls.Add(this.txtActual);
+            this.gbxPreciosStock.Controls.Add(this.txtVenta);
+            this.gbxPreciosStock.Controls.Add(this.lblPrecioVenta);
+            this.gbxPreciosStock.Controls.Add(this.lblPrecioCompra);
+            this.gbxPreciosStock.Controls.Add(this.lblStockActual);
+            this.gbxPreciosStock.Controls.Add(this.txtCompra);
+            this.gbxPreciosStock.Controls.Add(this.lblStockMin);
+            this.gbxPreciosStock.Controls.Add(this.txtMinimo);
+            this.gbxPreciosStock.Enabled = false;
+            this.gbxPreciosStock.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxPreciosStock.Location = new System.Drawing.Point(0, 306);
+            this.gbxPreciosStock.Name = "gbxPreciosStock";
+            this.gbxPreciosStock.Size = new System.Drawing.Size(674, 162);
+            this.gbxPreciosStock.TabIndex = 34;
+            this.gbxPreciosStock.TabStop = false;
+            this.gbxPreciosStock.Text = "Precio y Stock";
             // 
-            // label15
+            // lblStockMax
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(457, 108);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(117, 19);
-            this.label15.TabIndex = 27;
-            this.label15.Text = "Stock Maximo";
+            this.lblStockMax.AutoSize = true;
+            this.lblStockMax.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStockMax.Location = new System.Drawing.Point(457, 108);
+            this.lblStockMax.Name = "lblStockMax";
+            this.lblStockMax.Size = new System.Drawing.Size(117, 19);
+            this.lblStockMax.TabIndex = 27;
+            this.lblStockMax.Text = "Stock Maximo";
             // 
             // txtMaximo
             // 
@@ -363,15 +363,15 @@
             this.txtMaximo.TabIndex = 12;
             this.txtMaximo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VerificarCaracter);
             // 
-            // label13
+            // lblFormaVenta
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(12, 46);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(135, 19);
-            this.label13.TabIndex = 25;
-            this.label13.Text = "Forma de Venta";
+            this.lblFormaVenta.AutoSize = true;
+            this.lblFormaVenta.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFormaVenta.Location = new System.Drawing.Point(12, 46);
+            this.lblFormaVenta.Name = "lblFormaVenta";
+            this.lblFormaVenta.Size = new System.Drawing.Size(135, 19);
+            this.lblFormaVenta.TabIndex = 25;
+            this.lblFormaVenta.Text = "Forma de Venta";
             // 
             // cmbVenta
             // 
@@ -404,35 +404,35 @@
             this.txtVenta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VerificarCaracter);
             this.txtVenta.Leave += new System.EventHandler(this.textBox7_Leave);
             // 
-            // label7
+            // lblPrecioVenta
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(454, 44);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(117, 19);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "Precio Venta";
+            this.lblPrecioVenta.AutoSize = true;
+            this.lblPrecioVenta.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrecioVenta.Location = new System.Drawing.Point(454, 44);
+            this.lblPrecioVenta.Name = "lblPrecioVenta";
+            this.lblPrecioVenta.Size = new System.Drawing.Size(117, 19);
+            this.lblPrecioVenta.TabIndex = 13;
+            this.lblPrecioVenta.Text = "Precio Venta";
             // 
-            // label6
+            // lblPrecioCompra
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(218, 44);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(126, 19);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Precio Compra";
+            this.lblPrecioCompra.AutoSize = true;
+            this.lblPrecioCompra.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrecioCompra.Location = new System.Drawing.Point(218, 44);
+            this.lblPrecioCompra.Name = "lblPrecioCompra";
+            this.lblPrecioCompra.Size = new System.Drawing.Size(126, 19);
+            this.lblPrecioCompra.TabIndex = 14;
+            this.lblPrecioCompra.Text = "Precio Compra";
             // 
-            // label8
+            // lblStockActual
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(8, 108);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(117, 19);
-            this.label8.TabIndex = 23;
-            this.label8.Text = "Stock Actual";
+            this.lblStockActual.AutoSize = true;
+            this.lblStockActual.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStockActual.Location = new System.Drawing.Point(8, 108);
+            this.lblStockActual.Name = "lblStockActual";
+            this.lblStockActual.Size = new System.Drawing.Size(117, 19);
+            this.lblStockActual.TabIndex = 23;
+            this.lblStockActual.Text = "Stock Actual";
             // 
             // txtCompra
             // 
@@ -442,18 +442,19 @@
             this.txtCompra.Name = "txtCompra";
             this.txtCompra.Size = new System.Drawing.Size(185, 26);
             this.txtCompra.TabIndex = 8;
+            this.txtCompra.TextChanged += new System.EventHandler(this.txtCompra_TextChanged);
             this.txtCompra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VerificarCaracter);
             this.txtCompra.Leave += new System.EventHandler(this.textBox6_Leave);
             // 
-            // label9
+            // lblStockMin
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(218, 108);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(117, 19);
-            this.label9.TabIndex = 22;
-            this.label9.Text = "Stock Minimo";
+            this.lblStockMin.AutoSize = true;
+            this.lblStockMin.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStockMin.Location = new System.Drawing.Point(218, 108);
+            this.lblStockMin.Name = "lblStockMin";
+            this.lblStockMin.Size = new System.Drawing.Size(117, 19);
+            this.lblStockMin.TabIndex = 22;
+            this.lblStockMin.Text = "Stock Minimo";
             // 
             // txtMinimo
             // 
@@ -476,15 +477,15 @@
             this.pictureBox6.TabStop = false;
             this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
             // 
-            // label12
+            // lblPorcentaje
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(137, 17);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(99, 19);
-            this.label12.TabIndex = 29;
-            this.label12.Text = "Porcentaje";
+            this.lblPorcentaje.AutoSize = true;
+            this.lblPorcentaje.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPorcentaje.Location = new System.Drawing.Point(137, 17);
+            this.lblPorcentaje.Name = "lblPorcentaje";
+            this.lblPorcentaje.Size = new System.Drawing.Size(99, 19);
+            this.lblPorcentaje.TabIndex = 29;
+            this.lblPorcentaje.Text = "Porcentaje";
             // 
             // txtPor1
             // 
@@ -496,15 +497,15 @@
             this.txtPor1.TabIndex = 14;
             this.txtPor1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VerificarCaracter);
             // 
-            // label11
+            // lblDescMin
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(6, 17);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(117, 19);
-            this.label11.TabIndex = 27;
-            this.label11.Text = "Cant. Mínima";
+            this.lblDescMin.AutoSize = true;
+            this.lblDescMin.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescMin.Location = new System.Drawing.Point(6, 17);
+            this.lblDescMin.Name = "lblDescMin";
+            this.lblDescMin.Size = new System.Drawing.Size(117, 19);
+            this.lblDescMin.TabIndex = 27;
+            this.lblDescMin.Text = "Cant. Mínima";
             // 
             // txtCant1
             // 
@@ -596,30 +597,30 @@
             this.pictureBox1.TabIndex = 31;
             this.pictureBox1.TabStop = false;
             // 
-            // checkBox1
+            // ckbPreciosStock
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(187, 286);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(168, 20);
-            this.checkBox1.TabIndex = 38;
-            this.checkBox1.Text = "¿Cargar Precios/Stock?";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.ckbPreciosStock.AutoSize = true;
+            this.ckbPreciosStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ckbPreciosStock.Location = new System.Drawing.Point(187, 286);
+            this.ckbPreciosStock.Name = "ckbPreciosStock";
+            this.ckbPreciosStock.Size = new System.Drawing.Size(168, 20);
+            this.ckbPreciosStock.TabIndex = 38;
+            this.ckbPreciosStock.Text = "¿Cargar Precios/Stock?";
+            this.ckbPreciosStock.UseVisualStyleBackColor = true;
+            this.ckbPreciosStock.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // checkBox2
+            // ckbDescuentos
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Enabled = false;
-            this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox2.Location = new System.Drawing.Point(9, 474);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(234, 20);
-            this.checkBox2.TabIndex = 39;
-            this.checkBox2.Text = "¿Cargar Descuentos? (OPCIONAL)";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            this.ckbDescuentos.AutoSize = true;
+            this.ckbDescuentos.Enabled = false;
+            this.ckbDescuentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ckbDescuentos.Location = new System.Drawing.Point(9, 474);
+            this.ckbDescuentos.Name = "ckbDescuentos";
+            this.ckbDescuentos.Size = new System.Drawing.Size(234, 20);
+            this.ckbDescuentos.TabIndex = 39;
+            this.ckbDescuentos.Text = "¿Cargar Descuentos? (OPCIONAL)";
+            this.ckbDescuentos.UseVisualStyleBackColor = true;
+            this.ckbDescuentos.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // pictureBox9
             // 
@@ -747,44 +748,44 @@
             this.pictureBox14.Visible = false;
             this.pictureBox14.Click += new System.EventHandler(this.pictureBox14_Click);
             // 
-            // groupBox3
+            // gbxDescuentos
             // 
-            this.groupBox3.Controls.Add(this.txtCant1);
-            this.groupBox3.Controls.Add(this.pictureBox14);
-            this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Controls.Add(this.pictureBox13);
-            this.groupBox3.Controls.Add(this.txtPor1);
-            this.groupBox3.Controls.Add(this.pictureBox12);
-            this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Controls.Add(this.txtPor4);
-            this.groupBox3.Controls.Add(this.pictureBox6);
-            this.groupBox3.Controls.Add(this.txtCant4);
-            this.groupBox3.Controls.Add(this.txtCant2);
-            this.groupBox3.Controls.Add(this.pictureBox10);
-            this.groupBox3.Controls.Add(this.txtPor2);
-            this.groupBox3.Controls.Add(this.txtPor3);
-            this.groupBox3.Controls.Add(this.pictureBox9);
-            this.groupBox3.Controls.Add(this.txtCant3);
-            this.groupBox3.Enabled = false;
-            this.groupBox3.Location = new System.Drawing.Point(9, 505);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(326, 169);
-            this.groupBox3.TabIndex = 52;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "DESCUENTOS";
+            this.gbxDescuentos.Controls.Add(this.txtCant1);
+            this.gbxDescuentos.Controls.Add(this.pictureBox14);
+            this.gbxDescuentos.Controls.Add(this.lblDescMin);
+            this.gbxDescuentos.Controls.Add(this.pictureBox13);
+            this.gbxDescuentos.Controls.Add(this.txtPor1);
+            this.gbxDescuentos.Controls.Add(this.pictureBox12);
+            this.gbxDescuentos.Controls.Add(this.lblPorcentaje);
+            this.gbxDescuentos.Controls.Add(this.txtPor4);
+            this.gbxDescuentos.Controls.Add(this.pictureBox6);
+            this.gbxDescuentos.Controls.Add(this.txtCant4);
+            this.gbxDescuentos.Controls.Add(this.txtCant2);
+            this.gbxDescuentos.Controls.Add(this.pictureBox10);
+            this.gbxDescuentos.Controls.Add(this.txtPor2);
+            this.gbxDescuentos.Controls.Add(this.txtPor3);
+            this.gbxDescuentos.Controls.Add(this.pictureBox9);
+            this.gbxDescuentos.Controls.Add(this.txtCant3);
+            this.gbxDescuentos.Enabled = false;
+            this.gbxDescuentos.Location = new System.Drawing.Point(9, 505);
+            this.gbxDescuentos.Name = "gbxDescuentos";
+            this.gbxDescuentos.Size = new System.Drawing.Size(326, 169);
+            this.gbxDescuentos.TabIndex = 52;
+            this.gbxDescuentos.TabStop = false;
+            this.gbxDescuentos.Text = "DESCUENTOS";
             // 
             // FrmNuevoProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(679, 686);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.gbxDescuentos);
+            this.Controls.Add(this.ckbDescuentos);
+            this.Controls.Add(this.ckbPreciosStock);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnGuardar);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gbxProductos);
+            this.Controls.Add(this.gbxPreciosStock);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.bntCargarImagen);
             this.Controls.Add(this.pictureBox1);
@@ -793,14 +794,14 @@
             this.Text = "NUEVO PRODUCTO";
             this.Load += new System.EventHandler(this.FrmNuevoProducto_Load);
             this.Shown += new System.EventHandler(this.FrmBaseProductos_Shown);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.gbxProductos.ResumeLayout(false);
+            this.gbxProductos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gbxPreciosStock.ResumeLayout(false);
+            this.gbxPreciosStock.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -812,8 +813,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.gbxDescuentos.ResumeLayout(false);
+            this.gbxDescuentos.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -825,8 +826,8 @@
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Label lbltituloHome;
         private System.Windows.Forms.Button button18;
-        protected System.Windows.Forms.GroupBox groupBox2;
-        protected System.Windows.Forms.GroupBox groupBox1;
+        protected System.Windows.Forms.GroupBox gbxProductos;
+        protected System.Windows.Forms.GroupBox gbxPreciosStock;
         protected System.Windows.Forms.Button bntCargarImagen;
         protected System.Windows.Forms.PictureBox pictureBox1;
         protected System.Windows.Forms.Button btnSalir;
@@ -835,27 +836,27 @@
         protected System.Windows.Forms.PictureBox pictureBox5;
         protected System.Windows.Forms.PictureBox pictureBox4;
         protected System.Windows.Forms.PictureBox pictureBox3;
-        protected System.Windows.Forms.Label label3;
+        protected System.Windows.Forms.Label lblCategoria;
         protected System.Windows.Forms.PictureBox pictureBox2;
-        protected System.Windows.Forms.Label label5;
+        protected System.Windows.Forms.Label lblMedidas;
         protected System.Windows.Forms.PictureBox pictureBox6;
-        protected System.Windows.Forms.Label label12;
+        protected System.Windows.Forms.Label lblPorcentaje;
         protected System.Windows.Forms.TextBox txtPor1;
-        protected System.Windows.Forms.Label label11;
+        protected System.Windows.Forms.Label lblDescMin;
         protected System.Windows.Forms.TextBox txtCant1;
         protected System.Windows.Forms.TextBox txtActual;
         protected System.Windows.Forms.TextBox txtVenta;
-        protected System.Windows.Forms.Label label7;
-        protected System.Windows.Forms.Label label6;
-        protected System.Windows.Forms.Label label8;
+        protected System.Windows.Forms.Label lblPrecioVenta;
+        protected System.Windows.Forms.Label lblPrecioCompra;
+        protected System.Windows.Forms.Label lblStockActual;
         protected System.Windows.Forms.TextBox txtCompra;
-        protected System.Windows.Forms.Label label9;
+        protected System.Windows.Forms.Label lblStockMin;
         protected System.Windows.Forms.TextBox txtMinimo;
-        protected System.Windows.Forms.Label label1;
-        protected System.Windows.Forms.Label label2;
-        protected System.Windows.Forms.Label label4;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
+        protected System.Windows.Forms.Label lblCodigo;
+        protected System.Windows.Forms.Label lblProducto;
+        protected System.Windows.Forms.Label lblMarca;
+        private System.Windows.Forms.CheckBox ckbPreciosStock;
+        private System.Windows.Forms.CheckBox ckbDescuentos;
         protected System.Windows.Forms.PictureBox pictureBox9;
         protected System.Windows.Forms.TextBox txtPor2;
         protected System.Windows.Forms.TextBox txtCant2;
@@ -868,15 +869,15 @@
         private System.Windows.Forms.ComboBox cmbMedidas;
         private System.Windows.Forms.ComboBox cmbMarcas;
         private System.Windows.Forms.ComboBox cmbProducto;
-        protected System.Windows.Forms.Label label13;
+        protected System.Windows.Forms.Label lblFormaVenta;
         private System.Windows.Forms.ComboBox cmbVenta;
-        protected System.Windows.Forms.Label label14;
+        protected System.Windows.Forms.Label lblEstado;
         private System.Windows.Forms.ComboBox cmbEstado;
-        protected System.Windows.Forms.Label label15;
+        protected System.Windows.Forms.Label lblStockMax;
         protected System.Windows.Forms.TextBox txtMaximo;
         protected System.Windows.Forms.PictureBox pictureBox12;
         protected System.Windows.Forms.PictureBox pictureBox13;
         protected System.Windows.Forms.PictureBox pictureBox14;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox gbxDescuentos;
     }
 }

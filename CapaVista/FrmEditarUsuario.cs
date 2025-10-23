@@ -1,4 +1,5 @@
-﻿using CapaLogica;
+﻿using CapaEntities;
+using CapaLogica;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -17,39 +18,7 @@ namespace CapaVista
         {
             InitializeComponent();
             this.idusuario = idusuario;
-        }
-        private void CargarPermisos()
-        {
-            string[] permisosiniciales = { "Ver", "Crear", "Editar", "Insertar", "Eliminar" };
-
-            foreach (string permiso in permisosiniciales)
-            {
-                int filaIndex = dataGridView1.Rows.Add();
-                dataGridView1.Rows[filaIndex].Cells["Permisos"].Value = permiso;
-            }
-            DataTable usuario = metodos.Usuarios(idusuario);
-            foreach (DataRow fila in usuario.Rows)
-            {               
-                string permisosStr = fila["Permisos"].ToString();
-                string[] permisos = permisosStr.Split(',');
-                var permisosLimpios = permisos.Select(p => p.Trim()).ToList();
-                foreach (DataGridViewRow row in dataGridView1.Rows)
-                {
-                    if (row.IsNewRow) continue;
-
-                    string permisoActual = row.Cells["Permisos"].Value?.ToString();
-                    if (permisosLimpios.Contains(permisoActual))
-                    {
-                        row.Cells["Autorizado"].Value = "1- Si";
-                    }
-                    else
-                    {
-                        row.Cells["Autorizado"].Value = "2- No";
-                    }
-                }
-            }
-            dataGridView1.Columns["Autorizado"].ReadOnly = false;
-        }
+        }       
         private void CargarDatos()
         {
             DataTable datos = metodos.SeleccionarDatosUsuario(idusuario);
@@ -80,7 +49,6 @@ namespace CapaVista
             CargarRoles();
             CargarPreguntas();
             CargarDatos();
-            CargarPermisos();
 
         }
 
@@ -122,6 +90,44 @@ namespace CapaVista
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+
+                if (CV_Utiles.TextboxVacios(txtUsuario, txtNombre, txtApellido, txtDNI, txtCorreo) ||
+                    CV_Utiles.ComboboxVacios(cmbRol))
+                {
+                    MessageBox.Show("Por favor complete todos los campos");
+                    return;
+                }
+                if (!CV_Utiles.CampoMail(txtCorreo.Text))
+                {
+                    MessageBox.Show("Por favor ingrese un correo valido");
+                    return;
+                }
+                if (CV_Utiles.CamposNumericos(txtNombre, txtApellido, txtUsuario, txtCorreo ))
+                {
+                    MessageBox.Show("Los Datos NO Pueden ser Numericos");
+                    return;
+                }
+                string Usuario = txtUsuario.Text.Trim();
+                string Nombre = txtNombre.Text.Trim();
+                string Apellido = txtApellido.Text.Trim();
+                int Rol = Convert.ToInt32(cmbRol.Text.Split('-')[0].ToString());
+                string Dni = txtDNI.Text.Trim();
+                string Correo = txtCorreo.Text.Trim();
+                int bloqueado = comboBox1.SelectedIndex == 0 ? 1 : 0;
+                string resultado = metodos.ActualizarUsuario(this.idusuario, Usuario, Nombre, Apellido, Dni, bloqueado, Rol, Correo,CV_Seguridad.ObtenerPalabra());
+                MessageBox.Show(resultado);
+
+            
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Error: " + ex.Message);
+            //}
+
+
+            if (string.IsNullOrEmpty(rutaImagenTemporal))
+            {
+                return;
+            }
             string carpetaDestino = Path.Combine(Application.StartupPath, "Imagenes","Usuarios");
             if (!Directory.Exists(carpetaDestino))
                 Directory.CreateDirectory(carpetaDestino);
@@ -133,19 +139,8 @@ namespace CapaVista
             {
                 File.Delete(destino);
             }
-
             File.Copy(rutaImagenTemporal, destino, true);
-            int idrol = Convert.ToInt32(cmbRol.Text.Split('-')[0]);
-            metodos.EliminarIdRol(Convert.ToInt32(idrol));
-            foreach (DataGridViewRow fila in dataGridView1.Rows)
-            {
-                if (fila.IsNewRow) continue;
-                if (fila.Cells["Autorizado"].Value?.ToString() == "1- Si")
-                {
-                    int idPermiso = metodos.ObtenerIdPermiso(fila.Cells["Permisos"].Value.ToString());
-                    metodos.InsertarRolPermiso(idrol, idPermiso);
-                }
-            }
+           
         }
         private void CargarRoles()
         {

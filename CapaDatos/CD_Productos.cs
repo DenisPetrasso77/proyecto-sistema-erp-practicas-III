@@ -101,7 +101,7 @@ namespace CapaDatos
         public DataTable TraerDetalleProductos(string idproducto)
         {
             DataTable dt = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("[sp_SelecionarDatosProducto]", AbrirConexion()))
+            using (SqlCommand cmd = new SqlCommand("sp_SeleccionarDatosProducto", AbrirConexion()))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@IdProducto", idproducto);
@@ -162,7 +162,6 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("@Estado", producto.Estado);
                     cmd.Parameters.AddWithValue("@FechaAlta", producto.FechaAlta);
                     cmd.Parameters.AddWithValue("@IdUsuarioAlta", producto.IdUsuarioAlta);
-                    cmd.Parameters.AddWithValue("@Dvh", producto.DVH);
 
                     DataTable dtDescuentos = new DataTable();
                     dtDescuentos.Columns.Add("CantidadMin", typeof(int));
@@ -177,8 +176,8 @@ namespace CapaDatos
                     tvpParam.SqlDbType = SqlDbType.Structured;
                     tvpParam.TypeName = "dbo.TipoDescuentoProducto";
 
-                    cmd.ExecuteNonQuery();
-                    return "Producto Guardado";
+                    string resultado = cmd.ExecuteScalar().ToString();
+                    return resultado;
                 }
             }
             catch (SqlException ex)
@@ -212,7 +211,6 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("@Estado", producto.Estado);
                     cmd.Parameters.AddWithValue("@FechaUltActualizacion", producto.FechaAlta);
                     cmd.Parameters.AddWithValue("@IdUsuarioUltActualizacion", producto.IdUsuarioAlta);
-                    cmd.Parameters.AddWithValue("@Dvh", producto.DVH);
 
                     DataTable dtDescuentos = new DataTable();
                     dtDescuentos.Columns.Add("CantidadMin", typeof(int));
@@ -380,7 +378,7 @@ namespace CapaDatos
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", id);
-                    cmd.Parameters.AddWithValue("@@Medida", nombre);
+                    cmd.Parameters.AddWithValue("@Medida", nombre);
                     cmd.Parameters.AddWithValue("@Estado", estado);
                     cmd.ExecuteNonQuery();
                     return "Medida Actualizada";

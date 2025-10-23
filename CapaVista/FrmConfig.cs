@@ -2,13 +2,6 @@
 using ProyectoPracticas;
 using SidebarMenu;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CapaVista
@@ -92,13 +85,27 @@ namespace CapaVista
 
         private void FrmConfig_Load(object sender, EventArgs e)
         {
-
+            lbltituloConfig.Text = Traductor.TraducirTexto("lbltituloConfig");
+            lblColores.Text=Traductor.TraducirTexto("lblColores");
+            grbTema.Text=Traductor.TraducirTexto("grbTema");
+            rdbEstandar.Text = Traductor.TraducirTexto("rdbEstandar");
+            rdbOscuro.Text = Traductor.TraducirTexto("rdbOscuro");
+            rdbContraste.Text = Traductor.TraducirTexto("rdbContraste");
+            lblFuente.Text = Traductor.TraducirTexto("lblFuente");
+            grbFuente.Text = Traductor.TraducirTexto("grbFuente");
+            rdbChico.Text = Traductor.TraducirTexto("rdbChico");
+            rdbMediana.Text = Traductor.TraducirTexto("rdbMediana");
+            rdbGrande.Text = Traductor.TraducirTexto("rdbGrande");
+            lblIdioma.Text = Traductor.TraducirTexto("lblIdioma");
+            grbIdioma.Text = Traductor.TraducirTexto("grbIdioma");
+            grbIntegridad.Text = Traductor.TraducirTexto("grbIntegridad");
+            btnCalcular.Text = Traductor.TraducirTexto("btnCalcular");
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string decision = MessageBox.Show("¿Está seguro que desea restablecer los dígitos verificadores de la base de datos? Esta acción puede tardar varios minutos.", "Confirmar restablecimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Warning).ToString();
+            string decision = MessageBox.Show(Traductor.TraducirTexto("msgIntegridad"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.YesNo, MessageBoxIcon.Warning).ToString();
             if (decision != "Yes")
             { 
                 return;

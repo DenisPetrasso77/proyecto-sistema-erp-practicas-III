@@ -108,6 +108,7 @@
             // txtUsuario
             // 
             this.txtUsuario.Location = new System.Drawing.Point(108, 37);
+            this.txtUsuario.MaxLength = 20;
             this.txtUsuario.Multiline = true;
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(129, 26);
@@ -116,6 +117,7 @@
             // txtContraseña
             // 
             this.txtContraseña.Location = new System.Drawing.Point(108, 68);
+            this.txtContraseña.MaxLength = 20;
             this.txtContraseña.Multiline = true;
             this.txtContraseña.Name = "txtContraseña";
             this.txtContraseña.Size = new System.Drawing.Size(129, 26);
@@ -154,6 +156,7 @@
             // txtRespuesta
             // 
             this.txtRespuesta.Location = new System.Drawing.Point(107, 337);
+            this.txtRespuesta.MaxLength = 30;
             this.txtRespuesta.Multiline = true;
             this.txtRespuesta.Name = "txtRespuesta";
             this.txtRespuesta.Size = new System.Drawing.Size(307, 26);
@@ -222,14 +225,17 @@
             // txtDNI
             // 
             this.txtDNI.Location = new System.Drawing.Point(108, 145);
+            this.txtDNI.MaxLength = 8;
             this.txtDNI.Multiline = true;
             this.txtDNI.Name = "txtDNI";
             this.txtDNI.Size = new System.Drawing.Size(100, 26);
             this.txtDNI.TabIndex = 9;
+            this.txtDNI.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VerificarCaracter);
             // 
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(108, 49);
+            this.txtNombre.MaxLength = 20;
             this.txtNombre.Multiline = true;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(140, 26);
@@ -248,6 +254,7 @@
             // txtApellido
             // 
             this.txtApellido.Location = new System.Drawing.Point(108, 99);
+            this.txtApellido.MaxLength = 20;
             this.txtApellido.Multiline = true;
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(140, 26);
@@ -353,6 +360,7 @@
             // txtCorreo
             // 
             this.txtCorreo.Location = new System.Drawing.Point(510, 294);
+            this.txtCorreo.MaxLength = 100;
             this.txtCorreo.Multiline = true;
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(233, 26);

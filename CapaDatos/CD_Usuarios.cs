@@ -579,27 +579,29 @@ namespace CapaDatos
                 CerrarConexion();
             }
         }
-        public int ActualizarUsuario(string usuario, string nombre, string apellido, string dni, int rol, int bloqueado, string correo)
+        public string ActualizarUsuario(int idusuario,string usuario, string nombre, string apellido, string dni, int bloqueado,int rol, string correo,string palabra)
         {
             try
             {
                 using (SqlCommand cmd = new SqlCommand("sp_ActualizarUsuario", AbrirConexion()))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("Usuario", usuario);
-                    cmd.Parameters.AddWithValue("Nombre", nombre);
-                    cmd.Parameters.AddWithValue("Apellido", apellido);
-                    cmd.Parameters.AddWithValue("Dni", dni);
-                    cmd.Parameters.AddWithValue("Rol", rol);
-                    cmd.Parameters.AddWithValue("Bloqueado", bloqueado);
-                    cmd.Parameters.AddWithValue("Correo", correo);
+                    cmd.Parameters.AddWithValue("@IdUsuario", idusuario);
+                    cmd.Parameters.AddWithValue("@Usuario", usuario);
+                    cmd.Parameters.AddWithValue("@Nombre", nombre);
+                    cmd.Parameters.AddWithValue("@Apellido", apellido);
+                    cmd.Parameters.AddWithValue("@Dni", dni);
+                    cmd.Parameters.AddWithValue("@IdRol", rol);
+                    cmd.Parameters.AddWithValue("@Bloqueado", bloqueado);
+                    cmd.Parameters.AddWithValue("@Correo", correo);
+                    cmd.Parameters.AddWithValue("@PalabraSegura", palabra);
 
-                    return cmd.ExecuteNonQuery();
+                    return cmd.ExecuteScalar().ToString();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return 0;
+                return "Error"+ex;
             }
             finally
             {
