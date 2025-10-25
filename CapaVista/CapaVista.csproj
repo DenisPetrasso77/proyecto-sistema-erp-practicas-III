@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icon_Papelera.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
       <HintPath>..\packages\BCrypt.Net-Next.4.0.3\lib\net48\BCrypt.Net-Next.dll</HintPath>
@@ -762,6 +765,35 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\nueva-cuenta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\perfil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\proteger.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paleta-de-color.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tamano-del-texto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\base-de-datos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ajustes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icon_Papelera.ico" />
+    <None Include="Resources\documento.png" />
+    <None Include="Resources\formas.png" />
+    <None Include="Resources\diseno-de-producto.png" />
+    <None Include="Resources\categorias.png" />
+    <None Include="Resources\marca-comercial.png" />
+    <None Include="Resources\medida.png" />
+    <None Include="Resources\contrasena.png" />
+    <None Include="Resources\entrega-de-pedidos.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

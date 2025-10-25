@@ -1,12 +1,14 @@
-﻿using CapaEntities;
-using CapaLogica;
-using System;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using CapaEntities;
+using CapaLogica;
+using ProyectoPracticas;
+using static ProyectoPracticas.UI_Utilidad;
 namespace CapaVista
 {
     public partial class FrmEditarUsuario : Form
@@ -161,6 +163,19 @@ namespace CapaVista
                 string rol = $"{fila["IdPregunta"].ToString()} - {fila["Pregunta"].ToString()}";
                 cmbPregunta.Items.Add(rol);
             }
+        }
+
+        private void FrmEditarUsuario_Shown(object sender, EventArgs e)
+        {
+            this.Text = "Papelera";
+            FormDragHelper.EnableDrag(this, panel1);
+
+            UI_Utilidad.EstiloForm(this);
+            UI_Utilidad.RedondearForm(this, 28);
+
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnCancelar);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnAceptar);
+
         }
     }
 }

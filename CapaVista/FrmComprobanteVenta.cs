@@ -1,8 +1,9 @@
-﻿using CapaEntities;
-using CapaLogica;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using CapaEntities;
+using CapaLogica;
+using ProyectoPracticas;
 
 namespace CapaVista
 {
@@ -72,6 +73,20 @@ namespace CapaVista
             {
                 e.Handled = true;
             }
+        }
+
+        private void FrmComprobanteVenta_Shown(object sender, EventArgs e)
+        {
+            this.ActiveControl = null;
+            this.Text = "Papelera";
+
+            UI_Utilidad.EstiloLabels(this);
+
+            UI_Utilidad.EstiloForm(this);
+            UI_Utilidad.RedondearForm(this, 28);
+
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnAceptar);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnCancelar);
         }
     }
 }

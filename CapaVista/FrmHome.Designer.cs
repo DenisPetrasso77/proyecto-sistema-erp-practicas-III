@@ -28,73 +28,74 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmHome));
             this.pnlAlmacen = new System.Windows.Forms.Panel();
             this.lblAlmacen = new System.Windows.Forms.Label();
             this.btnReabastecer = new System.Windows.Forms.Button();
             this.btnRecepcion = new System.Windows.Forms.Button();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pnlCompras = new System.Windows.Forms.Panel();
             this.lblCompras = new System.Windows.Forms.Label();
             this.btnCotizacion = new System.Windows.Forms.Button();
             this.btnOrden = new System.Windows.Forms.Button();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pnlUsuarios = new System.Windows.Forms.Panel();
             this.lblAdministracion = new System.Windows.Forms.Label();
             this.btnRolesPermisos = new System.Windows.Forms.Button();
             this.btnBitacora = new System.Windows.Forms.Button();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.btnGestionAdmin = new System.Windows.Forms.Button();
             this.pnlProveedores = new System.Windows.Forms.Panel();
             this.lblProveedores = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnGestionProveedores = new System.Windows.Forms.Button();
             this.pnlPagos = new System.Windows.Forms.Panel();
             this.lblPagos = new System.Windows.Forms.Label();
             this.btnGestionPagos = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pnlProductos = new System.Windows.Forms.Panel();
             this.lblProductos = new System.Windows.Forms.Label();
             this.btnGestionProductos = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox11 = new System.Windows.Forms.PictureBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.lbltituloHome = new System.Windows.Forms.Label();
             this.pnlCobros = new System.Windows.Forms.Panel();
             this.lblCobros = new System.Windows.Forms.Label();
             this.btnCobros = new System.Windows.Forms.Button();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.pnlClientes = new System.Windows.Forms.Panel();
             this.lblClientes = new System.Windows.Forms.Label();
             this.btnClientes = new System.Windows.Forms.Button();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pnlVentas = new System.Windows.Forms.Panel();
             this.lblVentas = new System.Windows.Forms.Label();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.btnVentas = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.pbAtras = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pnlAlmacen.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.pnlCompras.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.pnlUsuarios.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.pnlProveedores.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.pnlPagos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.pnlProductos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.pnlCobros.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             this.pnlClientes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.pnlVentas.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAtras)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlAlmacen
@@ -142,16 +143,6 @@
             this.btnRecepcion.UseVisualStyleBackColor = true;
             this.btnRecepcion.Click += new System.EventHandler(this.btnRecepcion_Click);
             // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = global::CapaVista.Properties.Resources.almacen;
-            this.pictureBox6.Location = new System.Drawing.Point(101, 13);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(60, 60);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 6;
-            this.pictureBox6.TabStop = false;
-            // 
             // pnlCompras
             // 
             this.pnlCompras.BackColor = System.Drawing.SystemColors.Highlight;
@@ -194,19 +185,9 @@
             this.btnOrden.Name = "btnOrden";
             this.btnOrden.Size = new System.Drawing.Size(120, 40);
             this.btnOrden.TabIndex = 20;
-            this.btnOrden.Text = "O.C.";
+            this.btnOrden.Text = "Orden de C.";
             this.btnOrden.UseVisualStyleBackColor = true;
             this.btnOrden.Click += new System.EventHandler(this.btnOrden_Click);
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = global::CapaVista.Properties.Resources.carrito_de_supermercado;
-            this.pictureBox5.Location = new System.Drawing.Point(109, 7);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(60, 60);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 5;
-            this.pictureBox5.TabStop = false;
             // 
             // pnlUsuarios
             // 
@@ -239,30 +220,20 @@
             this.btnRolesPermisos.Name = "btnRolesPermisos";
             this.btnRolesPermisos.Size = new System.Drawing.Size(113, 40);
             this.btnRolesPermisos.TabIndex = 20;
-            this.btnRolesPermisos.Text = "Roles/Permisos";
+            this.btnRolesPermisos.Text = "Accesos";
             this.btnRolesPermisos.UseVisualStyleBackColor = true;
             this.btnRolesPermisos.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnBitacora
             // 
             this.btnBitacora.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBitacora.Location = new System.Drawing.Point(14, 157);
+            this.btnBitacora.Location = new System.Drawing.Point(73, 160);
             this.btnBitacora.Name = "btnBitacora";
             this.btnBitacora.Size = new System.Drawing.Size(120, 40);
             this.btnBitacora.TabIndex = 19;
             this.btnBitacora.Text = "Bitacora";
             this.btnBitacora.UseVisualStyleBackColor = true;
             this.btnBitacora.Click += new System.EventHandler(this.btnBitacora_Click);
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::CapaVista.Properties.Resources.gestion;
-            this.pictureBox4.Location = new System.Drawing.Point(107, 13);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(60, 60);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 5;
-            this.pictureBox4.TabStop = false;
             // 
             // btnGestionAdmin
             // 
@@ -296,16 +267,6 @@
             this.lblProveedores.Size = new System.Drawing.Size(124, 25);
             this.lblProveedores.TabIndex = 19;
             this.lblProveedores.Text = "Proveedores";
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::CapaVista.Properties.Resources.proveedor;
-            this.pictureBox3.Location = new System.Drawing.Point(106, 14);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(60, 60);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 5;
-            this.pictureBox3.TabStop = false;
             // 
             // btnGestionProveedores
             // 
@@ -352,16 +313,6 @@
             this.btnGestionPagos.UseVisualStyleBackColor = true;
             this.btnGestionPagos.Click += new System.EventHandler(this.btnGestionPagos_Click);
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::CapaVista.Properties.Resources.metodo_de_pago;
-            this.pictureBox2.Location = new System.Drawing.Point(109, 13);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(60, 60);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 4;
-            this.pictureBox2.TabStop = false;
-            // 
             // pnlProductos
             // 
             this.pnlProductos.BackColor = System.Drawing.SystemColors.Highlight;
@@ -378,7 +329,7 @@
             // 
             this.lblProductos.AutoSize = true;
             this.lblProductos.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductos.Location = new System.Drawing.Point(89, 78);
+            this.lblProductos.Location = new System.Drawing.Point(89, 80);
             this.lblProductos.Name = "lblProductos";
             this.lblProductos.Size = new System.Drawing.Size(104, 25);
             this.lblProductos.TabIndex = 17;
@@ -395,21 +346,10 @@
             this.btnGestionProductos.UseVisualStyleBackColor = true;
             this.btnGestionProductos.Click += new System.EventHandler(this.btnGestion_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.Highlight;
-            this.pictureBox1.Image = global::CapaVista.Properties.Resources.agregar_producto;
-            this.pictureBox1.Location = new System.Drawing.Point(107, 13);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(60, 60);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
-            this.panel1.Controls.Add(this.pictureBox11);
+            this.panel1.Controls.Add(this.pbAtras);
             this.panel1.Controls.Add(this.pictureBox8);
             this.panel1.Controls.Add(this.lbltituloHome);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -417,27 +357,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1034, 72);
             this.panel1.TabIndex = 23;
-            // 
-            // pictureBox11
-            // 
-            this.pictureBox11.Image = global::CapaVista.Properties.Resources.volver__1_;
-            this.pictureBox11.Location = new System.Drawing.Point(922, 12);
-            this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox11.TabIndex = 33;
-            this.pictureBox11.TabStop = false;
-            this.pictureBox11.Click += new System.EventHandler(this.pictureBox11_Click);
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.Image = global::CapaVista.Properties.Resources.administrar;
-            this.pictureBox8.Location = new System.Drawing.Point(203, 5);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox8.TabIndex = 32;
-            this.pictureBox8.TabStop = false;
             // 
             // lbltituloHome
             // 
@@ -483,17 +402,6 @@
             this.btnCobros.UseVisualStyleBackColor = true;
             this.btnCobros.Click += new System.EventHandler(this.btnCobros_Click);
             // 
-            // pictureBox10
-            // 
-            this.pictureBox10.BackColor = System.Drawing.SystemColors.Highlight;
-            this.pictureBox10.Image = global::CapaVista.Properties.Resources.trabajadores_por_cuenta_propia;
-            this.pictureBox10.Location = new System.Drawing.Point(106, 3);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(60, 60);
-            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox10.TabIndex = 3;
-            this.pictureBox10.TabStop = false;
-            // 
             // pnlClientes
             // 
             this.pnlClientes.BackColor = System.Drawing.SystemColors.Highlight;
@@ -526,17 +434,6 @@
             this.btnClientes.UseVisualStyleBackColor = true;
             this.btnClientes.Click += new System.EventHandler(this.bntClientes_Click);
             // 
-            // pictureBox9
-            // 
-            this.pictureBox9.BackColor = System.Drawing.SystemColors.Highlight;
-            this.pictureBox9.Image = global::CapaVista.Properties.Resources.mercado;
-            this.pictureBox9.Location = new System.Drawing.Point(109, 3);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(60, 60);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox9.TabIndex = 3;
-            this.pictureBox9.TabStop = false;
-            // 
             // pnlVentas
             // 
             this.pnlVentas.BackColor = System.Drawing.SystemColors.Highlight;
@@ -558,17 +455,6 @@
             this.lblVentas.Size = new System.Drawing.Size(71, 25);
             this.lblVentas.TabIndex = 26;
             this.lblVentas.Text = "Ventas";
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.BackColor = System.Drawing.SystemColors.Highlight;
-            this.pictureBox7.Image = global::CapaVista.Properties.Resources.ventas;
-            this.pictureBox7.Location = new System.Drawing.Point(107, 3);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(60, 60);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox7.TabIndex = 3;
-            this.pictureBox7.TabStop = false;
             // 
             // btnVentas
             // 
@@ -598,6 +484,121 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1031, 661);
             this.flowLayoutPanel1.TabIndex = 21;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.Highlight;
+            this.pictureBox1.Image = global::CapaVista.Properties.Resources.agregar_producto;
+            this.pictureBox1.Location = new System.Drawing.Point(107, 13);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(60, 60);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::CapaVista.Properties.Resources.metodo_de_pago;
+            this.pictureBox2.Location = new System.Drawing.Point(109, 13);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(60, 60);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 4;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::CapaVista.Properties.Resources.proveedor;
+            this.pictureBox3.Location = new System.Drawing.Point(106, 14);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(60, 60);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 5;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::CapaVista.Properties.Resources.gestion;
+            this.pictureBox4.Location = new System.Drawing.Point(107, 13);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(60, 60);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 5;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::CapaVista.Properties.Resources.carrito_de_supermercado;
+            this.pictureBox5.Location = new System.Drawing.Point(109, 7);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(60, 60);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 5;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::CapaVista.Properties.Resources.almacen;
+            this.pictureBox6.Location = new System.Drawing.Point(101, 13);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(60, 60);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 6;
+            this.pictureBox6.TabStop = false;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.BackColor = System.Drawing.SystemColors.Highlight;
+            this.pictureBox7.Image = global::CapaVista.Properties.Resources.ventas;
+            this.pictureBox7.Location = new System.Drawing.Point(107, 17);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(60, 60);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox7.TabIndex = 3;
+            this.pictureBox7.TabStop = false;
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.BackColor = System.Drawing.SystemColors.Highlight;
+            this.pictureBox9.Image = global::CapaVista.Properties.Resources.mercado;
+            this.pictureBox9.Location = new System.Drawing.Point(108, 17);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(60, 60);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox9.TabIndex = 3;
+            this.pictureBox9.TabStop = false;
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.BackColor = System.Drawing.SystemColors.Highlight;
+            this.pictureBox10.Image = global::CapaVista.Properties.Resources.trabajadores_por_cuenta_propia;
+            this.pictureBox10.Location = new System.Drawing.Point(106, 17);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(60, 60);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox10.TabIndex = 3;
+            this.pictureBox10.TabStop = false;
+            // 
+            // pbAtras
+            // 
+            this.pbAtras.Image = global::CapaVista.Properties.Resources.volver__1_;
+            this.pbAtras.Location = new System.Drawing.Point(938, 12);
+            this.pbAtras.Name = "pbAtras";
+            this.pbAtras.Size = new System.Drawing.Size(50, 50);
+            this.pbAtras.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbAtras.TabIndex = 33;
+            this.pbAtras.TabStop = false;
+            this.pbAtras.Click += new System.EventHandler(this.pictureBox11_Click);
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = global::CapaVista.Properties.Resources.administrar;
+            this.pictureBox8.Location = new System.Drawing.Point(203, 5);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox8.TabIndex = 32;
+            this.pictureBox8.TabStop = false;
+            // 
             // FrmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -605,6 +606,7 @@
             this.ClientSize = new System.Drawing.Size(1034, 733);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmHome";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "INICIO";
@@ -612,36 +614,36 @@
             this.Shown += new System.EventHandler(this.FrmAdminHome_Shown);
             this.pnlAlmacen.ResumeLayout(false);
             this.pnlAlmacen.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.pnlCompras.ResumeLayout(false);
             this.pnlCompras.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.pnlUsuarios.ResumeLayout(false);
             this.pnlUsuarios.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.pnlProveedores.ResumeLayout(false);
             this.pnlProveedores.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.pnlPagos.ResumeLayout(false);
             this.pnlPagos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.pnlProductos.ResumeLayout(false);
             this.pnlProductos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.pnlCobros.ResumeLayout(false);
             this.pnlCobros.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             this.pnlClientes.ResumeLayout(false);
             this.pnlClientes.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.pnlVentas.ResumeLayout(false);
             this.pnlVentas.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAtras)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -679,7 +681,7 @@
         private System.Windows.Forms.Panel pnlVentas;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Button btnVentas;
-        private System.Windows.Forms.PictureBox pictureBox11;
+        private System.Windows.Forms.PictureBox pbAtras;
         private System.Windows.Forms.Button btnGestionProveedores;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btnRolesPermisos;

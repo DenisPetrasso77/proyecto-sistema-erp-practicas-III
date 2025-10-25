@@ -1,5 +1,4 @@
-﻿using CapaLogica;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaLogica;
+using ProyectoPracticas;
 
 namespace CapaVista
 {
@@ -42,6 +43,21 @@ namespace CapaVista
             {
                 MessageBox.Show("Error al actualizar el comprobante");
             }
+        }
+
+        private void FrmComprobante_Shown(object sender, EventArgs e)
+        {
+            this.ActiveControl = null;
+            this.Text = "Papelera";
+
+            UI_Utilidad.EstiloLabels(this);
+
+            UI_Utilidad.EstiloForm(this);
+            UI_Utilidad.RedondearForm(this, 28);
+
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnAceptar);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnAtras);
+
         }
     }
 }

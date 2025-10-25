@@ -23,9 +23,20 @@ namespace CapaVista
 
         private void FrmCobros_Shown(object sender, EventArgs e)
         {
+            this.ActiveControl = null;
+            this.Text = "Papelera";
+
+            UI_Utilidad.EstiloLabels(this);
+
             UI_Utilidad.EstiloForm(this);
             UI_Utilidad.RedondearForm(this, 28);
+
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnAtras);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnLimpiar);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnDetalle);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnFiltrar);
+
+            UI_Utilidad.EstiloDataGridView(dataGridView1);
         }
         private void CargarCobros()
         {
@@ -85,13 +96,19 @@ namespace CapaVista
 
         private void FrmCobros_Load(object sender, EventArgs e)
         {
-            pictureBox3.Focus();
             CargarCobros();
         }
 
         private void btnDetalle_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAtras_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            FrmHome home = new FrmHome();
+            home.Show();
         }
     }
 }

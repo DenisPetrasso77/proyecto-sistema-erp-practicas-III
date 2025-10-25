@@ -1,13 +1,14 @@
-﻿using CapaEntities;
-using CapaLogica;
-using ProyectoPracticas;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using CapaEntities;
+using CapaLogica;
+using ProyectoPracticas;
+using static ProyectoPracticas.UI_Utilidad;
 
 namespace CapaVista
 {
@@ -25,6 +26,10 @@ namespace CapaVista
         {
             if (this.DesignMode) return;
             this.ActiveControl = null;
+
+            this.Text = "Papelera";
+            FormDragHelper.EnableDrag(this, panel1);
+
             UI_Utilidad.EstiloLabels(this);
             UI_Utilidad.EstiloForm(this);
             UI_Utilidad.RedondearForm(this, 28);
@@ -372,7 +377,7 @@ namespace CapaVista
                     Descuentos = descuentos
                 };
                 string resultado = metodos.InsertarProducto(productoNuevo);
-                MessageBox.Show(resultado);
+                MessageBox.Show(Traductor.TraducirTexto(resultado));
                 
             }
             catch

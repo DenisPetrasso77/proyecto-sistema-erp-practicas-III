@@ -1,10 +1,11 @@
-﻿using CapaEntities;
-using CapaLogica;
-using ProyectoPracticas;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
+using CapaEntities;
+using CapaLogica;
+using ProyectoPracticas;
+using static ProyectoPracticas.UI_Utilidad;
 
 namespace CapaVista
 {
@@ -143,14 +144,31 @@ namespace CapaVista
 
         private void FrmPagos_Shown(object sender, EventArgs e)
         {
-            this.ActiveControl = null;
+            this.Text = "Papelera";
+            FormDragHelper.EnableDrag(this, panel1);
+
+            UI_Utilidad.EstiloForm(this);
+            UI_Utilidad.RedondearForm(this, 28);
+
             UI_Utilidad.EstiloForm(this);
             UI_Utilidad.RedondearForm(this, 28);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnAgregarFactura);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnAgregarNotaCredito);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnPagar);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnAtras);
-            //UI_Utilidad.EstiloBotonPrimarioDegradado(btnDetalle);
-            //UI_Utilidad.EstiloBotonPrimarioDegradado(btnPagar);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnAtras2);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnAtras3);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnDetalle);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnAgregarComprobante);
+
+            
+            UI_Utilidad.EstiloDataGridView(dataGridView1);
+            UI_Utilidad.EstiloDataGridView(dataGridView2);
+            UI_Utilidad.EstiloDataGridView(dataGridView3);
+
+            FormDragHelper.EnableDrag(this, panel1);
+
+
         }
 
         private void btnAgregarFactura_Click(object sender, EventArgs e)
@@ -226,6 +244,25 @@ namespace CapaVista
             FrmComprobante frm = new FrmComprobante(Convert.ToInt32(dataGridView3.CurrentRow.Cells[1].Value.ToString()));
             frm.ShowDialog();
             CargarPagosCompletados();
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            FrmHome frm = new FrmHome();
+            frm.Show();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+            FrmHome frm = new FrmHome();
+            frm.Show();
         }
     }
 }

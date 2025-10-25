@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using CapaEntities;
 using CapaLogica;
 using ProyectoPracticas;
+using static ProyectoPracticas.UI_Utilidad;
 
 namespace CapaVista
 {
@@ -210,6 +211,9 @@ namespace CapaVista
 
         private void FrmGestionPR_Shown(object sender, EventArgs e)
         {
+            this.Text = "Papelera";
+            FormDragHelper.EnableDrag(this, panel1);
+
             UI_Utilidad.EstiloForm(this);
             UI_Utilidad.RedondearForm(this, 28);
 
@@ -222,17 +226,12 @@ namespace CapaVista
 
             UI_Utilidad.EstiloDataGridView(dataGridView2);
             UI_Utilidad.EstiloDataGridView(dataGridView3);
-
-            //UI_Utilidad.EstiloGroupBoxSoloTitulo(groupBox1,
-            //    new Font("Segoe UI", 14, FontStyle.Bold),   // título
-            //    new Font("Segoe UI", 12, FontStyle.Regular) ); // hijos);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
-            FrmHome home = new FrmHome();
-            home.Show();
+     ;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -243,6 +242,12 @@ namespace CapaVista
         private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void FrmGestionPR_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FrmHome home = new FrmHome();
+            home.Show();
         }
     }
 }

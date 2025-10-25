@@ -1,11 +1,12 @@
-﻿using CapaEntities;
-using CapaLogica;
-using ProyectoPracticas;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
+using CapaEntities;
+using CapaLogica;
+using ProyectoPracticas;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using static ProyectoPracticas.UI_Utilidad;
 
 namespace CapaVista
 {
@@ -18,10 +19,17 @@ namespace CapaVista
         }
         private void FrmVentas_Shown(object sender, EventArgs e)
         {
-            UI_Utilidad.EstiloLabels(this);
+
+            this.Text = "Papelera";
+            this.ActiveControl = null;
+            FormDragHelper.EnableDrag(this, panel1);
+
             UI_Utilidad.EstiloForm(this);
             UI_Utilidad.RedondearForm(this, 28);
+
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnVenta);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnAtras);
+
             UI_Utilidad.EstiloDataGridView(dataGridView1);
         }
 
@@ -331,6 +339,13 @@ namespace CapaVista
             FrmNuevoCliente nuevoCliente = new FrmNuevoCliente();
             nuevoCliente.ShowDialog();
             CargarClientes();
+        }
+
+        private void btnAtras_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            FrmHome home = new FrmHome();
+            home.Show();
         }
     }
 }

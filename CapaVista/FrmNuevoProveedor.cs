@@ -1,8 +1,10 @@
-﻿using CapaEntities;
-using CapaLogica;
-using System;
+﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using CapaEntities;
+using CapaLogica;
+using ProyectoPracticas;
+using static ProyectoPracticas.UI_Utilidad;
 
 namespace CapaVista
 {
@@ -83,9 +85,20 @@ namespace CapaVista
                 MessageBox.Show("Por favor complete todos los campos");
                 return;
             }
+            if (CV_Utiles.ComboboxVacios(cmbProvincia, cmbLocalidad))
+            {
+                MessageBox.Show("Por favor seleccione Provincia y Localidad");
+                return;
+            }
+
             if (!CV_Utiles.CampoMail(txtCorreo.Text))
             {
                 MessageBox.Show("Formato de Mail Incorrecto");
+                return;
+            }
+            if (txtCUIT.Text.Length <11)
+            {
+                MessageBox.Show("El CUIT No Tiene La Cantidad Correcta");
                 return;
             }
             try
@@ -136,6 +149,29 @@ namespace CapaVista
         private void txtNumero_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCerrarProductos_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void FrmNuevoProveedor_Shown(object sender, EventArgs e)
+        {
+            this.Text = "Papelera";
+            FormDragHelper.EnableDrag(this, panel1);
+
+            UI_Utilidad.EstiloForm(this);
+            UI_Utilidad.RedondearForm(this, 28);
+
+
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnAtras);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnAgregar);
         }
     }
 }

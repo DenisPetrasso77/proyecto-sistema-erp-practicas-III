@@ -43,11 +43,12 @@
             this.txtBuscador = new System.Windows.Forms.TextBox();
             this.btnPedir = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.lblAgregarProducto = new System.Windows.Forms.Label();
+            this.lblEditarProducto = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lblAgregarProducto = new System.Windows.Forms.Label();
-            this.lblEditarProducto = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
@@ -67,14 +68,14 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(963, 72);
+            this.panel1.Size = new System.Drawing.Size(964, 72);
             this.panel1.TabIndex = 29;
             // 
             // pictureBox8
             // 
             this.pictureBox8.BackColor = System.Drawing.SystemColors.Highlight;
             this.pictureBox8.Image = global::CapaVista.Properties.Resources.agregar_producto;
-            this.pictureBox8.Location = new System.Drawing.Point(346, 12);
+            this.pictureBox8.Location = new System.Drawing.Point(361, 11);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(50, 50);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -96,7 +97,7 @@
             this.lblTituloHomeProductos.AutoSize = true;
             this.lblTituloHomeProductos.Font = new System.Drawing.Font("Consolas", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTituloHomeProductos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblTituloHomeProductos.Location = new System.Drawing.Point(402, 24);
+            this.lblTituloHomeProductos.Location = new System.Drawing.Point(430, 24);
             this.lblTituloHomeProductos.Name = "lblTituloHomeProductos";
             this.lblTituloHomeProductos.Size = new System.Drawing.Size(179, 37);
             this.lblTituloHomeProductos.TabIndex = 6;
@@ -120,7 +121,7 @@
             // 
             this.ckbStockBajo.AutoSize = true;
             this.ckbStockBajo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckbStockBajo.Location = new System.Drawing.Point(618, 137);
+            this.ckbStockBajo.Location = new System.Drawing.Point(598, 137);
             this.ckbStockBajo.Name = "ckbStockBajo";
             this.ckbStockBajo.Size = new System.Drawing.Size(159, 25);
             this.ckbStockBajo.TabIndex = 27;
@@ -148,15 +149,16 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(765, 234);
+            this.dataGridView1.Size = new System.Drawing.Size(745, 235);
             this.dataGridView1.TabIndex = 24;
             this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
+            this.dataGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing);
             // 
             // btnCerrarProductos
             // 
             this.btnCerrarProductos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCerrarProductos.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrarProductos.Location = new System.Drawing.Point(772, 468);
+            this.btnCerrarProductos.Location = new System.Drawing.Point(832, 469);
             this.btnCerrarProductos.Name = "btnCerrarProductos";
             this.btnCerrarProductos.Size = new System.Drawing.Size(120, 40);
             this.btnCerrarProductos.TabIndex = 23;
@@ -181,11 +183,11 @@
             // 
             this.btnPedir.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPedir.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPedir.Location = new System.Drawing.Point(637, 468);
+            this.btnPedir.Location = new System.Drawing.Point(509, 420);
             this.btnPedir.Name = "btnPedir";
-            this.btnPedir.Size = new System.Drawing.Size(120, 40);
+            this.btnPedir.Size = new System.Drawing.Size(248, 41);
             this.btnPedir.TabIndex = 30;
-            this.btnPedir.Text = "PEDIR";
+            this.btnPedir.Text = "PEDIR PRODUCTO";
             this.btnPedir.UseVisualStyleBackColor = true;
             this.btnPedir.Visible = false;
             this.btnPedir.Click += new System.EventHandler(this.btnPedir_Click);
@@ -193,6 +195,26 @@
             // toolTip1
             // 
             this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
+            // 
+            // lblAgregarProducto
+            // 
+            this.lblAgregarProducto.AutoSize = true;
+            this.lblAgregarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAgregarProducto.Location = new System.Drawing.Point(795, 225);
+            this.lblAgregarProducto.Name = "lblAgregarProducto";
+            this.lblAgregarProducto.Size = new System.Drawing.Size(129, 16);
+            this.lblAgregarProducto.TabIndex = 32;
+            this.lblAgregarProducto.Text = "Agregar Producto";
+            // 
+            // lblEditarProducto
+            // 
+            this.lblEditarProducto.AutoSize = true;
+            this.lblEditarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEditarProducto.Location = new System.Drawing.Point(795, 388);
+            this.lblEditarProducto.Name = "lblEditarProducto";
+            this.lblEditarProducto.Size = new System.Drawing.Size(114, 16);
+            this.lblEditarProducto.TabIndex = 33;
+            this.lblEditarProducto.Text = "Editar Producto";
             // 
             // pictureBox3
             // 
@@ -229,31 +251,22 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // lblAgregarProducto
+            // label1
             // 
-            this.lblAgregarProducto.AutoSize = true;
-            this.lblAgregarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAgregarProducto.Location = new System.Drawing.Point(795, 225);
-            this.lblAgregarProducto.Name = "lblAgregarProducto";
-            this.lblAgregarProducto.Size = new System.Drawing.Size(129, 16);
-            this.lblAgregarProducto.TabIndex = 32;
-            this.lblAgregarProducto.Text = "Agregar Producto";
-            // 
-            // lblEditarProducto
-            // 
-            this.lblEditarProducto.AutoSize = true;
-            this.lblEditarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEditarProducto.Location = new System.Drawing.Point(795, 388);
-            this.lblEditarProducto.Name = "lblEditarProducto";
-            this.lblEditarProducto.Size = new System.Drawing.Size(114, 16);
-            this.lblEditarProducto.TabIndex = 33;
-            this.lblEditarProducto.Text = "Editar Producto";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(357, 137);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(114, 21);
+            this.label1.TabIndex = 34;
+            this.label1.Text = "Actualizar Lista";
             // 
             // FrmGestionProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(963, 520);
+            this.ClientSize = new System.Drawing.Size(964, 521);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblEditarProducto);
             this.Controls.Add(this.lblAgregarProducto);
             this.Controls.Add(this.pictureBox3);
@@ -265,6 +278,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnCerrarProductos);
             this.Controls.Add(this.txtBuscador);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmGestionProductos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestion Productos";
@@ -300,5 +314,6 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label lblAgregarProducto;
         private System.Windows.Forms.Label lblEditarProducto;
+        private System.Windows.Forms.Label label1;
     }
 }

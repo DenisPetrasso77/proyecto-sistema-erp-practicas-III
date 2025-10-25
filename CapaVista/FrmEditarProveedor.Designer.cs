@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnAtras = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.txtObservaciones = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -56,8 +56,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pbAtras = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.lbltituloHome = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -65,29 +63,28 @@
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbAtras)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnCancelar
+            // btnAtras
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(371, 418);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(145, 35);
-            this.btnCancelar.TabIndex = 65;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnAtras.Location = new System.Drawing.Point(531, 427);
+            this.btnAtras.Name = "btnAtras";
+            this.btnAtras.Size = new System.Drawing.Size(145, 35);
+            this.btnAtras.TabIndex = 65;
+            this.btnAtras.Text = "Atras";
+            this.btnAtras.UseVisualStyleBackColor = true;
+            this.btnAtras.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // btnAgregar
+            // btnGuardar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(170, 418);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(145, 35);
-            this.btnAgregar.TabIndex = 64;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            this.btnGuardar.Location = new System.Drawing.Point(12, 427);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(145, 35);
+            this.btnGuardar.TabIndex = 64;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // label11
             // 
@@ -366,8 +363,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
-            this.panel1.Controls.Add(this.pbAtras);
-            this.panel1.Controls.Add(this.pictureBox3);
             this.panel1.Controls.Add(this.pictureBox8);
             this.panel1.Controls.Add(this.lbltituloHome);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -375,26 +370,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(688, 72);
             this.panel1.TabIndex = 66;
-            // 
-            // pbAtras
-            // 
-            this.pbAtras.Image = global::CapaVista.Properties.Resources.volver__1_;
-            this.pbAtras.Location = new System.Drawing.Point(615, 35);
-            this.pbAtras.Name = "pbAtras";
-            this.pbAtras.Size = new System.Drawing.Size(65, 34);
-            this.pbAtras.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbAtras.TabIndex = 60;
-            this.pbAtras.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::CapaVista.Properties.Resources.volver__1_;
-            this.pictureBox3.Location = new System.Drawing.Point(816, 28);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(65, 34);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 59;
-            this.pictureBox3.TabStop = false;
             // 
             // pictureBox8
             // 
@@ -443,11 +418,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(688, 461);
+            this.ClientSize = new System.Drawing.Size(688, 474);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnAgregar);
+            this.Controls.Add(this.btnAtras);
+            this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.txtObservaciones);
             this.Controls.Add(this.groupBox3);
@@ -457,14 +432,13 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editar Proveedor";
             this.Load += new System.EventHandler(this.FrmEditarProveedor_Load);
+            this.Shown += new System.EventHandler(this.FrmEditarProveedor_Shown);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbAtras)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -473,8 +447,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnAtras;
+        private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtObservaciones;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -501,8 +475,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pbAtras;
-        private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Label lbltituloHome;
         private System.Windows.Forms.ComboBox comboBox1;

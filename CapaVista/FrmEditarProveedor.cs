@@ -1,8 +1,10 @@
-﻿using CapaEntities;
-using CapaLogica;
-using System;
+﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using CapaEntities;
+using CapaLogica;
+using ProyectoPracticas;
+using static ProyectoPracticas.UI_Utilidad;
 
 namespace CapaVista
 {
@@ -148,6 +150,28 @@ namespace CapaVista
                 int idlocalidad = Convert.ToInt32(cmbLocalidad.Text.Split('-')[0].Trim());
                 txtCodPostal.Text = metodos.CodigoPostal(idlocalidad).ToString();
             }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void FrmEditarProveedor_Shown(object sender, EventArgs e)
+        {
+
+            this.Text = "Papelera";
+            FormDragHelper.EnableDrag(this, panel1);
+
+            UI_Utilidad.EstiloForm(this);
+            UI_Utilidad.RedondearForm(this, 28);
+
+            UI_Utilidad.EstiloForm(this);
+            UI_Utilidad.RedondearForm(this, 28);
+
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnAtras);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnGuardar);
+
         }
     }
 }

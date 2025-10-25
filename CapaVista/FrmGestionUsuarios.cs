@@ -1,9 +1,10 @@
-﻿using CapaEntities;
-using CapaLogica;
-using ProyectoPracticas;
-using System;
+﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using CapaEntities;
+using CapaLogica;
+using ProyectoPracticas;
+using static ProyectoPracticas.UI_Utilidad;
 
 namespace CapaVista
 {
@@ -30,7 +31,7 @@ namespace CapaVista
                     string estado = fila["Estado"].ToString();
                     string usuario = fila["Usuario"].ToString().ToLower();
                     string bloqueado = Convert.ToInt32(fila["Bloqueado"]) == 0 ? "No" : "Sí";
-
+                    string rol = fila["NombreRol"] == DBNull.Value ? "SIN ROL" : fila["NombreRol"].ToString();
                     if (!incluirInactivos && estado == "Inactivo")
                         continue;
 
@@ -46,7 +47,7 @@ namespace CapaVista
                             fila["Nombre"],
                             fila["Apellido"],
                             fila["Dni"],
-                            fila["NombreRol"],
+                            rol,
                             bloqueado,
                             estado
                         );
@@ -139,6 +140,7 @@ namespace CapaVista
             int IdUsuario = Convert.ToInt32(dataGridView1.CurrentRow.Cells["IdUsuario"].Value.ToString());
             FrmEditarUsuario editusuario = new FrmEditarUsuario(IdUsuario);
             editusuario.Show();
+            Cargarbuscador();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -149,11 +151,19 @@ namespace CapaVista
 
         private void FrmAdmusuarios_Shown(object sender, EventArgs e)
         {
-            this.ActiveControl = null;
+            this.Text = "Papelera";
+            FormDragHelper.EnableDrag(this, panel1);
+
             UI_Utilidad.EstiloForm(this);
             UI_Utilidad.RedondearForm(this, 28);
             UI_Utilidad.EstiloTextBox(txtBuscador, "Buscador de Usuarios");
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnAtras);
 
+            UI_Utilidad.AplicarEfectoHover(pictureBox1);
+            UI_Utilidad.AplicarEfectoHover(pictureBox2);
+            UI_Utilidad.AplicarEfectoHover(pictureBox3);
+
+            UI_Utilidad.EstiloDataGridView(dataGridView1);
 
         }
 
@@ -163,6 +173,11 @@ namespace CapaVista
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (!CV_Utiles.TienePermiso("Editar_Usuarios"))
             {

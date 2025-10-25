@@ -771,6 +771,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.bntCargarImagen);
             this.Controls.Add(this.pictureBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmEditarProducto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EDITAR PRODUCTO";

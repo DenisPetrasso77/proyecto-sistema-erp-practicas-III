@@ -1,8 +1,10 @@
-﻿using CapaEntities;
-using CapaLogica;
-using System;
+﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using CapaEntities;
+using CapaLogica;
+using ProyectoPracticas;
+using static ProyectoPracticas.UI_Utilidad;
 
 namespace CapaVista
 {
@@ -64,6 +66,27 @@ namespace CapaVista
                 MessageBox.Show("Error al contactar con la Base de Datos");
             }
             CargarTipoProductos();
+        }
+
+        private void FrmCargarTipoProducto_Shown(object sender, EventArgs e)
+        {
+            this.ActiveControl = null;
+            this.Text = "Papelera";
+
+
+            UI_Utilidad.EstiloLabels(this);
+
+            UI_Utilidad.EstiloForm(this);
+            UI_Utilidad.RedondearForm(this, 28);
+
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnBorrar);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnNuevo);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnSalir);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnModificar);
+
+            FormDragHelper.EnableDrag(this, panel1);
+
+            UI_Utilidad.EstiloDataGridView(dataGridView1);
         }
     }
 }

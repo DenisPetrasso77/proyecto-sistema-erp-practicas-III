@@ -1,11 +1,12 @@
-﻿using CapaEntities;
-using CapaLogica;
-using ProyectoPracticas;
-using SidebarMenu;
-using System;
+﻿using System;
 using System.Data;
 using System.IO;
 using System.Windows.Forms;
+using CapaEntities;
+using CapaLogica;
+using ProyectoPracticas;
+using SidebarMenu;
+using static ProyectoPracticas.UI_Utilidad;
 
 namespace CapaVista
 {
@@ -154,6 +155,12 @@ namespace CapaVista
             UI_Utilidad.EstiloTextBox(txtUsuario, "Usuario");
             UI_Utilidad.EstiloTextBox(txtContraseña, "Contraseña");
             UI_Utilidad.AplicarEfectoHover(pbSalir);
+
+            this.Text = "Papelera";
+
+            FormDragHelper.EnableDrag(this, pictureBox1);
+
+
         }
 
         private void lblOlvidoContraseña_Click(object sender, EventArgs e)

@@ -1,9 +1,10 @@
-﻿using CapaEntities;
+﻿using System;
+using System.Linq;
+using System.Windows.Forms;
+using CapaEntities;
 using CapaVista;
 using ProyectoPracticas;
-using System;
-using System.Windows.Forms;
-using System.Linq;
+using static ProyectoPracticas.UI_Utilidad;
 namespace SidebarMenu
 {
     public partial class FrmSidebar : Form
@@ -99,6 +100,7 @@ namespace SidebarMenu
 
         private void Form1_Shown(object sender, EventArgs e)
         {
+            this.Text = "Papelera";
             this.ActiveControl = null;
             UI_Utilidad.EstiloForm(this);
             UI_Utilidad.RedondearForm(this, 28);
@@ -115,6 +117,8 @@ namespace SidebarMenu
             UI_Utilidad.AplicarEfectoHover(pbConfig);
             UI_Utilidad.AplicarEfectoHover(pbSalir);
             UI_Utilidad.AplicarEfectoHover(pbPerfil);
+
+            FormDragHelper.EnableDrag(this, panel1);
         }
 
         private void btnHome_Click(object sender, EventArgs e)
@@ -204,7 +208,7 @@ namespace SidebarMenu
             btnAyuda.Text = Traductor.TraducirTexto("btnAyuda");
             btnAcerca.Text = Traductor.TraducirTexto("btnAcerca");
             btnSalir.Text = Traductor.TraducirTexto("btnSalir");
-            lblTituloHome.Text = Traductor.TraducirTexto("lblTituloHome");
+            lblSidebarBienvenidos.Text = Traductor.TraducirTexto("lblSidebarBienvenidos");
             this.Text = Traductor.TraducirTexto("frmSidebar");
         }
     }

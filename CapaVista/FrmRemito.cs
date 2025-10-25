@@ -1,23 +1,19 @@
 ﻿using System;
 using System.Windows.Forms;
+using ProyectoPracticas;
+using static ProyectoPracticas.UI_Utilidad;
 
 namespace CapaVista
 {
     public partial class FrmRemito : Form
     {
-        public FrmRemito()
+        string Cuit;
+        string razonSocial;
+        public FrmRemito(string cuit, string razonSocial)
         {
             InitializeComponent();
-        }
-
-        private void FrmFacturaRemito_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+            this.Cuit = cuit;
+            this.razonSocial = razonSocial;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -44,6 +40,33 @@ namespace CapaVista
         public string RazonSocial
         {
             get { return textBox5.Text; }
+        }
+        public void Limpiar()
+        {
+            CV_Utiles.LimpiarControles(this);
+        }
+
+        private void FrmRemito_Load(object sender, EventArgs e)
+        {
+            textBox4.Text = Cuit;
+            textBox5.Text = razonSocial;
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FrmRemito_Shown(object sender, EventArgs e)
+        {
+            this.Text = "Papelera";
+            FormDragHelper.EnableDrag(this, panel1);
+
+            UI_Utilidad.EstiloForm(this);
+            UI_Utilidad.RedondearForm(this, 28);
+
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnAceptar);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnAtras);
         }
     }
 }

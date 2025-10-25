@@ -467,8 +467,17 @@ namespace CapaVista
 
         private void FrmEditarProducto_Shown(object sender, EventArgs e)
         {
+            this.ActiveControl = null;
+            this.Text = "Papelera";
+
+            UI_Utilidad.EstiloLabels(this);
+
+            UI_Utilidad.EstiloForm(this);
+            UI_Utilidad.RedondearForm(this, 28);
+
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnGuardar);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnSalir);
+
         }
     }
 }

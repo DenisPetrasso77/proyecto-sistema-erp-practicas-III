@@ -1,10 +1,11 @@
-﻿using CapaLogica;
-using ProyectoPracticas;
-using System;
+﻿using System;
 using System.Data;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using CapaLogica;
+using ProyectoPracticas;
+using static ProyectoPracticas.UI_Utilidad;
 
 namespace CapaVista
 {
@@ -134,6 +135,8 @@ namespace CapaVista
         private void FrmBitacora_Shown(object sender, EventArgs e)
         {
             this.ActiveControl = null;
+            this.Text = "Papelera";
+            FormDragHelper.EnableDrag(this, panel1);
 
             UI_Utilidad.EstiloLabels(this);
 
@@ -145,6 +148,7 @@ namespace CapaVista
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnSalir);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnSalir);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnBuscar);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnExportar);
 
             UI_Utilidad.EstiloDataGridView(dataGridView1);
         }

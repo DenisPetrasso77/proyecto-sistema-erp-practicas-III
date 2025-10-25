@@ -1,17 +1,18 @@
-﻿using CapaEntities;
-using CapaLogica;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Drawing;
 using System.Windows.Forms;
+using CapaEntities;
+using CapaLogica;
+using ProyectoPracticas;
+using static ProyectoPracticas.UI_Utilidad;
 
 
 namespace CapaVista
 {
     public partial class FrmGestionRecepcion : Form
     {
-        FrmRemito facturaremito = new FrmRemito();
+        FrmRemito facturaremito;
         CL_Metodos metodos = new CL_Metodos();
         string idproveedor = string.Empty;
         int puestoventa = 0;
@@ -31,6 +32,7 @@ namespace CapaVista
                 MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            facturaremito = new FrmRemito(label5.Text.Split('(')[1].ToString().Split(')')[0], label5.Text.Split('(')[0].ToString());
             facturaremito.ShowDialog();
             puestoventa = int.TryParse(facturaremito.PuestoNumero, out int tmppv) ? tmppv : 0;
             numeroremito=int.TryParse(facturaremito.NumeroRemito, out int tmpnr) ? tmpnr : 0;
@@ -85,6 +87,10 @@ namespace CapaVista
             DataTable cachedevoluciones = metodos.TraerDevoluciones();
             foreach (DataRow fila in cachedevoluciones.Rows)
             {
+                if (fila["Estado"].ToString() == "Completada")
+                {
+                    continue;
+                }
                 string idRecepcion = fila["IdRecepcion"].ToString();
                 string razon = fila["RazonSocial"].ToString();
                 string cuit = fila["Cuit"].ToString();
@@ -94,10 +100,6 @@ namespace CapaVista
                 {
                     listBox2.Items.Add(item);
                 }
-                //if (fila["Estado"].ToString() == "Enviado a Proveedor")
-                //{
-
-                //}            
             }
 
             listBox2.Visible = listBox2.Items.Count > 0;
@@ -223,7 +225,6 @@ namespace CapaVista
 
             var fila = dataGridView1.Rows[e.RowIndex];
 
-            // CALCULAR DIFERENCIA
             if (dataGridView1.Columns[e.ColumnIndex].Name == "Recibida")
             {
                 int recibido = 0;
@@ -295,6 +296,7 @@ namespace CapaVista
             var resultado = metodos.InsertarInformeRecepcion(informesRecepcion);
             MessageBox.Show(resultado);
             dataGridView1.Rows.Clear();
+            facturaremito.Limpiar();
             label5.Text = string.Empty;
             label7.Text = string.Empty;
         }
@@ -369,19 +371,52 @@ namespace CapaVista
                 {
                     Detalle = detalle
                 };
-                var resultado = metodos.InsertarDevolucion(devoluciones);
-            if (int.TryParse(resultado, out _))
-            {
-                MessageBox.Show("Datos Actualizados Correctamente");
-            }
-            else
-            {
-                MessageBox.Show("Error");
-
-            }
+            string resultado = metodos.InsertarDevolucion(devoluciones);
+            MessageBox.Show(resultado);
+            
             label11.Text = string.Empty;
             label9.Text = string.Empty;
             dataGridView2.Rows.Clear();
+        }
+
+        private void FrmGestionRecepcion_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FrmHome home = new FrmHome();
+            home.Show();
+        }
+
+        private void FrmGestionRecepcion_Shown(object sender, EventArgs e)
+        {
+            this.Text = "Papelera";
+
+            FormDragHelper.EnableDrag(this, panel1);
+
+            this.ActiveControl = null;
+
+            UI_Utilidad.EstiloForm(this);
+            UI_Utilidad.RedondearForm(this, 28);
+
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnAtras);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnAtras2);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnCargar);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnCargar);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnGuardar);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnGuardar2);
+
+            UI_Utilidad.EstiloDataGridView(dataGridView1);
+            UI_Utilidad.EstiloDataGridView(dataGridView2);
+
+
+        }
+
+        private void btnAtras_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnAtras2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

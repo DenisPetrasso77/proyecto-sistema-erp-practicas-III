@@ -1,7 +1,9 @@
-﻿using CapaLogica;
-using System;
+﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using CapaLogica;
+using ProyectoPracticas;
+using static ProyectoPracticas.UI_Utilidad;
 
 namespace CapaVista
 {
@@ -88,6 +90,18 @@ namespace CapaVista
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void FrmFactura_Shown(object sender, EventArgs e)
+        {
+            this.Text = "Papelera";
+            FormDragHelper.EnableDrag(this, panel1);
+
+            UI_Utilidad.EstiloForm(this);
+            UI_Utilidad.RedondearForm(this, 28);
+
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnCancelar);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnAceptar);
         }
     }
 }

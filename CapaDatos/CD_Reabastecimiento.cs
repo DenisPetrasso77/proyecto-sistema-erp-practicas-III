@@ -1,11 +1,7 @@
 ﻿using CapaEntities;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CapaDatos
 {
@@ -210,6 +206,35 @@ namespace CapaDatos
                 CerrarConexion();
             }
         }
+        public string InsertarPR(int idusuario, DataTable detallepr)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_InsertarPR", AbrirConexion()))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Idusuario", idusuario);
+
+                    SqlParameter tvpParam = cmd.Parameters.AddWithValue("@Detalle", detallepr);
+                    tvpParam.SqlDbType = SqlDbType.Structured;
+                    tvpParam.TypeName = "t_DetallePR";
+
+                    cmd.Parameters.AddWithValue("@Fecha", DateTime.Now);
+                    cmd.ExecuteNonQuery();
+
+                    return "Pedido Generado Correctamente";
+                }
+            }
+            catch (SqlException ex)
+            {
+                return "Error:" + ex.Message;
+            }
+            finally
+            {
+                CerrarConexion();
+            }
+        }
+
         public string InsertarSolicitudCotizacion(PedidoCotizacion pedidoCotizacion, DataTable detalle)
         {
             try
@@ -487,8 +512,6 @@ namespace CapaDatos
             }
             return dt;
         }
-
-
         public DataTable RecepcionOrdenes()
         {
             DataTable dt = new DataTable();
@@ -500,7 +523,6 @@ namespace CapaDatos
             }
             return dt;
         }
-
         public DataTable TraerSolicitudesCotizaciones()
         {
             DataTable dt = new DataTable();

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPerfil));
             this.label1 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
@@ -49,14 +50,16 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(176, 84);
+            this.label1.Location = new System.Drawing.Point(230, 102);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(94, 32);
             this.label1.TabIndex = 1;
@@ -65,7 +68,7 @@
             // txtNombre
             // 
             this.txtNombre.Enabled = false;
-            this.txtNombre.Location = new System.Drawing.Point(266, 84);
+            this.txtNombre.Location = new System.Drawing.Point(320, 102);
             this.txtNombre.Multiline = true;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.ReadOnly = true;
@@ -75,7 +78,7 @@
             // txtApellido
             // 
             this.txtApellido.Enabled = false;
-            this.txtApellido.Location = new System.Drawing.Point(486, 84);
+            this.txtApellido.Location = new System.Drawing.Point(540, 102);
             this.txtApellido.Multiline = true;
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.ReadOnly = true;
@@ -85,7 +88,7 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(396, 81);
+            this.label2.Location = new System.Drawing.Point(450, 99);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(94, 28);
             this.label2.TabIndex = 3;
@@ -94,7 +97,7 @@
             // txtMail
             // 
             this.txtMail.Enabled = false;
-            this.txtMail.Location = new System.Drawing.Point(266, 164);
+            this.txtMail.Location = new System.Drawing.Point(320, 182);
             this.txtMail.Multiline = true;
             this.txtMail.Name = "txtMail";
             this.txtMail.ReadOnly = true;
@@ -104,7 +107,7 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(177, 169);
+            this.label3.Location = new System.Drawing.Point(231, 187);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 20);
             this.label3.TabIndex = 5;
@@ -113,7 +116,7 @@
             // txtRol
             // 
             this.txtRol.Enabled = false;
-            this.txtRol.Location = new System.Drawing.Point(486, 122);
+            this.txtRol.Location = new System.Drawing.Point(540, 140);
             this.txtRol.Multiline = true;
             this.txtRol.Name = "txtRol";
             this.txtRol.ReadOnly = true;
@@ -123,7 +126,7 @@
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(396, 122);
+            this.label4.Location = new System.Drawing.Point(450, 140);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 25);
             this.label4.TabIndex = 7;
@@ -131,7 +134,7 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(181, 342);
+            this.btnGuardar.Location = new System.Drawing.Point(236, 417);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.btnGuardar.Size = new System.Drawing.Size(120, 40);
@@ -142,7 +145,7 @@
             // 
             // btnAtras
             // 
-            this.btnAtras.Location = new System.Drawing.Point(401, 342);
+            this.btnAtras.Location = new System.Drawing.Point(538, 417);
             this.btnAtras.Name = "btnAtras";
             this.btnAtras.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.btnAtras.Size = new System.Drawing.Size(120, 40);
@@ -154,10 +157,11 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel1.Controls.Add(this.pictureBox8);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(622, 78);
+            this.panel1.Size = new System.Drawing.Size(688, 78);
             this.panel1.TabIndex = 15;
             // 
             // label6
@@ -165,7 +169,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label6.Location = new System.Drawing.Point(237, 17);
+            this.label6.Location = new System.Drawing.Point(280, 9);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(149, 45);
             this.label6.TabIndex = 0;
@@ -173,10 +177,10 @@
             // 
             // btnCambiarFoto
             // 
-            this.btnCambiarFoto.Location = new System.Drawing.Point(12, 254);
+            this.btnCambiarFoto.Location = new System.Drawing.Point(12, 264);
             this.btnCambiarFoto.Name = "btnCambiarFoto";
             this.btnCambiarFoto.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.btnCambiarFoto.Size = new System.Drawing.Size(153, 28);
+            this.btnCambiarFoto.Size = new System.Drawing.Size(150, 40);
             this.btnCambiarFoto.TabIndex = 16;
             this.btnCambiarFoto.Text = "Cambiar Imagen";
             this.btnCambiarFoto.UseVisualStyleBackColor = true;
@@ -185,9 +189,9 @@
             // pbFoto
             // 
             this.pbFoto.Image = global::CapaVista.Properties.Resources.usuario1;
-            this.pbFoto.Location = new System.Drawing.Point(12, 84);
+            this.pbFoto.Location = new System.Drawing.Point(12, 94);
             this.pbFoto.Name = "pbFoto";
-            this.pbFoto.Size = new System.Drawing.Size(153, 164);
+            this.pbFoto.Size = new System.Drawing.Size(150, 150);
             this.pbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbFoto.TabIndex = 0;
             this.pbFoto.TabStop = false;
@@ -195,7 +199,7 @@
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(176, 127);
+            this.label5.Location = new System.Drawing.Point(230, 145);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(61, 20);
             this.label5.TabIndex = 17;
@@ -204,7 +208,7 @@
             // textBox1
             // 
             this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(266, 122);
+            this.textBox1.Location = new System.Drawing.Point(320, 140);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
@@ -214,7 +218,7 @@
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(177, 256);
+            this.label7.Location = new System.Drawing.Point(230, 301);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(226, 26);
             this.label7.TabIndex = 19;
@@ -222,9 +226,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(410, 256);
+            this.button1.Location = new System.Drawing.Point(462, 297);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(196, 26);
+            this.button1.Size = new System.Drawing.Size(196, 30);
             this.button1.TabIndex = 20;
             this.button1.Text = "Cambiar Pregunta";
             this.button1.UseVisualStyleBackColor = true;
@@ -233,17 +237,17 @@
             // textBox2
             // 
             this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(182, 288);
+            this.textBox2.Location = new System.Drawing.Point(235, 333);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(340, 25);
+            this.textBox2.Size = new System.Drawing.Size(423, 25);
             this.textBox2.TabIndex = 21;
             // 
             // label8
             // 
             this.label8.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(177, 211);
+            this.label8.Location = new System.Drawing.Point(230, 226);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(134, 20);
             this.label8.TabIndex = 22;
@@ -251,19 +255,29 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(410, 211);
+            this.button2.Location = new System.Drawing.Point(463, 226);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(196, 26);
+            this.button2.Size = new System.Drawing.Size(196, 30);
             this.button2.TabIndex = 23;
             this.button2.Text = "Cambiar Contraseña";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = global::CapaVista.Properties.Resources.perfil;
+            this.pictureBox8.Location = new System.Drawing.Point(224, 12);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox8.TabIndex = 34;
+            this.pictureBox8.TabStop = false;
+            // 
             // FrmPerfil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(618, 417);
+            this.ClientSize = new System.Drawing.Size(683, 479);
             this.ControlBox = false;
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label8);
@@ -286,6 +300,7 @@
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmPerfil";
@@ -296,6 +311,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -323,5 +339,6 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.PictureBox pictureBox8;
     }
 }

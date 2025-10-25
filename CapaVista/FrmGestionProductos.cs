@@ -1,10 +1,11 @@
-﻿using CapaEntities;
-using CapaLogica;
-using ProyectoPracticas;
-using System;
+﻿using System;
 using System.Data;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using CapaEntities;
+using CapaLogica;
+using ProyectoPracticas;
+using static ProyectoPracticas.UI_Utilidad;
 
 namespace CapaVista
 {
@@ -221,6 +222,7 @@ namespace CapaVista
 
         private void btnPedir_Click(object sender, EventArgs e)
         {
+            bool hayMarcado = false;
             if (CV_Utiles.TienePermiso("Crear_Compras"))
             {
                 DataTable detalle = new DataTable();
@@ -231,11 +233,26 @@ namespace CapaVista
 
                 foreach (DataGridViewRow fila in dataGridView1.Rows)
                 {
+                    if (fila.Cells["Pedir"].Value != null && Convert.ToBoolean(fila.Cells["Pedir"].Value))
+                    {
+                        hayMarcado = true;
+                        break;
+                    }
+                    if (!hayMarcado)
+                    {
+                        MessageBox.Show("No ha seleccionado ningún producto para pedir.");
+                        return;
+                    }
+                }
+                foreach (DataGridViewRow fila in dataGridView1.Rows)
+                {
                     if (fila.Cells["Pedir"].Value != null && fila.Cells["CantidadPedir"].Value == null)
                     {
                         MessageBox.Show("Por favor ingrese la cantidad a pedir");
                         return;
                     }
+
+
                     if (fila.Cells["Pedir"].Value != null && Convert.ToBoolean(fila.Cells["Pedir"].Value))
                     {
                         detalle.Rows.Add(
@@ -261,8 +278,8 @@ namespace CapaVista
             {
                 MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
         }
+                          
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
@@ -376,14 +393,33 @@ namespace CapaVista
 
         private void FrmGestionProductos_Shown(object sender, EventArgs e)
         {
+            this.Text = "Papelera";
+            FormDragHelper.EnableDrag(this, panel1);
+
             UI_Utilidad.EstiloForm(this);
             UI_Utilidad.RedondearForm(this, 28);
+
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnPedir);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnCerrarProductos);
             UI_Utilidad.AplicarEfectoHover(pictureBox1);
             UI_Utilidad.AplicarEfectoHover(pictureBox2);
-            //UI_Utilidad.EstiloDataGridView(dataGridView1);
+            UI_Utilidad.EstiloDataGridView(dataGridView1);
 
+            FormDragHelper.EnableDrag(this, panel1);
+
+
+        }
+
+        private void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (dataGridView1.CurrentCell.ColumnIndex == 4)
+            {
+                e.Control.KeyPress += (s, ev) =>
+                {
+                    if (!char.IsDigit(ev.KeyChar) && !char.IsControl(ev.KeyChar))
+                        ev.Handled = true;
+                };
+            }
         }
     }
 }

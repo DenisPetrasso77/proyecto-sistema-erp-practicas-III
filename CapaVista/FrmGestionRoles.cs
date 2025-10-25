@@ -1,10 +1,12 @@
-﻿using CapaEntities;
-using CapaLogica;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using CapaEntities;
+using CapaLogica;
+using ProyectoPracticas;
+using static ProyectoPracticas.UI_Utilidad;
 
 namespace CapaVista
 {
@@ -26,7 +28,7 @@ namespace CapaVista
             foreach (DataRow permiso in cachePermisos.Rows)
             {
                 int idPermiso = Convert.ToInt32(permiso["IdPermiso"]);
-                string nombrePermiso = permiso["Permiso"].ToString();
+                string nombrePermiso = permiso["Permiso"].ToString().Replace('_',' ');
 
                 bool autorizadoRol = cachePermisosRol.AsEnumerable().Any(r => r.Field<int>("IdPermiso") == idPermiso);
 
@@ -87,8 +89,13 @@ namespace CapaVista
                 MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
             string rol = comboBox1.Text.ToString();
-            if (rol == null) return;
+            if (string.IsNullOrEmpty(rol) )
+            {
+             MessageBox.Show("Seleccione un rol para eliminar.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (rol == "1 - Administrador")
             {
                 MessageBox.Show("No se puede eliminar el rol de Administrador.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -167,7 +174,7 @@ namespace CapaVista
             foreach (DataRow permiso in cachePermisos.Rows)
             {
                 int idPermiso = Convert.ToInt32(permiso["IdPermiso"]);
-                string nombrePermiso = permiso["Permiso"].ToString();
+                string nombrePermiso = permiso["Permiso"].ToString().Replace('_', ' ');
 
                 bool autorizadoRol = cachePermisosRol.AsEnumerable().Any(r => r.Field<int>("IdPermiso") == idPermiso);
 
@@ -218,6 +225,33 @@ namespace CapaVista
             dataGridView2.Rows.Clear();
             comboBox2.Items.Clear();
             CargarUsuarios();
+        }
+
+        private void FrmGestionRoles_Shown(object sender, EventArgs e)
+        {
+            this.Text = "Papelera";
+            FormDragHelper.EnableDrag(this, panel1);
+
+            UI_Utilidad.EstiloForm(this);
+            UI_Utilidad.RedondearForm(this, 28);
+
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnAtras);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnAtras2);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnActualizar);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnActualizar2);
+
+            UI_Utilidad.AplicarEfectoHover(pictureBox1);
+            UI_Utilidad.AplicarEfectoHover(pictureBox2);
+            UI_Utilidad.EstiloDataGridView(dataGridView1);
+            UI_Utilidad.EstiloDataGridView(dataGridView2);
+
+        }
+
+        private void btnAtras_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            FrmHome home = new FrmHome();
+            home.Show();
         }
     }
 }

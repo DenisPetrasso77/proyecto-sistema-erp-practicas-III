@@ -1,7 +1,9 @@
-﻿using CapaLogica;
-using System;
+﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using CapaLogica;
+using ProyectoPracticas;
+using static ProyectoPracticas.UI_Utilidad;
 
 namespace CapaVista
 {
@@ -110,6 +112,26 @@ namespace CapaVista
         {
             this.Text=Traductor.TraducirTexto("frmRecupero");
             Traductor.TraducirFormulario(this);
+        }
+
+        private void FrmRecupero_Shown(object sender, EventArgs e)
+        {
+            this.Text = "Papelera";
+            FormDragHelper.EnableDrag(this, panel1);
+
+            UI_Utilidad.EstiloForm(this);
+            UI_Utilidad.RedondearForm(this, 28);
+
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnActualizar);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnAtras);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnComprobar);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnValidar);
+
+        }
+
+        private void btnAtras_Click(object sender, EventArgs e)
+        {
+            this.Close();   
         }
     }
 }

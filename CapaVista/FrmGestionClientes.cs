@@ -1,5 +1,4 @@
-﻿using CapaLogica;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +9,9 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaLogica;
+using ProyectoPracticas;
+using static ProyectoPracticas.UI_Utilidad;
 using static TheArtOfDevHtmlRenderer.Adapters.RGraphicsPath;
 
 namespace CapaVista
@@ -90,6 +92,17 @@ namespace CapaVista
             FrmEditarCliente frm = new FrmEditarCliente(Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value));
             frm.ShowDialog();
             CargarClientes();
+        }
+
+        private void FrmGestionClientes_Shown(object sender, EventArgs e)
+        {
+            this.Text = "Papelera";
+            FormDragHelper.EnableDrag(this, panel1);
+
+            UI_Utilidad.EstiloForm(this);
+            UI_Utilidad.RedondearForm(this, 28);
+
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnCerrar);
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using CapaEntities;
-using CapaLogica;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +8,10 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaEntities;
+using CapaLogica;
+using ProyectoPracticas;
+using static ProyectoPracticas.UI_Utilidad;
 
 namespace CapaVista
 {
@@ -71,6 +73,23 @@ namespace CapaVista
                 return;
             }
             
+        }
+
+        private void FrmActualizarPregunta_Shown(object sender, EventArgs e)
+        {
+            this.ActiveControl = null;
+            this.Text = "Papelera";
+
+
+            UI_Utilidad.EstiloLabels(this);
+
+            UI_Utilidad.EstiloForm(this);
+            UI_Utilidad.RedondearForm(this, 28);
+
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnActualizar);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnAtras);
+
+            FormDragHelper.EnableDrag(this, panel1);
         }
     }
 }

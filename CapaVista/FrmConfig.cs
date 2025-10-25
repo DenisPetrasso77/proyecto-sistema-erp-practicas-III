@@ -1,8 +1,9 @@
-﻿using CapaLogica;
+﻿using System;
+using System.Windows.Forms;
+using CapaLogica;
 using ProyectoPracticas;
 using SidebarMenu;
-using System;
-using System.Windows.Forms;
+using static ProyectoPracticas.UI_Utilidad;
 
 namespace CapaVista
 {
@@ -73,6 +74,9 @@ namespace CapaVista
 
         private void FrmConfig_Shown(object sender, EventArgs e)
         {
+            this.Text = "Papelera";
+            FormDragHelper.EnableDrag(this, panel1);
+
             UI_Utilidad.EstiloForm(this);
             UI_Utilidad.RedondearForm(this, 28);
 

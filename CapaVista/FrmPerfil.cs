@@ -1,12 +1,13 @@
-﻿using CapaEntities;
-using CapaLogica;
-using ProyectoPracticas;
-using SidebarMenu;
-using System;
+﻿using System;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using CapaEntities;
+using CapaLogica;
+using ProyectoPracticas;
+using SidebarMenu;
+using static ProyectoPracticas.UI_Utilidad;
 
 namespace CapaVista
 {
@@ -21,9 +22,12 @@ namespace CapaVista
 
         private void FrmPerfil_Shown(object sender, EventArgs e)
         {
-            this.ActiveControl = null;
+            this.Text = "Papelera";
+            FormDragHelper.EnableDrag(this, panel1);
+
             UI_Utilidad.EstiloForm(this);
             UI_Utilidad.RedondearForm(this, 28);
+
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnGuardar);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnAtras);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnCambiarFoto);
@@ -33,8 +37,7 @@ namespace CapaVista
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
-            FrmSidebar home = new FrmSidebar();
-            home.Show();
+
         }
 
         private void FrmPerfil_Load(object sender, EventArgs e)

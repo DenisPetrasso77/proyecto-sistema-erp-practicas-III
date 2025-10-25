@@ -1,10 +1,11 @@
-﻿using CapaEntities;
-using CapaLogica;
-using System;
+﻿using System;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using CapaEntities;
+using CapaLogica;
+using ProyectoPracticas;
 
 namespace CapaVista
 {
@@ -116,6 +117,27 @@ namespace CapaVista
             {
                 e.Handled = true;
             }
+        }
+
+        private void FrmAltaUsuario_Shown(object sender, EventArgs e)
+        {
+            UI_Utilidad.EstiloLabels(this);
+            UI_Utilidad.EstiloForm(this);
+            UI_Utilidad.RedondearForm(this, 28);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnAtras);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnAceptar);
+            this.Text = "Papelera";
+
+        }
+
+        private void btnAtras_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

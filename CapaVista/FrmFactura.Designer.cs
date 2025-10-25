@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmFactura));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -81,7 +82,8 @@
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(241, 173);
+            this.textBox5.Enabled = false;
+            this.textBox5.Location = new System.Drawing.Point(241, 231);
             this.textBox5.MaxLength = 100;
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(125, 20);
@@ -91,7 +93,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(64, 174);
+            this.label5.Location = new System.Drawing.Point(64, 232);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(126, 19);
             this.label5.TabIndex = 37;
@@ -99,7 +101,8 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(241, 147);
+            this.textBox4.Enabled = false;
+            this.textBox4.Location = new System.Drawing.Point(241, 179);
             this.textBox4.MaxLength = 11;
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(125, 20);
@@ -109,7 +112,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(64, 148);
+            this.label8.Location = new System.Drawing.Point(64, 180);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(90, 19);
             this.label8.TabIndex = 36;
@@ -145,7 +148,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(64, 119);
+            this.label10.Location = new System.Drawing.Point(64, 135);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(126, 19);
             this.label10.TabIndex = 38;
@@ -155,14 +158,14 @@
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(241, 120);
+            this.comboBox1.Location = new System.Drawing.Point(241, 136);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(125, 21);
             this.comboBox1.TabIndex = 39;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(241, 199);
+            this.textBox3.Location = new System.Drawing.Point(241, 275);
             this.textBox3.MaxLength = 100;
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(125, 20);
@@ -174,7 +177,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(64, 201);
+            this.label11.Location = new System.Drawing.Point(64, 277);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(63, 19);
             this.label11.TabIndex = 41;
@@ -182,7 +185,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(226, 242);
+            this.btnCancelar.Location = new System.Drawing.Point(226, 329);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(140, 35);
             this.btnCancelar.TabIndex = 43;
@@ -192,7 +195,7 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(68, 242);
+            this.btnAceptar.Location = new System.Drawing.Point(68, 329);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(140, 35);
             this.btnAceptar.TabIndex = 42;
@@ -204,7 +207,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(444, 290);
+            this.ClientSize = new System.Drawing.Size(444, 385);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.textBox3);
@@ -219,10 +222,12 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmFactura";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Carga Factura";
             this.Load += new System.EventHandler(this.FormFactura_Load);
+            this.Shown += new System.EventHandler(this.FrmFactura_Shown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();

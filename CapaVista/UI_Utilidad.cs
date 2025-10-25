@@ -284,7 +284,7 @@ namespace ProyectoPracticas
             dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 12, FontStyle.Bold);
             dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgv.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dgv.ColumnHeadersHeight = 40;
+            dgv.ColumnHeadersHeight = 55;
             dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -307,6 +307,7 @@ namespace ProyectoPracticas
             {
                 if (dgv.Rows.Count == 0)
                 {
+                    // Mensaje cuando no hay datos
                     TextRenderer.DrawText(
                         e.Graphics,
                         "No hay datos para mostrar",
@@ -316,7 +317,26 @@ namespace ProyectoPracticas
                         TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter
                     );
                 }
+                else
+                {
+                    // Fondo gris claro debajo de las filas
+                    int displayedHeight = dgv.Rows.GetRowsHeight(DataGridViewElementStates.Visible) + dgv.ColumnHeadersHeight;
+                    if (displayedHeight < dgv.Height)
+                    {
+                        Rectangle emptySpace = new Rectangle(
+                            0,
+                            displayedHeight,
+                            dgv.Width,
+                            dgv.Height - displayedHeight
+                        );
+                        using (SolidBrush brush = new SolidBrush(Color.FromArgb(245, 245, 245))) // gris suave
+                        {
+                            e.Graphics.FillRectangle(brush, emptySpace);
+                        }
+                    }
+                }
             };
+
         }
 
         public static void EstiloGroupBoxSoloTitulo(GroupBox gb, Font tituloFont, Font hijosFont)
@@ -523,5 +543,30 @@ namespace ProyectoPracticas
                 AplicarFuenteAControles(form);
             }
         }
+
+        public static class FormDragHelper
+        {
+            [DllImport("user32.dll")]
+            private static extern bool ReleaseCapture();
+
+            [DllImport("user32.dll")]
+            private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+
+            private const int WM_NCLBUTTONDOWN = 0xA1;
+            private const int HTCAPTION = 0x2;
+
+            public static void EnableDrag(Form form, Control control)
+            {
+                control.MouseDown += (s, e) =>
+                {
+                    if (e.Button == MouseButtons.Left)
+                    {
+                        ReleaseCapture();
+                        SendMessage(form.Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
+                    }
+                };
+            }
+        }
+
     }
 }

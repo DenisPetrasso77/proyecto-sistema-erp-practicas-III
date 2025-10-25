@@ -1,10 +1,11 @@
-﻿using CapaEntities;
+﻿using System;
+using System.Linq;
+using System.Windows.Forms;
+using CapaEntities;
 using CapaLogica;
 using ProyectoPracticas;
 using SidebarMenu;
-using System;
-using System.Linq;
-using System.Windows.Forms;
+using static ProyectoPracticas.UI_Utilidad;
 
 
 namespace CapaVista
@@ -126,23 +127,16 @@ namespace CapaVista
 
         private void FrmAdminHome_Shown(object sender, EventArgs e)
         {
+            this.Text = "Papelera";
             this.ActiveControl = null;
-
-
-            //UI_Utilidad.EstiloFormDegradado(this,
-            //    Color.FromArgb(230, 230, 230),  // gris clarito
-            //    Color.FromArgb(180, 180, 180),  // gris oscurito
-            //    90f);
 
             UI_Utilidad.EstiloForm(this);
             UI_Utilidad.RedondearForm(this, 28);
-
 
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnGestionProductos);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnReabastecer);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnGestionPagos);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnGestionProveedores);
-            //UI_Utilidad.EstiloBotonPrimarioDegradado(btnModificar);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnBitacora);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnGestionAdmin);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnCotizacion);
@@ -151,10 +145,14 @@ namespace CapaVista
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnClientes);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnVentas);
             UI_Utilidad.EstiloBotonPrimarioDegradado(btnCobros);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnCobros);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnRolesPermisos);
+            UI_Utilidad.AplicarEfectoHover(pbAtras);
+
+            FormDragHelper.EnableDrag(this, panel1);
 
             UI_Utilidad.AplicarTemaAControles(this);
             UI_Utilidad.GuardarColoresOriginales(this);
-            UI_Utilidad.AplicarFuenteATodosLosForms();
 
         }
         private void pictureBox11_Click(object sender, EventArgs e)
@@ -250,6 +248,7 @@ namespace CapaVista
                 MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            this.Close();
             FrmGestionRoles roles = new FrmGestionRoles();
             roles.ShowDialog();
             metodos.Bitacora(Sesion.Usuario.IdUsuario, "Roles", "Accedio al Menu Gestion Roles");

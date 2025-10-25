@@ -43,8 +43,8 @@
             this.btnHome = new System.Windows.Forms.Button();
             this.btnMenu = new System.Windows.Forms.Button();
             this.SidebarTimer = new System.Windows.Forms.Timer(this.components);
-            this.lblTituloHome = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblSidebarBienvenidos = new System.Windows.Forms.Label();
             this.lblPerfil = new System.Windows.Forms.Label();
             this.pbPerfil = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -208,28 +208,28 @@
             this.SidebarTimer.Interval = 10;
             this.SidebarTimer.Tick += new System.EventHandler(this.SidebarTimer_Tick_1);
             // 
-            // lblTituloHome
-            // 
-            this.lblTituloHome.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTituloHome.AutoSize = true;
-            this.lblTituloHome.Font = new System.Drawing.Font("Consolas", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloHome.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblTituloHome.Location = new System.Drawing.Point(400, 32);
-            this.lblTituloHome.Name = "lblTituloHome";
-            this.lblTituloHome.Size = new System.Drawing.Size(215, 37);
-            this.lblTituloHome.TabIndex = 6;
-            this.lblTituloHome.Text = "Bienvenidos";
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
-            this.panel1.Controls.Add(this.lblTituloHome);
+            this.panel1.Controls.Add(this.lblSidebarBienvenidos);
             this.panel1.Location = new System.Drawing.Point(0, 484);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1014, 100);
             this.panel1.TabIndex = 7;
+            // 
+            // lblSidebarBienvenidos
+            // 
+            this.lblSidebarBienvenidos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblSidebarBienvenidos.AutoSize = true;
+            this.lblSidebarBienvenidos.Font = new System.Drawing.Font("Consolas", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSidebarBienvenidos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblSidebarBienvenidos.Location = new System.Drawing.Point(400, 32);
+            this.lblSidebarBienvenidos.Name = "lblSidebarBienvenidos";
+            this.lblSidebarBienvenidos.Size = new System.Drawing.Size(215, 37);
+            this.lblSidebarBienvenidos.TabIndex = 6;
+            this.lblSidebarBienvenidos.Text = "Bienvenidos";
             // 
             // lblPerfil
             // 
@@ -245,7 +245,7 @@
             // pbPerfil
             // 
             this.pbPerfil.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbPerfil.Image = global::CapaVista.Properties.Resources.usuario2;
+            this.pbPerfil.Image = global::CapaVista.Properties.Resources.perfil;
             this.pbPerfil.Location = new System.Drawing.Point(948, 12);
             this.pbPerfil.Name = "pbPerfil";
             this.pbPerfil.Size = new System.Drawing.Size(40, 40);
@@ -274,6 +274,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.sidebar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmSidebar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sidebar";
@@ -303,7 +304,6 @@
         private System.Windows.Forms.Button btnConfig;
         private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.Timer SidebarTimer;
-        private System.Windows.Forms.Label lblTituloHome;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnSalir;
@@ -314,5 +314,6 @@
         private System.Windows.Forms.PictureBox pbAyuda;
         private System.Windows.Forms.PictureBox pbPerfil;
         private System.Windows.Forms.Label lblPerfil;
+        private System.Windows.Forms.Label lblSidebarBienvenidos;
     }
 }

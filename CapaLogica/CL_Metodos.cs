@@ -422,7 +422,7 @@ namespace CapaLogica
         }
         public string InsertarPR(int idusuario, DataTable detallepr)
         {
-            return productos.InsertarPR(idusuario,detallepr);
+            return reabastecimiento.InsertarPR(idusuario,detallepr);
         }
         public string RestablecerContraseña(int idusuario,string contraseña)
         { 

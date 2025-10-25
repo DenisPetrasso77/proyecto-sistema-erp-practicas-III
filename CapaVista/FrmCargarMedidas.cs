@@ -1,7 +1,9 @@
-﻿using CapaLogica;
-using System;
+﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using CapaLogica;
+using ProyectoPracticas;
+using static ProyectoPracticas.UI_Utilidad;
 
 namespace CapaVista
 {
@@ -71,10 +73,10 @@ namespace CapaVista
 
         private void button3_Click(object sender, System.EventArgs e)
         {
-            button1.Visible = false;
-            button3.Visible = false;
-            button2.Visible = true;
-            button4.Visible = true;
+            btnActualizar.Visible = false;
+            btnCancelar.Visible = false;
+            btnModificar.Visible = true;
+            btnSalir.Visible = true;
             BloquearDatagrid(dataGridView1);
         }
 
@@ -87,11 +89,11 @@ namespace CapaVista
                 string estado = dataGridView1.CurrentRow.Cells["ESTADO"].Value.ToString();
                 MessageBox.Show(metodos.ActualizarMedidas(id, medida, estado));
                 textBox1.Focus();
-                button4.Visible = !button4.Visible;
-                button2.Visible = !button2.Visible;
-                button3.Visible = !button3.Visible;
-                button1.Visible = !button1.Visible;
-                button2.Visible = !button2.Visible;
+                btnSalir.Visible = !btnSalir.Visible;
+                btnModificar.Visible = !btnModificar.Visible;
+                btnCancelar.Visible = !btnCancelar.Visible;
+                btnActualizar.Visible = !btnActualizar.Visible;
+                btnModificar.Visible = !btnModificar.Visible;
             }
             catch
             {
@@ -103,10 +105,10 @@ namespace CapaVista
 
         private void button2_Click(object sender, EventArgs e)
         {
-            button4.Visible = false;
-            button2.Visible = false;
-            button1.Visible = true;
-            button3.Visible = true;
+            btnSalir.Visible = false;
+            btnModificar.Visible = false;
+            btnActualizar.Visible = true;
+            btnCancelar.Visible = true;
             DataGridViewRow fila = dataGridView1.CurrentRow;
             fila.Cells["MEDIDA"].ReadOnly = false;
             fila.Cells["ESTADO"].ReadOnly = false;
@@ -132,6 +134,28 @@ namespace CapaVista
             {
                 textBox1.Text = "BUSCADOR...";
             }
+        }
+
+        private void FrmCargarMedidas_Shown(object sender, EventArgs e)
+        {
+            this.ActiveControl = null;
+            this.Text = "Papelera";
+
+
+            UI_Utilidad.EstiloLabels(this);
+
+            UI_Utilidad.EstiloForm(this);
+            UI_Utilidad.RedondearForm(this, 28);
+
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnActualizar);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnNuevo);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnSalir);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnModificar);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnCancelar);
+
+            FormDragHelper.EnableDrag(this, panel1);
+
+            UI_Utilidad.EstiloDataGridView(dataGridView1);
         }
     }
 }

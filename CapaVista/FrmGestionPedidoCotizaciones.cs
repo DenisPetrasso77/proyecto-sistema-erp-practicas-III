@@ -1,9 +1,11 @@
-﻿using CapaEntities;
-using CapaLogica;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
+using CapaEntities;
+using CapaLogica;
+using ProyectoPracticas;
+using static ProyectoPracticas.UI_Utilidad;
 
 namespace CapaVista
 {
@@ -112,8 +114,8 @@ namespace CapaVista
             cacheproveedores.Columns.Add("DisplayProveedor", typeof(string), "RazonSocial + ' (' + NumeroDeIdentificacion + ')'");
             dataGridView3.ReadOnly = true;
             dataGridView1.ReadOnly = true;
-            button1.Enabled = false;
-            button3.Enabled = false;
+            btnMandarSoli.Enabled = false;
+            btnAtras.Enabled = false;
             dtpFecha.Value = DateTime.Now;
             dtpFecha.Enabled = false;
             Solicitudes();
@@ -229,10 +231,10 @@ namespace CapaVista
             }
             dataGridView3.ReadOnly = false;
             dataGridView2.ReadOnly = true;
-            button1.Enabled = true;
-            button3.Enabled = true;
+            btnMandarSoli.Enabled = true;
+            btnAtras.Enabled = true;
             dtpFecha.Enabled = true;
-            button2.Enabled = false;
+            btnSeleccionar.Enabled = false;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -240,10 +242,10 @@ namespace CapaVista
             dataGridView3.Rows.Clear();
             dataGridView2.ReadOnly=false;
             dataGridView3.ReadOnly = true;
-            button1.Enabled = false;
-            button3.Enabled = false;
+            btnMandarSoli.Enabled = false;
+            btnAtras.Enabled = false;
             dtpFecha.Enabled = false;
-            button2.Enabled = true;
+            btnSeleccionar.Enabled = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -286,9 +288,9 @@ namespace CapaVista
             MessageBox.Show(resultado);
             dataGridView3.Rows.Clear();
             Cargardgv();
-            button1.Enabled = false;
-            button3.Enabled = false;
-            button2.Enabled = true;
+            btnMandarSoli.Enabled = false;
+            btnAtras.Enabled = false;
+            btnSeleccionar.Enabled = true;
             dtpFecha.Enabled = false;
         }
         private DataTable ConvertirADetalleCotizacionesTipo(List<DetalleSoliCotizaciones> lista)
@@ -315,9 +317,9 @@ namespace CapaVista
                 MessageBox.Show(Traductor.TraducirTexto("msgSinPermiso"), Traductor.TraducirTexto("msgAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            button4.Enabled = false;
-            button5.Enabled = true;
-            button6.Enabled =true;
+            btnCargar.Enabled = false;
+            btnAtras2.Enabled = true;
+            btnActualizar.Enabled =true;
             dataGridView1.ReadOnly=false;
         }
 
@@ -375,9 +377,9 @@ namespace CapaVista
             MessageBox.Show("Presupuestos Actualizados");
             dataGridView1.Rows.Clear();
             Solicitudes();
-            button5.Enabled = false;
-            button6.Enabled = false;
-            button4.Enabled = true;
+            btnAtras2.Enabled = false;
+            btnActualizar.Enabled = false;
+            btnCargar.Enabled = true;
         }
         
 
@@ -392,11 +394,79 @@ namespace CapaVista
 
         private void button5_Click(object sender, EventArgs e)
         {
-            button4.Enabled = true;
-            button5.Enabled = false;
-            button6.Enabled = false;
+            btnCargar.Enabled = true;
+            btnAtras2.Enabled = false;
+            btnActualizar.Enabled = false;
             dataGridView1.ReadOnly = true;
 
+        }
+
+        private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Sin proveedor")
+            {
+                SendKeys.Send("{TAB}");
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void FrmGestionPedidoCotizaciones_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FrmHome home = new FrmHome();
+            home.Show();
+        }
+
+        private void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            
+            if (dataGridView1.CurrentCell.ColumnIndex == 3 || dataGridView1.CurrentCell.ColumnIndex == 5 ||dataGridView1.CurrentCell.ColumnIndex == 7)
+            {
+                e.Control.KeyPress += (s, ev) =>
+                {
+                    if (!char.IsDigit(ev.KeyChar) && ev.KeyChar != ',' && !char.IsControl(ev.KeyChar))
+                        ev.Handled = true;
+                };
+            }
+        }
+
+        private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
+        {           
+        }
+
+        private void FrmGestionPedidoCotizaciones_Shown(object sender, EventArgs e)
+        {
+            this.Text = "Papelera";
+            FormDragHelper.EnableDrag(this, panel1);
+
+            UI_Utilidad.EstiloForm(this);
+            UI_Utilidad.RedondearForm(this, 28);
+
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnAtras);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnAtras2);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnAtras3);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnCargar);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnMandarSoli);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnSeleccionar);
+            UI_Utilidad.EstiloBotonPrimarioDegradado(btnActualizar);
+
+
+            UI_Utilidad.EstiloDataGridView(dataGridView1);
+            UI_Utilidad.EstiloDataGridView(dataGridView2);
+            UI_Utilidad.EstiloDataGridView(dataGridView3);
+            UI_Utilidad.EstiloDataGridView(dataGridView4);
+
+
+            FormDragHelper.EnableDrag(this, panel1);
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
